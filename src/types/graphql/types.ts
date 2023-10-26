@@ -8,7 +8,6 @@ export enum NodeType {
 	Message = 'MESSAGE',
 	Other = 'OTHER',
 	Presentation = 'PRESENTATION',
-	Root = 'ROOT',
 	Spreadsheet = 'SPREADSHEET',
 	Text = 'TEXT',
 	Video = 'VIDEO'
