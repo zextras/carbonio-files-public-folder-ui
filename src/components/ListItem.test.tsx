@@ -1,15 +1,15 @@
 import {expect, it} from 'vitest'
 import {render, screen, within} from "@testing-library/react";
-import {ListItem} from "./components/ListItem.tsx";
-import {NodeType} from "./types/graphql/types.ts";
+import {ListItem} from "./ListItem.tsx";
+import {NodeType} from "../types/graphql/types.ts";
 import {ThemeProvider} from "@zextras/carbonio-design-system";
 import React from "react";
 import {faker} from "@faker-js/faker";
-import {ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE} from "./utils/constants.ts";
-import {humanFileSize} from "./utils/utils.ts";
+import {ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE} from "../utils/constants.ts";
+import {humanFileSize} from "../utils/utils.ts";
 
 type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>
-function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
+export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
     return {
         name: faker.system.fileName({ extensionCount: 0 }),
         type: faker.helpers.arrayElement(Object.values(NodeType)),
@@ -25,7 +25,7 @@ it('should show the content of the folder', () => {
     expect(screen.getByText('Folder name')).toBeVisible();
     expect(screen.getByText('Name')).toBeVisible();
     expect(screen.getByText('Last modified')).toBeVisible();
-    expect(screen.getByText('Type')).toBeVisible();
+    expect(screen.getByText('Extension')).toBeVisible();
     expect(screen.getByText('Size')).toBeVisible();
     expect(screen.getByRole('list')).toBeVisible();
     expect(screen.getByRole('listitem', { name: 'Name of the subfolder' })).toBeVisible();
@@ -99,12 +99,16 @@ it('should show the size if provided and value is 0', () => {
     expect(within(screen.getByRole('listitem')).getByText(humanFileSize(0))).toBeVisible()
 });
 
+it.todo('should not show the size if it not provided');
+
+it.todo('should show the size of a file');
+
+it.todo('should not show the size of a folder');
+
 it('should show the extension if provided', () => {
     const extension = faker.system.fileExt();
     render(<ThemeProvider><ListItem {...listItemPropsBuilder()} extension={extension} /></ThemeProvider>);
     expect(within(screen.getByRole('listitem')).getByText(extension)).toBeVisible()
 });
 
-it.todo('should show the size of a file');
-
-it.todo('should not show the size of a folder');
+it.todo('should not show the extension if it not provided');
