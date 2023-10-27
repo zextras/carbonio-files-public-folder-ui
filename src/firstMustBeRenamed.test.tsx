@@ -6,6 +6,7 @@ import {ThemeProvider} from "@zextras/carbonio-design-system";
 import React from "react";
 import {faker} from "@faker-js/faker";
 import {ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE} from "./utils/constants.ts";
+import {humanFileSize} from "./utils/utils.ts";
 
 type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>
 function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
@@ -13,6 +14,8 @@ function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
         name: faker.system.fileName({ extensionCount: 0 }),
         type: faker.helpers.arrayElement(Object.values(NodeType)),
         mimeType: faker.system.mimeType(),
+        lastModified: faker.date.recent().valueOf(),
+        size: faker.number.int(),
         ...props
     }
 }
@@ -78,3 +81,30 @@ it('should show the primary colored icon when NodeType is Text and mimeType is n
     render(<ThemeProvider><ListItem {...props} /></ThemeProvider>);
     expect(within(screen.getByRole('listitem')).getByTestId(`icon: ${ICON_BY_NODE_TYPE[props.type](MIME_TYPE['text/plain'])}`)).toHaveStyle({color: ICON_COLOR_BY_NODE_TYPE[props.type](undefined, MIME_TYPE['text/plain'])});
 });
+
+it('should show the last modified formatted date and time', () => {
+    const props = listItemPropsBuilder({lastModified: new Date().valueOf()});
+    render(<ThemeProvider><ListItem {...props} /></ThemeProvider>);
+    expect(within(screen.getByRole('listitem')).getByText(Intl.DateTimeFormat(undefined, {day: "2-digit", minute: "2-digit", hour: "2-digit", month: "2-digit", year: "numeric"}).format(new Date(props.lastModified)))).toBeVisible();
+});
+
+it('should show the size if provided', () => {
+    const size = faker.number.int();
+    render(<ThemeProvider><ListItem {...listItemPropsBuilder()} size={size}/></ThemeProvider>);
+    expect(within(screen.getByRole('listitem')).getByText(humanFileSize(size))).toBeVisible()
+});
+
+it('should show the size if provided and value is 0', () => {
+    render(<ThemeProvider><ListItem {...listItemPropsBuilder()} size={0}/></ThemeProvider>);
+    expect(within(screen.getByRole('listitem')).getByText(humanFileSize(0))).toBeVisible()
+});
+
+it('should show the extension if provided', () => {
+    const extension = faker.system.fileExt();
+    render(<ThemeProvider><ListItem {...listItemPropsBuilder()} extension={extension} /></ThemeProvider>);
+    expect(within(screen.getByRole('listitem')).getByText(extension)).toBeVisible()
+});
+
+it.todo('should show the size of a file');
+
+it.todo('should not show the size of a folder');
