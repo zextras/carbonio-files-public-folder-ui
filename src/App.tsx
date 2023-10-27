@@ -1,17 +1,23 @@
 import './App.css'
 import {ListItem} from "./components/ListItem.tsx";
-import {listItemPropsBuilder} from "./components/ListItem.test.tsx";
 import {HeaderBreadcrumbs} from "./components/HeaderBreadcrumbs.tsx";
-import {crumbsBuilder} from "./components/HeaderBreadcrumbs.test.tsx";
+import {crumbsBuilder, listItemPropsBuilder} from "./utils/utils.ts";
+import {ThemeProvider} from "@zextras/carbonio-design-system";
 
 function App() {
 
   return (
     <>
-      <div>
-          <HeaderBreadcrumbs crumbs={crumbsBuilder(5)} />
+      <ThemeProvider>
+          <div style={{width: '800px'}}><HeaderBreadcrumbs crumbs={crumbsBuilder(10)} /></div>
           <ListItem {...listItemPropsBuilder()} />
-      </div>
+          <ListItem {...listItemPropsBuilder()} />
+          <ListItem {...listItemPropsBuilder()} />
+          <ListItem {...listItemPropsBuilder()} />
+          <ListItem {...listItemPropsBuilder()} />
+          <ListItem {...listItemPropsBuilder()} />
+          <ListItem {...listItemPropsBuilder()} />
+      </ThemeProvider>
     </>
   )
 }

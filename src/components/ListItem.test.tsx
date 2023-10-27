@@ -3,22 +3,10 @@ import {render, screen, within} from "@testing-library/react";
 import {ListItem} from "./ListItem.tsx";
 import {NodeType} from "../types/graphql/types.ts";
 import {ThemeProvider} from "@zextras/carbonio-design-system";
-import React from "react";
 import {faker} from "@faker-js/faker";
 import {ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE} from "../utils/constants.ts";
-import {humanFileSize} from "../utils/utils.ts";
+import {humanFileSize, listItemPropsBuilder} from "../utils/utils.ts";
 
-type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>
-export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
-    return {
-        name: faker.system.fileName({ extensionCount: 0 }),
-        type: faker.helpers.arrayElement(Object.values(NodeType)),
-        mimeType: faker.system.mimeType(),
-        lastModified: faker.date.recent().valueOf(),
-        size: faker.number.int(),
-        ...props
-    }
-}
 
 it('should show the content of the folder', () => {
     render(<PublicFolderView />);
@@ -99,7 +87,10 @@ it('should show the size if provided and value is 0', () => {
     expect(within(screen.getByRole('listitem')).getByText(humanFileSize(0))).toBeVisible()
 });
 
-it.todo('should not show the size if it not provided');
+it('should show a - if the size is not provided', () => {
+    render(<ThemeProvider><ListItem {...listItemPropsBuilder()} size={undefined}/></ThemeProvider>);
+    expect(within(screen.getByRole('listitem')).getByText('-')).toBeVisible()
+});
 
 it.todo('should show the size of a file');
 
@@ -112,3 +103,4 @@ it('should show the extension if provided', () => {
 });
 
 it.todo('should not show the extension if it not provided');
+

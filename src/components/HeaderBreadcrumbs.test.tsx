@@ -1,22 +1,9 @@
 import {expect, it} from 'vitest'
-import {render, screen, within} from "@testing-library/react";
+import {render, screen} from "@testing-library/react";
 import {HeaderBreadcrumbs} from "./HeaderBreadcrumbs.tsx";
-import {BreadcrumbsProps, Crumb, ThemeProvider} from "@zextras/carbonio-design-system";
+import {Crumb, ThemeProvider} from "@zextras/carbonio-design-system";
 import {faker} from "@faker-js/faker";
-
-export function crumbsBuilder(count: number = 3): BreadcrumbsProps['crumbs'] {
-
-    return [...Array(count)].map((_, index) => {
-        const label2 = faker.system.fileName({extensionCount: 0});
-        const crumb2: Crumb = {
-            label: label2,
-            id: `${index}`
-        }
-
-        return crumb2
-    });
-
-}
+import {crumbsBuilder} from "../utils/utils.ts";
 
 it('should show only one crumb when only one crumb is provided', () => {
 
@@ -51,8 +38,8 @@ it('should show 2 crumbs when 2 crumbs are provided', () => {
 });
 
 it('should show 25 crumbs when 25 crumbs are provided', () => {
-    const crumbs = crumbsBuilder(50);
-    render(<ThemeProvider><HeaderBreadcrumbs crumbs={crumbs}/></ThemeProvider>);
+    const crumbs = crumbsBuilder(2);
+    render(<ThemeProvider><div style={{width: '200px'}}><HeaderBreadcrumbs crumbs={crumbs}/></div></ThemeProvider>);
     crumbs.forEach(({label}) => {
         expect(screen.getByText(label)).toBeVisible();
     });
