@@ -22,6 +22,7 @@ export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemPr
         mimeType: faker.system.mimeType(),
         lastModified: faker.date.recent().valueOf(),
         size: faker.number.int(),
+        extension: faker.system.fileExt(),
         ...props
     }
 }
