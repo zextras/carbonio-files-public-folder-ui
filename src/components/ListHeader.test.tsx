@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
-import { ListHeader } from './ListHeader.tsx';
+import { ListHeader } from './ListHeader';
 
 it('should show name, last modified, extension and size as list header fields', () => {
 	render(

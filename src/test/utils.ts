@@ -1,8 +1,10 @@
+import React from "react";
+
 import { faker } from '@faker-js/faker';
 import { BreadcrumbsProps, Crumb } from '@zextras/carbonio-design-system';
 
-import { ListItem } from '../components/ListItem.tsx';
-import { NodeType } from '../types/graphql/types.ts';
+import { ListItem } from '../components/ListItem';
+import { NodeType } from '../types/graphql/types';
 
 type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>;
 export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {

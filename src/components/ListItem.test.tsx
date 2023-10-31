@@ -3,11 +3,11 @@ import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
-import { ListItem } from './ListItem.tsx';
-import { listItemPropsBuilder } from '../test/utils.ts';
-import { NodeType } from '../types/graphql/types.ts';
-import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants.ts';
-import { humanFileSize } from '../utils/utils.ts';
+import { ListItem } from './ListItem';
+import { listItemPropsBuilder } from '../test/utils';
+import { NodeType } from '../types/graphql/types';
+import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
+import { humanFileSize } from '../utils/utils';
 
 it('should show the name of list item', () => {
 	const props = listItemPropsBuilder();

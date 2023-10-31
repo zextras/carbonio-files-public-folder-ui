@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 
-import { humanFileSize } from './utils.ts';
+import { humanFileSize } from './utils';
 
 describe('utils', () => {
 	describe('humanFileSize function', () => {

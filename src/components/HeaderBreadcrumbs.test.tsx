@@ -3,8 +3,8 @@ import { render, screen } from '@testing-library/react';
 import { Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
-import { HeaderBreadcrumbs } from './HeaderBreadcrumbs.tsx';
-import { crumbsBuilder } from '../test/utils.ts';
+import { HeaderBreadcrumbs } from './HeaderBreadcrumbs';
+import { crumbsBuilder } from '../test/utils';
 
 it('should show only one crumb when only one crumb is provided', () => {
 	const label = faker.system.fileName({ extensionCount: 0 });

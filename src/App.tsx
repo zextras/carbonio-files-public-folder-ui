@@ -1,10 +1,12 @@
+import React from 'react';
+
 import { Divider, ThemeProvider } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
-import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs.tsx';
-import { ListHeader } from './components/ListHeader.tsx';
-import { ListItem } from './components/ListItem.tsx';
-import { crumbsBuilder, listItemPropsBuilder } from './test/utils.ts';
+import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
+import { ListHeader } from './components/ListHeader';
+import { ListItem } from './components/ListItem';
+import { crumbsBuilder, listItemPropsBuilder } from './test/utils';
 
 const Grid = styled.div`
 	box-sizing: border-box;
@@ -31,11 +33,11 @@ const rows = [
 	listItemPropsBuilder()
 ];
 
-function App() {
+const App = (): React.JSX.Element => {
 	const rowsWithDividers = rows.map((value) => (
 		<>
 			<ListItem {...value} />
-			<RowBorder color={'secondary.disabled'} />
+			<RowBorder color="secondary.disabled" />
 		</>
 	));
 
@@ -43,13 +45,13 @@ function App() {
 		<ThemeProvider>
 			<HeaderBreadcrumbs crumbs={crumbsBuilder(10)} />
 			<Grid>
-				<RowBorder color={'secondary.disabled'} />
+				<RowBorder color="secondary.disabled" />
 				<ListHeader />
-				<RowBorder color={'secondary.disabled'} />
+				<RowBorder color="secondary.disabled" />
 				{rowsWithDividers}
 			</Grid>
 		</ThemeProvider>
 	);
-}
+};
 
 export default App;
