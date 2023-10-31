@@ -27,6 +27,7 @@
     "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
     "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#update-dependencies-with-bc",
+    "eslint-plugin-notice": "^0.9.10",
     "eslint-plugin-react-refresh": "^0.4.4",
     "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
