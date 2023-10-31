@@ -11,7 +11,11 @@ export const humanFileSize = (inputSize: number): string => {
         return '0 B';
     }
     const i = Math.floor(Math.log(inputSize) / Math.log(1024));
-    return `${(inputSize / 1024 ** i).toFixed(2).toString()} ${['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'][i]}`;
+    const units = ['B', 'KB', 'MB', 'GB', 'TB', 'PB', 'EB', 'ZB', 'YB'];
+    if (i >= units.length) {
+        throw new Error('Unsupported inputSize');
+    }
+    return `${(inputSize / 1024 ** i).toFixed(2).toString()} ${units[i]}`;
 };
 
 type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>
