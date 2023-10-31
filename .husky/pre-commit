@@ -1,0 +1,7 @@
+#!/bin/sh
+. "$(dirname $0)/_/husky.sh"
+
+npm run type-check
+npm run lint -- --quiet
+pipx run reuse download --all && pipx run reuse lint
+npm test

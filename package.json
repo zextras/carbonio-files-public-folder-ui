@@ -9,7 +9,9 @@
     "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
     "lint:fix": "npm run lint -- --fix",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest run",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit"
   },
   "dependencies": {
     "@zextras/carbonio-design-system": "file:zextras-carbonio-design-system-3.0.2.tgz",
@@ -32,6 +34,7 @@
     "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
-    "vitest": "^0.34.6"
+    "vitest": "^0.34.6",
+    "husky": "^8.0.0"
   }
 }
