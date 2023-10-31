@@ -6,7 +6,7 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs .",
+    "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
     "lint:fix": "npm run lint -- --fix",
     "preview": "vite preview",
     "test": "vitest"
@@ -26,8 +26,8 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "@zextras/carbonio-ui-configs": "file:zextras-carbonio-ui-configs-0.1.13.tgz",
-    "eslint-plugin-react-refresh": "^0.4.3",
+    "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#update-dependencies-with-bc",
+    "eslint-plugin-react-refresh": "^0.4.4",
     "jsdom": "^22.1.0",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",

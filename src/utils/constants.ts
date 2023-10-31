@@ -22,14 +22,18 @@ export const ICON_BY_NODE_TYPE = {
 } satisfies Record<NodeType, () => keyof DefaultTheme['icons']>;
 
 export const ICON_COLOR_BY_NODE_TYPE = {
-	[NodeType.Application]: (theme?: DefaultTheme): string => theme?.palette.gray0.regular ?? '#414141',
+	[NodeType.Application]: (theme?: DefaultTheme): string =>
+		theme?.palette.gray0.regular ?? '#414141',
 	[NodeType.Audio]: (theme?: DefaultTheme): string => theme?.palette.gray0.regular ?? '#414141',
-	[NodeType.Folder]: (theme?: DefaultTheme): string => theme?.palette.secondary.regular ?? '#828282',
+	[NodeType.Folder]: (theme?: DefaultTheme): string =>
+		theme?.palette.secondary.regular ?? '#828282',
 	[NodeType.Image]: (theme?: DefaultTheme): string => theme?.palette.error.regular ?? '#d74942',
 	[NodeType.Message]: (theme?: DefaultTheme): string => theme?.palette.primary.regular ?? '#2b73d2',
 	[NodeType.Other]: (theme?: DefaultTheme): string => theme?.palette.primary.regular ?? '#2b73d2',
-	[NodeType.Presentation]: (theme?: DefaultTheme): string => theme?.avatarColors.avatar_47 ?? '#FFA726',
-	[NodeType.Spreadsheet]: (theme?: DefaultTheme): string => theme?.palette.success.regular ?? '#8bc34a',
+	[NodeType.Presentation]: (theme?: DefaultTheme): string =>
+		theme?.avatarColors.avatar_47 ?? '#FFA726',
+	[NodeType.Spreadsheet]: (theme?: DefaultTheme): string =>
+		theme?.palette.success.regular ?? '#8bc34a',
 	[NodeType.Text]: (theme?: DefaultTheme, mimeType?: string): string =>
 		mimeType === MIME_TYPE['application/pdf']
 			? theme?.palette.error.regular ?? '#d74942'

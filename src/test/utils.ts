@@ -1,4 +1,4 @@
-import React from "react";
+import React from 'react';
 
 import { faker } from '@faker-js/faker';
 import { BreadcrumbsProps, Crumb } from '@zextras/carbonio-design-system';
