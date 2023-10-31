@@ -39,11 +39,11 @@ const rows = [
 ];
 
 const App = (): React.JSX.Element => {
-	const rowsWithDividers = rows.map((value) => (
-		<>
+	const rowsWithDividers = rows.map((value, index) => (
+		<React.Fragment key={index}>
 			<ListItem {...value} />
 			<RowBorder color="secondary.disabled" />
-		</>
+		</React.Fragment>
 	));
 
 	return (
