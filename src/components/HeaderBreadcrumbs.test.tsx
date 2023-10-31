@@ -3,7 +3,7 @@ import {render, screen} from "@testing-library/react";
 import {HeaderBreadcrumbs} from "./HeaderBreadcrumbs.tsx";
 import {Crumb, ThemeProvider} from "@zextras/carbonio-design-system";
 import {faker} from "@faker-js/faker";
-import {crumbsBuilder} from "../utils/utils.ts";
+import {crumbsBuilder} from "../test/utils.ts";
 
 it('should show only one crumb when only one crumb is provided', () => {
 

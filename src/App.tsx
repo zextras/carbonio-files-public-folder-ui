@@ -1,9 +1,9 @@
 import {ListItem} from "./components/ListItem.tsx";
 import {HeaderBreadcrumbs} from "./components/HeaderBreadcrumbs.tsx";
-import {crumbsBuilder, listItemPropsBuilder} from "./utils/utils.ts";
 import {Divider, ThemeProvider} from "@zextras/carbonio-design-system";
 import {ListHeader} from "./components/ListHeader.tsx";
 import styled from "styled-components";
+import {crumbsBuilder, listItemPropsBuilder} from "./test/utils.ts";
 
 const Grid = styled.div`
   box-sizing: border-box;

@@ -5,7 +5,8 @@ import {NodeType} from "../types/graphql/types.ts";
 import {ThemeProvider} from "@zextras/carbonio-design-system";
 import {faker} from "@faker-js/faker";
 import {ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE} from "../utils/constants.ts";
-import {humanFileSize, listItemPropsBuilder} from "../utils/utils.ts";
+import {humanFileSize} from "../utils/utils.ts";
+import {listItemPropsBuilder} from "../test/utils.ts";
 
 it('should show the name of list item', () => {
     const props = listItemPropsBuilder();
@@ -81,6 +82,3 @@ it('should show the extension if provided', () => {
     render(<ThemeProvider><ListItem {...listItemPropsBuilder()} extension={extension} /></ThemeProvider>);
     expect(screen.getByText(extension)).toBeVisible()
 });
-
-it.todo('should not show the extension if it not provided');
-

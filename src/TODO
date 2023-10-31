@@ -1,5 +1,3 @@
 estrarre themeProvider dai test
 
 fare in modo di eseguire i test che riguardano le date con un locale diverso, cosi' da essere sicuri che la data sia localizzata
-
-testare funzione conversione size

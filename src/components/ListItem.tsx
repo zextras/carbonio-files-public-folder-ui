@@ -34,7 +34,7 @@ export const ListItem: React.FC<ListItemProps> = ({name, type, mimeType, lastMod
             </Padding>
             <Text>{name}</Text>
             <Text>{Intl.DateTimeFormat(undefined, {day: "2-digit", minute: "2-digit", hour: "2-digit", month: "2-digit", year: "numeric"}).format(new Date(lastModified))}</Text>
-            <Text>{extension ?? ''}</Text>
+            <Text>{extension}</Text>
             <Padding right={'1.5rem'}>
                 <Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
             </Padding>
