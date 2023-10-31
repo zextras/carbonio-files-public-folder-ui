@@ -1,9 +1,10 @@
-import {ListItem} from "./components/ListItem.tsx";
-import {HeaderBreadcrumbs} from "./components/HeaderBreadcrumbs.tsx";
-import {Divider, ThemeProvider} from "@zextras/carbonio-design-system";
-import {ListHeader} from "./components/ListHeader.tsx";
+import { Divider, ThemeProvider } from "@zextras/carbonio-design-system";
 import styled from "styled-components";
-import {crumbsBuilder, listItemPropsBuilder} from "./test/utils.ts";
+
+import { HeaderBreadcrumbs } from "./components/HeaderBreadcrumbs.tsx";
+import { ListHeader } from "./components/ListHeader.tsx";
+import { ListItem } from "./components/ListItem.tsx";
+import { crumbsBuilder, listItemPropsBuilder } from "./test/utils.ts";
 
 const Grid = styled.div`
   box-sizing: border-box;
@@ -20,36 +21,35 @@ const RowBorder = styled(Divider)`
   grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
 `;
 
-
 const rows = [
-    listItemPropsBuilder(),
-    listItemPropsBuilder(),
-    listItemPropsBuilder(),
-    listItemPropsBuilder(),
-    listItemPropsBuilder(),
-    listItemPropsBuilder(),
-    listItemPropsBuilder()
-]
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+  listItemPropsBuilder(),
+];
 
 function App() {
+  const rowsWithDividers = rows.map((value) => (
+	<>
+	<ListItem {...value} />
+	<RowBorder color={"secondary.disabled"} />
+    </>
+  ));
 
-    const rowsWithDividers = rows.map((value) => <><ListItem {...value}/><RowBorder
-        color={'secondary.disabled'}/></>)
-
-
-    return (
-        <ThemeProvider>
-            <HeaderBreadcrumbs crumbs={crumbsBuilder(10)}/>
-            <Grid>
-                <RowBorder color={'secondary.disabled'}/>
-                <ListHeader/>
-                <RowBorder color={'secondary.disabled'}/>
-                {rowsWithDividers}
-            </Grid>
-
-
-        </ThemeProvider>
-    )
+  return (
+    <ThemeProvider>
+		<HeaderBreadcrumbs crumbs={crumbsBuilder(10)}/>
+		<Grid>
+        <RowBorder color={"secondary.disabled"} />
+        <ListHeader />
+        <RowBorder color={"secondary.disabled"} />
+	{rowsWithDividers}
+      </Grid>
+	</ThemeProvider>
+  );
 }
 
-export default App
+export default App;
