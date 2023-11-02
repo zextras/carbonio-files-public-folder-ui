@@ -1,4 +1,3 @@
-
 // TODO update
 export enum NodeType {
 	Application = 'APPLICATION',
