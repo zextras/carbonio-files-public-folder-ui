@@ -42,5 +42,11 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off'
       }
     },
+    {
+      files: ['vite.config.ts', 'commitlint.config.ts'],
+      parserOptions: {
+        project: 'tsconfig.node.json'
+      }
+    }
   ]
 }
