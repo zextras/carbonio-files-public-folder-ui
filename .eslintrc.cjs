@@ -1,3 +1,8 @@
+/*
+ * SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+ *
+ * SPDX-License-Identifier: AGPL-3.0-only
+ */
 module.exports = {
   root: true,
   env: { browser: true, es2020: true },
@@ -5,15 +10,21 @@ module.exports = {
     project: 'tsconfig.json'
   },
   extends: ['./node_modules/@zextras/carbonio-ui-configs/rules/eslint.js'],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  plugins: ['react-refresh'],
+  ignorePatterns: ['dist', '.eslintrc.cjs', 'notice.template.*'],
+  plugins: ['react-refresh', 'notice'],
   rules: {
     'react-refresh/only-export-components': [
       'warn',
       { allowConstantExport: true },
     ],
     'react/react-in-jsx-scope': 'off',
-    'sonarjs/no-duplicate-string': 'off'
+    'sonarjs/no-duplicate-string': 'off',
+    'notice/notice': [
+      'error',
+      {
+        templateFile: './notice.template.js'
+      }
+    ],
   },
   overrides: [
     {
@@ -31,5 +42,11 @@ module.exports = {
         'react/jsx-props-no-spreading': 'off'
       }
     },
+    {
+      files: ['vite.config.ts', 'commitlint.config.ts'],
+      parserOptions: {
+        project: 'tsconfig.node.json'
+      }
+    }
   ]
 }
