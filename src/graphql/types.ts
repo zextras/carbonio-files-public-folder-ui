@@ -28,7 +28,7 @@ export type Scalars = {
 };
 
 export type File = Node & {
-	__typename?: 'File';
+	__typename: 'File';
 	created_at: Scalars['DateTime']['output'];
 	extension?: Maybe<Scalars['String']['output']>;
 	id: Scalars['ID']['output'];
@@ -40,7 +40,7 @@ export type File = Node & {
 };
 
 export type Folder = Node & {
-	__typename?: 'Folder';
+	__typename: 'Folder';
 	created_at: Scalars['DateTime']['output'];
 	id: Scalars['ID']['output'];
 	name: Scalars['String']['output'];
@@ -57,7 +57,7 @@ export type Node = {
 };
 
 export type NodePage = {
-	__typename?: 'NodePage';
+	__typename: 'NodePage';
 	nodes: Array<Maybe<Node>>;
 	page_token?: Maybe<Scalars['String']['output']>;
 };
@@ -76,7 +76,7 @@ export enum NodeType {
 }
 
 export type Query = {
-	__typename?: 'Query';
+	__typename: 'Query';
 	findNodes?: Maybe<NodePage>;
 	getPublicNode?: Maybe<Node>;
 };
@@ -111,27 +111,27 @@ export type FindNodesQuery = {
 							name: string;
 							type: NodeType;
 							updated_at: number;
-					  } & { __typename?: 'File' })
+					  } & { __typename: 'File' })
 					| ({
 							created_at: number;
 							id: string;
 							name: string;
 							type: NodeType;
 							updated_at: number;
-					  } & { __typename?: 'Folder' })
+					  } & { __typename: 'Folder' })
 					| null
 				>;
-		  } & { __typename?: 'NodePage' })
+		  } & { __typename: 'NodePage' })
 		| null;
-} & { __typename?: 'Query' };
+} & { __typename: 'Query' };
 
 export type GetPublicNodeQueryVariables = Exact<{
 	node_link_id: Scalars['String']['input'];
 }>;
 
 export type GetPublicNodeQuery = {
-	getPublicNode?: ({ id: string; name: string } & { __typename?: 'File' | 'Folder' }) | null;
-} & { __typename?: 'Query' };
+	getPublicNode?: ({ id: string; name: string } & { __typename: 'File' | 'Folder' }) | null;
+} & { __typename: 'Query' };
 
 export const FindNodesDocument = {
 	kind: 'Document',
@@ -197,6 +197,7 @@ export const FindNodesDocument = {
 											{ kind: 'Field', name: { kind: 'Name', value: 'name' } },
 											{ kind: 'Field', name: { kind: 'Name', value: 'type' } },
 											{ kind: 'Field', name: { kind: 'Name', value: 'updated_at' } },
+											{ kind: 'Field', name: { kind: 'Name', value: '__typename' } },
 											{
 												kind: 'InlineFragment',
 												typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'File' } },
@@ -255,7 +256,8 @@ export const GetPublicNodeDocument = {
 							kind: 'SelectionSet',
 							selections: [
 								{ kind: 'Field', name: { kind: 'Name', value: 'id' } },
-								{ kind: 'Field', name: { kind: 'Name', value: 'name' } }
+								{ kind: 'Field', name: { kind: 'Name', value: 'name' } },
+								{ kind: 'Field', name: { kind: 'Name', value: '__typename' } }
 							]
 						}
 					}

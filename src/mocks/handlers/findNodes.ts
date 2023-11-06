@@ -23,7 +23,8 @@ export function createFindNodesHandler(
 				findNodes(): FindNodesQuery['findNodes'] {
 					return {
 						nodes,
-						page_token: null
+						page_token: null,
+						__typename: 'NodePage'
 					};
 				}
 			}

@@ -14,7 +14,9 @@ export function createFile(file?: Partial<File>): File {
 		name: faker.system.commonFileName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
-		type: faker.helpers.arrayElement(Object.values(NodeType)),
+		type: faker.helpers.arrayElement(
+			Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Folder)
+		),
 		mime_type: faker.system.mimeType(),
 		size: faker.number.int(),
 		extension: faker.system.fileExt(),
@@ -29,7 +31,7 @@ export function createFolder(folder?: Partial<Folder>): Folder {
 		name: faker.system.commonFileName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
-		type: faker.helpers.arrayElement(Object.values(NodeType)),
+		type: NodeType.Folder,
 		__typename: 'Folder',
 		...folder
 	};

@@ -6,6 +6,7 @@ query findNodes($folder_id: ID!,  $limit: Int, $page_token: String) {
 			name,
 			type,
 			updated_at,
+			__typename
 			... on File {
 				extension
 				mime_type

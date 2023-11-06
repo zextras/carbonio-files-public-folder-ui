@@ -9,6 +9,9 @@ module.exports = {
 	plugin(schema, documents, config, info) {
 		const schemaStr = printSchema(schema);
 		const schemaNode = parse(schemaStr);
-		return `export const schema = ${JSON.stringify(schemaNode)} as unknown as DocumentNode`;
+		return `import type { TypedDocumentNode as DocumentNode } from '@graphql-typed-document-node/core';
+		
+				export const schema = ${JSON.stringify(schemaNode)} as unknown as DocumentNode
+		`;
 	}
 }
