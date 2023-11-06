@@ -8,11 +8,11 @@ import React from 'react';
 import { Avatar, Padding, Text, useTheme } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
-import { NodeType } from '../types/graphql/types';
+import { NodeType } from '../graphql/types';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
-interface ListItemProps {
+export interface ListItemProps {
 	name: string;
 	type: NodeType;
 	mimeType?: string;

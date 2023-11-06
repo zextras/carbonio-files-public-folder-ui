@@ -31,6 +31,7 @@ module.exports = {
       files: [
         '**/types/**/*.ts?(x)',
         '**/test/**/*.ts?(x)',
+        '**/mocks/**/*.ts?(x)',
       ],
       rules: {
         'import/no-extraneous-dependencies': 'off',
@@ -43,7 +44,7 @@ module.exports = {
       }
     },
     {
-      files: ['vite.config.ts', 'commitlint.config.ts'],
+      files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts'],
       parserOptions: {
         project: 'tsconfig.node.json'
       }

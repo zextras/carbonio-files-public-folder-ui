@@ -1,0 +1,6 @@
+query getPublicNode($node_link_id: String!) {
+	getPublicNode(node_link_id: $node_link_id) {
+		id
+		name
+	}
+}

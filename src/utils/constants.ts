@@ -5,7 +5,7 @@
  */
 import { DefaultTheme } from 'styled-components';
 
-import { NodeType } from '../types/graphql/types';
+import { NodeType } from '../graphql/types';
 
 export const MIME_TYPE = {
 	'application/pdf': 'application/pdf',

@@ -1,0 +1,18 @@
+query findNodes($folder_id: ID!,  $limit: Int, $page_token: String) {
+	findNodes(folder_id: $folder_id, limit: $limit, page_token: $page_token ) {
+		nodes {
+			created_at,
+			id,
+			name,
+			type,
+			updated_at,
+			... on File {
+				extension
+				mime_type
+				size
+			}
+
+		}
+		page_token
+	}
+}

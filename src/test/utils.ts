@@ -3,15 +3,13 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React from 'react';
 
 import { faker } from '@faker-js/faker';
 import { BreadcrumbsProps, Crumb } from '@zextras/carbonio-design-system';
 
-import { ListItem } from '../components/ListItem';
-import { NodeType } from '../types/graphql/types';
+import { ListItemProps } from '../components/ListItem';
+import { NodeType } from '../graphql/types';
 
-type ListItemProps = React.ComponentPropsWithoutRef<typeof ListItem>;
 export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
 	return {
 		name: faker.system.fileName({ extensionCount: 0 }),

@@ -11,10 +11,12 @@
     "preview": "vite preview",
     "test": "vitest run",
     "prepare": "husky install",
-    "type-check": "tsc --noEmit"
+    "type-check": "tsc --noEmit",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@zextras/carbonio-design-system": "file:zextras-carbonio-design-system-3.0.2.tgz",
+    "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.11"
@@ -24,6 +26,11 @@
     "@commitlint/config-conventional": "^18.1.0",
     "@commitlint/types": "^18.1.0",
     "@faker-js/faker": "^8.2.0",
+    "@graphql-codegen/add": "^5.0.0",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typed-document-node": "^5.0.1",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
     "@testing-library/jest-dom": "^6.1.4",
     "@testing-library/react": "^14.0.0",
     "@testing-library/user-event": "^14.5.1",
@@ -31,13 +38,17 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#update-dependencies-with-bc",
+    "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#devel",
     "eslint-plugin-notice": "^0.9.10",
     "eslint-plugin-react-refresh": "^0.4.4",
     "husky": "^8.0.0",
     "jsdom": "^22.1.0",
+    "msw": "^2.0.2",
     "typescript": "^5.0.2",
     "vite": "^4.4.5",
     "vitest": "^0.34.6"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }
