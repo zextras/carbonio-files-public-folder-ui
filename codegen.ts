@@ -29,6 +29,7 @@ const config: CodegenConfig = {
 				}
 			],
 			config: {
+				typesPrefix: 'GQL',
 				defaultScalarType: 'unknown',
 				exportFragmentSpreadSubTypes: true,
 				mergeFragmentTypes: true,

@@ -12,11 +12,11 @@ import { createFindNodesHandler } from './findNodes';
 import { createGetPublicNodeHandler } from './getPublicNode';
 import {
 	FindNodesDocument,
-	FindNodesQuery,
-	FindNodesQueryVariables,
 	GetPublicNodeDocument,
-	GetPublicNodeQuery,
-	GetPublicNodeQueryVariables
+	GQLFindNodesQuery,
+	GQLFindNodesQueryVariables,
+	GQLGetPublicNodeQuery,
+	GQLGetPublicNodeQueryVariables
 } from '../../graphql/types';
 import { server } from '../server';
 
@@ -34,7 +34,7 @@ describe('handlers', () => {
 		};
 		server.use(createGetPublicNodeHandler(node));
 
-		const body: Body<GetPublicNodeQueryVariables> = {
+		const body: Body<GQLGetPublicNodeQueryVariables> = {
 			variables: { node_link_id: '' },
 			query: print(GetPublicNodeDocument)
 		};
@@ -45,7 +45,7 @@ describe('handlers', () => {
 			},
 			body: JSON.stringify(body),
 			method: 'POST'
-		}).then((response): Promise<ExecutionResult<GetPublicNodeQuery>> => response.json());
+		}).then((response): Promise<ExecutionResult<GQLGetPublicNodeQuery>> => response.json());
 
 		expect(result.data?.getPublicNode?.name).toBe(node.name);
 	});
@@ -54,7 +54,7 @@ describe('handlers', () => {
 		const nodes: Parameters<typeof createFindNodesHandler>[0] = [];
 		server.use(createFindNodesHandler(nodes));
 
-		const body: Body<FindNodesQueryVariables> = {
+		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: { folder_id: '' },
 			query: print(FindNodesDocument)
 		};
@@ -65,7 +65,7 @@ describe('handlers', () => {
 			},
 			body: JSON.stringify(body),
 			method: 'POST'
-		}).then((response): Promise<ExecutionResult<FindNodesQuery>> => response.json());
+		}).then((response): Promise<ExecutionResult<GQLFindNodesQuery>> => response.json());
 
 		expect(result.data?.findNodes?.nodes.length).toBe(0);
 	});

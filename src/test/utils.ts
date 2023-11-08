@@ -8,12 +8,12 @@ import { faker } from '@faker-js/faker';
 import { BreadcrumbsProps, Crumb } from '@zextras/carbonio-design-system';
 
 import { ListItemProps } from '../components/ListItem';
-import { NodeType } from '../graphql/types';
+import { GQLNodeType } from '../graphql/types';
 
 export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
 	return {
 		name: faker.system.fileName({ extensionCount: 0 }),
-		type: faker.helpers.arrayElement(Object.values(NodeType)),
+		type: faker.helpers.arrayElement(Object.values(GQLNodeType)),
 		mimeType: faker.system.mimeType(),
 		lastModified: faker.date.recent().valueOf(),
 		size: faker.number.int(),

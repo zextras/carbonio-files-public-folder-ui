@@ -8,12 +8,12 @@ import { graphql as executeGraphql } from 'graphql';
 import { graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import { GetPublicNodeDocument, GetPublicNodeQuery } from '../../graphql/types';
+import { GetPublicNodeDocument, GQLGetPublicNodeQuery } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 import { MakeRequired } from '../../utils/typeUtils';
 
 export function createGetPublicNodeHandler(
-	node: MakeRequired<Partial<NonNullable<GetPublicNodeQuery['getPublicNode']>>, '__typename'>
+	node: MakeRequired<Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>, '__typename'>
 ): GraphQLHandler {
 	return graphql.query(GetPublicNodeDocument, async ({ query, variables }) => {
 		const { data, errors } = await executeGraphql({
@@ -22,7 +22,7 @@ export function createGetPublicNodeHandler(
 			variableValues: variables,
 			typeResolver: resolveByTypename,
 			rootValue: {
-				getPublicNode(): GetPublicNodeQuery['getPublicNode'] {
+				getPublicNode(): GQLGetPublicNodeQuery['getPublicNode'] {
 					return {
 						name: faker.system.commonFileName(),
 						id: faker.string.uuid(),

@@ -7,11 +7,11 @@ import { graphql as executeGraphql } from 'graphql';
 import { graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import { FindNodesDocument, FindNodesQuery } from '../../graphql/types';
+import { FindNodesDocument, GQLFindNodesQuery } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 
 export function createFindNodesHandler(
-	nodes: NonNullable<FindNodesQuery['findNodes']>['nodes']
+	nodes: NonNullable<GQLFindNodesQuery['findNodes']>['nodes']
 ): GraphQLHandler {
 	return graphql.query(FindNodesDocument, async ({ query, variables }) => {
 		const { data, errors } = await executeGraphql({
@@ -20,7 +20,7 @@ export function createFindNodesHandler(
 			variableValues: variables,
 			typeResolver: resolveByTypename,
 			rootValue: {
-				findNodes(): FindNodesQuery['findNodes'] {
+				findNodes(): GQLFindNodesQuery['findNodes'] {
 					return {
 						nodes,
 						page_token: null,

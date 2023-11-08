@@ -6,16 +6,16 @@
 
 import { faker } from '@faker-js/faker';
 
-import { File, Folder, NodeType } from '../graphql/types';
+import { GQLFile, GQLFolder, GQLNodeType } from '../graphql/types';
 
-export function createFile(file?: Partial<File>): File {
+export function createFile(file?: Partial<GQLFile>): GQLFile {
 	return {
 		id: faker.string.uuid(),
 		name: faker.system.commonFileName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
 		type: faker.helpers.arrayElement(
-			Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Folder)
+			Object.values(GQLNodeType).filter((nodeType) => nodeType !== GQLNodeType.Folder)
 		),
 		mime_type: faker.system.mimeType(),
 		size: faker.number.int(),
@@ -25,13 +25,13 @@ export function createFile(file?: Partial<File>): File {
 	};
 }
 
-export function createFolder(folder?: Partial<Folder>): Folder {
+export function createFolder(folder?: Partial<GQLFolder>): GQLFolder {
 	return {
 		id: faker.string.uuid(),
 		name: faker.system.commonFileName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
-		type: NodeType.Folder,
+		type: GQLNodeType.Folder,
 		__typename: 'Folder',
 		...folder
 	};

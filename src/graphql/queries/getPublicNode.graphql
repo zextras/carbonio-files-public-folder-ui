@@ -1,3 +1,7 @@
+# SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
 query getPublicNode($node_link_id: String!) {
 	getPublicNode(node_link_id: $node_link_id) {
 		id

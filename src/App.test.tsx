@@ -19,3 +19,7 @@ it.fails('should show the content of the folder', () => {
 	expect(screen.getByText('Name of file 1')).toBeVisible();
 	expect(screen.getByText('Name of file 2')).toBeVisible();
 });
+
+it('should xxx', () => {
+	render(<App></App>);
+});

@@ -27,7 +27,7 @@ export type Scalars = {
 	DateTime: { input: number; output: number };
 };
 
-export type File = Node & {
+export type GQLFile = GQLNode & {
 	__typename: 'File';
 	created_at: Scalars['DateTime']['output'];
 	extension?: Maybe<Scalars['String']['output']>;
@@ -35,34 +35,34 @@ export type File = Node & {
 	mime_type: Scalars['String']['output'];
 	name: Scalars['String']['output'];
 	size: Scalars['Float']['output'];
-	type: NodeType;
+	type: GQLNodeType;
 	updated_at: Scalars['DateTime']['output'];
 };
 
-export type Folder = Node & {
+export type GQLFolder = GQLNode & {
 	__typename: 'Folder';
 	created_at: Scalars['DateTime']['output'];
 	id: Scalars['ID']['output'];
 	name: Scalars['String']['output'];
-	type: NodeType;
+	type: GQLNodeType;
 	updated_at: Scalars['DateTime']['output'];
 };
 
-export type Node = {
+export type GQLNode = {
 	created_at: Scalars['DateTime']['output'];
 	id: Scalars['ID']['output'];
 	name: Scalars['String']['output'];
-	type: NodeType;
+	type: GQLNodeType;
 	updated_at: Scalars['DateTime']['output'];
 };
 
-export type NodePage = {
+export type GQLNodePage = {
 	__typename: 'NodePage';
-	nodes: Array<Maybe<Node>>;
+	nodes: Array<Maybe<GQLNode>>;
 	page_token?: Maybe<Scalars['String']['output']>;
 };
 
-export enum NodeType {
+export enum GQLNodeType {
 	Application = 'APPLICATION',
 	Audio = 'AUDIO',
 	Folder = 'FOLDER',
@@ -75,29 +75,29 @@ export enum NodeType {
 	Video = 'VIDEO'
 }
 
-export type Query = {
+export type GQLQuery = {
 	__typename: 'Query';
-	findNodes?: Maybe<NodePage>;
-	getPublicNode?: Maybe<Node>;
+	findNodes?: Maybe<GQLNodePage>;
+	getPublicNode?: Maybe<GQLNode>;
 };
 
-export type QueryFindNodesArgs = {
+export type GQLQueryFindNodesArgs = {
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
 };
 
-export type QueryGetPublicNodeArgs = {
+export type GQLQueryGetPublicNodeArgs = {
 	node_link_id: Scalars['String']['input'];
 };
 
-export type FindNodesQueryVariables = Exact<{
+export type GQLFindNodesQueryVariables = Exact<{
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type FindNodesQuery = {
+export type GQLFindNodesQuery = {
 	findNodes?:
 		| ({
 				page_token?: string | null;
@@ -109,14 +109,14 @@ export type FindNodesQuery = {
 							created_at: number;
 							id: string;
 							name: string;
-							type: NodeType;
+							type: GQLNodeType;
 							updated_at: number;
 					  } & { __typename: 'File' })
 					| ({
 							created_at: number;
 							id: string;
 							name: string;
-							type: NodeType;
+							type: GQLNodeType;
 							updated_at: number;
 					  } & { __typename: 'Folder' })
 					| null
@@ -125,11 +125,11 @@ export type FindNodesQuery = {
 		| null;
 } & { __typename: 'Query' };
 
-export type GetPublicNodeQueryVariables = Exact<{
+export type GQLGetPublicNodeQueryVariables = Exact<{
 	node_link_id: Scalars['String']['input'];
 }>;
 
-export type GetPublicNodeQuery = {
+export type GQLGetPublicNodeQuery = {
 	getPublicNode?: ({ id: string; name: string } & { __typename: 'File' | 'Folder' }) | null;
 } & { __typename: 'Query' };
 
@@ -221,7 +221,7 @@ export const FindNodesDocument = {
 			}
 		}
 	]
-} as unknown as DocumentNode<FindNodesQuery, FindNodesQueryVariables>;
+} as unknown as DocumentNode<GQLFindNodesQuery, GQLFindNodesQueryVariables>;
 export const GetPublicNodeDocument = {
 	kind: 'Document',
 	definitions: [
@@ -265,4 +265,4 @@ export const GetPublicNodeDocument = {
 			}
 		}
 	]
-} as unknown as DocumentNode<GetPublicNodeQuery, GetPublicNodeQueryVariables>;
+} as unknown as DocumentNode<GQLGetPublicNodeQuery, GQLGetPublicNodeQueryVariables>;
