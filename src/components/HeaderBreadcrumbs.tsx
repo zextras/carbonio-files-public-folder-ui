@@ -12,7 +12,7 @@ interface HeaderBreadcrumbsProps {
 }
 
 export const HeaderBreadcrumbs: React.FC<HeaderBreadcrumbsProps> = ({ crumbs }) => (
-	<Container padding={{ all: '1rem' }} width="100vw" background="gray5">
+	<Container height={'auto'} padding={{ all: '1rem' }} width="100vw" background="gray5">
 		<Breadcrumbs crumbs={crumbs} />
 	</Container>
 );

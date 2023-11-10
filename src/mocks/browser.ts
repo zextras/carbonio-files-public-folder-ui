@@ -6,13 +6,13 @@
 
 import { setupWorker } from 'msw/browser';
 
-import { createFile } from './factories';
+import { fileBuilder, folderBuilder } from './factories';
 import { createFindNodesHandler } from './handlers/findNodes';
 import { createGetPublicNodeHandler } from './handlers/getPublicNode';
 
 export const worker = setupWorker(
-	createGetPublicNodeHandler({ __typename: 'Folder' }),
-	createFindNodesHandler([createFile(), createFile()])
+	createGetPublicNodeHandler({ __typename: 'Folder', id: 'publicNodeId' }),
+	createFindNodesHandler([...folderBuilder(5), ...fileBuilder(5)])
 );
 
 export type WorkerStartReturnType = ReturnType<(typeof worker)['start']>;

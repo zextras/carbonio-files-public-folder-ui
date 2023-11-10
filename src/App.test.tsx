@@ -8,7 +8,7 @@ import { expect, it } from 'vitest';
 
 import App from './App';
 
-it.fails('should show the content of the folder', () => {
+it.todo('should show the content of the folder', () => {
 	render(<App />);
 	expect(screen.getByText('Folder name')).toBeVisible();
 	expect(screen.getByText('Name')).toBeVisible();
@@ -18,8 +18,4 @@ it.fails('should show the content of the folder', () => {
 	expect(screen.getByText('Name of the subfolder')).toBeVisible();
 	expect(screen.getByText('Name of file 1')).toBeVisible();
 	expect(screen.getByText('Name of file 2')).toBeVisible();
-});
-
-it('should xxx', () => {
-	render(<App></App>);
 });

@@ -36,3 +36,11 @@ export function createFolder(folder?: Partial<GQLFolder>): GQLFolder {
 		...folder
 	};
 }
+
+export function folderBuilder(count: number = 10): Array<GQLFolder> {
+	return [...Array(count)].map(() => createFolder());
+}
+
+export function fileBuilder(count: number = 10): Array<GQLFile> {
+	return [...Array(count)].map(() => createFile());
+}

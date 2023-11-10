@@ -24,7 +24,7 @@ export function createGetPublicNodeHandler(
 			rootValue: {
 				getPublicNode(): GQLGetPublicNodeQuery['getPublicNode'] {
 					return {
-						name: faker.system.commonFileName(),
+						name: faker.system.fileName({ extensionCount: 0 }),
 						id: faker.string.uuid(),
 						...node
 					};

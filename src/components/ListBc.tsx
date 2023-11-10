@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
@@ -20,6 +20,8 @@ interface ListBcProps {
 
 export const ListBc: React.FC<ListBcProps> = ({ folderId }) => {
 	const [nodes, setNodes] = useState<Array<Node>>([]);
+	const [hasMore, setHasMore] = useState(false);
+	const [token, setToken] = useState<string | undefined | null>();
 
 	useEffect(() => {
 		const body: Body<GQLFindNodesQueryVariables> = {
@@ -40,8 +42,36 @@ export const ListBc: React.FC<ListBcProps> = ({ folderId }) => {
 					.filter((value): value is NodeOfFindNodes => value !== null)
 					.map((node) => convertGQLToNode(node));
 				setNodes(newRows ?? []);
+				setToken(result.data?.findNodes?.page_token);
+				if (result.data?.findNodes?.page_token) {
+					setHasMore(true);
+				}
 			});
 	}, [folderId]);
 
-	return <List nodes={nodes} />;
+	const findNodes = useCallback(() => {
+		const body: Body<GQLFindNodesQueryVariables> = {
+			variables: { folder_id: folderId, page_token: token },
+			query: print(FindNodesDocument)
+		};
+
+		fetch('http://localhost/graphql/', {
+			headers: {
+				'content-type': 'application/json'
+			},
+			body: JSON.stringify(body),
+			method: 'POST'
+		})
+			.then((response): Promise<ExecutionResult<GQLFindNodesQuery>> => response.json())
+			.then((result) => {
+				const newRows = result.data?.findNodes?.nodes
+					.filter((value): value is NodeOfFindNodes => value !== null)
+					.map((node) => convertGQLToNode(node));
+				setNodes((oldNodes) => [...oldNodes, ...(newRows ?? [])]);
+				setToken(result.data?.findNodes?.page_token);
+				setHasMore(!!result.data?.findNodes?.page_token);
+			});
+	}, [folderId, token]);
+
+	return <List nodes={nodes} onListBottom={hasMore ? findNodes : undefined} />;
 };
