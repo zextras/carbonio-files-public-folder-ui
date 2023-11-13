@@ -11,6 +11,4 @@
 
 // TODO: test su list e su ListBc
 
-// TODO: paginazione su list BC 1 handler 2 risposte basate su parametri
-
 // TODO: navigazione

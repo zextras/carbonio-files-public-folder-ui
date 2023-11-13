@@ -47,3 +47,5 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 			: theme?.palette.primary.regular ?? '#2b73d2',
 	[GQLNodeType.Video]: (theme?: DefaultTheme): string => theme?.palette.error.regular ?? '#d74942'
 } satisfies Record<GQLNodeType, (theme?: DefaultTheme) => string>;
+
+export const FIND_NODES_LIMITS = 25;

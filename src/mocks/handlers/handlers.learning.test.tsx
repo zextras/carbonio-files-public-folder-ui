@@ -51,8 +51,7 @@ describe('handlers', () => {
 	});
 
 	it('findNodes handler', async () => {
-		const nodes: Parameters<typeof createFindNodesHandler>[0] = [];
-		server.use(createFindNodesHandler(nodes));
+		server.use(createFindNodesHandler({ nodes: [], variables: { folder_id: '' } }));
 
 		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: { folder_id: '' },

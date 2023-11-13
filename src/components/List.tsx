@@ -3,13 +3,14 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React from 'react';
+import React, { useEffect, useRef } from 'react';
 
-import { Divider } from '@zextras/carbonio-design-system';
+import { Divider, Row, useIsVisible } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
 import { ListHeader } from './ListHeader';
 import { ListItem, ListItemProps } from './ListItem';
+import { LoadingIcon } from './LoadingIcon';
 import { Node } from '../model/Node';
 
 const Grid = styled.div`
@@ -52,27 +53,37 @@ function convertNodeToListItemProps(node: Node): ListItemProps {
 	};
 }
 
-// interface BottomElementProps {
-// 	listRef: React.RefObject<HTMLDivElement>;
-// 	onVisible: () => void;
-// }
+interface BottomElementProps {
+	listRef: React.RefObject<HTMLDivElement>;
+	onVisible: () => void;
+}
 
-// const BottomElement: React.FC<BottomElementProps> = ({ listRef, onVisible }) => {
-// 	const [inView, ref] = useIsVisible<HTMLDivElement>(listRef);
-// 	useEffect(() => {
-// 		if (inView && onVisible) {
-// 			onVisible();
-// 		}
-// 	}, [inView, onVisible]);
-// 	return <div ref={ref} style={{ minHeight: '4px', minWidth: '1px' }} />;
-// };
+const CustomRow = styled(Row)`
+	grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
+`;
+
+const BottomElement: React.FC<BottomElementProps> = ({ listRef, onVisible }) => {
+	const [inView, ref] = useIsVisible<HTMLDivElement>(listRef);
+	useEffect(() => {
+		if (inView && onVisible) {
+			onVisible();
+		}
+	}, [inView, onVisible]);
+	return (
+		<CustomRow minHeight="3.75rem" width={'fill'}>
+			<LoadingIcon icon="Refresh" onClick={onVisible} ref={ref} />
+		</CustomRow>
+	);
+};
+
 interface ListProps {
 	nodes: Array<Node>;
 	/** callback to be executed when the bottom element is rendered */
 	onListBottom?: () => void;
 }
 
-export const List: React.FC<ListProps> = ({ nodes }) => {
+export const List: React.FC<ListProps> = ({ nodes, onListBottom }) => {
+	const listRef = useRef<HTMLDivElement>(null);
 	const rowsWithDividers = nodes.map<React.JSX.Element>((value, index) => (
 		<React.Fragment key={index}>
 			<ListItem {...convertNodeToListItemProps(value)} />
@@ -81,11 +92,14 @@ export const List: React.FC<ListProps> = ({ nodes }) => {
 	));
 
 	return (
-		<Grid>
+		<Grid ref={listRef}>
 			<RowBorder color="secondary.disabled" />
 			<ListHeader />
 			<RowBorder color="secondary.disabled" />
-			<ContentGrid>{rowsWithDividers}</ContentGrid>
+			<ContentGrid>
+				{rowsWithDividers}
+				{onListBottom && <BottomElement listRef={listRef} onVisible={onListBottom} />}
+			</ContentGrid>
 		</Grid>
 	);
 };

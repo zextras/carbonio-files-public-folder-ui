@@ -17,7 +17,6 @@ import {
 	GQLGetPublicNodeQueryVariables
 } from './graphql/types';
 import { Body } from './mocks/handlers/handlers.learning.test';
-import { crumbsBuilder } from './test/utils';
 
 const App = (): React.JSX.Element => {
 	const [folderId, setFolderId] = useState<string | undefined>();
@@ -43,7 +42,7 @@ const App = (): React.JSX.Element => {
 	return (
 		<ThemeProvider>
 			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
-				<HeaderBreadcrumbs crumbs={crumbsBuilder(10)} />
+				<HeaderBreadcrumbs crumbs={[{ id: 'folderId', label: 'initial folder' }]} />
 				{folderId && <ListBc folderId={folderId} />}
 			</Container>
 		</ThemeProvider>

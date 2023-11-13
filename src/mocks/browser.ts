@@ -4,15 +4,34 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import { faker } from '@faker-js/faker';
 import { setupWorker } from 'msw/browser';
 
 import { fileBuilder, folderBuilder } from './factories';
 import { createFindNodesHandler } from './handlers/findNodes';
 import { createGetPublicNodeHandler } from './handlers/getPublicNode';
 
+const firstPageNodes = [...folderBuilder(5), ...fileBuilder(20)];
+const secondPageNodes = [...folderBuilder(25)];
+const folderId = faker.string.uuid();
+
 export const worker = setupWorker(
-	createGetPublicNodeHandler({ __typename: 'Folder', id: 'publicNodeId' }),
-	createFindNodesHandler([...folderBuilder(5), ...fileBuilder(5)])
+	createGetPublicNodeHandler({
+		__typename: 'Folder',
+		id: faker.helpers.arrayElement([folderId, 'emptyFolder'])
+	}),
+	createFindNodesHandler(
+		{
+			nodes: firstPageNodes,
+			nextPageToken: 'token1',
+			variables: { folder_id: folderId }
+		},
+		{
+			nodes: secondPageNodes,
+			nextPageToken: null,
+			variables: { folder_id: folderId, page_token: 'token1' }
+		}
+	)
 );
 
 export type WorkerStartReturnType = ReturnType<(typeof worker)['start']>;
