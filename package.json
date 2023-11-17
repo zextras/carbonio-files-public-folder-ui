@@ -15,7 +15,7 @@
     "type-check": "tsc --noEmit"
   },
   "dependencies": {
-    "@zextras/carbonio-design-system": "file:zextras-carbonio-design-system-3.0.2.tgz",
+    "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "styled-components": "^5.3.11"
