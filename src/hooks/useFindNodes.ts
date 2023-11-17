@@ -3,35 +3,37 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useCallback, useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
-import { Container, Icon, Text } from '@zextras/carbonio-design-system';
 import { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
-import styled from 'styled-components';
 
-import { List } from './List';
-import { NodeOfFindNodes } from './types';
+import { NodeOfFindNodes } from '../components/types';
 import { FindNodesDocument, GQLFindNodesQuery, GQLFindNodesQueryVariables } from '../graphql/types';
 import { Body } from '../mocks/handlers/handlers.learning.test';
 import { convertGQLToNode, Node } from '../model/Node';
 import { FIND_NODES_LIMITS } from '../utils/constants';
 
-interface ListBcProps {
-	folderId: string;
-}
+type UseFindNodesReturnType = {
+	nodes: Array<Node> | null;
+	hasMore: boolean;
+	findMore: () => void;
+};
 
-const CustomIcon = styled(Icon)`
-	height: 232px;
-	width: 232px;
-`;
-
-export const ListBc: React.FC<ListBcProps> = ({ folderId }) => {
+export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnType => {
 	const [nodes, setNodes] = useState<Array<Node> | null>(null);
 	const [hasMore, setHasMore] = useState(false);
 	const [token, setToken] = useState<string | undefined | null>();
 
 	useEffect(() => {
+		setToken(undefined);
+		setHasMore(false);
+	}, [folderId]);
+
+	useEffect(() => {
+		if (folderId === undefined) {
+			return;
+		}
 		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: { folder_id: folderId },
 			query: print(FindNodesDocument)
@@ -57,7 +59,13 @@ export const ListBc: React.FC<ListBcProps> = ({ folderId }) => {
 			});
 	}, [folderId]);
 
-	const findNodes = useCallback(() => {
+	const findMore = useCallback(() => {
+		if (!hasMore) {
+			throw new Error('No more nodes available');
+		}
+		if (folderId === undefined) {
+			throw new Error('Cannot findMore when folderId is not defined');
+		}
 		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: { folder_id: folderId, page_token: token, limit: FIND_NODES_LIMITS },
 			query: print(FindNodesDocument)
@@ -79,21 +87,7 @@ export const ListBc: React.FC<ListBcProps> = ({ folderId }) => {
 				setToken(result.data?.findNodes?.page_token);
 				setHasMore(!!result.data?.findNodes?.page_token);
 			});
-	}, [folderId, token]);
+	}, [folderId, hasMore, token]);
 
-	return (
-		<>
-			{nodes !== null && nodes.length > 0 && (
-				<List nodes={nodes} onListBottom={hasMore ? findNodes : undefined} />
-			)}
-			{nodes !== null && nodes.length === 0 && (
-				<Container>
-					<CustomIcon icon={'Folder'} size={'large'} color={'gray5'} />
-					<Text size={'large'} weight={'bold'} color={'secondary'}>
-						There are no items in this folder.
-					</Text>
-				</Container>
-			)}
-		</>
-	);
+	return { nodes, hasMore, findMore };
 };

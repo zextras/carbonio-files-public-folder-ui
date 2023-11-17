@@ -5,45 +5,33 @@
  */
 import React, { useEffect, useState } from 'react';
 
-import { Container, ThemeProvider } from '@zextras/carbonio-design-system';
-import { ExecutionResult } from 'graphql/execution';
-import { print } from 'graphql/language';
+import { Container, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
-import { ListBc } from './components/ListBc';
-import {
-	GetPublicNodeDocument,
-	GQLGetPublicNodeQuery,
-	GQLGetPublicNodeQueryVariables
-} from './graphql/types';
-import { Body } from './mocks/handlers/handlers.learning.test';
+import { NodeList } from './components/NodeList';
+import { useGetPublicNode } from './hooks/useGetPublicNode';
+import { useNavigation } from './hooks/useNavigation';
 
 const App = (): React.JSX.Element => {
-	const [folderId, setFolderId] = useState<string | undefined>();
-	useEffect(() => {
-		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: '' },
-			query: print(GetPublicNodeDocument)
-		};
+	const { currentId, navigateTo } = useNavigation();
 
-		fetch('http://localhost/graphql/', {
-			headers: {
-				'content-type': 'application/json'
-			},
-			body: JSON.stringify(body),
-			method: 'POST'
-		})
-			.then((response): Promise<ExecutionResult<GQLGetPublicNodeQuery>> => response.json())
-			.then((result) => {
-				setFolderId(result.data?.getPublicNode?.id);
-			});
-	}, []);
+	const [crumbs, setCrumbs] = useState<Array<Crumb>>([]);
+
+	const { publicNode } = useGetPublicNode();
+	useEffect(() => {
+		if (publicNode) {
+			navigateTo(publicNode.id);
+			setCrumbs([
+				{ id: publicNode.id, label: publicNode.name, onClick: () => navigateTo(publicNode.id) }
+			]);
+		}
+	}, [navigateTo, publicNode]);
 
 	return (
 		<ThemeProvider>
 			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
-				<HeaderBreadcrumbs crumbs={[{ id: 'folderId', label: 'initial folder' }]} />
-				{folderId && <ListBc folderId={folderId} />}
+				<HeaderBreadcrumbs crumbs={crumbs} />
+				{currentId && <NodeList navigateTo={navigateTo} currentId={currentId} />}
 			</Container>
 		</ThemeProvider>
 	);

@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { graphql as executeGraphql } from 'graphql';
-import { graphql, GraphQLHandler, HttpResponse } from 'msw';
+import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
 import {
@@ -19,10 +19,15 @@ export function createFindNodesHandler(
 		variables: GQLFindNodesQueryVariables;
 		nodes: NonNullable<GQLFindNodesQuery['findNodes']>['nodes'];
 		nextPageToken?: string | null;
+		delayAmount?: Parameters<typeof delay>[0];
 	}>
 ): GraphQLHandler {
 	return graphql.query(FindNodesDocument, async ({ query, variables }) => {
 		const { folder_id: folderId, page_token: pageToken } = variables;
+
+		const match = args.find(
+			(value) => value.variables.folder_id === folderId && value.variables.page_token === pageToken
+		);
 
 		const { data, errors } = await executeGraphql({
 			schema,
@@ -31,10 +36,6 @@ export function createFindNodesHandler(
 			typeResolver: resolveByTypename,
 			rootValue: {
 				findNodes(): GQLFindNodesQuery['findNodes'] {
-					const match = args.find(
-						(value) =>
-							value.variables.folder_id === folderId && value.variables.page_token === pageToken
-					);
 					return {
 						nodes: match?.nodes ?? [],
 						page_token: match?.nextPageToken ?? null,
@@ -44,6 +45,9 @@ export function createFindNodesHandler(
 			}
 		});
 
+		if (match?.delayAmount) {
+			await delay(match.delayAmount);
+		}
 		return HttpResponse.json({ errors, data: data || undefined });
 	});
 }

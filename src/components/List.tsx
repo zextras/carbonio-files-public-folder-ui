@@ -80,13 +80,17 @@ interface ListProps {
 	nodes: Array<Node>;
 	/** callback to be executed when the bottom element is rendered */
 	onListBottom?: () => void;
+	onItemDoubleClick: (item: Node) => void;
 }
 
-export const List: React.FC<ListProps> = ({ nodes, onListBottom }) => {
+export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick }) => {
 	const listRef = useRef<HTMLDivElement>(null);
 	const rowsWithDividers = nodes.map<React.JSX.Element>((value, index) => (
 		<React.Fragment key={index}>
-			<ListItem {...convertNodeToListItemProps(value)} />
+			<ListItem
+				{...convertNodeToListItemProps(value)}
+				onDoubleClick={(): void => onItemDoubleClick(value)}
+			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>
 	));

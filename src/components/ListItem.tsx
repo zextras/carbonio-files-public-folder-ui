@@ -19,6 +19,7 @@ export interface ListItemProps {
 	lastModified: number;
 	size?: number;
 	extension?: string;
+	onDoubleClick?: () => void;
 }
 
 const CustomAvatar = styled(Avatar)`
@@ -30,17 +31,25 @@ const CustomAvatar = styled(Avatar)`
 	}
 `;
 
+const RowGrid = styled.div`
+	display: grid;
+	grid-template-columns: subgrid;
+	grid-column: 1 / span 5;
+	align-items: center;
+`;
+
 export const ListItem: React.FC<ListItemProps> = ({
 	name,
 	type,
 	mimeType,
 	lastModified,
 	size,
-	extension
+	extension,
+	onDoubleClick
 }) => {
 	const theme = useTheme();
 	return (
-		<>
+		<RowGrid onDoubleClick={onDoubleClick}>
 			<Padding left="1.5rem">
 				<CustomAvatar
 					label=""
@@ -65,6 +74,6 @@ export const ListItem: React.FC<ListItemProps> = ({
 			<Padding right="1.5rem">
 				<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			</Padding>
-		</>
+		</RowGrid>
 	);
 };
