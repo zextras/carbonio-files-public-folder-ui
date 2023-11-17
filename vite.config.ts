@@ -7,10 +7,36 @@
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
 import { defineConfig } from 'vite';
+import { viteStaticCopy } from 'vite-plugin-static-copy';
+
+import pkg from './package.json';
 
 // https://vitejs.dev/config/
 export default defineConfig({
-	plugins: [react()],
+	plugins: [
+		react(),
+		viteStaticCopy({
+			targets: [
+				{
+					src: 'package/*',
+					dest: '.',
+					transform(content): string {
+						return content
+							.replace('{{name}}', pkg.name)
+							.replace('{{version}}', pkg.version)
+							.replace('{{rel}}', '1')
+							.replace('{{description}}', pkg.description);
+					},
+					rename(filename, fileExt): string {
+						if (fileExt === 'template') {
+							return filename;
+						}
+						return `${filename}.${fileExt}`;
+					}
+				}
+			]
+		})
+	],
 	test: {
 		globals: true,
 		environment: 'jsdom',
