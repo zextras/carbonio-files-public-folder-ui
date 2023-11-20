@@ -5,7 +5,7 @@
  */
 import { faker } from '@faker-js/faker';
 import { graphql as executeGraphql } from 'graphql';
-import { graphql, GraphQLHandler, HttpResponse } from 'msw';
+import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
 import { GetPublicNodeDocument, GQLGetPublicNodeQuery } from '../../graphql/types';
@@ -13,7 +13,8 @@ import { resolveByTypename } from '../../test/resolvers';
 import { MakeRequired } from '../../utils/typeUtils';
 
 export function createGetPublicNodeHandler(
-	node: MakeRequired<Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>, '__typename'>
+	node: MakeRequired<Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>, '__typename'>,
+	handlerOptions?: { delay?: Parameters<typeof delay>[0] }
 ): GraphQLHandler {
 	return graphql.query(GetPublicNodeDocument, async ({ query, variables }) => {
 		const { data, errors } = await executeGraphql({
@@ -32,6 +33,10 @@ export function createGetPublicNodeHandler(
 			}
 		});
 
-		return HttpResponse.json({ errors, data: data || undefined });
+		if (handlerOptions?.delay) {
+			await delay(handlerOptions.delay);
+		}
+
+		return HttpResponse.json({ errors, data: data ?? undefined });
 	});
 }

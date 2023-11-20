@@ -1,14 +1,8 @@
-/*
- * SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
- *
- * SPDX-License-Identifier: AGPL-3.0-only
- */
-
 /* eslint-disable */
 /* tslint:disable */
 
 /**
- * Mock Service Worker (2.0.3).
+ * Mock Service Worker (2.0.8).
  * @see https://github.com/mswjs/msw
  * - Please do NOT modify this file.
  * - Please do NOT serve this file on production.

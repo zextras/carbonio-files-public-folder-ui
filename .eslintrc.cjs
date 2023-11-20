@@ -47,6 +47,9 @@ module.exports = {
       files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts'],
       parserOptions: {
         project: 'tsconfig.node.json'
+      },
+      rules: {
+        'import/no-extraneous-dependencies': 'off',
       }
     }
   ]

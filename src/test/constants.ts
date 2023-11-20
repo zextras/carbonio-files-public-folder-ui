@@ -5,6 +5,7 @@
  */
 
 export const ICONS = {
-	queryLoading: 'icon: Refresh',
-	emptyFolder: 'icon: Folder'
+	emptyFolder: 'icon: Folder',
+	contentLoader: 'icon: LoaderOutline',
+	queryLoading: 'icon: Refresh'
 } as const;

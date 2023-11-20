@@ -3,31 +3,19 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { faker } from '@faker-js/faker';
 import { render, screen } from '@testing-library/react';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
 import { createFile, createFolder, fileBuilder, folderBuilder } from './mocks/factories';
 import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
+import { ICONS } from './test/constants';
 import { setup } from './test/utils';
 
-it.todo('should show the content of the folder', () => {
-	render(<App />);
-	expect(screen.getByText('Folder name')).toBeVisible();
-	expect(screen.getByText('Name')).toBeVisible();
-	expect(screen.getByText('Last modified')).toBeVisible();
-	expect(screen.getByText('Extension')).toBeVisible();
-	expect(screen.getByText('Size')).toBeVisible();
-	expect(screen.getByText('Name of the subfolder')).toBeVisible();
-	expect(screen.getByText('Name of file 1')).toBeVisible();
-	expect(screen.getByText('Name of file 2')).toBeVisible();
-});
-
 describe('App', () => {
-	const folderId = faker.string.uuid();
+	const publicFolder = createFolder();
 
 	// navigable folder
 	const navigableFolder = createFolder();
@@ -39,15 +27,12 @@ describe('App', () => {
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
 		server.use(
-			createGetPublicNodeHandler({
-				__typename: 'Folder',
-				id: folderId
-			}),
+			createGetPublicNodeHandler(publicFolder),
 			createFindNodesHandler(
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
+					variables: { folder_id: publicFolder.id }
 				},
 				{
 					nodes: navigableFolderNodes,
@@ -65,5 +50,25 @@ describe('App', () => {
 		await user.dblClick(navigableFolderElement);
 		expect(await screen.findByText(navigableFolderNodes[0].name)).toBeVisible();
 		expect(screen.queryByText(firstPageNodes[1].name)).not.toBeInTheDocument();
+	});
+
+	it('should show the loader while the request is loading', async () => {
+		server.use(createGetPublicNodeHandler(publicFolder, { delay: 1000 }));
+		render(<App />);
+		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
+		await vi.runOnlyPendingTimersAsync();
+		await screen.findByText(publicFolder.name);
+		await screen.findByText(firstPageNodes[0].name);
+		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
+	});
+
+	it('should show the content of the folder', async () => {
+		render(<App />);
+		expect(await screen.findByText(publicFolder.name)).toBeVisible();
+		expect(await screen.findByText(firstPageNodes[0].name)).toBeVisible();
+		expect(screen.getByText('Name')).toBeVisible();
+		expect(screen.getByText('Last modified')).toBeVisible();
+		expect(screen.getByText('Extension')).toBeVisible();
+		expect(screen.getByText('Size')).toBeVisible();
 	});
 });

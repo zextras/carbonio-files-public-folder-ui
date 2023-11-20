@@ -8,6 +8,7 @@ import React, { useCallback, useEffect, useState } from 'react';
 import { Container, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
+import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
 import { Node } from './model/Node';
@@ -54,7 +55,12 @@ const App = (): React.JSX.Element => {
 		<ThemeProvider>
 			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 				<HeaderBreadcrumbs crumbs={crumbs} />
-				{currentId && <NodeList navigateTo={navigateTo} currentId={currentId} />}
+				{currentId !== undefined && <NodeList navigateTo={navigateTo} currentId={currentId} />}
+				{currentId === undefined && (
+					<Container>
+						<LoadingIcon icon={'LoaderOutline'} />
+					</Container>
+				)}
 			</Container>
 		</ThemeProvider>
 	);

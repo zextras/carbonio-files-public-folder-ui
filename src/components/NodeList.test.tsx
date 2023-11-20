@@ -5,7 +5,7 @@
  */
 import { faker } from '@faker-js/faker';
 import { screen } from '@testing-library/react';
-import { describe, expect, it, beforeEach, vi } from 'vitest';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
@@ -26,6 +26,7 @@ describe('NodeList', () => {
 	const secondPageNodes = [...folderBuilder(10)];
 
 	const navigableFolderNodes = [...folderBuilder(10)];
+
 	beforeEach(() => {
 		server.use(
 			createFindNodesHandler(
@@ -49,6 +50,25 @@ describe('NodeList', () => {
 	});
 
 	it('should show nodes of specific folderId', async () => {
+		server.use(
+			createFindNodesHandler(
+				{
+					nodes: firstPageNodes,
+					nextPageToken: 'token1',
+					variables: { folder_id: folderId }
+				},
+				{
+					nodes: secondPageNodes,
+					nextPageToken: null,
+					variables: { folder_id: folderId, page_token: 'token1' }
+				},
+				{
+					nodes: navigableFolderNodes,
+					nextPageToken: null,
+					variables: { folder_id: navigableFolder.id }
+				}
+			)
+		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
 		await screen.findByText(firstPageNodes[0].name);
 		firstPageNodes.forEach((node) => {
@@ -56,7 +76,7 @@ describe('NodeList', () => {
 		});
 	});
 
-	it('should show empty folder message and icon when folder is empty ', async () => {
+	it('should show empty folder message and icon when folder is empty', async () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: [],
@@ -70,6 +90,25 @@ describe('NodeList', () => {
 	});
 
 	it('should load the second page only when bottom element becomes visible', async () => {
+		server.use(
+			createFindNodesHandler(
+				{
+					nodes: firstPageNodes,
+					nextPageToken: 'token1',
+					variables: { folder_id: folderId }
+				},
+				{
+					nodes: secondPageNodes,
+					nextPageToken: null,
+					variables: { folder_id: folderId, page_token: 'token1' }
+				},
+				{
+					nodes: navigableFolderNodes,
+					nextPageToken: null,
+					variables: { folder_id: navigableFolder.id }
+				}
+			)
+		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
 		await screen.findByText(firstPageNodes[0].name);
 		expect(screen.queryByText(secondPageNodes[0].name)).not.toBeInTheDocument();
@@ -77,7 +116,7 @@ describe('NodeList', () => {
 		expect(await screen.findByText(secondPageNodes[0].name)).toBeVisible();
 	});
 
-	it.todo('should not show empty string while content is loading', async () => {
+	it('should show the loader while the content is loading', async () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: firstPageNodes,
@@ -87,13 +126,35 @@ describe('NodeList', () => {
 			})
 		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		expect(screen.queryByText('There are no items in this folder.')).not.toBeInTheDocument();
 		expect(screen.queryByTestId(ICONS.emptyFolder)).not.toBeInTheDocument();
-		vi.runOnlyPendingTimers();
+		await vi.runOnlyPendingTimersAsync();
+		// await waitForElementToBeRemoved(screen.queryByTestId(ICONS.contentLoader));
 		await screen.findByText(firstPageNodes[0].name);
+		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
 	it('should do nothing when a file is double clicked', async () => {
+		server.use(
+			createFindNodesHandler(
+				{
+					nodes: firstPageNodes,
+					nextPageToken: 'token1',
+					variables: { folder_id: folderId }
+				},
+				{
+					nodes: secondPageNodes,
+					nextPageToken: null,
+					variables: { folder_id: folderId, page_token: 'token1' }
+				},
+				{
+					nodes: navigableFolderNodes,
+					nextPageToken: null,
+					variables: { folder_id: navigableFolder.id }
+				}
+			)
+		);
 		const navigateToMock = vi.fn();
 		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
 		const fileElement = await screen.findByText(file.name);
