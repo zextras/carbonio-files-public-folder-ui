@@ -3,26 +3,49 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useEffect, useState } from 'react';
+import React, { useCallback, useEffect, useState } from 'react';
 
 import { Container, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
 import { NodeList } from './components/NodeList';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
-import { useNavigation } from './hooks/useNavigation';
+import { Node } from './model/Node';
 
 const App = (): React.JSX.Element => {
-	const { currentId, navigateTo } = useNavigation();
-
+	const [currentId, setCurrentId] = useState<string | undefined>();
 	const [crumbs, setCrumbs] = useState<Array<Crumb>>([]);
+
+	const [tree, setTree] = useState<Array<{ id: string; label: string }>>([]);
+
+	useEffect(() => {
+		const newCrumbs = tree.map<Crumb>((value) => ({
+			id: value.id,
+			label: value.label,
+			onClick: (): void => {
+				setCurrentId(value.id);
+				setTree((prevState) =>
+					prevState.slice(0, prevState.findIndex((el) => el.id === value.id) + 1)
+				);
+			}
+		}));
+		setCrumbs(newCrumbs);
+	}, [tree]);
+
+	const navigateTo = useCallback((node: Node) => {
+		setCurrentId(node.id);
+		setTree((prevState) => [...prevState, { id: node.id, label: node.name }]);
+	}, []);
 
 	const { publicNode } = useGetPublicNode();
 	useEffect(() => {
 		if (publicNode) {
-			navigateTo(publicNode.id);
-			setCrumbs([
-				{ id: publicNode.id, label: publicNode.name, onClick: () => navigateTo(publicNode.id) }
+			setCurrentId(publicNode.id);
+			setTree([
+				{
+					id: publicNode.id,
+					label: publicNode.name
+				}
 			]);
 		}
 	}, [navigateTo, publicNode]);

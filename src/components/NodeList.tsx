@@ -19,7 +19,7 @@ const CustomIcon = styled(Icon)`
 
 interface NodeListProps {
 	currentId: string;
-	navigateTo: (itemId: string) => void;
+	navigateTo: (node: Node) => void;
 }
 
 export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => {
@@ -28,7 +28,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 	const onItemDoubleClick = useCallback<(node: Node) => void>(
 		(node) => {
 			if (node.isDirectory) {
-				navigateTo(node.id);
+				navigateTo(node);
 			}
 		},
 		[navigateTo]
