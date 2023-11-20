@@ -6,17 +6,20 @@
 
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-	plugins: [react()],
+export default defineConfig(({ command }) => ({
+	plugins: [react(), splitVendorChunkPlugin()],
+	base: '/files/public/link/access',
 	test: {
 		globals: true,
 		environment: 'jsdom',
 		setupFiles: ['./src/test/setup.ts'],
-		deps: {
-			fallbackCJS: true
+		server: {
+			deps: {
+				fallbackCJS: true
+			}
 		}
 	}
-});
+}));

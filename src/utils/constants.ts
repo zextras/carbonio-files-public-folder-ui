@@ -49,3 +49,5 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 } satisfies Record<GQLNodeType, (theme?: DefaultTheme) => string>;
 
 export const FIND_NODES_LIMITS = 25;
+
+export const API_ENDPOINT = '/services/files/public/graphql/';

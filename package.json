@@ -15,7 +15,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@zextras/carbonio-design-system": "file:zextras-carbonio-design-system-3.0.2.tgz",
+    "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
     "graphql": "^16.8.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
@@ -45,7 +45,7 @@
     "jsdom": "^22.1.0",
     "msw": "^2.0.2",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5",
+    "vite": "^4.5.0",
     "vitest": "^0.34.6"
   },
   "msw": {
