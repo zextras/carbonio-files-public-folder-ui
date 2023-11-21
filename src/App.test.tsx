@@ -3,7 +3,8 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { render, screen } from '@testing-library/react';
+import { faker } from '@faker-js/faker';
+import { render, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
@@ -15,7 +16,8 @@ import { ICONS } from './test/constants';
 import { setup } from './test/utils';
 
 describe('App', () => {
-	const publicFolder = createFolder();
+	const folderId = faker.string.uuid();
+	const folderName = faker.system.fileName({ extensionCount: 0 });
 
 	// navigable folder
 	const navigableFolder = createFolder();
@@ -27,12 +29,16 @@ describe('App', () => {
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
 		server.use(
-			createGetPublicNodeHandler(publicFolder),
+			createGetPublicNodeHandler({
+				__typename: 'Folder',
+				id: folderId,
+				name: folderName
+			}),
 			createFindNodesHandler(
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
-					variables: { folder_id: publicFolder.id }
+					variables: { folder_id: folderId }
 				},
 				{
 					nodes: navigableFolderNodes,
@@ -52,19 +58,54 @@ describe('App', () => {
 		expect(screen.queryByText(firstPageNodes[1].name)).not.toBeInTheDocument();
 	});
 
+	describe('BreadCrumbs', () => {
+		it('should show current location ', async () => {
+			setup(<App />);
+			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			expect(breadCrumbs).toBeVisible();
+			expect(await within(breadCrumbs).findByText(folderName)).toBeVisible();
+		});
+
+		it('should show navigated crumb when double click a folder', async () => {
+			const { user } = setup(<App />);
+			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			const navigableFolderElement = await screen.findByText(navigableFolder.name);
+			await user.dblClick(navigableFolderElement);
+			expect(await within(breadCrumbs).findByText(navigableFolder.name)).toBeVisible();
+		});
+
+		it('should navigate to clicked crumb folder and remove subsequent crumbs ', async () => {
+			const { user } = setup(<App />);
+			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			const navigableFolderElement = await screen.findByText(navigableFolder.name);
+			await user.dblClick(navigableFolderElement);
+			await within(breadCrumbs).findByText(navigableFolder.name);
+			await screen.findByText(navigableFolderNodes[0].name);
+			expect(screen.queryByText(firstPageNodes[5].name)).not.toBeInTheDocument();
+			await user.click(within(breadCrumbs).getByText(folderName));
+			expect(within(breadCrumbs).queryByText(navigableFolder.name)).not.toBeInTheDocument();
+			expect(await screen.findByText(firstPageNodes[5].name)).toBeVisible();
+		});
+	});
+
 	it('should show the loader while the request is loading', async () => {
-		server.use(createGetPublicNodeHandler(publicFolder, { delay: 1000 }));
+		server.use(
+			createGetPublicNodeHandler(
+				{ id: folderId, name: folderName, __typename: 'Folder' },
+				{ delay: 1000 }
+			)
+		);
 		render(<App />);
 		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		await vi.runOnlyPendingTimersAsync();
-		await screen.findByText(publicFolder.name);
+		await screen.findByText(folderName);
 		await screen.findByText(firstPageNodes[0].name);
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
 	it('should show the content of the folder', async () => {
 		render(<App />);
-		expect(await screen.findByText(publicFolder.name)).toBeVisible();
+		expect(await screen.findByText(folderName)).toBeVisible();
 		expect(await screen.findByText(firstPageNodes[0].name)).toBeVisible();
 		expect(screen.getByText('Name')).toBeVisible();
 		expect(screen.getByText('Last modified')).toBeVisible();

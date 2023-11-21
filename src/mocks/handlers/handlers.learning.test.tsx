@@ -18,6 +18,7 @@ import {
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables
 } from '../../graphql/types';
+import { API_ENDPOINT } from '../../utils/constants';
 import { server } from '../server';
 
 export type Body<TVariables extends Record<string, unknown>> = {
@@ -39,7 +40,7 @@ describe('handlers', () => {
 			query: print(GetPublicNodeDocument)
 		};
 
-		const result = await fetch('http://localhost/graphql/', {
+		const result = await fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},
@@ -58,7 +59,7 @@ describe('handlers', () => {
 			query: print(FindNodesDocument)
 		};
 
-		const result = await fetch('http://localhost/graphql/', {
+		const result = await fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},

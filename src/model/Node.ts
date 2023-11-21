@@ -52,3 +52,5 @@ export function convertGQLToNode(node: NodeOfFindNodes): Node {
 		size: node.size
 	};
 }
+
+export type Location = Pick<Node, 'id' | 'name'>;

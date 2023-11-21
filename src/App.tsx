@@ -3,60 +3,37 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useCallback, useEffect, useState } from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Container, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
+import { Container, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
 import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
+import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
-import { Node } from './model/Node';
+import { Location } from './model/Node';
 
 const App = (): React.JSX.Element => {
-	const [currentId, setCurrentId] = useState<string | undefined>();
-	const [crumbs, setCrumbs] = useState<Array<Crumb>>([]);
+	const [currentLocation, setCurrentLocation] = useState<Location | undefined>();
 
-	const [tree, setTree] = useState<Array<{ id: string; label: string }>>([]);
-
-	useEffect(() => {
-		const newCrumbs = tree.map<Crumb>((value) => ({
-			id: value.id,
-			label: value.label,
-			onClick: (): void => {
-				setCurrentId(value.id);
-				setTree((prevState) =>
-					prevState.slice(0, prevState.findIndex((el) => el.id === value.id) + 1)
-				);
-			}
-		}));
-		setCrumbs(newCrumbs);
-	}, [tree]);
-
-	const navigateTo = useCallback((node: Node) => {
-		setCurrentId(node.id);
-		setTree((prevState) => [...prevState, { id: node.id, label: node.name }]);
-	}, []);
+	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
 	const { publicNode } = useGetPublicNode();
 	useEffect(() => {
 		if (publicNode) {
-			setCurrentId(publicNode.id);
-			setTree([
-				{
-					id: publicNode.id,
-					label: publicNode.name
-				}
-			]);
+			setCurrentLocation(publicNode);
 		}
-	}, [navigateTo, publicNode]);
+	}, [publicNode]);
 
 	return (
 		<ThemeProvider>
 			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 				<HeaderBreadcrumbs crumbs={crumbs} />
-				{currentId !== undefined && <NodeList navigateTo={navigateTo} currentId={currentId} />}
-				{currentId === undefined && (
+				{currentLocation !== undefined && (
+					<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
+				)}
+				{currentLocation === undefined && (
 					<Container>
 						<LoadingIcon icon={'LoaderOutline'} />
 					</Container>

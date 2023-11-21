@@ -12,7 +12,7 @@ import { NodeOfFindNodes } from '../components/types';
 import { FindNodesDocument, GQLFindNodesQuery, GQLFindNodesQueryVariables } from '../graphql/types';
 import { Body } from '../mocks/handlers/handlers.learning.test';
 import { convertGQLToNode, Node } from '../model/Node';
-import { FIND_NODES_LIMITS } from '../utils/constants';
+import { API_ENDPOINT, FIND_NODES_LIMITS } from '../utils/constants';
 
 type UseFindNodesReturnType = {
 	nodes: Array<Node> | null;
@@ -39,7 +39,7 @@ export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnTy
 			query: print(FindNodesDocument)
 		};
 
-		fetch('http://localhost/graphql/', {
+		fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},
@@ -71,7 +71,7 @@ export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnTy
 			query: print(FindNodesDocument)
 		};
 
-		fetch('http://localhost/graphql/', {
+		fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},

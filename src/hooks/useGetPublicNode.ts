@@ -15,6 +15,7 @@ import {
 } from '../graphql/types';
 import { Body } from '../mocks/handlers/handlers.learning.test';
 import { Node } from '../model/Node';
+import { API_ENDPOINT } from '../utils/constants';
 
 type UseGetPublicNodeRetunType = {
 	publicNode: Pick<Node, 'id' | 'name'> | undefined;
@@ -26,12 +27,13 @@ export const useGetPublicNode = (): UseGetPublicNodeRetunType => {
 	>();
 
 	useEffect(() => {
+		const pathnameArray = window.location.pathname.split('/');
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: '' },
+			variables: { node_link_id: pathnameArray[pathnameArray.length - 1] },
 			query: print(GetPublicNodeDocument)
 		};
 
-		fetch('http://localhost/graphql/', {
+		fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},
