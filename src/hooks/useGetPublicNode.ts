@@ -5,6 +5,7 @@
  */
 import { useEffect, useState } from 'react';
 
+import { GraphQLError } from 'graphql/error';
 import { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
@@ -18,13 +19,15 @@ import { Node } from '../model/Node';
 import { API_ENDPOINT } from '../utils/constants';
 
 type UseGetPublicNodeRetunType = {
-	publicNode: Pick<Node, 'id' | 'name'> | undefined;
+	publicNode: Pick<Node, 'id' | 'name'> | null | undefined;
+	errors: readonly GraphQLError[] | undefined;
 };
 
 export const useGetPublicNode = (): UseGetPublicNodeRetunType => {
 	const [publicNode, setPublicNode] = useState<
 		UseGetPublicNodeRetunType['publicNode'] | undefined
 	>();
+	const [errors, setErrors] = useState<readonly GraphQLError[] | undefined>(undefined);
 
 	useEffect(() => {
 		const pathnameArray = window.location.pathname.split('/');
@@ -42,13 +45,17 @@ export const useGetPublicNode = (): UseGetPublicNodeRetunType => {
 		})
 			.then((response): Promise<ExecutionResult<GQLGetPublicNodeQuery>> => response.json())
 			.then((result) => {
-				if (result.data?.getPublicNode?.id && result.data?.getPublicNode?.name) {
+				if (result.data?.getPublicNode?.id && result.data.getPublicNode.name) {
 					setPublicNode({
 						id: result.data.getPublicNode.id,
 						name: result.data.getPublicNode.name
 					});
+					setErrors(undefined);
+				} else if (result.errors && result.errors.length > 0) {
+					setPublicNode(undefined);
+					setErrors(result.errors);
 				}
 			});
 	}, []);
-	return { publicNode };
+	return { publicNode, errors };
 };
