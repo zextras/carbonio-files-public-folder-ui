@@ -8,3 +8,11 @@ export const ICONS = {
 	queryLoading: 'icon: Refresh',
 	emptyFolder: 'icon: Folder'
 } as const;
+
+export const COLORS = {
+	crumbHover: '#E6E6E6'
+};
+
+export const SELECTORS = {
+	crumb: 'crumb'
+};
