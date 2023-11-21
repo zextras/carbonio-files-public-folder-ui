@@ -85,8 +85,8 @@ interface ListProps {
 
 export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick }) => {
 	const listRef = useRef<HTMLDivElement>(null);
-	const rowsWithDividers = nodes.map<React.JSX.Element>((value, index) => (
-		<React.Fragment key={index}>
+	const rowsWithDividers = nodes.map<React.JSX.Element>((value) => (
+		<React.Fragment key={value.id}>
 			<ListItem
 				{...convertNodeToListItemProps(value)}
 				onDoubleClick={(): void => onItemDoubleClick(value)}

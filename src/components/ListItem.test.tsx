@@ -119,10 +119,6 @@ it('should show a - if the size is not provided', () => {
 	expect(screen.getByText('-')).toBeVisible();
 });
 
-it.todo('should show the size of a file');
-
-it.todo('should not show the size of a folder');
-
 it('should show the extension if provided', () => {
 	const extension = faker.system.fileExt();
 	setup(<ListItem {...listItemPropsBuilder()} extension={extension} />);
