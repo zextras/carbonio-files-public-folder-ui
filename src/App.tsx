@@ -35,7 +35,7 @@ const App = (): React.JSX.Element => {
 				)}
 				{currentLocation === undefined && (
 					<Container>
-						<LoadingIcon icon={'LoaderOutline'} />
+						<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
 					</Container>
 				)}
 			</Container>

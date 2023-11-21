@@ -4,12 +4,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { render, screen } from '@testing-library/react';
-import { Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
+import { screen } from '@testing-library/react';
+import { Crumb } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
 import { HeaderBreadcrumbs } from './HeaderBreadcrumbs';
-import { crumbsBuilder } from '../test/utils';
+import { crumbsBuilder, setup } from '../test/utils';
 
 it('should show only one crumb when only one crumb is provided', () => {
 	const label = faker.system.fileName({ extensionCount: 0 });
@@ -18,11 +18,7 @@ it('should show only one crumb when only one crumb is provided', () => {
 		id: label
 	};
 
-	render(
-		<ThemeProvider>
-			<HeaderBreadcrumbs crumbs={[crumb]} />
-		</ThemeProvider>
-	);
+	setup(<HeaderBreadcrumbs crumbs={[crumb]} />);
 	expect(screen.getByText(label)).toBeVisible();
 });
 
@@ -39,31 +35,19 @@ it('should show 2 crumbs when 2 crumbs are provided', () => {
 		id: label2
 	};
 
-	render(
-		<ThemeProvider>
-			<HeaderBreadcrumbs crumbs={[crumb, crumb2]} />
-		</ThemeProvider>
-	);
+	setup(<HeaderBreadcrumbs crumbs={[crumb, crumb2]} />);
 	expect(screen.getByText(label)).toBeVisible();
 	expect(screen.getByText(label2)).toBeVisible();
 });
 
 it('should show 25 crumbs when 25 crumbs are provided', () => {
 	const crumbs = crumbsBuilder(2);
-	render(
-		<ThemeProvider>
-			<div style={{ width: '200px' }}>
-				<HeaderBreadcrumbs crumbs={crumbs} />
-			</div>
-		</ThemeProvider>
+	setup(
+		<div style={{ width: '200px' }}>
+			<HeaderBreadcrumbs crumbs={crumbs} />
+		</div>
 	);
 	crumbs.forEach(({ label }) => {
 		expect(screen.getByText(label)).toBeVisible();
 	});
 });
-
-it('should show only the name of the folder if it has not a parent', () => {});
-
-it('should show the name of the current folder and its parent, if it has a parent', () => {});
-
-it.todo('should navigate into a specific folder when click on the breadcrumb');

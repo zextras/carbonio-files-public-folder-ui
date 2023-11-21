@@ -54,7 +54,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 			)}
 			{nodes === null && (
 				<Container>
-					<LoadingIcon icon={'LoaderOutline'} />
+					<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
 				</Container>
 			)}
 		</>

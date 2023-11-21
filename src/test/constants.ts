@@ -9,3 +9,7 @@ export const ICONS = {
 	contentLoader: 'icon: LoaderOutline',
 	queryLoading: 'icon: Refresh'
 } as const;
+
+export const SELECTORS = {
+	breadcrumbs: 'breadcrumbs'
+};

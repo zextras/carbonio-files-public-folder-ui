@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { screen } from '@testing-library/react';
+import { act, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
@@ -129,9 +129,13 @@ describe('NodeList', () => {
 		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		expect(screen.queryByText('There are no items in this folder.')).not.toBeInTheDocument();
 		expect(screen.queryByTestId(ICONS.emptyFolder)).not.toBeInTheDocument();
-		await vi.runOnlyPendingTimersAsync();
-		// await waitForElementToBeRemoved(screen.queryByTestId(ICONS.contentLoader));
-		await screen.findByText(firstPageNodes[0].name);
+		// execute request
+		await vi.advanceTimersToNextTimerAsync();
+		// run delay and wait response
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(1000);
+		});
+		expect(screen.getByText(firstPageNodes[0].name)).toBeVisible();
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
