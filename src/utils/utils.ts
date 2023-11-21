@@ -3,6 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
+
 /**
  * Format a size in byte as human-readable
  */

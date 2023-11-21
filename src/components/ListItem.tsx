@@ -8,17 +8,18 @@ import React from 'react';
 import { Avatar, Padding, Text, useTheme } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
-import { NodeType } from '../types/graphql/types';
+import { Node } from '../model/Node';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
-interface ListItemProps {
+export interface ListItemProps {
 	name: string;
-	type: NodeType;
+	type: Node['type'];
 	mimeType?: string;
 	lastModified: number;
 	size?: number;
 	extension?: string;
+	onDoubleClick?: () => void;
 }
 
 const CustomAvatar = styled(Avatar)`
@@ -30,17 +31,25 @@ const CustomAvatar = styled(Avatar)`
 	}
 `;
 
+const RowGrid = styled.div`
+	display: grid;
+	grid-template-columns: subgrid;
+	grid-column: 1 / span 5;
+	align-items: center;
+`;
+
 export const ListItem: React.FC<ListItemProps> = ({
 	name,
 	type,
 	mimeType,
 	lastModified,
 	size,
-	extension
+	extension,
+	onDoubleClick
 }) => {
 	const theme = useTheme();
 	return (
-		<>
+		<RowGrid onDoubleClick={onDoubleClick}>
 			<Padding left="1.5rem">
 				<CustomAvatar
 					label=""
@@ -65,6 +74,6 @@ export const ListItem: React.FC<ListItemProps> = ({
 			<Padding right="1.5rem">
 				<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			</Padding>
-		</>
+		</RowGrid>
 	);
 };

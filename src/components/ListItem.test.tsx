@@ -9,8 +9,8 @@ import { ThemeProvider } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
 import { ListItem } from './ListItem';
+import { GQLNodeType } from '../graphql/types';
 import { listItemPropsBuilder } from '../test/utils';
-import { NodeType } from '../types/graphql/types';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
@@ -24,7 +24,7 @@ it('should show the name of list item', () => {
 	expect(screen.getByText(props.name)).toBeVisible();
 });
 
-it.each(Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Text))(
+it.each(Object.values(GQLNodeType).filter((nodeType) => nodeType !== GQLNodeType.Text))(
 	'should show the icon for type %s',
 	(nodeType) => {
 		const props = listItemPropsBuilder({ type: nodeType });
@@ -39,7 +39,7 @@ it.each(Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Text)
 
 it('should show the FilePdf icon when NodeType is Text and mimeType is application/pdf', () => {
 	const props = listItemPropsBuilder({
-		type: NodeType.Text,
+		type: GQLNodeType.Text,
 		mimeType: MIME_TYPE['application/pdf']
 	});
 	render(
@@ -54,7 +54,7 @@ it('should show the FilePdf icon when NodeType is Text and mimeType is applicati
 
 it('should show the FileText icon when NodeType is Text and mimeType is not application/pdf ', () => {
 	const props = listItemPropsBuilder({
-		type: NodeType.Text,
+		type: GQLNodeType.Text,
 		mimeType: MIME_TYPE['text/plain']
 	});
 	render(
@@ -67,7 +67,7 @@ it('should show the FileText icon when NodeType is Text and mimeType is not appl
 	).toBeVisible();
 });
 
-it.each(Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Text))(
+it.each(Object.values(GQLNodeType).filter((nodeType) => nodeType !== GQLNodeType.Text))(
 	'should show the colored icon for type %s',
 	(nodeType) => {
 		const props = listItemPropsBuilder({ type: nodeType });
@@ -84,7 +84,7 @@ it.each(Object.values(NodeType).filter((nodeType) => nodeType !== NodeType.Text)
 
 it('should show the error colored icon when NodeType is Text and mimeType is application/pdf ', () => {
 	const props = listItemPropsBuilder({
-		type: NodeType.Text,
+		type: GQLNodeType.Text,
 		mimeType: MIME_TYPE['application/pdf']
 	});
 	render(
@@ -101,7 +101,7 @@ it('should show the error colored icon when NodeType is Text and mimeType is app
 
 it('should show the primary colored icon when NodeType is Text and mimeType is not application/pdf ', () => {
 	const props = listItemPropsBuilder({
-		type: NodeType.Text,
+		type: GQLNodeType.Text,
 		mimeType: MIME_TYPE['text/plain']
 	});
 	render(

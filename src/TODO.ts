@@ -6,3 +6,9 @@
 // TODO: estrarre themeProvider dai test
 
 // TODO: fare in modo di eseguire i test che riguardano le date con un locale diverso, cosi' da essere sicuri che la data sia localizzata
+
+// TODO: navigazione
+
+// TODO: handle not valid hash
+
+// TODO chiedere a Eug per loading icon(first page)

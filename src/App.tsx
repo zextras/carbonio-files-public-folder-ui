@@ -3,58 +3,36 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 
-import { Divider, ThemeProvider } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
+import { Container, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
-import { ListHeader } from './components/ListHeader';
-import { ListItem } from './components/ListItem';
-import { crumbsBuilder, listItemPropsBuilder } from './test/utils';
-
-const Grid = styled.div`
-	box-sizing: border-box;
-	width: 100%;
-	gap: 0.5rem 1rem;
-	display: grid;
-	grid-template-columns: max-content 3fr repeat(3, minmax(max-content, 1fr));
-	justify-items: start;
-	align-items: center;
-	grid-template-rows: minmax(max-content, 1fr);
-`;
-
-const RowBorder = styled(Divider)`
-	grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
-`;
-
-const rows = [
-	listItemPropsBuilder(),
-	listItemPropsBuilder(),
-	listItemPropsBuilder(),
-	listItemPropsBuilder(),
-	listItemPropsBuilder(),
-	listItemPropsBuilder(),
-	listItemPropsBuilder()
-];
+import { NodeList } from './components/NodeList';
+import { useCrumbs } from './hooks/useCrumbs';
+import { useGetPublicNode } from './hooks/useGetPublicNode';
+import { Location } from './model/Node';
 
 const App = (): React.JSX.Element => {
-	const rowsWithDividers = rows.map((value, index) => (
-		<React.Fragment key={index}>
-			<ListItem {...value} />
-			<RowBorder color="secondary.disabled" />
-		</React.Fragment>
-	));
+	const [currentLocation, setCurrentLocation] = useState<Location | undefined>();
+
+	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
+
+	const { publicNode } = useGetPublicNode();
+	useEffect(() => {
+		if (publicNode) {
+			setCurrentLocation(publicNode);
+		}
+	}, [publicNode]);
 
 	return (
 		<ThemeProvider>
-			<HeaderBreadcrumbs crumbs={crumbsBuilder(10)} />
-			<Grid>
-				<RowBorder color="secondary.disabled" />
-				<ListHeader />
-				<RowBorder color="secondary.disabled" />
-				{rowsWithDividers}
-			</Grid>
+			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
+				<HeaderBreadcrumbs crumbs={crumbs} />
+				{currentLocation && (
+					<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
+				)}
+			</Container>
 		</ThemeProvider>
 	);
 };

@@ -6,7 +6,7 @@
 
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig } from 'vite';
+import { defineConfig, splitVendorChunkPlugin } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 import pkg from './package.json';
@@ -15,6 +15,7 @@ import pkg from './package.json';
 export default defineConfig({
 	plugins: [
 		react(),
+		splitVendorChunkPlugin(),
 		viteStaticCopy({
 			targets: [
 				{
@@ -37,9 +38,15 @@ export default defineConfig({
 			]
 		})
 	],
+	base: '/files/public/link/access',
 	test: {
 		globals: true,
 		environment: 'jsdom',
-		setupFiles: ['./src/test/setup.ts']
+		setupFiles: ['./src/test/setup.ts'],
+		server: {
+			deps: {
+				fallbackCJS: true
+			}
+		}
 	}
 });

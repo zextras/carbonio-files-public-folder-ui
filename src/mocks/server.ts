@@ -4,7 +4,6 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-export const ICONS = {
-	queryLoading: 'icon: Refresh',
-	emptyFolder: 'icon: Folder'
-} as const;
+import { setupServer } from 'msw/node';
+
+export const server = setupServer();
