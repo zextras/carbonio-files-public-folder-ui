@@ -25,11 +25,12 @@ interface NodeListProps {
 export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => {
 	const { nodes, hasMore, findMore } = useFindNodes(currentId);
 
-	const onItemDoubleClick = useCallback<(node: Node) => void>(
+	const onItemDoubleClick = useCallback<(node: Node) => (() => void) | undefined>(
 		(node) => {
 			if (node.isDirectory) {
-				navigateTo(node);
+				return () => navigateTo(node);
 			}
+			return undefined;
 		},
 		[navigateTo]
 	);

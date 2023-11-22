@@ -10,9 +10,11 @@ export const ICONS = {
 } as const;
 
 export const COLORS = {
-	crumbHover: '#E6E6E6'
+	crumbHover: '#E6E6E6',
+	listItemHover: '#E6E6E6'
 };
 
 export const SELECTORS = {
-	crumb: 'crumb'
+	crumb: 'crumb',
+	listItem: 'list-item'
 };
