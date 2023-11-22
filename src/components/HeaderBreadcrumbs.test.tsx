@@ -4,11 +4,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { screen } from '@testing-library/react';
+import { screen, within } from '@testing-library/react';
 import { Crumb } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
 import { HeaderBreadcrumbs } from './HeaderBreadcrumbs';
+import { COLORS, SELECTORS } from '../test/constants';
 import { crumbsBuilder, setup } from '../test/utils';
 
 it('should show only one crumb when only one crumb is provided', () => {
@@ -51,3 +52,38 @@ it('should show 25 crumbs when 25 crumbs are provided', () => {
 		expect(screen.getByText(label)).toBeVisible();
 	});
 });
+
+it('should show overlay on hover on clickable item', async () => {
+	const crumbs = crumbsBuilder(2);
+	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
+	await user.hover(screen.getByText(crumbs[0].label));
+	expect(
+		screen
+			.getAllByTestId(SELECTORS.crumb)
+			.find((crumb) => within(crumb).queryByText(crumbs[0].label) !== null)
+	).toHaveStyle({
+		backgroundColor: COLORS.crumbHover,
+		cursor: 'pointer'
+	});
+});
+
+it('should not show overlay on hover on last item', async () => {
+	const crumbs = crumbsBuilder(2);
+	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
+	await user.hover(screen.getByText(crumbs[0].label));
+	const lastCrumb = screen
+		.getAllByTestId(SELECTORS.crumb)
+		.find((crumb) => within(crumb).queryByText(crumbs[1].label) !== null);
+	expect(lastCrumb).not.toHaveStyle({
+		backgroundColor: COLORS.crumbHover
+	});
+	expect(lastCrumb).toHaveStyle({
+		cursor: 'default'
+	});
+});
+
+it('should show only the name of the folder if it has not a parent', () => {});
+
+it('should show the name of the current folder and its parent, if it has a parent', () => {});
+
+it.todo('should navigate into a specific folder when click on the breadcrumb');

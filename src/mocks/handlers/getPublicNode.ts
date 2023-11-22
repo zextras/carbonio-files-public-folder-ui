@@ -13,17 +13,31 @@ import { resolveByTypename } from '../../test/resolvers';
 import { MakeRequired } from '../../utils/typeUtils';
 
 export function createGetPublicNodeHandler(
-	node: MakeRequired<Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>, '__typename'>,
+	node: MakeRequired<
+		Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>,
+		'__typename'
+	> | null,
+	errors?: string[],
 	handlerOptions?: { delay?: Parameters<typeof delay>[0] }
 ): GraphQLHandler {
 	return graphql.query(GetPublicNodeDocument, async ({ query, variables }) => {
-		const { data, errors } = await executeGraphql({
+		const { data, errors: gqlErrors } = await executeGraphql({
 			schema,
 			source: query,
 			variableValues: variables,
 			typeResolver: resolveByTypename,
 			rootValue: {
 				getPublicNode(): GQLGetPublicNodeQuery['getPublicNode'] {
+					if (variables.node_link_id === 'invalid' || node === null) {
+						throw new Error(`Could not find link with id ${variables.node_link_id}`);
+					}
+					if (variables.node_link_id === 'empty') {
+						return {
+							name: faker.system.fileName({ extensionCount: 0 }),
+							...node,
+							id: 'empty-folder-id'
+						};
+					}
 					return {
 						name: faker.system.fileName({ extensionCount: 0 }),
 						id: faker.string.uuid(),
@@ -37,6 +51,9 @@ export function createGetPublicNodeHandler(
 			await delay(handlerOptions.delay);
 		}
 
-		return HttpResponse.json({ errors, data: data ?? undefined });
+		return HttpResponse.json({
+			errors: errors || gqlErrors ? [...(errors ?? []), ...(gqlErrors ?? [])] : undefined,
+			data: data ?? { getPublicNode: null }
+		});
 	});
 }

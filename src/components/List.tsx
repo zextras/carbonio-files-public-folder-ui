@@ -9,7 +9,7 @@ import { Divider, Row, useIsVisible } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
 import { ListHeader } from './ListHeader';
-import { ListItem, ListItemProps } from './ListItem';
+import { ListItem } from './ListItem';
 import { LoadingIcon } from './LoadingIcon';
 import { Node } from '../model/Node';
 
@@ -18,7 +18,6 @@ const Grid = styled.div`
 	flex-shrink: 1;
 	box-sizing: border-box;
 	width: 100%;
-	gap: 0.5rem 1rem;
 	display: grid;
 	grid-template-columns: max-content 3fr repeat(3, minmax(max-content, 1fr));
 	justify-items: start;
@@ -28,7 +27,6 @@ const Grid = styled.div`
 
 const ContentGrid = styled.div`
 	height: 100%;
-	gap: 0.5rem 1rem;
 	display: grid;
 	grid-template-columns: subgrid;
 	grid-column: 1 / span 5;
@@ -41,17 +39,6 @@ const ContentGrid = styled.div`
 const RowBorder = styled(Divider)`
 	grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
 `;
-
-function convertNodeToListItemProps(node: Node): ListItemProps {
-	return {
-		name: node.name,
-		type: node.type,
-		mimeType: node.mimeType,
-		lastModified: node.updatedAt,
-		size: node.size,
-		extension: node.extension ?? undefined
-	};
-}
 
 interface BottomElementProps {
 	listRef: React.RefObject<HTMLDivElement>;
@@ -78,32 +65,38 @@ const BottomElement: React.FC<BottomElementProps> = ({ listRef, onVisible }) => 
 
 interface ListProps {
 	nodes: Array<Node>;
-	/** callback to be executed when the bottom element is rendered */
 	onListBottom?: () => void;
-	onItemDoubleClick: (item: Node) => void;
+	onItemDoubleClick: (item: Node) => (() => void) | undefined;
 }
 
 export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick }) => {
 	const listRef = useRef<HTMLDivElement>(null);
-	const rowsWithDividers = nodes.map<React.JSX.Element>((value) => (
-		<React.Fragment key={value.id}>
+	const rowsWithDividers = nodes.map<React.JSX.Element>((node) => (
+		<React.Fragment key={node.id}>
 			<ListItem
-				{...convertNodeToListItemProps(value)}
-				onDoubleClick={(): void => onItemDoubleClick(value)}
+				name={node.name}
+				type={node.type}
+				mimeType={node.mimeType}
+				lastModified={node.updatedAt}
+				size={node.size}
+				extension={node.extension ?? undefined}
+				onDoubleClick={onItemDoubleClick(node)}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>
 	));
 
 	return (
-		<Grid ref={listRef}>
+		<>
 			<RowBorder color="secondary.disabled" />
-			<ListHeader />
-			<RowBorder color="secondary.disabled" />
-			<ContentGrid>
-				{rowsWithDividers}
-				{onListBottom && <BottomElement listRef={listRef} onVisible={onListBottom} />}
-			</ContentGrid>
-		</Grid>
+			<Grid ref={listRef}>
+				<ListHeader />
+				<RowBorder color="secondary.disabled" />
+				<ContentGrid>
+					{rowsWithDividers}
+					{onListBottom && <BottomElement listRef={listRef} onVisible={onListBottom} />}
+				</ContentGrid>
+			</Grid>
+		</>
 	);
 };

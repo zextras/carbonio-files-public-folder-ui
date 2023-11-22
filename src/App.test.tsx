@@ -28,6 +28,11 @@ describe('App', () => {
 
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
+		const url = new URL(folderId, window.location.href);
+
+		Object.defineProperty(window, 'location', {
+			value: url
+		});
 		server.use(
 			createGetPublicNodeHandler({
 				__typename: 'Folder',
@@ -102,6 +107,7 @@ describe('App', () => {
 		server.use(
 			createGetPublicNodeHandler(
 				{ id: folderId, name: folderName, __typename: 'Folder' },
+				undefined,
 				{ delay: 1000 }
 			)
 		);
@@ -116,5 +122,35 @@ describe('App', () => {
 		await screen.findByText(folderName);
 		await screen.findByText(firstPageNodes[0].name);
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
+	});
+
+	it('should show unavailability page when the request to retrieve the public node returns an error', async () => {
+		server.use(createGetPublicNodeHandler(null));
+		setup(<App />);
+		expect(await screen.findByTestId(ICONS.unavailableFolder)).toBeVisible();
+		expect(screen.getByText('Public access link not available.')).toBeVisible();
+		expect(screen.getByText('This link has been removed or is not valid.')).toBeVisible();
+		expect(
+			screen.getByText('For more information, try to contact the person who shared it with you.')
+		).toBeVisible();
+	});
+
+	it('should show folder content when there are errors but partial data are returned', async () => {
+		server.use(
+			createGetPublicNodeHandler({ id: folderId, name: folderName, __typename: 'Folder' }, [
+				'generic error'
+			])
+		);
+		setup(<App />);
+		expect(await screen.findByText(firstPageNodes[0].name)).toBeVisible();
+		expect(screen.getByText(folderName)).toBeVisible();
+		expect(screen.queryByTestId(ICONS.unavailableFolder)).not.toBeInTheDocument();
+		expect(screen.queryByText('Public access link not available.')).not.toBeInTheDocument();
+		expect(
+			screen.queryByText('This link has been removed or is not valid.')
+		).not.toBeInTheDocument();
+		expect(
+			screen.queryByText('For more information, try to contact the person who shared it with you.')
+		).not.toBeInTheDocument();
 	});
 });

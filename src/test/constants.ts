@@ -7,9 +7,17 @@
 export const ICONS = {
 	emptyFolder: 'icon: Folder',
 	contentLoader: 'icon: LoaderOutline',
-	queryLoading: 'icon: Refresh'
+	queryLoading: 'icon: Refresh',
+	unavailableFolder: 'icon: EmptyFolder'
 } as const;
 
 export const SELECTORS = {
-	breadcrumbs: 'breadcrumbs'
+	breadcrumbs: 'breadcrumbs',
+	crumb: 'crumb',
+	listItem: 'list-item'
+} as const;
+
+export const COLORS = {
+	crumbHover: '#E6E6E6',
+	listItemHover: '#E6E6E6'
 };
