@@ -17,7 +17,6 @@ import { setup, triggerLoadMore } from '../test/utils';
 describe('NodeList', () => {
 	const folderId = faker.string.uuid();
 
-	// navigable folder
 	const navigableFolder = createFolder();
 
 	const file = createFile();
@@ -50,25 +49,6 @@ describe('NodeList', () => {
 	});
 
 	it('should show nodes of specific folderId', async () => {
-		server.use(
-			createFindNodesHandler(
-				{
-					nodes: firstPageNodes,
-					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
-				},
-				{
-					nodes: secondPageNodes,
-					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
-				},
-				{
-					nodes: navigableFolderNodes,
-					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
-				}
-			)
-		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
 		await screen.findByText(firstPageNodes[0].name);
 		firstPageNodes.forEach((node) => {
@@ -90,25 +70,6 @@ describe('NodeList', () => {
 	});
 
 	it('should load the second page only when bottom element becomes visible', async () => {
-		server.use(
-			createFindNodesHandler(
-				{
-					nodes: firstPageNodes,
-					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
-				},
-				{
-					nodes: secondPageNodes,
-					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
-				},
-				{
-					nodes: navigableFolderNodes,
-					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
-				}
-			)
-		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
 		await screen.findByText(firstPageNodes[0].name);
 		expect(screen.queryByText(secondPageNodes[0].name)).not.toBeInTheDocument();
@@ -140,25 +101,6 @@ describe('NodeList', () => {
 	});
 
 	it('should do nothing when a file is double clicked', async () => {
-		server.use(
-			createFindNodesHandler(
-				{
-					nodes: firstPageNodes,
-					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
-				},
-				{
-					nodes: secondPageNodes,
-					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
-				},
-				{
-					nodes: navigableFolderNodes,
-					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
-				}
-			)
-		);
 		const navigateToMock = vi.fn();
 		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
 		const fileElement = await screen.findByText(file.name);

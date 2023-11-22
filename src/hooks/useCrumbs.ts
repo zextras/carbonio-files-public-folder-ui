@@ -9,14 +9,14 @@ import { Crumb } from '@zextras/carbonio-design-system';
 
 import { Location } from '../model/Node';
 
-type UseNavigationReturnType = {
+type UseCrumbsReturnType = {
 	crumbs: Array<Crumb>;
 };
 
 export const useCrumbs = (
 	currentLocation: Location | undefined,
 	onCrumbClick: (location: Location) => void
-): UseNavigationReturnType => {
+): UseCrumbsReturnType => {
 	const [crumbs, setCrumbs] = useState<Array<Crumb>>([]);
 
 	useEffect(() => {
