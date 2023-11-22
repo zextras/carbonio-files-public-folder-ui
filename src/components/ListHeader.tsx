@@ -17,13 +17,13 @@ interface ListHeaderProps {}
 export const ListHeader: React.FC<ListHeaderProps> = () => (
 	<>
 		<Span2>
-			<Padding left="1.5rem" top="0.5rem" bottom="0.5rem">
+			<Padding left="2rem" top="1rem" bottom="1rem">
 				<Text weight="bold">Name</Text>
 			</Padding>
 		</Span2>
 		<Text weight="bold">Last modified</Text>
 		<Text weight="bold">Extension</Text>
-		<Padding right="1.5rem">
+		<Padding right={'1.5rem'}>
 			<Text weight="bold">Size</Text>
 		</Padding>
 	</>

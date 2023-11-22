@@ -18,7 +18,7 @@ const folderId = faker.string.uuid();
 export const worker = setupWorker(
 	createGetPublicNodeHandler({
 		__typename: 'Folder',
-		id: faker.helpers.arrayElement([folderId, 'emptyFolder'])
+		id: folderId
 	}),
 	createFindNodesHandler(
 		{

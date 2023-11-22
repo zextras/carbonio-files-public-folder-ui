@@ -5,17 +5,12 @@
  */
 import React, { useCallback } from 'react';
 
-import { Container, Icon, Text } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
+import { Container, Text } from '@zextras/carbonio-design-system';
 
+import { IconBig } from './IconBig';
 import { List } from './List';
 import { useFindNodes } from '../hooks/useFindNodes';
 import { Node } from '../model/Node';
-
-const CustomIcon = styled(Icon)`
-	height: 232px;
-	width: 232px;
-`;
 
 interface NodeListProps {
 	currentId: string;
@@ -25,11 +20,12 @@ interface NodeListProps {
 export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => {
 	const { nodes, hasMore, findMore } = useFindNodes(currentId);
 
-	const onItemDoubleClick = useCallback<(node: Node) => void>(
+	const onItemDoubleClick = useCallback<(node: Node) => (() => void) | undefined>(
 		(node) => {
 			if (node.isDirectory) {
-				navigateTo(node);
+				return () => navigateTo(node);
 			}
+			return undefined;
 		},
 		[navigateTo]
 	);
@@ -44,8 +40,8 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 				/>
 			)}
 			{nodes !== null && nodes.length === 0 && (
-				<Container>
-					<CustomIcon icon={'Folder'} size={'large'} color={'gray5'} />
+				<Container gap={'0.125rem'}>
+					<IconBig icon={'Folder'} color={'gray5'} />
 					<Text size={'large'} weight={'bold'} color={'secondary'}>
 						There are no items in this folder.
 					</Text>

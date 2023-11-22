@@ -10,6 +10,7 @@ import { expect, it, vi } from 'vitest';
 
 import { ListItem } from './ListItem';
 import { GQLNodeType } from '../graphql/types';
+import { COLORS, SELECTORS } from '../test/constants';
 import { listItemPropsBuilder, setup } from '../test/utils';
 import { ICON, ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
@@ -176,6 +177,32 @@ it('should show the extension if provided', () => {
 		</ThemeProvider>
 	);
 	expect(screen.getByText(extension)).toBeVisible();
+});
+
+it('should show overlay on hover if onDoubleClick is valued', async () => {
+	const { user } = setup(
+		<ListItem
+			{...listItemPropsBuilder()}
+			onDoubleClick={(): void => undefined}
+			data-testid={'item'}
+		/>
+	);
+	const listItem = screen.getByTestId(SELECTORS.listItem);
+	await user.hover(listItem);
+	expect(listItem).toHaveStyle({
+		backgroundColor: COLORS.listItemHover,
+		cursor: 'pointer'
+	});
+});
+
+it('should not show overlay on hover if onDoubleClick is not valued', async () => {
+	const { user } = setup(<ListItem {...listItemPropsBuilder()} onDoubleClick={undefined} />);
+	const listItem = screen.getByTestId(SELECTORS.listItem);
+	await user.hover(listItem);
+	expect(listItem).not.toHaveStyle({
+		backgroundColor: COLORS.listItemHover
+	});
+	expect(listItem).not.toHaveStyle({ cursor: 'pointer' });
 });
 
 it('should show the download icon of a file', () => {

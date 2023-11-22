@@ -7,18 +7,17 @@ import React from 'react';
 
 import {
 	Avatar,
-	IconButton,
-	Padding,
-	Text,
 	Tooltip,
+	IconButton,
 	useSnackbar,
+	Text,
 	useTheme
 } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
+import styled, { css, SimpleInterpolation } from 'styled-components';
 
 import { Node } from '../model/Node';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE } from '../utils/constants';
-import { humanFileSize } from '../utils/utils';
+import { humanFileSize, preventTextSelectionOnDoubleClick } from '../utils/utils';
 
 export interface ListItemProps {
 	name: string;
@@ -45,6 +44,16 @@ const RowGrid = styled.div`
 	grid-template-columns: subgrid;
 	grid-column: 1 / span 6;
 	align-items: center;
+	padding: 0.5rem 1.5rem;
+	gap: 0 1rem;
+	${({ onDoubleClick, theme }): SimpleInterpolation =>
+		onDoubleClick !== undefined &&
+		css`
+			&:hover {
+				background-color: ${theme.palette.gray6.hover};
+				cursor: pointer;
+			}
+		`}
 `;
 
 export const ListItem: React.FC<ListItemProps> = ({
@@ -58,20 +67,23 @@ export const ListItem: React.FC<ListItemProps> = ({
 	downloadNode
 }) => {
 	const theme = useTheme();
+
 	const createSnackbar = useSnackbar();
 
 	return (
-		<RowGrid onDoubleClick={onDoubleClick}>
-			<Padding left="1.5rem">
-				<CustomAvatar
-					label=""
-					icon={ICON_BY_NODE_TYPE[type](mimeType)}
-					color={ICON_COLOR_BY_NODE_TYPE[type](theme, mimeType)}
-					background="gray3"
-					shape="square"
-					size="large"
-				/>
-			</Padding>
+		<RowGrid
+			onDoubleClick={onDoubleClick}
+			onMouseDown={preventTextSelectionOnDoubleClick}
+			data-testid={'list-item'}
+		>
+			<CustomAvatar
+				label=""
+				icon={ICON_BY_NODE_TYPE[type](mimeType)}
+				color={ICON_COLOR_BY_NODE_TYPE[type](theme, mimeType)}
+				background="gray3"
+				shape="square"
+				size="large"
+			/>
 			<Text>{name}</Text>
 			<Text>
 				{Intl.DateTimeFormat(undefined, {
@@ -84,7 +96,7 @@ export const ListItem: React.FC<ListItemProps> = ({
 			</Text>
 			<Text>{extension}</Text>
 			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
-			<Padding right="1.5rem">
+			<span>
 				{type !== 'FOLDER' && (
 					<Tooltip label={'Download'} placement={'top'}>
 						<IconButton
@@ -104,7 +116,7 @@ export const ListItem: React.FC<ListItemProps> = ({
 						/>
 					</Tooltip>
 				)}
-			</Padding>
+			</span>
 		</RowGrid>
 	);
 };
