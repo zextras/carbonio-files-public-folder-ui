@@ -7,7 +7,8 @@
 export const ICONS = {
 	queryLoading: 'icon: Refresh',
 	emptyFolder: 'icon: Folder',
-	unavailableFolder: 'icon: EmptyFolder'
+	unavailableFolder: 'icon: EmptyFolder',
+	download: 'icon: DownloadOutline'
 } as const;
 
 export const COLORS = {

@@ -10,9 +10,9 @@ import { expect, it, vi } from 'vitest';
 
 import { ListItem } from './ListItem';
 import { GQLNodeType } from '../graphql/types';
-import { COLORS, SELECTORS } from '../test/constants';
+import { COLORS, ICONS, SELECTORS } from '../test/constants';
 import { listItemPropsBuilder, setup } from '../test/utils';
-import { ICON, ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
+import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
 it('should show the name of list item', () => {
@@ -205,67 +205,67 @@ it('should not show overlay on hover if onDoubleClick is not valued', async () =
 	expect(listItem).not.toHaveStyle({ cursor: 'pointer' });
 });
 
-it('should show the download icon of a file', () => {
+it('should show the download button icon if downloadNode is not undefined', () => {
 	const props = listItemPropsBuilder({
-		type: GQLNodeType.Text
+		downloadNode: vi.fn()
 	});
-	setup(
+	const { getByRoleWithIcon } = setup(
 		<ThemeProvider>
 			<ListItem {...props} />
 		</ThemeProvider>
 	);
-	expect(screen.getByTestId(ICON.download)).toBeVisible();
+
+	expect(getByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
 });
 
-it('should not show the download icon of a folder', () => {
+it('should not show the download icon if downloadNode is undefined', () => {
 	const props = listItemPropsBuilder({
-		type: GQLNodeType.Folder
+		downloadNode: undefined
 	});
-	setup(
+	const { queryByRoleWithIcon } = setup(
 		<ThemeProvider>
 			<ListItem {...props} />
 		</ThemeProvider>
 	);
-	expect(screen.queryByTestId(ICON.download)).not.toBeInTheDocument();
+	expect(queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
 });
 
 it('should show the snackbar when the user clicks on download icon', async () => {
 	const props = listItemPropsBuilder({
-		type: GQLNodeType.Text
+		downloadNode: vi.fn()
 	});
-	const { user } = setup(
+	const { user, getByRoleWithIcon } = setup(
 		<ThemeProvider>
 			<ListItem {...props} />
 		</ThemeProvider>
 	);
-	await user.click(screen.getByTestId(ICON.download));
+	await user.click(getByRoleWithIcon('button', { icon: ICONS.download }));
 	expect(await screen.findByText('Your download will start soon')).toBeVisible();
 });
 
 it('should show the tooltip on hover of the download icon', async () => {
 	const props = listItemPropsBuilder({
-		type: GQLNodeType.Text
+		downloadNode: vi.fn()
 	});
-	const { user } = setup(
+	const { user, getByRoleWithIcon } = setup(
 		<ThemeProvider>
 			<ListItem {...props} />
 		</ThemeProvider>
 	);
 	vi.advanceTimersToNextTimer();
-	await user.hover(screen.getByTestId(ICON.download));
+	await user.hover(getByRoleWithIcon('button', { icon: ICONS.download }));
 	expect(await screen.findByText('Download')).toBeVisible();
 });
 
-it('should download the file when the user clicks on the icon button', async () => {
+it('should call the download function when the user clicks on the icon button', async () => {
 	const props = listItemPropsBuilder({
-		type: GQLNodeType.Text,
 		downloadNode: vi.fn()
 	});
-	const { user } = setup(
+	const { user, getByRoleWithIcon } = setup(
 		<ThemeProvider>
 			<ListItem {...props} />
 		</ThemeProvider>
 	);
-	await user.click(screen.getByTestId(ICON.download));
+	await user.click(getByRoleWithIcon('button', { icon: ICONS.download }));
 	expect(props.downloadNode).toHaveBeenCalled();
 });

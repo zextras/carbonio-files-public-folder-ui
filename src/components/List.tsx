@@ -82,7 +82,7 @@ export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleCli
 				size={node.size}
 				extension={node.extension ?? undefined}
 				onDoubleClick={onItemDoubleClick(node)}
-				downloadNode={(): void => downloadNode(node.id)}
+				downloadNode={node.isFile ? (): void => downloadNode(node.id) : undefined}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>

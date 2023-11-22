@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React from 'react';
+import React, { useCallback } from 'react';
 
 import {
 	Avatar,
@@ -70,6 +70,17 @@ export const ListItem: React.FC<ListItemProps> = ({
 
 	const createSnackbar = useSnackbar();
 
+	const download = useCallback(() => {
+		downloadNode && downloadNode();
+		createSnackbar({
+			key: new Date().toLocaleString(),
+			type: 'info',
+			label: 'Your download will start soon',
+			replace: true,
+			hideButton: true
+		});
+	}, [createSnackbar, downloadNode]);
+
 	return (
 		<RowGrid
 			onDoubleClick={onDoubleClick}
@@ -97,22 +108,13 @@ export const ListItem: React.FC<ListItemProps> = ({
 			<Text>{extension}</Text>
 			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			<span>
-				{type !== 'FOLDER' && (
+				{downloadNode !== undefined && (
 					<Tooltip label={'Download'} placement={'top'}>
 						<IconButton
 							icon={'DownloadOutline'}
 							size={'large'}
 							borderRadius="round"
-							onClick={(): void => {
-								downloadNode && downloadNode();
-								createSnackbar({
-									key: new Date().toLocaleString(),
-									type: 'info',
-									label: 'Your download will start soon',
-									replace: true,
-									hideButton: true
-								});
-							}}
+							onClick={download}
 						/>
 					</Tooltip>
 				)}
