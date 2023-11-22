@@ -6,5 +6,6 @@
 
 export const ICONS = {
 	queryLoading: 'icon: Refresh',
-	emptyFolder: 'icon: Folder'
+	emptyFolder: 'icon: Folder',
+	unavailableFolder: 'icon: EmptyFolder'
 } as const;
