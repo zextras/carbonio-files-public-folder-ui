@@ -9,6 +9,7 @@ import { Container, Text } from '@zextras/carbonio-design-system';
 
 import { IconBig } from './IconBig';
 import { List } from './List';
+import { LoadingIcon } from './LoadingIcon';
 import { useFindNodes } from '../hooks/useFindNodes';
 import { Node } from '../model/Node';
 
@@ -45,6 +46,11 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 					<Text size={'large'} weight={'bold'} color={'secondary'}>
 						There are no items in this folder.
 					</Text>
+				</Container>
+			)}
+			{nodes === null && (
+				<Container>
+					<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
 				</Container>
 			)}
 		</>
