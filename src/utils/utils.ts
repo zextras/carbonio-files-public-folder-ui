@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import React from 'react';
+
 /**
  * Format a size in byte as human-readable
  */
@@ -18,3 +20,9 @@ export const humanFileSize = (inputSize: number): string => {
 	}
 	return `${(inputSize / 1024 ** i).toFixed(2).toString()} ${units[i]}`;
 };
+
+export function preventTextSelectionOnDoubleClick(e: MouseEvent | React.MouseEvent): void {
+	if (e.detail > 1) {
+		e.preventDefault();
+	}
+}

@@ -11,7 +11,7 @@ import { GQLFile, GQLFolder, GQLNodeType } from '../graphql/types';
 export function createFile(file?: Partial<GQLFile>): GQLFile {
 	return {
 		id: faker.string.uuid(),
-		name: faker.system.commonFileName(),
+		name: faker.system.fileName({ extensionCount: 0 }),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
 		type: faker.helpers.arrayElement(
@@ -28,7 +28,7 @@ export function createFile(file?: Partial<GQLFile>): GQLFile {
 export function createFolder(folder?: Partial<GQLFolder>): GQLFolder {
 	return {
 		id: faker.string.uuid(),
-		name: faker.system.commonFileName(),
+		name: faker.system.fileName({ extensionCount: 0 }),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
 		type: GQLNodeType.Folder,
