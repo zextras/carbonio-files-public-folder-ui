@@ -13,6 +13,7 @@ import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
+import './i18n';
 import { Location } from './model/Node';
 
 const App = (): React.JSX.Element => {
