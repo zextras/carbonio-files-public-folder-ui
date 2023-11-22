@@ -5,10 +5,12 @@
   "type": "module",
   "scripts": {
     "dev": "vite",
+    "prebuild": "rm -r dist/* || true",
     "build": "tsc && vite build",
     "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
     "lint:fix": "npm run lint -- --fix",
-    "preview": "vite preview",
+    "prepreview": "npm run build -- --mode preview",
+    "preview": "vite preview --mode preview",
     "test": "vitest run",
     "prepare": "husky install",
     "type-check": "tsc --noEmit",
