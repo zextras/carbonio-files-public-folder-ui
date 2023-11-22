@@ -51,3 +51,9 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 export const FIND_NODES_LIMITS = 25;
 
 export const API_ENDPOINT = '/services/files/public/graphql/';
+
+export const API_DOWNLOAD_ENDPOINT = '/services/files/public/download';
+
+export const ICON = {
+	download: 'icon: DownloadOutline'
+};

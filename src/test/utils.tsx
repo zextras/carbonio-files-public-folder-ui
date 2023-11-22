@@ -9,7 +9,12 @@ import React, { PropsWithChildren, ReactElement } from 'react';
 import { faker } from '@faker-js/faker';
 import { act, render, RenderOptions, RenderResult, screen } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { BreadcrumbsProps, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
+import {
+	BreadcrumbsProps,
+	Crumb,
+	SnackbarManager,
+	ThemeProvider
+} from '@zextras/carbonio-design-system';
 import { vi } from 'vitest';
 
 import { ICONS } from './constants';
@@ -65,7 +70,11 @@ function customRender(
 	options?: Omit<RenderOptions, 'queries' | 'wrapper'>
 ): RenderResult {
 	return render(ui, {
-		wrapper: ({ children }: PropsWithChildren) => <ThemeProvider>{children}</ThemeProvider>,
+		wrapper: ({ children }: PropsWithChildren) => (
+			<ThemeProvider>
+				<SnackbarManager>{children}</SnackbarManager>
+			</ThemeProvider>
+		),
 		...options
 	});
 }

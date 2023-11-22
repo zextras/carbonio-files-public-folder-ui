@@ -12,6 +12,7 @@ import { ListHeader } from './ListHeader';
 import { ListItem, ListItemProps } from './ListItem';
 import { LoadingIcon } from './LoadingIcon';
 import { Node } from '../model/Node';
+import { downloadNode } from '../utils/utils';
 
 const Grid = styled.div`
 	min-height: 0;
@@ -31,7 +32,7 @@ const ContentGrid = styled.div`
 	gap: 0.5rem 1rem;
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 1 / span 5;
+	grid-column: 1 / span 6;
 	justify-items: start;
 	align-items: center;
 	overflow-y: auto;
@@ -39,7 +40,7 @@ const ContentGrid = styled.div`
 `;
 
 const RowBorder = styled(Divider)`
-	grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
+	grid-column: 1 / span 6; /* this code makes the row stretch to entire width of the container */
 `;
 
 function convertNodeToListItemProps(node: Node): ListItemProps {
@@ -90,6 +91,7 @@ export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleCli
 			<ListItem
 				{...convertNodeToListItemProps(value)}
 				onDoubleClick={(): void => onItemDoubleClick(value)}
+				downloadNode={(): void => downloadNode(value.id)}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>

@@ -6,12 +6,12 @@
 import { faker } from '@faker-js/faker';
 import { render, screen } from '@testing-library/react';
 import { ThemeProvider } from '@zextras/carbonio-design-system';
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 
 import { ListItem } from './ListItem';
 import { GQLNodeType } from '../graphql/types';
-import { listItemPropsBuilder } from '../test/utils';
-import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
+import { listItemPropsBuilder, setup } from '../test/utils';
+import { ICON, ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
 it('should show the name of list item', () => {
@@ -176,4 +176,69 @@ it('should show the extension if provided', () => {
 		</ThemeProvider>
 	);
 	expect(screen.getByText(extension)).toBeVisible();
+});
+
+it('should show the download icon of a file', () => {
+	const props = listItemPropsBuilder({
+		type: GQLNodeType.Text
+	});
+	setup(
+		<ThemeProvider>
+			<ListItem {...props} />
+		</ThemeProvider>
+	);
+	expect(screen.getByTestId(ICON.download)).toBeVisible();
+});
+
+it('should not show the download icon of a folder', () => {
+	const props = listItemPropsBuilder({
+		type: GQLNodeType.Folder
+	});
+	setup(
+		<ThemeProvider>
+			<ListItem {...props} />
+		</ThemeProvider>
+	);
+	expect(screen.queryByTestId(ICON.download)).not.toBeInTheDocument();
+});
+
+it('should show the snackbar when the user clicks on download icon', async () => {
+	const props = listItemPropsBuilder({
+		type: GQLNodeType.Text
+	});
+	const { user } = setup(
+		<ThemeProvider>
+			<ListItem {...props} />
+		</ThemeProvider>
+	);
+	await user.click(screen.getByTestId(ICON.download));
+	expect(await screen.findByText('Your download will start soon')).toBeVisible();
+});
+
+it('should show the tooltip on hover of the download icon', async () => {
+	const props = listItemPropsBuilder({
+		type: GQLNodeType.Text
+	});
+	const { user } = setup(
+		<ThemeProvider>
+			<ListItem {...props} />
+		</ThemeProvider>
+	);
+	vi.advanceTimersToNextTimer();
+	await user.hover(screen.getByTestId(ICON.download));
+	expect(await screen.findByText('Download')).toBeVisible();
+});
+
+it('should download the file when the user clicks on the icon button', async () => {
+	const props = listItemPropsBuilder({
+		type: GQLNodeType.Text,
+		downloadNode: vi.fn()
+	});
+	const { user } = setup(
+		<ThemeProvider>
+			<ListItem {...props} />
+		</ThemeProvider>
+	);
+	await user.click(screen.getByTestId(ICON.download));
+	expect(props.downloadNode).toHaveBeenCalled();
 });

@@ -5,7 +5,15 @@
  */
 import React from 'react';
 
-import { Avatar, Padding, Text, useTheme } from '@zextras/carbonio-design-system';
+import {
+	Avatar,
+	IconButton,
+	Padding,
+	Text,
+	Tooltip,
+	useSnackbar,
+	useTheme
+} from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
 import { Node } from '../model/Node';
@@ -20,6 +28,7 @@ export interface ListItemProps {
 	size?: number;
 	extension?: string;
 	onDoubleClick?: () => void;
+	downloadNode?: () => void;
 }
 
 const CustomAvatar = styled(Avatar)`
@@ -34,7 +43,7 @@ const CustomAvatar = styled(Avatar)`
 const RowGrid = styled.div`
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 1 / span 5;
+	grid-column: 1 / span 6;
 	align-items: center;
 `;
 
@@ -45,9 +54,12 @@ export const ListItem: React.FC<ListItemProps> = ({
 	lastModified,
 	size,
 	extension,
-	onDoubleClick
+	onDoubleClick,
+	downloadNode
 }) => {
 	const theme = useTheme();
+	const createSnackbar = useSnackbar();
+
 	return (
 		<RowGrid onDoubleClick={onDoubleClick}>
 			<Padding left="1.5rem">
@@ -71,8 +83,27 @@ export const ListItem: React.FC<ListItemProps> = ({
 				}).format(new Date(lastModified))}
 			</Text>
 			<Text>{extension}</Text>
+			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			<Padding right="1.5rem">
-				<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
+				{type !== 'FOLDER' && (
+					<Tooltip label={'Download'} placement={'top'}>
+						<IconButton
+							icon={'DownloadOutline'}
+							size={'large'}
+							borderRadius="round"
+							onClick={(): void => {
+								downloadNode && downloadNode();
+								createSnackbar({
+									key: new Date().toLocaleString(),
+									type: 'info',
+									label: 'Your download will start soon',
+									replace: true,
+									hideButton: true
+								});
+							}}
+						/>
+					</Tooltip>
+				)}
 			</Padding>
 		</RowGrid>
 	);

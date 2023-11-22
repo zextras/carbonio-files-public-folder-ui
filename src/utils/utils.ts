@@ -4,6 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import { API_DOWNLOAD_ENDPOINT } from './constants';
+
 /**
  * Format a size in byte as human-readable
  */
@@ -17,4 +19,18 @@ export const humanFileSize = (inputSize: number): string => {
 		throw new Error('Unsupported inputSize');
 	}
 	return `${(inputSize / 1024 ** i).toFixed(2).toString()} ${units[i]}`;
+};
+
+export const downloadNode = (id: string): void => {
+	if (id) {
+		const url = `${API_DOWNLOAD_ENDPOINT}/${encodeURIComponent(id)}`;
+		const a = document.createElement('a');
+		if (a) {
+			a.download = url;
+			a.href = url;
+			a.target = '_blank';
+			a.type = 'hidden';
+			a.click();
+		}
+	}
 };
