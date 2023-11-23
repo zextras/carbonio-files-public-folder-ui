@@ -1,11 +1,11 @@
 {
   "name": "{{name}}",
   "description": "{{description}}",
-  "build_dir": "/tmp/",
+  "buildDir": "/tmp/",
   "output": "artifacts",
   "projects": [
     {
-      "name": "."
+      "name": "package"
     }
   ]
 }
