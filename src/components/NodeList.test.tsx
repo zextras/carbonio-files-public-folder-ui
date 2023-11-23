@@ -8,6 +8,7 @@ import { act, screen } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
+import { resetCache } from '../hooks/NodesCache';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
 import { createFindNodesHandler } from '../mocks/handlers/findNodes';
 import { server } from '../mocks/server';
@@ -46,6 +47,7 @@ describe('NodeList', () => {
 				}
 			)
 		);
+		resetCache();
 	});
 
 	it('should show nodes of specific folderId', async () => {

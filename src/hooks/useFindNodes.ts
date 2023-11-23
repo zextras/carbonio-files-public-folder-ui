@@ -8,6 +8,7 @@ import { useCallback, useEffect, useState } from 'react';
 import { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
+import { nodesMap, tokenMap } from './NodesCache';
 import { NodeOfFindNodes } from '../components/types';
 import { FindNodesDocument, GQLFindNodesQuery, GQLFindNodesQueryVariables } from '../graphql/types';
 import { Body } from '../mocks/handlers/handlers.learning.test';
@@ -20,8 +21,8 @@ type UseFindNodesReturnType = {
 	findMore: () => void;
 };
 
-export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnType => {
-	const [nodes, setNodes] = useState<Array<Node> | null>(null);
+export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
+	const [nodes, setNodes] = useState<Array<Node> | null>(nodesMap[folderId] ?? null);
 	const [hasMore, setHasMore] = useState(false);
 	const [token, setToken] = useState<string | undefined | null>();
 
@@ -31,9 +32,13 @@ export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnTy
 	}, [folderId]);
 
 	useEffect(() => {
-		if (folderId === undefined) {
+		if (nodesMap[folderId] && tokenMap[folderId] !== undefined) {
+			setNodes(nodesMap[folderId]);
+			setToken(tokenMap[folderId]);
+			setHasMore(tokenMap[folderId] !== null);
 			return;
 		}
+
 		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: { folder_id: folderId },
 			query: print(FindNodesDocument)
@@ -52,7 +57,9 @@ export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnTy
 					.filter((value): value is NodeOfFindNodes => value !== null)
 					.map((node) => convertGQLToNode(node));
 				setNodes(newRows ?? []);
+				nodesMap[folderId] = newRows ?? [];
 				setToken(result.data?.findNodes?.page_token);
+				tokenMap[folderId] = result.data?.findNodes?.page_token ?? null;
 				if (result.data?.findNodes?.page_token) {
 					setHasMore(true);
 				}
@@ -86,6 +93,8 @@ export const useFindNodes = (folderId: string | undefined): UseFindNodesReturnTy
 				setNodes((oldNodes) => [...(oldNodes ?? []), ...(newRows ?? [])]);
 				setToken(result.data?.findNodes?.page_token);
 				setHasMore(!!result.data?.findNodes?.page_token);
+				nodesMap[folderId] = [...(nodesMap[folderId] ?? []), ...(newRows ?? [])];
+				tokenMap[folderId] = result.data?.findNodes?.page_token ?? null;
 			});
 	}, [folderId, hasMore, token]);
 
