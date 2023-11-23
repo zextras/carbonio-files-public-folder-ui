@@ -36,7 +36,7 @@ export default defineConfig(({ mode }) => {
 			viteStaticCopy({
 				targets: [
 					{
-						src: 'package/PKGBUILD.template',
+						src: 'package/*',
 						dest: 'package',
 						transform(content): string {
 							return content
