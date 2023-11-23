@@ -36,8 +36,25 @@ export default defineConfig(({ mode }) => {
 			viteStaticCopy({
 				targets: [
 					{
-						src: 'package/*',
+						src: 'package/PKGBUILD.template',
 						dest: 'package',
+						transform(content): string {
+							return content
+								.replace('{{name}}', pkg.name)
+								.replace('{{version}}', pkg.version)
+								.replace('{{rel}}', `${pkgRel}`)
+								.replace('{{description}}', pkg.description);
+						},
+						rename(filename, fileExt): string {
+							if (fileExt === 'template') {
+								return filename;
+							}
+							return `${filename}.${fileExt}`;
+						}
+					},
+					{
+						src: 'package/yap.json.template',
+						dest: '.',
 						transform(content): string {
 							return content
 								.replace('{{name}}', pkg.name)
