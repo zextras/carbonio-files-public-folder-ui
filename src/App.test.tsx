@@ -8,12 +8,14 @@ import { act, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
+import { resetCache } from './hooks/NodesCache';
 import { createFile, createFolder, fileBuilder, folderBuilder } from './mocks/factories';
 import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
+import { client } from './network/client';
 import { ICONS, SELECTORS } from './test/constants';
-import { setup } from './test/utils';
+import { setup, triggerLoadMore } from './test/utils';
 
 describe('App', () => {
 	const folderId = faker.string.uuid();
@@ -25,6 +27,7 @@ describe('App', () => {
 	const file = createFile();
 
 	const firstPageNodes = [navigableFolder, ...folderBuilder(4), file, ...fileBuilder(19)];
+	const secondPageNodes = [...folderBuilder(10)];
 
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
@@ -46,12 +49,18 @@ describe('App', () => {
 					variables: { folder_id: folderId }
 				},
 				{
+					nodes: secondPageNodes,
+					nextPageToken: null,
+					variables: { folder_id: folderId, page_token: 'token1' }
+				},
+				{
 					nodes: navigableFolderNodes,
 					nextPageToken: null,
 					variables: { folder_id: navigableFolder.id }
 				}
 			)
 		);
+		resetCache();
 	});
 
 	it('should show the content of the folder', async () => {
@@ -152,5 +161,53 @@ describe('App', () => {
 		expect(
 			screen.queryByText('For more information, try to contact the person who shared it with you.')
 		).not.toBeInTheDocument();
+	});
+
+	it('should not call client findNode when navigate again in an already navigated folder', async () => {
+		const findNodesQuerySpy = vi.spyOn(client, 'findNodesQuery');
+
+		const { user } = setup(<App />);
+		const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
+		const navigableFolderElement = await screen.findByText(navigableFolder.name);
+		expect(findNodesQuerySpy).toBeCalledTimes(1);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId);
+
+		await user.dblClick(navigableFolderElement);
+		await screen.findByText(navigableFolderNodes[0].name);
+
+		expect(findNodesQuerySpy).toBeCalledTimes(2);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+
+		await user.click(within(breadCrumbs).getByText(folderName));
+		await screen.findByText(firstPageNodes[5].name);
+
+		expect(findNodesQuerySpy).toBeCalledTimes(2);
+	});
+
+	it('should cache all requested pages', async () => {
+		const findNodesQuerySpy = vi.spyOn(client, 'findNodesQuery');
+
+		const { user } = setup(<App />);
+		const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
+		const navigableFolderElement = await screen.findByText(navigableFolder.name);
+
+		triggerLoadMore();
+
+		await screen.findByText(secondPageNodes[0].name);
+
+		expect(findNodesQuerySpy).toBeCalledTimes(2);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'token1');
+
+		await user.dblClick(navigableFolderElement);
+		await screen.findByText(navigableFolderNodes[0].name);
+
+		expect(findNodesQuerySpy).toBeCalledTimes(3);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+
+		await user.click(within(breadCrumbs).getByText(folderName));
+		await screen.findByText(firstPageNodes[5].name);
+
+		expect(findNodesQuerySpy).toBeCalledTimes(3);
+		expect(await screen.findByText(secondPageNodes[0].name)).toBeVisible();
 	});
 });
