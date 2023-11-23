@@ -1,0 +1,23 @@
+# SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+query findNodes($folder_id: ID!,  $limit: Int, $page_token: String) {
+	findNodes(folder_id: $folder_id, limit: $limit, page_token: $page_token ) {
+		nodes {
+			created_at,
+			id,
+			name,
+			type,
+			updated_at,
+			__typename
+			... on File {
+				extension
+				mime_type
+				size
+			}
+
+		}
+		page_token
+	}
+}

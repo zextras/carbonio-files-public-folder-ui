@@ -3,4 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-/// <reference types="vite/client" />
+
+import { setupServer } from 'msw/node';
+
+export const server = setupServer();

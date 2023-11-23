@@ -6,23 +6,49 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
-    "lint": "eslint carbonio-public-folder-ui --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
+    "lint:fix": "npm run lint -- --fix",
+    "preview": "vite preview",
+    "test": "vitest run",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit",
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
+    "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
+    "graphql": "^16.8.1",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/types": "^18.1.0",
+    "@faker-js/faker": "^8.2.0",
+    "@graphql-codegen/add": "^5.0.0",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typed-document-node": "^5.0.1",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
+    "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
+    "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#devel",
+    "eslint-plugin-notice": "^0.9.10",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "husky": "^8.0.0",
+    "jsdom": "^22.1.0",
+    "msw": "^2.0.2",
     "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "vite": "^4.5.0",
+    "vitest": "^0.34.6"
+  },
+  "msw": {
+    "workerDirectory": "public"
   }
 }

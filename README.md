@@ -1,3 +1,8 @@
+<!--
+SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+SPDX-License-Identifier: AGPL-3.0-only
+-->
+
 # React + TypeScript + Vite
 
 This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.

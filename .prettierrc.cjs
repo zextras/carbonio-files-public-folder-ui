@@ -3,4 +3,6 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-/// <reference types="vite/client" />
+module.exports = {
+    ...require('@zextras/carbonio-ui-configs/rules/prettier'),
+}
