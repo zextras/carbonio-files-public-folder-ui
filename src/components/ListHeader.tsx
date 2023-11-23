@@ -6,6 +6,7 @@
 import React from 'react';
 
 import { Padding, Text } from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
 import styled from 'styled-components';
 
 const Span2 = styled.span`
@@ -14,17 +15,22 @@ const Span2 = styled.span`
 `;
 
 interface ListHeaderProps {}
-export const ListHeader: React.FC<ListHeaderProps> = () => (
-	<>
-		<Span2>
-			<Padding left="2rem" top="1rem" bottom="1rem">
-				<Text weight="bold">Name</Text>
+export const ListHeader: React.FC<ListHeaderProps> = () => {
+	const [t] = useTranslation();
+	return (
+		<>
+			<Span2>
+				<Padding left="2rem" top="1rem" bottom="1rem">
+					<Text weight="bold">{t('carbonio-public-folder-ui.listHeader.name', 'Name')}</Text>
+				</Padding>
+			</Span2>
+			<Text weight="bold">
+				{t('carbonio-public-folder-ui.listHeader.lastModified', 'Last modified')}
+			</Text>
+			<Text weight="bold">{t('carbonio-public-folder-ui.listHeader.extension', 'Extension')}</Text>
+			<Padding right={'1.5rem'}>
+				<Text weight="bold">{t('carbonio-public-folder-ui.listHeader.size', 'Size')}</Text>
 			</Padding>
-		</Span2>
-		<Text weight="bold">Last modified</Text>
-		<Text weight="bold">Extension</Text>
-		<Padding right={'1.5rem'}>
-			<Text weight="bold">Size</Text>
-		</Padding>
-	</>
-);
+		</>
+	);
+};
