@@ -11,6 +11,7 @@ import styled from 'styled-components';
 import { ListHeader } from './ListHeader';
 import { ListItem } from './ListItem';
 import { LoadingIcon } from './LoadingIcon';
+import { GQLNodeType } from '../graphql/types';
 import { Node } from '../model/Node';
 import { downloadNode } from '../utils/utils';
 
@@ -82,7 +83,11 @@ export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleCli
 				size={node.size}
 				extension={node.extension ?? undefined}
 				onDoubleClick={onItemDoubleClick(node)}
-				downloadNode={node.isFile ? (): void => downloadNode(node.id) : undefined}
+				downloadNode={
+					node.isFile && node.type !== GQLNodeType.Folder
+						? (): void => downloadNode(node.id)
+						: undefined
+				}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>
