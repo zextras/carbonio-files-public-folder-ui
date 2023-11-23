@@ -12,41 +12,45 @@ import { viteStaticCopy } from 'vite-plugin-static-copy';
 import pkg from './package.json';
 
 // https://vitejs.dev/config/
-export default defineConfig({
-	plugins: [
-		react(),
-		splitVendorChunkPlugin(),
-		viteStaticCopy({
-			targets: [
-				{
-					src: 'package/*',
-					dest: '.',
-					transform(content): string {
-						return content
-							.replace('{{name}}', pkg.name)
-							.replace('{{version}}', pkg.version)
-							.replace('{{rel}}', '1')
-							.replace('{{description}}', pkg.description);
-					},
-					rename(filename, fileExt): string {
-						if (fileExt === 'template') {
-							return filename;
+export default defineConfig(({ mode }) => {
+	const pkgRel = mode === 'development' ? Date.now() : 1;
+	return {
+		plugins: [
+			react(),
+			splitVendorChunkPlugin(),
+			viteStaticCopy({
+				targets: [
+					{
+						src: 'package/*',
+						dest: '.',
+						transform(content): string {
+							return content
+								.replace('{{name}}', pkg.name)
+								.replace('{{version}}', pkg.version)
+								.replace('{{rel}}', `${pkgRel}`)
+								.replace('{{description}}', pkg.description);
+						},
+						rename(filename, fileExt): string {
+							if (fileExt === 'template') {
+								return filename;
+							}
+							return `${filename}.${fileExt}`;
 						}
-						return `${filename}.${fileExt}`;
 					}
+				]
+			})
+		],
+		base: '/files/public/link/access',
+		test: {
+			globals: true,
+			environment: 'jsdom',
+			setupFiles: ['./src/test/setup.ts'],
+			retry: 1,
+			server: {
+				deps: {
+					fallbackCJS: true
 				}
-			]
-		})
-	],
-	base: '/files/public/link/access',
-	test: {
-		globals: true,
-		environment: 'jsdom',
-		setupFiles: ['./src/test/setup.ts'],
-		server: {
-			deps: {
-				fallbackCJS: true
 			}
 		}
-	}
+	};
 });
