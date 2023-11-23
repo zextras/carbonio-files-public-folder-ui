@@ -4,21 +4,30 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run translations:generate",
     "dev": "vite",
+    "prebuild": "rm -r dist/* || true",
     "build": "tsc && vite build",
     "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
     "lint:fix": "npm run lint -- --fix",
-    "preview": "vite preview",
+    "prepreview": "npm run build -- --mode preview",
+    "preview": "vite preview --mode preview",
     "test": "vitest run",
     "prepare": "husky install",
     "type-check": "tsc --noEmit",
-    "codegen": "graphql-codegen --config codegen.ts"
+    "codegen": "graphql-codegen --config codegen.ts",
+    "translations:generate": "i18next-scanner --config i18next-scanner.config.cjs",
+    "translations:pull": "git subtree pull --squash --prefix translations $npm_package_config_translations_repository master"
   },
   "dependencies": {
     "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
     "graphql": "^16.8.1",
+    "i18next": "^23.7.6",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-http-backend": "^2.4.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
@@ -42,6 +51,7 @@
     "eslint-plugin-notice": "^0.9.10",
     "eslint-plugin-react-refresh": "^0.4.4",
     "husky": "^8.0.0",
+    "i18next-scanner": "^4.4.0",
     "jsdom": "^22.1.0",
     "msw": "^2.0.2",
     "typescript": "^5.0.2",
@@ -50,5 +60,8 @@
   },
   "msw": {
     "workerDirectory": "public"
+  },
+  "config": {
+    "translations_repository": "git@github.com:Zextras/carbonio-files-ui-i18n.git"
   }
 }
