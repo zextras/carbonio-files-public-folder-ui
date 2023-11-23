@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 library(
-	identifier: 'zapp-jenkins-lib@IN-611-Support-RedHat9',
+	identifier: 'zapp-jenkins-lib@support-other-bundlers',
 	retriever: modernSCM([
 		$class: 'GitSCMSource',
    		remote: 'git@github.com:zextras/jenkins-zapp-lib.git',
