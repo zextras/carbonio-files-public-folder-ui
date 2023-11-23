@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { screen } from '@testing-library/react';
-import { describe, expect, it, beforeEach, vi } from 'vitest';
+import { act, screen } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
@@ -17,7 +17,6 @@ import { setup, triggerLoadMore } from '../test/utils';
 describe('NodeList', () => {
 	const folderId = faker.string.uuid();
 
-	// navigable folder
 	const navigableFolder = createFolder();
 
 	const file = createFile();
@@ -26,6 +25,7 @@ describe('NodeList', () => {
 	const secondPageNodes = [...folderBuilder(10)];
 
 	const navigableFolderNodes = [...folderBuilder(10)];
+
 	beforeEach(() => {
 		server.use(
 			createFindNodesHandler(
@@ -56,7 +56,7 @@ describe('NodeList', () => {
 		});
 	});
 
-	it('should show empty folder message and icon when folder is empty ', async () => {
+	it('should show empty folder message and icon when folder is empty', async () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: [],
@@ -77,7 +77,7 @@ describe('NodeList', () => {
 		expect(await screen.findByText(secondPageNodes[0].name)).toBeVisible();
 	});
 
-	it.todo('should not show empty string while content is loading', async () => {
+	it('should show the loader while the content is loading', async () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: firstPageNodes,
@@ -87,10 +87,17 @@ describe('NodeList', () => {
 			})
 		);
 		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		expect(screen.queryByText('There are no items in this folder.')).not.toBeInTheDocument();
 		expect(screen.queryByTestId(ICONS.emptyFolder)).not.toBeInTheDocument();
-		vi.runOnlyPendingTimers();
-		await screen.findByText(firstPageNodes[0].name);
+		// execute request
+		await vi.advanceTimersToNextTimerAsync();
+		// run delay and wait response
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(1000);
+		});
+		expect(screen.getByText(firstPageNodes[0].name)).toBeVisible();
+		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
 	it('should do nothing when a file is double clicked', async () => {

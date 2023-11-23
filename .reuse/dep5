@@ -36,3 +36,7 @@ License: CC0-1.0
 Files: translations/*
 Copyright: 2023 Zextras <https://www.zextras.com>
 License: AGPL-3.0-only
+
+Files: package/*
+Copyright: 2023 Zextras <https://www.zextras.com>
+License: AGPL-3.0-only

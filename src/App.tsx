@@ -5,9 +5,11 @@
  */
 import React, { useEffect, useState } from 'react';
 
-import { Container, ThemeProvider } from '@zextras/carbonio-design-system';
+import { Container, Text, ThemeProvider } from '@zextras/carbonio-design-system';
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
+import { IconBig } from './components/IconBig';
+import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
@@ -18,7 +20,7 @@ const App = (): React.JSX.Element => {
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const { publicNode } = useGetPublicNode();
+	const { publicNode, errors } = useGetPublicNode();
 	useEffect(() => {
 		if (publicNode) {
 			setCurrentLocation(publicNode);
@@ -29,8 +31,23 @@ const App = (): React.JSX.Element => {
 		<ThemeProvider>
 			<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 				<HeaderBreadcrumbs crumbs={crumbs} />
-				{currentLocation && (
+				{currentLocation !== undefined && (
 					<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
+				)}
+				{currentLocation === undefined && errors === undefined && (
+					<Container>
+						<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
+					</Container>
+				)}
+				{currentLocation === undefined && errors !== undefined && (
+					<Container gap={'0.0625rem'}>
+						<IconBig icon={'EmptyFolder'} color={'gray5'} />
+						<Container height={'auto'} width={'auto'} gap={'0.5rem'}>
+							<Text weight={'bold'}>Public access link not available.</Text>
+							<Text>This link has been removed or is not valid.</Text>
+							<Text>For more information, try to contact the person who shared it with you.</Text>
+						</Container>
+					</Container>
 				)}
 			</Container>
 		</ThemeProvider>

@@ -9,20 +9,20 @@ import { Crumb } from '@zextras/carbonio-design-system';
 
 import { Location } from '../model/Node';
 
-type UseNavigationRetunType = {
+type UseCrumbsReturnType = {
 	crumbs: Array<Crumb>;
 };
 
 export const useCrumbs = (
 	currentLocation: Location | undefined,
 	onCrumbClick: (location: Location) => void
-): UseNavigationRetunType => {
+): UseCrumbsReturnType => {
 	const [crumbs, setCrumbs] = useState<Array<Crumb>>([]);
 
 	useEffect(() => {
 		if (currentLocation) {
 			setCrumbs((prevState) => {
-				const idx = prevState.findIndex((crumb) => crumb.id === currentLocation?.id);
+				const idx = prevState.findIndex((crumb) => crumb.id === currentLocation.id);
 				if (idx > -1) {
 					return prevState.slice(0, idx + 1);
 				}
