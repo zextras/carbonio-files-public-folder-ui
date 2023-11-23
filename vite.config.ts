@@ -37,7 +37,7 @@ export default defineConfig(({ mode }) => {
 				targets: [
 					{
 						src: 'package/*',
-						dest: 'package',
+						dest: '.',
 						transform(content): string {
 							return content
 								.replace('{{name}}', pkg.name)
