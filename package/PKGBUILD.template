@@ -5,12 +5,16 @@
 # this could lead to a loading issue if a user is loading the page exactly during the
 # upgrade, but so far there is nothing we can do about it (we would need to coordinate multiple nginx).
 
+targets=(
+  "centos"
+  "ubuntu"
+)
 pkgname="{{name}}"
 pkgver="{{version}}"
 pkgrel="{{rel}}"
 pkgdesc="{{description}}"
 maintainer="Zextras (packages@zextras.com)"
-arch=("x86_64")
+arch=("all")
 license=("AGPL-3.0-only")
 copyright=(
   "2022, Zextras <https://www.zextras.com>"
