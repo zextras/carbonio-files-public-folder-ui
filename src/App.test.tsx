@@ -8,7 +8,6 @@ import { act, screen, within } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
-import { resetCache } from './hooks/NodesCache';
 import { createFile, createFolder, fileBuilder, folderBuilder } from './mocks/factories';
 import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
@@ -60,7 +59,6 @@ describe('App', () => {
 				}
 			)
 		);
-		resetCache();
 	});
 
 	it('should show the content of the folder', async () => {

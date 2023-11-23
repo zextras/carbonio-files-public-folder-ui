@@ -16,7 +16,7 @@ type UseFindNodesReturnType = {
 };
 
 export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
-	const [nodes, setNodes] = useState<Array<Node> | null>(nodesMap[folderId] ?? null);
+	const [nodes, setNodes] = useState<Array<Node> | null>(nodesMap.get(folderId) ?? null);
 	const [token, setToken] = useState<string | undefined | null>();
 
 	useEffect(() => {
@@ -24,17 +24,19 @@ export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
 	}, [folderId]);
 
 	useEffect(() => {
-		if (nodesMap[folderId] && tokenMap[folderId] !== undefined) {
-			setNodes(nodesMap[folderId]);
-			setToken(tokenMap[folderId]);
+		const cachedNodes = nodesMap.get(folderId);
+		const cachedToken = tokenMap.get(folderId);
+		if (cachedNodes && cachedToken !== undefined) {
+			setNodes(cachedNodes);
+			setToken(cachedToken);
 			return;
 		}
 
 		client.findNodesQuery(folderId).then(({ newNodes, newToken }) => {
 			setNodes(newNodes);
-			nodesMap[folderId] = newNodes;
+			nodesMap.set(folderId, newNodes);
 			setToken(newToken);
-			tokenMap[folderId] = newToken;
+			tokenMap.set(folderId, newToken);
 		});
 	}, [folderId]);
 
@@ -49,8 +51,8 @@ export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
 		client.findNodesQuery(folderId, token).then(({ newNodes, newToken }) => {
 			setNodes((oldNodes) => [...(oldNodes ?? []), ...(newNodes ?? [])]);
 			setToken(newToken);
-			nodesMap[folderId] = [...(nodesMap[folderId] ?? []), ...(newNodes ?? [])];
-			tokenMap[folderId] = newToken;
+			nodesMap.set(folderId, [...(nodesMap.get(folderId) ?? []), ...(newNodes ?? [])]);
+			tokenMap.set(folderId, newToken);
 		});
 	}, [folderId, token]);
 

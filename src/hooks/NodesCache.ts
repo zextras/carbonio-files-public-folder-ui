@@ -5,15 +5,15 @@
  */
 import { Node } from '../model/Node';
 
-export const nodesMap: Record<string, Array<Node> | null> = {};
+export const nodesMap = new Map<string, Array<Node> | null>();
 
-export const tokenMap: Record<string, string | null> = {};
+export const tokenMap = new Map<string, string | null>();
 
 export function resetCache(): void {
-	Object.keys(nodesMap).forEach((key) => {
-		delete nodesMap[key];
-	});
-	Object.keys(tokenMap).forEach((key) => {
-		delete tokenMap[key];
-	});
+	if (nodesMap.size > 0) {
+		nodesMap.clear();
+	}
+	if (tokenMap.size > 0) {
+		tokenMap.clear();
+	}
 }
