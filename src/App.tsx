@@ -9,6 +9,7 @@ import { Container, SnackbarManager, Text, ThemeProvider } from '@zextras/carbon
 
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
 import { IconBig } from './components/IconBig';
+import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
@@ -33,6 +34,11 @@ const App = (): React.JSX.Element => {
 					<HeaderBreadcrumbs crumbs={crumbs} />
 					{currentLocation !== undefined && (
 						<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
+					)}
+					{currentLocation === undefined && errors === undefined && (
+						<Container>
+							<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
+						</Container>
 					)}
 					{currentLocation === undefined && errors !== undefined && (
 						<Container gap={'0.0625rem'}>

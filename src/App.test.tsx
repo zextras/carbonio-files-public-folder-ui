@@ -4,28 +4,16 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { render, screen, within } from '@testing-library/react';
-import { describe, expect, it, beforeEach } from 'vitest';
+import { act, screen, within } from '@testing-library/react';
+import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
 import { createFile, createFolder, fileBuilder, folderBuilder } from './mocks/factories';
 import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
-import { ICONS } from './test/constants';
+import { ICONS, SELECTORS } from './test/constants';
 import { setup } from './test/utils';
-
-it.todo('should show the content of the folder', () => {
-	render(<App />);
-	expect(screen.getByText('Folder name')).toBeVisible();
-	expect(screen.getByText('Name')).toBeVisible();
-	expect(screen.getByText('Last modified')).toBeVisible();
-	expect(screen.getByText('Extension')).toBeVisible();
-	expect(screen.getByText('Size')).toBeVisible();
-	expect(screen.getByText('Name of the subfolder')).toBeVisible();
-	expect(screen.getByText('Name of file 1')).toBeVisible();
-	expect(screen.getByText('Name of file 2')).toBeVisible();
-});
 
 describe('App', () => {
 	const folderId = faker.string.uuid();
@@ -66,6 +54,16 @@ describe('App', () => {
 		);
 	});
 
+	it('should show the content of the folder', async () => {
+		setup(<App />);
+		expect(await screen.findByText(folderName)).toBeVisible();
+		expect(await screen.findByText(firstPageNodes[0].name)).toBeVisible();
+		expect(screen.getByText('Name')).toBeVisible();
+		expect(screen.getByText('Last modified')).toBeVisible();
+		expect(screen.getByText('Extension')).toBeVisible();
+		expect(screen.getByText('Size')).toBeVisible();
+	});
+
 	it('should navigate inside a folder when double clicked', async () => {
 		const { user } = setup(<App />);
 		const navigableFolderElement = await screen.findByText(navigableFolder.name);
@@ -78,22 +76,22 @@ describe('App', () => {
 	describe('BreadCrumbs', () => {
 		it('should show current location ', async () => {
 			setup(<App />);
-			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 			expect(breadCrumbs).toBeVisible();
 			expect(await within(breadCrumbs).findByText(folderName)).toBeVisible();
 		});
 
 		it('should show navigated crumb when double click a folder', async () => {
 			const { user } = setup(<App />);
-			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 			const navigableFolderElement = await screen.findByText(navigableFolder.name);
 			await user.dblClick(navigableFolderElement);
 			expect(await within(breadCrumbs).findByText(navigableFolder.name)).toBeVisible();
 		});
 
-		it('should navigate to clicked crumb folder and remove subsequent crumbs ', async () => {
+		it('should navigate to clicked crumb folder and remove subsequent crumbs', async () => {
 			const { user } = setup(<App />);
-			const breadCrumbs = screen.getByTestId('breadcrumbs');
+			const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 			const navigableFolderElement = await screen.findByText(navigableFolder.name);
 			await user.dblClick(navigableFolderElement);
 			await within(breadCrumbs).findByText(navigableFolder.name);
@@ -103,6 +101,27 @@ describe('App', () => {
 			expect(within(breadCrumbs).queryByText(navigableFolder.name)).not.toBeInTheDocument();
 			expect(await screen.findByText(firstPageNodes[5].name)).toBeVisible();
 		});
+	});
+
+	it('should show the loader while the request is loading', async () => {
+		server.use(
+			createGetPublicNodeHandler(
+				{ id: folderId, name: folderName, __typename: 'Folder' },
+				undefined,
+				{ delay: 1000 }
+			)
+		);
+		setup(<App />);
+		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
+		// execute request
+		await vi.advanceTimersToNextTimerAsync();
+		// run delay and wait response
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(1000);
+		});
+		await screen.findByText(folderName);
+		await screen.findByText(firstPageNodes[0].name);
+		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
 	it('should show unavailability page when the request to retrieve the public node returns an error', async () => {
