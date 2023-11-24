@@ -37,6 +37,23 @@ export default defineConfig(({ mode }) => {
 				targets: [
 					{
 						src: 'package/PKGBUILD.template',
+						dest: 'package/package',
+						transform(content): string {
+							return content
+								.replace('{{name}}', pkg.name)
+								.replace('{{version}}', pkg.version)
+								.replace('{{rel}}', `${pkgRel}`)
+								.replace('{{description}}', pkg.description);
+						},
+						rename(filename, fileExt): string {
+							if (fileExt === 'template') {
+								return filename;
+							}
+							return `${filename}.${fileExt}`;
+						}
+					},
+					{
+						src: 'package/*',
 						dest: 'package',
 						transform(content): string {
 							return content
