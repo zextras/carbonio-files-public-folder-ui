@@ -49,7 +49,7 @@
     "@types/react-dom": "^18.2.7",
     "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "@zextras/carbonio-ui-configs": "github:zextras/carbonio-ui-configs#devel",
+    "@zextras/carbonio-ui-configs": "^1.0.0",
     "eslint-plugin-notice": "^0.9.10",
     "eslint-plugin-react-refresh": "^0.4.4",
     "husky": "^8.0.0",
