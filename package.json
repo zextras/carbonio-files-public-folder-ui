@@ -1,5 +1,6 @@
 {
-  "name": "carbonio-public-folder-ui",
+  "name": "carbonio-files-public-folder-ui",
+  "description": "Files Public Folder module",
   "private": true,
   "version": "0.0.0",
   "type": "module",
@@ -8,6 +9,7 @@
     "dev": "vite",
     "prebuild": "rm -r dist/* || true",
     "build": "tsc && vite build",
+    "build:dev": "npm run build -- --mode=development",
     "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
     "lint:fix": "npm run lint -- --fix",
     "prepreview": "npm run build -- --mode preview",
@@ -56,6 +58,7 @@
     "msw": "^2.0.2",
     "typescript": "^5.0.2",
     "vite": "^4.5.0",
+    "vite-plugin-static-copy": "^0.17.1",
     "vitest": "^0.34.6"
   },
   "msw": {
