@@ -4,15 +4,16 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { act, screen } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
+import { GQLNodeType } from '../graphql/types';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
 import { createFindNodesHandler } from '../mocks/handlers/findNodes';
 import { server } from '../mocks/server';
 import { ICONS } from '../test/constants';
-import { setup, triggerLoadMore } from '../test/utils';
+import { screen, setup, triggerLoadMore } from '../test/utils';
 
 describe('NodeList', () => {
 	const folderId = faker.string.uuid();
@@ -107,5 +108,54 @@ describe('NodeList', () => {
 		expect(screen.getByText(firstPageNodes[1].name)).toBeVisible();
 		await user.dblClick(fileElement);
 		expect(navigateToMock).not.toHaveBeenCalled();
+	});
+
+	it.each(Object.values(GQLNodeType).filter((nodeType) => nodeType !== GQLNodeType.Folder))(
+		'should show the download button for type %s',
+		async (nodeType) => {
+			server.use(
+				createFindNodesHandler({
+					nodes: [
+						{
+							id: faker.string.uuid(),
+							created_at: faker.date.recent().valueOf(),
+							name: nodeType,
+							type: nodeType,
+							updated_at: faker.date.recent().valueOf(),
+							__typename: 'File',
+							mime_type: faker.system.mimeType(),
+							size: faker.number.int()
+						}
+					],
+					variables: { folder_id: folderId }
+				})
+			);
+			const navigateToMock = vi.fn();
+			setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+			expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
+		}
+	);
+
+	it('should not show the download button for folders', async () => {
+		const folderName = 'Folder name';
+		server.use(
+			createFindNodesHandler({
+				nodes: [
+					{
+						id: faker.string.uuid(),
+						created_at: faker.date.recent().valueOf(),
+						name: folderName,
+						type: GQLNodeType.Folder,
+						updated_at: faker.date.recent().valueOf(),
+						__typename: 'Folder'
+					}
+				],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		await screen.findByText(folderName);
+		expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
 	});
 });

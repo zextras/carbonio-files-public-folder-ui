@@ -11,9 +11,7 @@ import styled from 'styled-components';
 import { ListHeader } from './ListHeader';
 import { ListItem } from './ListItem';
 import { LoadingIcon } from './LoadingIcon';
-import { GQLNodeType } from '../graphql/types';
 import { Node } from '../model/Node';
-import { downloadNode } from '../utils/utils';
 
 const Grid = styled.div`
 	min-height: 0;
@@ -69,9 +67,10 @@ interface ListProps {
 	nodes: Array<Node>;
 	onListBottom?: () => void;
 	onItemDoubleClick: (item: Node) => (() => void) | undefined;
+	download: (item: Node) => (() => void) | undefined;
 }
 
-export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick }) => {
+export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick, download }) => {
 	const listRef = useRef<HTMLDivElement>(null);
 	const rowsWithDividers = nodes.map<React.JSX.Element>((node) => (
 		<React.Fragment key={node.id}>
@@ -83,11 +82,7 @@ export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleCli
 				size={node.size}
 				extension={node.extension ?? undefined}
 				onDoubleClick={onItemDoubleClick(node)}
-				downloadNode={
-					node.isFile && node.type !== GQLNodeType.Folder
-						? (): void => downloadNode(node.id)
-						: undefined
-				}
+				downloadNode={download(node)}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>
