@@ -168,24 +168,6 @@ it('should not show the download icon if downloadNode is undefined', () => {
 	expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
 });
 
-it('should show the snackbar when the user clicks on download icon', async () => {
-	const props = listItemPropsBuilder({
-		downloadNode: vi.fn()
-	});
-	const { user } = setup(<ListItem {...props} />);
-	await user.click(screen.getByRoleWithIcon('button', { icon: ICONS.download }));
-	expect(await screen.findByText('Your download will start soon')).toBeVisible();
-});
-
-it('should show the snackbar when the user clicks on download icons', async () => {
-	const props = listItemPropsBuilder({
-		downloadNode: vi.fn()
-	});
-	const { user } = setup(<ListItem {...props} />);
-	await user.click(screen.getByRoleWithIcon('button', { icon: ICONS.download }));
-	expect(await screen.findByText('Your download will start soon')).toBeVisible();
-});
-
 it('should show the tooltip on hover of the download icon', async () => {
 	const props = listItemPropsBuilder({
 		downloadNode: vi.fn()

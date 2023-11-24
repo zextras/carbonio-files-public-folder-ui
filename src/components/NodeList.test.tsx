@@ -8,7 +8,6 @@ import { act } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
-import { GQLNodeType } from '../graphql/types';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
 import { createFindNodesHandler } from '../mocks/handlers/findNodes';
 import { server } from '../mocks/server';
@@ -110,52 +109,42 @@ describe('NodeList', () => {
 		expect(navigateToMock).not.toHaveBeenCalled();
 	});
 
-	it.each(Object.values(GQLNodeType).filter((nodeType) => nodeType !== GQLNodeType.Folder))(
-		'should show the download button for type %s',
-		async (nodeType) => {
-			server.use(
-				createFindNodesHandler({
-					nodes: [
-						{
-							id: faker.string.uuid(),
-							created_at: faker.date.recent().valueOf(),
-							name: nodeType,
-							type: nodeType,
-							updated_at: faker.date.recent().valueOf(),
-							__typename: 'File',
-							mime_type: faker.system.mimeType(),
-							size: faker.number.int()
-						}
-					],
-					variables: { folder_id: folderId }
-				})
-			);
-			const navigateToMock = vi.fn();
-			setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
-			expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
-		}
-	);
-
-	it('should not show the download button for folders', async () => {
-		const folderName = 'Folder name';
+	it('should show the download button for files', async () => {
 		server.use(
 			createFindNodesHandler({
-				nodes: [
-					{
-						id: faker.string.uuid(),
-						created_at: faker.date.recent().valueOf(),
-						name: folderName,
-						type: GQLNodeType.Folder,
-						updated_at: faker.date.recent().valueOf(),
-						__typename: 'Folder'
-					}
-				],
+				nodes: [file],
 				variables: { folder_id: folderId }
 			})
 		);
 		const navigateToMock = vi.fn();
 		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
-		await screen.findByText(folderName);
+		expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
+	});
+
+	it('should not show the download button for folders', async () => {
+		const folder = createFolder();
+		server.use(
+			createFindNodesHandler({
+				nodes: [folder],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		await screen.findByText(folder.name);
 		expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
+	});
+
+	it('should show the snackbar when the user clicks on download icon', async () => {
+		server.use(
+			createFindNodesHandler({
+				nodes: [file],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		await user.click(await screen.findByRoleWithIcon('button', { icon: ICONS.download }));
+		expect(screen.getByText('Your download will start soon')).toBeVisible();
 	});
 });

@@ -3,16 +3,10 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useCallback } from 'react';
+import React from 'react';
 
-import {
-	Avatar,
-	Tooltip,
-	IconButton,
-	useSnackbar,
-	Text,
-	useTheme
-} from '@zextras/carbonio-design-system';
+import { Avatar, Tooltip, IconButton, Text, useTheme } from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
 import styled, { css, SimpleInterpolation } from 'styled-components';
 
 import { Node } from '../model/Node';
@@ -66,20 +60,8 @@ export const ListItem: React.FC<ListItemProps> = ({
 	onDoubleClick,
 	downloadNode
 }) => {
+	const [t] = useTranslation();
 	const theme = useTheme();
-
-	const createSnackbar = useSnackbar();
-
-	const download = useCallback(() => {
-		downloadNode && downloadNode();
-		createSnackbar({
-			key: new Date().toLocaleString(),
-			type: 'info',
-			label: 'Your download will start soon',
-			replace: true,
-			hideButton: true
-		});
-	}, [createSnackbar, downloadNode]);
 
 	return (
 		<RowGrid
@@ -109,12 +91,12 @@ export const ListItem: React.FC<ListItemProps> = ({
 			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			<span>
 				{downloadNode !== undefined && (
-					<Tooltip label={'Download'} placement={'top'}>
+					<Tooltip label={t('preview.actions.tooltip.download', 'Download')} placement={'top'}>
 						<IconButton
 							icon={'DownloadOutline'}
 							size={'large'}
 							borderRadius="round"
-							onClick={download}
+							onClick={downloadNode}
 						/>
 					</Tooltip>
 				)}
