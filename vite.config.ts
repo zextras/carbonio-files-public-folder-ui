@@ -99,12 +99,32 @@ export default defineConfig(({ mode }) => {
 		test: {
 			globals: true,
 			environment: 'jsdom',
+			restoreMocks: true,
 			setupFiles: ['./src/test/setup.ts'],
 			retry: 1,
 			server: {
 				deps: {
 					fallbackCJS: true
 				}
+			},
+			coverage: {
+				enabled: true,
+				provider: 'v8',
+				all: true,
+				clean: true,
+				include: [
+					'src/**',
+					'!src/mocks/*', // exclude msw handlers
+					'!src/@types/*', // exclude types
+					'!src/test/*', // exclude test folder
+					'!src/graphql/**', // exclude graphql folder
+					'!src/**/type*' // exclude type utils
+				],
+				reporter: ['text', 'cobertura', 'lcov'],
+				branches: 75,
+				functions: 75,
+				lines: 75,
+				statements: 75
 			}
 		}
 	} satisfies UserConfig;
