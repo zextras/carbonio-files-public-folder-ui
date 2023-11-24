@@ -67,5 +67,8 @@
   },
   "config": {
     "translations_repository": "git@github.com:Zextras/carbonio-files-ui-i18n.git"
+  },
+  "carbonio": {
+    "name": "carbonio-files-public-folder-ui"
   }
 }
