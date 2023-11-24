@@ -1,0 +1,33 @@
+# This package contains the assets for carbonio ui components (aka zapp)
+
+# the package uses commits paths to reduce caching issues as much as possible
+# but it doesn't support multiple versions installed at the same time
+# this could lead to a loading issue if a user is loading the page exactly during the
+# upgrade, but so far there is nothing we can do about it (we would need to coordinate multiple nginx).
+
+pkgname="{{name}}"
+pkgver="{{version}}"
+pkgrel="{{rel}}"
+pkgdesc="{{description}}"
+maintainer="Zextras (packages@zextras.com)"
+arch=("x86_64")
+license=("AGPL-3.0-only")
+copyright=(
+  "2022, Zextras <https://www.zextras.com>"
+)
+section="admin"
+priority="optional"
+url="https://github.com/zextras"
+depends=(
+  "carbonio-nginx"
+  "jq"
+)
+
+package() {
+  cd "${srcdir}"
+  mkdir -p "${pkgdir}/opt/zextras/web/${pkgname}"
+  cp -a  ../dist/* "${pkgdir}/opt/zextras/web/${pkgname}" || true
+  chown root:root -R "${pkgdir}/opt/zextras/web/${pkgname}"
+  chmod 644 -R "${pkgdir}/opt/zextras/web/${pkgname}"
+  find "${pkgdir}/opt/zextras/web/${pkgname}" -type d -exec chmod a+x "{}" \;
+}
