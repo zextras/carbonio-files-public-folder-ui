@@ -6,6 +6,7 @@
 import '@testing-library/jest-dom/vitest';
 import { beforeAll, afterEach, afterAll, beforeEach, vi } from 'vitest';
 
+import { resetCache } from '../hooks/NodesCache';
 import { server } from '../mocks/server';
 
 declare global {
@@ -23,6 +24,7 @@ beforeEach(() => {
 	}));
 
 	vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
+	resetCache();
 });
 
 beforeAll(() => {

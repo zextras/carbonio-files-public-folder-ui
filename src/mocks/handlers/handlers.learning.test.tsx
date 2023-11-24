@@ -18,13 +18,9 @@ import {
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables
 } from '../../graphql/types';
+import { Body } from '../../network/client';
 import { API_ENDPOINT } from '../../utils/constants';
 import { server } from '../server';
-
-export type Body<TVariables extends Record<string, unknown>> = {
-	variables: TVariables;
-	query: string;
-};
 
 describe('handlers', () => {
 	it('getPublicNode handler', async () => {
