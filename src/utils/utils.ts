@@ -6,6 +6,8 @@
 
 import React from 'react';
 
+import { API_DOWNLOAD_ENDPOINT } from './constants';
+
 /**
  * Format a size in byte as human-readable
  */
@@ -26,3 +28,17 @@ export function preventTextSelectionOnDoubleClick(e: MouseEvent | React.MouseEve
 		e.preventDefault();
 	}
 }
+
+export const downloadNode = (id: string): void => {
+	if (id) {
+		const url = `${API_DOWNLOAD_ENDPOINT}/${encodeURIComponent(id)}`;
+		const a = document.createElement('a');
+		if (a) {
+			a.download = url;
+			a.href = url;
+			a.target = '_blank';
+			a.type = 'hidden';
+			a.click();
+		}
+	}
+};

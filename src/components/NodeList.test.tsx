@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { act, screen } from '@testing-library/react';
+import { act } from '@testing-library/react';
 import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
@@ -12,7 +12,7 @@ import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/f
 import { createFindNodesHandler } from '../mocks/handlers/findNodes';
 import { server } from '../mocks/server';
 import { ICONS } from '../test/constants';
-import { setup, triggerLoadMore } from '../test/utils';
+import { screen, setup, triggerLoadMore } from '../test/utils';
 
 describe('NodeList', () => {
 	const folderId = faker.string.uuid();
@@ -107,5 +107,44 @@ describe('NodeList', () => {
 		expect(screen.getByText(firstPageNodes[1].name)).toBeVisible();
 		await user.dblClick(fileElement);
 		expect(navigateToMock).not.toHaveBeenCalled();
+	});
+
+	it('should show the download button for files', async () => {
+		server.use(
+			createFindNodesHandler({
+				nodes: [file],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
+	});
+
+	it('should not show the download button for folders', async () => {
+		const folder = createFolder();
+		server.use(
+			createFindNodesHandler({
+				nodes: [folder],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		await screen.findByText(folder.name);
+		expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
+	});
+
+	it('should show the snackbar when the user clicks on download icon', async () => {
+		server.use(
+			createFindNodesHandler({
+				nodes: [file],
+				variables: { folder_id: folderId }
+			})
+		);
+		const navigateToMock = vi.fn();
+		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		await user.click(await screen.findByRoleWithIcon('button', { icon: ICONS.download }));
+		expect(screen.getByText('Your download will start soon')).toBeVisible();
 	});
 });

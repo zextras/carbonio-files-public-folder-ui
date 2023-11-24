@@ -5,7 +5,8 @@
  */
 import React from 'react';
 
-import { Avatar, Text, useTheme } from '@zextras/carbonio-design-system';
+import { Avatar, Tooltip, IconButton, Text, useTheme } from '@zextras/carbonio-design-system';
+import { useTranslation } from 'react-i18next';
 import styled, { css, SimpleInterpolation } from 'styled-components';
 
 import { Node } from '../model/Node';
@@ -20,6 +21,7 @@ export interface ListItemProps {
 	size?: number;
 	extension?: string;
 	onDoubleClick?: () => void;
+	downloadNode?: () => void;
 }
 
 const CustomAvatar = styled(Avatar)`
@@ -34,7 +36,7 @@ const CustomAvatar = styled(Avatar)`
 const RowGrid = styled.div`
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 1 / span 5;
+	grid-column: 1 / span 6;
 	align-items: center;
 	padding: 0.5rem 1.5rem;
 	gap: 0 1rem;
@@ -55,8 +57,10 @@ export const ListItem: React.FC<ListItemProps> = ({
 	lastModified,
 	size,
 	extension,
-	onDoubleClick
+	onDoubleClick,
+	downloadNode
 }) => {
+	const [t] = useTranslation();
 	const theme = useTheme();
 
 	return (
@@ -85,6 +89,18 @@ export const ListItem: React.FC<ListItemProps> = ({
 			</Text>
 			<Text>{extension}</Text>
 			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
+			<span>
+				{downloadNode !== undefined && (
+					<Tooltip label={t('preview.actions.tooltip.download', 'Download')} placement={'top'}>
+						<IconButton
+							icon={'DownloadOutline'}
+							size={'large'}
+							borderRadius="round"
+							onClick={downloadNode}
+						/>
+					</Tooltip>
+				)}
+			</span>
 		</RowGrid>
 	);
 };
