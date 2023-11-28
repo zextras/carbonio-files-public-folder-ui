@@ -15,6 +15,7 @@ import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
 import './i18n';
+import './network/login-config';
 import { Location } from './model/Node';
 
 const App = (): React.JSX.Element => {
@@ -47,19 +48,19 @@ const App = (): React.JSX.Element => {
 						<Container gap={'0.0625rem'}>
 							<IconBig icon={'EmptyFolder'} color={'gray5'} />
 							<Container height={'auto'} width={'auto'} gap={'0.5rem'}>
-								<Text weight={'bold'}>
+								<Text weight={'bold'} color={'secondary'}>
 									{t(
 										'carbonio-public-folder-ui.invalidLink.title',
 										'Public access link not available.'
 									)}
 								</Text>
-								<Text>
+								<Text color={'secondary'}>
 									{t(
 										'carbonio-public-folder-ui.invalidLink.description.line1',
 										'This link has been removed or is not valid.'
 									)}
 								</Text>
-								<Text>
+								<Text color={'secondary'}>
 									{t(
 										'carbonio-public-folder-ui.invalidLink.description.line2',
 										'For more information, try to contact the person who shared it with you.'
