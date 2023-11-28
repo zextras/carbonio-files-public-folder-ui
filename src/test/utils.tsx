@@ -7,14 +7,88 @@
 import React, { PropsWithChildren, ReactElement } from 'react';
 
 import { faker } from '@faker-js/faker';
-import { act, render, RenderOptions, RenderResult, screen } from '@testing-library/react';
+import {
+	act,
+	ByRoleMatcher,
+	ByRoleOptions,
+	GetAllBy,
+	queries,
+	queryHelpers,
+	render,
+	RenderOptions,
+	RenderResult,
+	Screen,
+	screen as rtlScreen,
+	within as rtlWithin
+} from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import { BreadcrumbsProps, Crumb, ThemeProvider } from '@zextras/carbonio-design-system';
+import {
+	BreadcrumbsProps,
+	Crumb,
+	SnackbarManager,
+	ThemeProvider
+} from '@zextras/carbonio-design-system';
 import { vi } from 'vitest';
 
 import { ICONS } from './constants';
 import { ListItemProps } from '../components/ListItem';
 import { GQLNodeType } from '../graphql/types';
+
+type ByRoleWithIconOptions = ByRoleOptions & {
+	icon: string | RegExp;
+};
+
+/**
+ * Matcher function to search an icon button through the icon data-testid
+ */
+const queryAllByRoleWithIcon: GetAllBy<[ByRoleMatcher, ByRoleWithIconOptions]> = (
+	container,
+	role,
+	{ icon, ...options }
+) =>
+	rtlWithin(container)
+		.queryAllByRole(role, options)
+		.filter((element) => rtlWithin(element).queryByTestId(icon) !== null);
+const getByRoleWithIconMultipleError = (
+	_container: Element | null,
+	role: ByRoleMatcher,
+	options: ByRoleWithIconOptions
+): string => `Found multiple elements with role ${role} and icon ${options.icon}`;
+const getByRoleWithIconMissingError = (
+	_container: Element | null,
+	role: ByRoleMatcher,
+	options: ByRoleWithIconOptions
+): string => `Unable to find an element with role ${role} and icon ${options.icon}`;
+
+const [
+	queryByRoleWithIcon,
+	getAllByRoleWithIcon,
+	getByRoleWithIcon,
+	findAllByRoleWithIcon,
+	findByRoleWithIcon
+] = queryHelpers.buildQueries<[ByRoleMatcher, ByRoleWithIconOptions]>(
+	queryAllByRoleWithIcon,
+	getByRoleWithIconMultipleError,
+	getByRoleWithIconMissingError
+);
+
+const customQueries = {
+	queryByRoleWithIcon,
+	getAllByRoleWithIcon,
+	getByRoleWithIcon,
+	findAllByRoleWithIcon,
+	findByRoleWithIcon
+};
+
+const queriesExtended = { ...queries, ...customQueries };
+
+export function within(
+	element: Parameters<typeof rtlWithin<typeof queriesExtended>>[0]
+): ReturnType<typeof rtlWithin<typeof queriesExtended>> {
+	return rtlWithin(element, queriesExtended);
+}
+
+export const screen: Screen<typeof queriesExtended> = { ...rtlScreen, ...within(document.body) };
 
 export function listItemPropsBuilder(props?: Partial<ListItemProps>): ListItemProps {
 	return {
@@ -63,9 +137,14 @@ const setupUserEvent = (options: SetupOptions['setupOptions']): UserEvent => {
 function customRender(
 	ui: React.ReactElement,
 	options?: Omit<RenderOptions, 'queries' | 'wrapper'>
-): RenderResult {
+): RenderResult<typeof queriesExtended> {
 	return render(ui, {
-		wrapper: ({ children }: PropsWithChildren) => <ThemeProvider>{children}</ThemeProvider>,
+		wrapper: ({ children }: PropsWithChildren) => (
+			<ThemeProvider>
+				<SnackbarManager>{children}</SnackbarManager>
+			</ThemeProvider>
+		),
+		queries: { ...queries, ...customQueries },
 		...options
 	});
 }

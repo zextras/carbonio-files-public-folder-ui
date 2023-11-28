@@ -29,7 +29,7 @@ const ContentGrid = styled.div`
 	height: 100%;
 	display: grid;
 	grid-template-columns: subgrid;
-	grid-column: 1 / span 5;
+	grid-column: 1 / span 6;
 	justify-items: start;
 	align-items: center;
 	overflow-y: auto;
@@ -37,7 +37,7 @@ const ContentGrid = styled.div`
 `;
 
 const RowBorder = styled(Divider)`
-	grid-column: 1 / span 5; /* this code makes the row stretch to entire width of the container */
+	grid-column: 1 / span 6; /* this code makes the row stretch to entire width of the container */
 `;
 
 interface BottomElementProps {
@@ -67,9 +67,10 @@ interface ListProps {
 	nodes: Array<Node>;
 	onListBottom?: () => void;
 	onItemDoubleClick: (item: Node) => (() => void) | undefined;
+	download: (item: Node) => (() => void) | undefined;
 }
 
-export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick }) => {
+export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleClick, download }) => {
 	const listRef = useRef<HTMLDivElement>(null);
 	const rowsWithDividers = nodes.map<React.JSX.Element>((node) => (
 		<React.Fragment key={node.id}>
@@ -81,6 +82,7 @@ export const List: React.FC<ListProps> = ({ nodes, onListBottom, onItemDoubleCli
 				size={node.size}
 				extension={node.extension ?? undefined}
 				onDoubleClick={onItemDoubleClick(node)}
+				downloadNode={download(node)}
 			/>
 			<RowBorder color="secondary.disabled" />
 		</React.Fragment>

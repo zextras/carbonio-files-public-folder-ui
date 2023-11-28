@@ -8,7 +8,8 @@ export const ICONS = {
 	emptyFolder: 'icon: Folder',
 	contentLoader: 'icon: LoaderOutline',
 	queryLoading: 'icon: Refresh',
-	unavailableFolder: 'icon: EmptyFolder'
+	unavailableFolder: 'icon: EmptyFolder',
+	download: 'icon: DownloadOutline'
 } as const;
 
 export const SELECTORS = {

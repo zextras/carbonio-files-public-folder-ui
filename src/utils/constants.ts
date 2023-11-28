@@ -51,6 +51,8 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 export const FIND_NODES_LIMITS = 25;
 
 export const API_ENDPOINT = '/services/files/public/graphql/';
+export const API_DOWNLOAD_ENDPOINT = '/services/files/public/download';
+
 export const CARBONIO_STATIC_PATH = '/static/iris/';
 export const COMPONENTS_ENDPOINT = `${CARBONIO_STATIC_PATH}components.json`;
 export const I18N_PATH = '/i18n/{{lng}}.json';

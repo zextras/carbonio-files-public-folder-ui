@@ -41,5 +41,12 @@ beforeAll(() => {
 		globalThis.jest = _jest;
 	};
 });
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
+
+afterEach(() => {
+	vi.useRealTimers();
+	server.resetHandlers();
+});
+
+afterAll(() => {
+	server.close();
+});

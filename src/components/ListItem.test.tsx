@@ -4,13 +4,12 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { screen } from '@testing-library/react';
-import { expect, it } from 'vitest';
+import { expect, it, vi } from 'vitest';
 
 import { ListItem } from './ListItem';
 import { GQLNodeType } from '../graphql/types';
-import { COLORS, SELECTORS } from '../test/constants';
-import { listItemPropsBuilder, setup } from '../test/utils';
+import { COLORS, ICONS, SELECTORS } from '../test/constants';
+import { listItemPropsBuilder, screen, setup } from '../test/utils';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE, MIME_TYPE } from '../utils/constants';
 import { humanFileSize } from '../utils/utils';
 
@@ -150,4 +149,40 @@ it('should not show overlay on hover if onDoubleClick is not valued', async () =
 		backgroundColor: COLORS.listItemHover
 	});
 	expect(listItem).not.toHaveStyle({ cursor: 'pointer' });
+});
+
+it('should show the download button icon if downloadNode is not undefined', () => {
+	const props = listItemPropsBuilder({
+		downloadNode: vi.fn()
+	});
+	setup(<ListItem {...props} />);
+
+	expect(screen.getByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
+});
+
+it('should not show the download icon if downloadNode is undefined', () => {
+	const props = listItemPropsBuilder({
+		downloadNode: undefined
+	});
+	setup(<ListItem {...props} />);
+	expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
+});
+
+it('should show the tooltip on hover of the download icon', async () => {
+	const props = listItemPropsBuilder({
+		downloadNode: vi.fn()
+	});
+	const { user } = setup(<ListItem {...props} />);
+	vi.advanceTimersToNextTimer();
+	await user.hover(screen.getByRoleWithIcon('button', { icon: ICONS.download }));
+	expect(await screen.findByText('Download')).toBeVisible();
+});
+
+it('should call the download function when the user clicks on the icon button', async () => {
+	const props = listItemPropsBuilder({
+		downloadNode: vi.fn()
+	});
+	const { user } = setup(<ListItem {...props} />);
+	await user.click(screen.getByRoleWithIcon('button', { icon: ICONS.download }));
+	expect(props.downloadNode).toHaveBeenCalled();
 });

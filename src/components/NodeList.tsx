@@ -5,7 +5,7 @@
  */
 import React, { useCallback } from 'react';
 
-import { Container, Text } from '@zextras/carbonio-design-system';
+import { Container, Text, useSnackbar } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
 import { IconBig } from './IconBig';
@@ -13,6 +13,7 @@ import { List } from './List';
 import { LoadingIcon } from './LoadingIcon';
 import { useFindNodes } from '../hooks/useFindNodes';
 import { Node } from '../model/Node';
+import { downloadNode } from '../utils/utils';
 
 interface NodeListProps {
 	currentId: string;
@@ -21,6 +22,8 @@ interface NodeListProps {
 
 export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => {
 	const [t] = useTranslation();
+	const createSnackbar = useSnackbar();
+
 	const { nodes, hasMore, findMore } = useFindNodes(currentId);
 
 	const onItemDoubleClick = useCallback<(node: Node) => (() => void) | undefined>(
@@ -32,6 +35,24 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 		},
 		[navigateTo]
 	);
+	const download = useCallback<(node: Node) => (() => void) | undefined>(
+		(node) => {
+			if (node.isFile) {
+				return (): void => {
+					downloadNode(node.id);
+					createSnackbar({
+						key: new Date().toLocaleString(),
+						type: 'info',
+						label: t('snackbar.download.start', 'Your download will start soon'),
+						replace: true,
+						hideButton: true
+					});
+				};
+			}
+			return undefined;
+		},
+		[createSnackbar, t]
+	);
 
 	return (
 		<>
@@ -40,6 +61,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 					nodes={nodes}
 					onListBottom={hasMore ? findMore : undefined}
 					onItemDoubleClick={onItemDoubleClick}
+					download={download}
 				/>
 			)}
 			{nodes !== null && nodes.length === 0 && (
