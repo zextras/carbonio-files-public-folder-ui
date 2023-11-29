@@ -87,7 +87,7 @@ export const ListItem: React.FC<ListItemProps> = ({
 					year: 'numeric'
 				}).format(new Date(lastModified))}
 			</Text>
-			<Text>{extension}</Text>
+			<Text>{extension ?? '-'}</Text>
 			<Text>{size !== undefined ? humanFileSize(size) : '-'}</Text>
 			<span>
 				{downloadNode !== undefined && (
