@@ -1,28 +1,74 @@
 {
-  "name": "carbonio-public-folder-ui",
+  "name": "carbonio-files-public-folder-ui",
+  "description": "Files Public Folder module",
   "private": true,
   "version": "0.0.0",
   "type": "module",
   "scripts": {
+    "predev": "npm run translations:generate",
     "dev": "vite",
+    "prebuild": "rm -r dist/* || true",
     "build": "tsc && vite build",
-    "lint": "eslint carbonio-public-folder-ui --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "build:dev": "npm run build -- --mode=development",
+    "lint": "eslint src --ext .ts,.tsx --report-unused-disable-directives --max-warnings 0 --resolve-plugins-relative-to node_modules/@zextras/carbonio-ui-configs",
+    "lint:fix": "npm run lint -- --fix",
+    "prepreview": "npm run build -- --mode preview",
+    "preview": "vite preview --mode preview",
+    "test": "vitest run",
+    "prepare": "husky install",
+    "type-check": "tsc --noEmit",
+    "codegen": "graphql-codegen --config codegen.ts",
+    "translations:generate": "i18next-scanner --config i18next-scanner.config.cjs",
+    "translations:pull": "git subtree pull --squash --prefix translations $npm_package_config_translations_repository master"
   },
   "dependencies": {
+    "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
+    "graphql": "^16.8.1",
+    "i18next": "^23.7.6",
+    "i18next-browser-languagedetector": "^7.2.0",
+    "i18next-http-backend": "^2.4.2",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^13.5.0",
+    "styled-components": "^5.3.11"
   },
   "devDependencies": {
+    "@commitlint/cli": "^18.2.0",
+    "@commitlint/config-conventional": "^18.1.0",
+    "@commitlint/types": "^18.1.0",
+    "@faker-js/faker": "^8.2.0",
+    "@graphql-codegen/add": "^5.0.0",
+    "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/typed-document-node": "^5.0.1",
+    "@graphql-codegen/typescript": "^4.0.1",
+    "@graphql-codegen/typescript-operations": "^4.0.1",
+    "@testing-library/jest-dom": "^6.1.4",
+    "@testing-library/react": "^14.0.0",
+    "@testing-library/user-event": "^14.5.1",
     "@types/react": "^18.2.15",
     "@types/react-dom": "^18.2.7",
-    "@typescript-eslint/eslint-plugin": "^6.0.0",
-    "@typescript-eslint/parser": "^6.0.0",
+    "@types/styled-components": "^5.1.29",
     "@vitejs/plugin-react-swc": "^3.3.2",
-    "eslint": "^8.45.0",
-    "eslint-plugin-react-hooks": "^4.6.0",
-    "eslint-plugin-react-refresh": "^0.4.3",
-    "typescript": "^5.0.2",
-    "vite": "^4.4.5"
+    "@vitest/coverage-v8": "^0.34.6",
+    "@zextras/carbonio-ui-configs": "^1.0.0",
+    "eslint-plugin-notice": "^0.9.10",
+    "eslint-plugin-react-refresh": "^0.4.4",
+    "husky": "^8.0.0",
+    "i18next-scanner": "^4.4.0",
+    "jsdom": "^23.0.0",
+    "msw": "^2.0.2",
+    "typescript": "^5.2.2",
+    "vite": "^5.0.2",
+    "vite-plugin-static-copy": "^1.0.0",
+    "vitest": "^0.34.6"
+  },
+  "msw": {
+    "workerDirectory": "public"
+  },
+  "config": {
+    "translations_repository": "git@github.com:Zextras/carbonio-files-ui-i18n.git"
+  },
+  "carbonio": {
+    "name": "carbonio-files-public-folder-ui"
   }
 }

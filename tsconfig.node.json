@@ -7,6 +7,9 @@
     "allowSyntheticDefaultImports": true
   },
   "include": [
-    "vite.config.ts"
+    "vite.config.ts",
+    "commitlint.config.ts",
+    "codegen.ts",
+    "package.json"
   ]
 }

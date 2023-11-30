@@ -1,0 +1,66 @@
+# SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+#
+# SPDX-License-Identifier: AGPL-3.0-only
+
+scalar DateTime
+
+enum NodeType {
+    IMAGE
+    VIDEO
+    AUDIO
+    TEXT
+    SPREADSHEET
+    PRESENTATION
+    FOLDER
+    APPLICATION
+    MESSAGE
+    OTHER
+}
+
+interface Node {
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+    name: String!
+    type: NodeType!
+}
+
+type Folder implements Node {
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+    name: String!
+    type: NodeType!
+}
+
+type File implements Node {
+    id: ID!
+    created_at: DateTime!
+    updated_at: DateTime!
+    name: String!
+    extension: String
+    type: NodeType!
+    mime_type: String!
+    size: Float!
+}
+
+type NodePage {
+    nodes: [Node]!
+    page_token: String
+}
+
+type Query {
+    getPublicNode(
+        node_link_id: String!
+    ) : Node
+    findNodes(
+        folder_id: ID!
+        limit: Int
+        page_token: String
+
+    ) : NodePage
+}
+
+schema {
+    query: Query
+}
