@@ -26,7 +26,7 @@ depends=(
 package() {
   cd "${srcdir}"
   mkdir -p "${pkgdir}/opt/zextras/web/${pkgname}"
-  cp -a  ../dist/* "${pkgdir}/opt/zextras/web/${pkgname}" || true
+  cp -a  ../../dist/* "${pkgdir}/opt/zextras/web/${pkgname}"
   chown root:root -R "${pkgdir}/opt/zextras/web/${pkgname}"
   chmod 644 -R "${pkgdir}/opt/zextras/web/${pkgname}"
   find "${pkgdir}/opt/zextras/web/${pkgname}" -type d -exec chmod a+x "{}" \;
