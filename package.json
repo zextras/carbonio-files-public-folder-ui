@@ -2,7 +2,7 @@
   "name": "carbonio-files-public-folder-ui",
   "description": "Files Public Folder module",
   "private": true,
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "predev": "npm run translations:generate",
