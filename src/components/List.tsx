@@ -23,6 +23,7 @@ const Grid = styled.div`
 	justify-items: start;
 	align-items: baseline;
 	grid-template-rows: auto auto auto 1fr;
+	gap: 0 1rem;
 `;
 
 const ContentGrid = styled.div`
