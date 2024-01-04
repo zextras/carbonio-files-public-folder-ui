@@ -57,7 +57,7 @@
     "i18next-scanner": "^4.4.0",
     "jsdom": "^23.0.1",
     "msw": "^2.0.2",
-    "typescript": "^5.2.2",
+    "typescript": "^5.3.3",
     "vite": "^5.0.5",
     "vite-plugin-static-copy": "^1.0.0",
     "vitest": "^0.34.6"
