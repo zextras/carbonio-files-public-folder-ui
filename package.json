@@ -48,7 +48,7 @@
     "@types/react": "^18.2.46",
     "@types/react-dom": "^18.2.18",
     "@types/styled-components": "^5.1.29",
-    "@vitejs/plugin-react-swc": "^3.3.2",
+    "@vitejs/plugin-react-swc": "^3.6.0",
     "@vitest/coverage-v8": "^0.34.6",
     "@zextras/carbonio-ui-configs": "^1.0.0",
     "eslint-plugin-notice": "^0.9.10",
