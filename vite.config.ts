@@ -104,10 +104,12 @@ export default defineConfig(({ mode }) => {
 					'!src/**/type*' // exclude type utils
 				],
 				reporter: ['text', 'cobertura', 'lcov'],
-				branches: 75,
-				functions: 75,
-				lines: 75,
-				statements: 75
+				thresholds: {
+					branches: 75,
+					functions: 75,
+					lines: 75,
+					statements: 75
+				}
 			}
 		}
 	} satisfies UserConfig;
