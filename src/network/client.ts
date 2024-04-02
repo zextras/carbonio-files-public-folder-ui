@@ -7,7 +7,6 @@ import { GraphQLError } from 'graphql/error';
 import { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
-import { NodeOfFindNodes } from '../components/types';
 import {
 	FindNodesDocument,
 	GetPublicNodeDocument,
@@ -17,6 +16,7 @@ import {
 	GQLGetPublicNodeQueryVariables
 } from '../graphql/types';
 import { convertGQLToNode, Node } from '../model/Node';
+import { NodeOfFindNodes } from '../types/types';
 import { API_ENDPOINT, FIND_NODES_LIMITS } from '../utils/constants';
 
 export type Body<TVariables extends Record<string, unknown>> = {
