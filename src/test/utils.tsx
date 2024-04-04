@@ -28,6 +28,8 @@ import {
 	SnackbarManager,
 	ThemeProvider
 } from '@zextras/carbonio-design-system';
+import i18n from 'i18next';
+import { initReactI18next } from 'react-i18next';
 import { vi } from 'vitest';
 
 import { ICONS } from './constants';
@@ -139,11 +141,21 @@ function customRender(
 	options?: Omit<RenderOptions, 'queries' | 'wrapper'>
 ): RenderResult<typeof queriesExtended> {
 	return render(ui, {
-		wrapper: ({ children }: PropsWithChildren) => (
-			<ThemeProvider>
-				<SnackbarManager>{children}</SnackbarManager>
-			</ThemeProvider>
-		),
+		wrapper: ({ children }: PropsWithChildren) => {
+			i18n.use(initReactI18next).init({
+				resources: { en: {} },
+				lng: 'en',
+				fallbackLng: 'en',
+				interpolation: {
+					escapeValue: false
+				}
+			});
+			return (
+				<ThemeProvider>
+					<SnackbarManager>{children}</SnackbarManager>
+				</ThemeProvider>
+			);
+		},
 		queries: { ...queries, ...customQueries },
 		...options
 	});

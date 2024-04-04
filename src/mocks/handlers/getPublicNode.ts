@@ -53,7 +53,7 @@ export function createGetPublicNodeHandler(
 
 		return HttpResponse.json({
 			errors: errors || gqlErrors ? [...(errors ?? []), ...(gqlErrors ?? [])] : undefined,
-			data: data ?? { getPublicNode: null }
+			data: { getPublicNode: null, ...data, __typename: 'Query' }
 		});
 	});
 }

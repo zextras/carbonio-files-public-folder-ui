@@ -81,9 +81,3 @@ it('should not show overlay on hover on last item', async () => {
 		cursor: 'default'
 	});
 });
-
-it('should show only the name of the folder if it has not a parent', () => {});
-
-it('should show the name of the current folder and its parent, if it has a parent', () => {});
-
-it.todo('should navigate into a specific folder when click on the breadcrumb');
