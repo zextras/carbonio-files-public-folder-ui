@@ -34,7 +34,7 @@
   },
   "devDependencies": {
     "@commitlint/cli": "^19.2.1",
-    "@commitlint/config-conventional": "^19.1.0",
+    "@commitlint/config-conventional": "^19.2.2",
     "@commitlint/types": "^19.0.3",
     "@faker-js/faker": "^8.4.1",
     "@graphql-codegen/add": "^5.0.2",
