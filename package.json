@@ -56,7 +56,7 @@
     "husky": "^9.0.11",
     "i18next-scanner": "^4.4.0",
     "jsdom": "^24.0.0",
-    "msw": "^2.2.13",
+    "msw": "^2.2.14",
     "typescript": "~5.3.3",
     "vite": "^5.2.7",
     "vite-plugin-static-copy": "^1.0.2",
