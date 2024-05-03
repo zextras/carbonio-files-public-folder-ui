@@ -16,7 +16,7 @@ declare module 'i18next' {
 			[defaultNs: TypeOptions['defaultNS']]: typeof en;
 		};
 		returnNull: false;
-		compatibilityJson: 'v3';
+		compatibilityJson: 'v4';
 		allowObjectInHTMLChildren: true;
 	}
 }
