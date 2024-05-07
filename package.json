@@ -17,8 +17,7 @@
     "test": "vitest run",
     "prepare": "husky",
     "type-check": "tsc --noEmit",
-    "codegen": "graphql-codegen --config codegen.ts",
-    "translations:pull": "git subtree pull --squash --prefix translations $npm_package_config_translations_repository master"
+    "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
     "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
