@@ -7,13 +7,11 @@
 // Extend CustomTypeOptions
 import type { TypeOptions } from 'i18next';
 
-import en from '../../translations/en.json' assert { type: 'json' };
-
 declare module 'i18next' {
 	interface CustomTypeOptions {
 		// custom resources type
 		resources: {
-			[defaultNs: TypeOptions['defaultNS']]: typeof en;
+			[defaultNs: TypeOptions['defaultNS']]: Record<string, string>;
 		};
 		returnNull: false;
 		compatibilityJson: 'v4';
