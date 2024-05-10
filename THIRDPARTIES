@@ -9,6 +9,7 @@ MIT License (MIT) applies to:
 @graphql-codegen/typed-document-node, Copyright (c) 2016 Dotan Simha;
 @graphql-codegen/typescript-operations, Copyright (c) 2016 Dotan Simha;
 @graphql-codegen/typescript, Copyright (c) 2016 Dotan Simha;
+@testing-library/dom, Copyright (c) 2017 Kent C. Dodds
 @testing-library/jest-dom, Copyright (c) 2017 Kent C. Dodds
 @testing-library/react, Copyright (c) 2017 Kent C. Dodds
 @testing-library/user-event, Copyright (c) 2020 Giorgio Polvara
@@ -23,7 +24,6 @@ graphql, Copyright (c) GraphQL Contributors
 husky, Copyright (c) 2021 typicode
 i18next-browser-languagedetector, Copyright (c) 2023 i18next
 i18next-http-backend, Copyright (c) 2023 i18next
-i18next-scanner, Copyright (c) 2015-2017 Cheton Wu
 i18next, Copyright (c) 2024 i18next
 jsdom, Copyright (c) 2010 Elijah Insua
 msw, Copyright (c) 2018–present Artem Zakharchenko

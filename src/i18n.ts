@@ -48,7 +48,7 @@ i18next
 		},
 		returnEmptyString: true,
 		returnNull: false,
-		compatibilityJSON: 'v3',
+		compatibilityJSON: 'v4',
 		fallbackLng: 'en',
 		debug: false,
 		interpolation: {

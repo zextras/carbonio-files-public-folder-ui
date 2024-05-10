@@ -146,6 +146,7 @@ function customRender(
 				resources: { en: {} },
 				lng: 'en',
 				fallbackLng: 'en',
+				compatibilityJSON: 'v4',
 				interpolation: {
 					escapeValue: false
 				}
