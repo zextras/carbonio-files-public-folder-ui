@@ -6,7 +6,7 @@
 
 /// <reference types="vitest" />
 import react from '@vitejs/plugin-react-swc';
-import { defineConfig, loadEnv, splitVendorChunkPlugin, UserConfig } from 'vite';
+import { defineConfig, loadEnv, UserConfig } from 'vite';
 import { viteStaticCopy } from 'vite-plugin-static-copy';
 
 import pkg from './package.json';
@@ -32,7 +32,6 @@ export default defineConfig(({ mode }) => {
 	return {
 		plugins: [
 			react(),
-			splitVendorChunkPlugin(),
 			viteStaticCopy({
 				targets: [
 					{
@@ -74,7 +73,17 @@ export default defineConfig(({ mode }) => {
 		],
 		base: basePath,
 		build: {
-			copyPublicDir: mode !== 'production' && (env.HOST ?? '').length === 0
+			copyPublicDir: mode !== 'production' && (env.HOST ?? '').length === 0,
+			rollupOptions: {
+				output: {
+					manualChunks: (id): string | undefined => {
+						if (id.includes('node_modules')) {
+							return 'vendor';
+						}
+						return undefined;
+					}
+				}
+			}
 		},
 		preview: {
 			proxy
@@ -104,10 +113,12 @@ export default defineConfig(({ mode }) => {
 					'!src/**/type*' // exclude type utils
 				],
 				reporter: ['text', 'cobertura', 'lcov'],
-				branches: 75,
-				functions: 75,
-				lines: 75,
-				statements: 75
+				thresholds: {
+					branches: 75,
+					functions: 75,
+					lines: 75,
+					statements: 75
+				}
 			}
 		}
 	} satisfies UserConfig;

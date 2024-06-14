@@ -35,19 +35,17 @@ export function createFindNodesHandler(
 			variableValues: variables,
 			typeResolver: resolveByTypename,
 			rootValue: {
-				findNodes(): GQLFindNodesQuery['findNodes'] {
-					return {
-						nodes: match?.nodes ?? [],
-						page_token: match?.nextPageToken ?? null,
-						__typename: 'NodePage'
-					};
-				}
+				findNodes: (): GQLFindNodesQuery['findNodes'] => ({
+					nodes: match?.nodes ?? [],
+					page_token: match?.nextPageToken ?? null,
+					__typename: 'NodePage'
+				})
 			}
 		});
 
 		if (match?.delayAmount) {
 			await delay(match.delayAmount);
 		}
-		return HttpResponse.json({ errors, data: data || undefined });
+		return HttpResponse.json({ errors, data: { ...data, __typename: 'Query' } });
 	});
 }

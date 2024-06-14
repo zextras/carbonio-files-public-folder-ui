@@ -16,6 +16,11 @@ import { client } from './network/client';
 import { ICONS, SELECTORS } from './test/constants';
 import { setup, triggerLoadMore } from './test/utils';
 
+vi.mock('./network/login-config', () => ({
+	loginConfig: (): void => undefined
+}));
+vi.mock('./i18n', () => ({}));
+
 describe('App', () => {
 	const folderId = faker.string.uuid();
 	const folderName = faker.system.fileName({ extensionCount: 0 });
