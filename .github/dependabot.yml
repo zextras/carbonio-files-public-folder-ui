@@ -9,3 +9,25 @@ updates:
     directory: "/" # Location of package manifests
     schedule:
       interval: "monthly"
+    groups:
+      testing-library:
+        patterns:
+          - "@testing-library/*"
+      vitest:
+        patterns:
+          - "vitest"
+          - "@vitest/*"
+      eslint:
+        patterns:
+          - "eslint*"
+      i18next:
+        patterns:
+          - "i18next*"
+          - "react-i18next"
+      graphql-codegen:
+        patterns:
+          - "@graphql-codegen/*"
+      pre-commit:
+        patterns:
+          - "@commitlint/*"
+          - "husky"
