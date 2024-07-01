@@ -21,7 +21,7 @@
   },
   "dependencies": {
     "@zextras/carbonio-design-system": "github:zextras/carbonio-design-system#react-18",
-    "graphql": "^16.8.1",
+    "graphql": "^16.9.0",
     "i18next": "^23.10.1",
     "i18next-browser-languagedetector": "^7.2.1",
     "i18next-http-backend": "^2.5.2",
