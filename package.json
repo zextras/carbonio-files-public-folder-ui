@@ -21,12 +21,12 @@
   "dependencies": {
     "@zextras/carbonio-design-system": "^7.0.0-next-24-12-0.4",
     "graphql": "^16.9.0",
-    "i18next": "^23.11.5",
+    "i18next": "^23.12.2",
     "i18next-browser-languagedetector": "^8.0.0",
     "i18next-http-backend": "^2.5.2",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
-    "react-i18next": "^14.1.2",
+    "react-i18next": "^15.0.0",
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
