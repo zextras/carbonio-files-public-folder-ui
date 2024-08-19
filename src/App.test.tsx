@@ -19,7 +19,6 @@ import { setup, triggerLoadMore } from './test/utils';
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
 }));
-vi.mock(import('./i18n'));
 
 describe('App', () => {
 	const folderId = faker.string.uuid();
@@ -126,7 +125,9 @@ describe('App', () => {
 		setup(<App />);
 		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		// execute request
-		await vi.advanceTimersToNextTimerAsync();
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
 		// run delay and wait response
 		await act(async () => {
 			await vi.advanceTimersByTimeAsync(1000);

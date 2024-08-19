@@ -50,3 +50,5 @@ afterEach(() => {
 afterAll(() => {
 	server.close();
 });
+
+vi.mock(import('../i18n'));

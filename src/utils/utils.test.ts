@@ -3,11 +3,9 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { describe, expect, it, vi } from 'vitest';
+import { describe, expect, it } from 'vitest';
 
 import { humanFileSize } from './utils';
-
-vi.mock(import('../i18n'));
 
 describe('utils', () => {
 	describe('humanFileSize function', () => {
