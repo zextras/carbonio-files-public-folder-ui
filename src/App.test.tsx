@@ -19,7 +19,7 @@ import { setup, triggerLoadMore } from './test/utils';
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
 }));
-vi.mock('./i18n', () => ({}));
+vi.mock(import('./i18n'));
 
 describe('App', () => {
 	const folderId = faker.string.uuid();

@@ -59,3 +59,5 @@ i18next
 			console.warn(`Missing translation with keys ${key}`);
 		}
 	});
+
+export default i18next;

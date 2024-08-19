@@ -3,9 +3,11 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { describe, expect, it } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { humanFileSize } from './utils';
+
+vi.mock(import('../i18n'));
 
 describe('utils', () => {
 	describe('humanFileSize function', () => {
@@ -14,7 +16,7 @@ describe('utils', () => {
 			expect(result).toBe('0 B');
 		});
 
-		it('should return x if input is max safe integer', () => {
+		it('should return 8.00 PB if input is max safe integer', () => {
 			const result = humanFileSize(Number.MAX_SAFE_INTEGER);
 			expect(result).toBe('8.00 PB');
 		});
