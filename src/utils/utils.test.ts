@@ -14,7 +14,7 @@ describe('utils', () => {
 			expect(result).toBe('0 B');
 		});
 
-		it('should return x if input is max safe integer', () => {
+		it('should return 8.00 PB if input is max safe integer', () => {
 			const result = humanFileSize(Number.MAX_SAFE_INTEGER);
 			expect(result).toBe('8.00 PB');
 		});

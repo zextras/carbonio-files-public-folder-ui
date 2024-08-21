@@ -91,7 +91,9 @@ describe('NodeList', () => {
 		expect(screen.queryByText('There are no items in this folder.')).not.toBeInTheDocument();
 		expect(screen.queryByTestId(ICONS.emptyFolder)).not.toBeInTheDocument();
 		// execute request
-		await vi.advanceTimersToNextTimerAsync();
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
 		// run delay and wait response
 		await act(async () => {
 			await vi.advanceTimersByTimeAsync(1000);

@@ -42,7 +42,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo }) => 
 					downloadNode(node.id);
 					createSnackbar({
 						key: new Date().toLocaleString(),
-						type: 'info',
+						severity: 'info',
 						label: t('snackbar.download.start', 'Your download will start soon'),
 						replace: true,
 						hideButton: true
