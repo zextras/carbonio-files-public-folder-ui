@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.6](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.5...v0.0.6) (2024-08-21)
+
+
+### Bug Fixes
+
+* translate unit measures for size ([24f5080](https://github.com/zextras/carbonio-files-public-folder-ui/commit/24f5080eab1112b04509a117a7ddbc81c8f6ee26)), closes [#92](https://github.com/zextras/carbonio-files-public-folder-ui/issues/92)
+
 ### [0.0.5](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.4...v0.0.5) (2024-06-14)
 
 ### [0.0.4](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.3...v0.0.4) (2024-02-15)
