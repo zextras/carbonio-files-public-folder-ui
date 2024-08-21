@@ -49,18 +49,18 @@ it('should show 25 crumbs when 25 crumbs are provided', () => {
 		</div>
 	);
 	crumbs.forEach(({ label }) => {
-		expect(screen.getByText(label)).toBeVisible();
+		expect(screen.getByText(label as string)).toBeVisible();
 	});
 });
 
 it('should show overlay on hover on clickable item', async () => {
 	const crumbs = crumbsBuilder(2);
 	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
-	await user.hover(screen.getByText(crumbs[0].label));
+	await user.hover(screen.getByText(crumbs[0].label as string));
 	expect(
 		screen
 			.getAllByTestId(SELECTORS.crumb)
-			.find((crumb) => within(crumb).queryByText(crumbs[0].label) !== null)
+			.find((crumb) => within(crumb).queryByText(crumbs[0].label as string) !== null)
 	).toHaveStyle({
 		backgroundColor: COLORS.crumbHover,
 		cursor: 'pointer'
@@ -70,10 +70,10 @@ it('should show overlay on hover on clickable item', async () => {
 it('should not show overlay on hover on last item', async () => {
 	const crumbs = crumbsBuilder(2);
 	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
-	await user.hover(screen.getByText(crumbs[0].label));
+	await user.hover(screen.getByText(crumbs[0].label as string));
 	const lastCrumb = screen
 		.getAllByTestId(SELECTORS.crumb)
-		.find((crumb) => within(crumb).queryByText(crumbs[1].label) !== null);
+		.find((crumb) => within(crumb).queryByText(crumbs[1].label as string) !== null);
 	expect(lastCrumb).not.toHaveStyle({
 		backgroundColor: COLORS.crumbHover
 	});
