@@ -52,7 +52,7 @@
     "eslint-plugin-notice": "^1.0.0",
     "eslint-plugin-react-refresh": "^0.4.11",
     "husky": "^9.1.5",
-    "jsdom": "^24.1.1",
+    "jsdom": "^25.0.0",
     "msw": "^2.3.5",
     "typescript": "~5.5.4",
     "vite": "^5.4.2",
