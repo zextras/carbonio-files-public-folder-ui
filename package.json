@@ -30,8 +30,8 @@
     "styled-components": "^5.3.11"
   },
   "devDependencies": {
-    "@commitlint/cli": "^19.4.0",
-    "@commitlint/config-conventional": "^19.2.2",
+    "@commitlint/cli": "^19.4.1",
+    "@commitlint/config-conventional": "^19.4.1",
     "@commitlint/types": "^19.0.3",
     "@faker-js/faker": "^8.4.1",
     "@graphql-codegen/add": "^5.0.3",
