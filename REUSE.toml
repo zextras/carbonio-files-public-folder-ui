@@ -1,0 +1,33 @@
+version = 1
+SPDX-PackageName = "carbonio-public-folder-ui"
+SPDX-PackageSupplier = "<>"
+
+[[annotations]]
+path = ["**.json", "package/**"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Zextras <https://www.zextras.com>"
+SPDX-License-Identifier = "AGPL-3.0-only"
+
+[[annotations]]
+path = ["THIRDPARTIES", ".nvmrc", ".husky/**", ".github/**", "CHANGELOG.md"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Zextras <https://www.zextras.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = ["REUSE.toml"]
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2024 Zextras <https://www.zextras.com>"
+SPDX-License-Identifier = "CC0-1.0"
+
+[[annotations]]
+path = "src/assets/**"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2023 Zextras <https://www.zextras.com>"
+SPDX-License-Identifier = "CC-BY-NC-SA-4.0"
+
+[[annotations]]
+path = "public/mockServiceWorker.js"
+precedence = "aggregate"
+SPDX-FileCopyrightText = "2018–present Artem Zakharchenko"
+SPDX-License-Identifier = "MIT"
