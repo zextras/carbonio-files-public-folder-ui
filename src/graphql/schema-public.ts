@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+ * SPDX-FileCopyrightText: 2024 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
@@ -485,55 +485,66 @@ export const schema = {
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 663, end: 673 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 663, end: 675 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 675, end: 681 } },
-								loc: { start: 675, end: 681 }
+								name: { kind: 'Name', value: 'String', loc: { start: 677, end: 683 } },
+								loc: { start: 677, end: 683 }
 							},
 							directives: [],
-							loc: { start: 663, end: 681 }
+							loc: { start: 663, end: 683 }
+						},
+						{
+							kind: 'InputValueDefinition',
+							name: { kind: 'Name', value: 'page_token', loc: { start: 685, end: 695 } },
+							type: {
+								kind: 'NamedType',
+								name: { kind: 'Name', value: 'String', loc: { start: 697, end: 703 } },
+								loc: { start: 697, end: 703 }
+							},
+							directives: [],
+							loc: { start: 685, end: 703 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'NodePage', loc: { start: 684, end: 692 } },
-						loc: { start: 684, end: 692 }
+						name: { kind: 'Name', value: 'NodePage', loc: { start: 706, end: 714 } },
+						loc: { start: 706, end: 714 }
 					},
 					directives: [],
-					loc: { start: 625, end: 692 }
+					loc: { start: 625, end: 714 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 695, end: 708 } },
+					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 717, end: 730 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 709, end: 721 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 731, end: 743 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 723, end: 729 } },
-									loc: { start: 723, end: 729 }
+									name: { kind: 'Name', value: 'String', loc: { start: 745, end: 751 } },
+									loc: { start: 745, end: 751 }
 								},
-								loc: { start: 723, end: 730 }
+								loc: { start: 745, end: 752 }
 							},
 							directives: [],
-							loc: { start: 709, end: 730 }
+							loc: { start: 731, end: 752 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 733, end: 737 } },
-						loc: { start: 733, end: 737 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 755, end: 759 } },
+						loc: { start: 755, end: 759 }
 					},
 					directives: [],
-					loc: { start: 695, end: 737 }
+					loc: { start: 717, end: 759 }
 				}
 			],
-			loc: { start: 610, end: 739 }
+			loc: { start: 610, end: 761 }
 		}
 	],
-	loc: { start: 0, end: 739 }
+	loc: { start: 0, end: 761 }
 } as unknown as DocumentNode;

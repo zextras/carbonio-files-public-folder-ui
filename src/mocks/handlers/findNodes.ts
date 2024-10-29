@@ -4,6 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { graphql as executeGraphql } from 'graphql';
+import { GraphQLError } from 'graphql/error';
 import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
@@ -23,7 +24,14 @@ export function createFindNodesHandler(
 	}>
 ): GraphQLHandler {
 	return graphql.query(FindNodesDocument, async ({ query, variables }) => {
-		const { folder_id: folderId, page_token: pageToken } = variables;
+		const { folder_id: folderId, page_token: pageToken, node_link_id: nodeLinkId } = variables;
+
+		if (!nodeLinkId) {
+			return HttpResponse.json(
+				{ errors: [new GraphQLError('invalid node_link_id')] },
+				{ status: 404 }
+			);
+		}
 
 		const match = args.find(
 			(value) => value.variables.folder_id === folderId && value.variables.page_token === pageToken

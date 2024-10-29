@@ -32,24 +32,24 @@ describe('NodeList', () => {
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
+					variables: { folder_id: folderId, node_link_id: 'hash' }
 				},
 				{
 					nodes: secondPageNodes,
 					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
+					variables: { folder_id: folderId, page_token: 'token1', node_link_id: 'hash' }
 				},
 				{
 					nodes: navigableFolderNodes,
 					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
+					variables: { folder_id: navigableFolder.id, node_link_id: 'hash' }
 				}
 			)
 		);
 	});
 
 	it('should show nodes of specific folderId', async () => {
-		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} nodeLinkId={'hash'} />);
 		await screen.findByText(firstPageNodes[0].name);
 		firstPageNodes.forEach((node) => {
 			expect(screen.getByText(node.name)).toBeVisible();
@@ -61,16 +61,16 @@ describe('NodeList', () => {
 			createFindNodesHandler({
 				nodes: [],
 				nextPageToken: null,
-				variables: { folder_id: folderId }
+				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
 		);
-		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} nodeLinkId={'hash'} />);
 		expect(await screen.findByText('There are no items in this folder.')).toBeVisible();
 		expect(await screen.findByTestId(ICONS.emptyFolder)).toBeVisible();
 	});
 
 	it('should load the second page only when bottom element becomes visible', async () => {
-		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} nodeLinkId={'hash'} />);
 		await screen.findByText(firstPageNodes[0].name);
 		expect(screen.queryByText(secondPageNodes[0].name)).not.toBeInTheDocument();
 		triggerLoadMore();
@@ -82,11 +82,11 @@ describe('NodeList', () => {
 			createFindNodesHandler({
 				nodes: firstPageNodes,
 				nextPageToken: null,
-				variables: { folder_id: folderId },
+				variables: { folder_id: folderId, node_link_id: 'hash' },
 				delayAmount: 1000
 			})
 		);
-		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} />);
+		setup(<NodeList currentId={folderId} navigateTo={vi.fn()} nodeLinkId={'hash'} />);
 		expect(screen.getByTestId(ICONS.contentLoader)).toBeVisible();
 		expect(screen.queryByText('There are no items in this folder.')).not.toBeInTheDocument();
 		expect(screen.queryByTestId(ICONS.emptyFolder)).not.toBeInTheDocument();
@@ -104,7 +104,9 @@ describe('NodeList', () => {
 
 	it('should do nothing when a file is double clicked', async () => {
 		const navigateToMock = vi.fn();
-		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		const { user } = setup(
+			<NodeList currentId={folderId} navigateTo={navigateToMock} nodeLinkId={'hash'} />
+		);
 		const fileElement = await screen.findByText(file.name);
 		expect(screen.getByText(firstPageNodes[1].name)).toBeVisible();
 		await user.dblClick(fileElement);
@@ -115,11 +117,11 @@ describe('NodeList', () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: [file],
-				variables: { folder_id: folderId }
+				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
 		);
 		const navigateToMock = vi.fn();
-		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} nodeLinkId={'hash'} />);
 		expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
 	});
 
@@ -128,11 +130,11 @@ describe('NodeList', () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: [folder],
-				variables: { folder_id: folderId }
+				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
 		);
 		const navigateToMock = vi.fn();
-		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} nodeLinkId={'hash'} />);
 		await screen.findByText(folder.name);
 		expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
 	});
@@ -141,11 +143,13 @@ describe('NodeList', () => {
 		server.use(
 			createFindNodesHandler({
 				nodes: [file],
-				variables: { folder_id: folderId }
+				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
 		);
 		const navigateToMock = vi.fn();
-		const { user } = setup(<NodeList currentId={folderId} navigateTo={navigateToMock} />);
+		const { user } = setup(
+			<NodeList currentId={folderId} navigateTo={navigateToMock} nodeLinkId={'hash'} />
+		);
 		await user.click(await screen.findByRoleWithIcon('button', { icon: ICONS.download }));
 		expect(screen.getByText('Your download will start soon')).toBeVisible();
 	});

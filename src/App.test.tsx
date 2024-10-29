@@ -34,7 +34,7 @@ describe('App', () => {
 
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
-		const url = new URL(folderId, window.location.href);
+		const url = new URL(`${folderId}/linkHash`, window.location.href);
 
 		Object.defineProperty(window, 'location', {
 			value: url
@@ -49,17 +49,17 @@ describe('App', () => {
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
+					variables: { folder_id: folderId, node_link_id: 'linkHash' }
 				},
 				{
 					nodes: secondPageNodes,
 					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
+					variables: { folder_id: folderId, page_token: 'token1', node_link_id: 'linkHas' }
 				},
 				{
 					nodes: navigableFolderNodes,
 					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
+					variables: { folder_id: navigableFolder.id, node_link_id: 'linkHash' }
 				}
 			)
 		);
@@ -169,18 +169,17 @@ describe('App', () => {
 
 	it('should not call client findNode when navigate again in an already navigated folder', async () => {
 		const findNodesQuerySpy = vi.spyOn(client, 'findNodesQuery');
-
 		const { user } = setup(<App />);
 		const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 		const navigableFolderElement = await screen.findByText(navigableFolder.name);
 		expect(findNodesQuerySpy).toBeCalledTimes(1);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash');
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);
@@ -200,13 +199,13 @@ describe('App', () => {
 		await screen.findByText(secondPageNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'token1');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash', 'token1');
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(3);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);

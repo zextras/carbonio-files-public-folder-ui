@@ -10,19 +10,22 @@ import { GraphQLError } from 'graphql/error';
 import { Node } from '../model/Node';
 import { client } from '../network/client';
 
-type UseGetPublicNodeRetunType = {
+type UseGetPublicNodeReturnType = {
 	publicNode: Pick<Node, 'id' | 'name'> | null | undefined;
 	errors: readonly GraphQLError[] | undefined;
+	nodeLinkId: string;
 };
 
-export const useGetPublicNode = (): UseGetPublicNodeRetunType => {
+export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 	const [publicNode, setPublicNode] = useState<
-		UseGetPublicNodeRetunType['publicNode'] | undefined
+		UseGetPublicNodeReturnType['publicNode'] | undefined
 	>();
 	const [errors, setErrors] = useState<readonly GraphQLError[] | undefined>(undefined);
 
+	const nodeLinkId = window.location.pathname.split('/').slice(-1)[0];
+
 	useEffect(() => {
-		client.getPublicNodeQuery(window.location.pathname.split('/').slice(-1)[0]).then((result) => {
+		client.getPublicNodeQuery(nodeLinkId).then((result) => {
 			if (result.publicNode) {
 				setPublicNode(result.publicNode);
 				setErrors(undefined);
@@ -31,6 +34,7 @@ export const useGetPublicNode = (): UseGetPublicNodeRetunType => {
 				setErrors(result.errors);
 			}
 		});
-	}, []);
-	return { publicNode, errors };
+	}, [nodeLinkId]);
+
+	return { publicNode, errors, nodeLinkId };
 };
