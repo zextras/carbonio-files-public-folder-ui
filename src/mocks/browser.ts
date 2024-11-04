@@ -24,12 +24,12 @@ export const worker = setupWorker(
 		{
 			nodes: firstPageNodes,
 			nextPageToken: 'token1',
-			variables: { folder_id: folderId }
+			variables: { folder_id: folderId, node_link_id: 'hash' }
 		},
 		{
 			nodes: secondPageNodes,
 			nextPageToken: null,
-			variables: { folder_id: folderId, page_token: 'token1' }
+			variables: { folder_id: folderId, page_token: 'token1', node_link_id: 'hash' }
 		}
 	)
 );

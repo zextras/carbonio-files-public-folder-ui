@@ -51,6 +51,20 @@ module.exports = {
       rules: {
         'import/no-extraneous-dependencies': 'off',
       }
+    },
+    {
+      files: ['*.graphql'],
+      parser: '@graphql-eslint/eslint-plugin',
+      plugins: ['@graphql-eslint'],
+      rules: {
+        'prettier/prettier': 'error',
+        '@graphql-eslint/known-type-names': 'error',
+        'notice/notice': 'off'
+      },
+      parserOptions: {
+        operations: './src/graphql/**/*.graphql',
+        schema: './src/graphql/schema-public.graphql'
+      }
     }
   ]
 }

@@ -24,7 +24,7 @@ const App = (): React.JSX.Element => {
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const { publicNode, errors } = useGetPublicNode();
+	const { publicNode, errors, nodeLinkId } = useGetPublicNode();
 	useEffect(() => {
 		if (publicNode) {
 			setCurrentLocation(publicNode);
@@ -37,7 +37,11 @@ const App = (): React.JSX.Element => {
 				<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 					<HeaderBreadcrumbs crumbs={crumbs} />
 					{currentLocation !== undefined && (
-						<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
+						<NodeList
+							navigateTo={setCurrentLocation}
+							currentId={currentLocation.id}
+							nodeLinkId={nodeLinkId}
+						/>
 					)}
 					{currentLocation === undefined && errors === undefined && (
 						<Container>

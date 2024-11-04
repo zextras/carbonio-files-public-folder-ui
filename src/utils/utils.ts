@@ -35,9 +35,9 @@ export function preventTextSelectionOnDoubleClick(e: MouseEvent | React.MouseEve
 	}
 }
 
-export const downloadNode = (id: string): void => {
+export const downloadNode = (id: string, nodeLinkId: string): void => {
 	if (id) {
-		const url = `${API_DOWNLOAD_ENDPOINT}/${encodeURIComponent(id)}`;
+		const url = `${API_DOWNLOAD_ENDPOINT}/${encodeURIComponent(id)}?node_link_id=${encodeURIComponent(nodeLinkId)}`;
 		const a = document.createElement('a');
 		if (a) {
 			a.download = url;

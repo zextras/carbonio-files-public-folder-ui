@@ -48,10 +48,12 @@ describe('handlers', () => {
 	});
 
 	it('findNodes handler', async () => {
-		server.use(createFindNodesHandler({ nodes: [], variables: { folder_id: '' } }));
+		server.use(
+			createFindNodesHandler({ nodes: [], variables: { folder_id: '', node_link_id: '' } })
+		);
 
 		const body: Body<GQLFindNodesQueryVariables> = {
-			variables: { folder_id: '' },
+			variables: { folder_id: '', node_link_id: 'hash' },
 			query: print(FindNodesDocument)
 		};
 
