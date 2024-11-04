@@ -96,7 +96,7 @@ export type GQLFindNodesQueryVariables = Exact<{
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
-	node_link_id: Scalars['String']['input'];
+	node_link_id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GQLFindNodesQuery = {
@@ -164,10 +164,7 @@ export const FindNodesDocument = {
 				{
 					kind: 'VariableDefinition',
 					variable: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } },
-					type: {
-						kind: 'NonNullType',
-						type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
-					}
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 				}
 			],
 			selectionSet: {
