@@ -13,9 +13,9 @@ import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
 import { client } from './network/client';
-import { ICONS, SELECTORS } from './test/constants';
+import { ICONS, SELECTORS, TIMERS } from './test/constants';
 import { setup, triggerLoadMore } from './test/utils';
-import { error } from './utils/constants';
+import { ERROR } from './utils/constants';
 
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
@@ -142,7 +142,7 @@ describe('App', () => {
 		server.use(
 			createGetPublicNodeHandler(null, [
 				{
-					extensions: { errorCode: error.accessCodeRequired }
+					extensions: { errorCode: ERROR.accessCodeRequired }
 				}
 			])
 		);
@@ -153,7 +153,7 @@ describe('App', () => {
 		});
 
 		await act(async () => {
-			await vi.advanceTimersByTimeAsync(1);
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
 		});
 		expect(await screen.findByText('The link is secured by an access code')).toBeVisible();
 	});
@@ -162,7 +162,7 @@ describe('App', () => {
 		server.use(
 			createGetPublicNodeHandler(null, [
 				{
-					extensions: { errorCode: error.accessCodeRequired }
+					extensions: { errorCode: ERROR.accessCodeRequired }
 				}
 			])
 		);
@@ -173,21 +173,21 @@ describe('App', () => {
 		});
 
 		await act(async () => {
-			await vi.advanceTimersByTimeAsync(1);
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
 		});
 		await screen.findByText('The link is secured by an access code');
 
 		server.use(
 			createGetPublicNodeHandler(null, [
 				{
-					extensions: { errorCode: error.wrongAccessCode }
+					extensions: { errorCode: ERROR.wrongAccessCode }
 				}
 			])
 		);
 
 		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
 		await user.type(accessCodeInput, 'wrong-access-code');
-		await user.click(screen.getByText('Done'));
+		await user.click(screen.getByRole('button', { name: 'Done' }));
 		expect(await screen.findByText('Wrong access code, try again')).toBeVisible();
 	});
 
@@ -195,7 +195,7 @@ describe('App', () => {
 		server.use(
 			createGetPublicNodeHandler(null, [
 				{
-					extensions: { errorCode: error.linkNotFound }
+					extensions: { errorCode: ERROR.linkNotFound }
 				}
 			])
 		);

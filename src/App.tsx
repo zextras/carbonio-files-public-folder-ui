@@ -6,6 +6,7 @@
 import React, { useEffect, useState } from 'react';
 
 import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
+import { GraphQLError } from 'graphql/error';
 
 import { AccessCodeModal } from './components/AccessCodeModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
@@ -17,21 +18,19 @@ import { useGetPublicNode } from './hooks/useGetPublicNode';
 import './i18n';
 import './network/login-config';
 import { Location } from './model/Node';
+import { ERROR } from './utils/constants';
+
+type ErrorCode = (typeof ERROR)[keyof typeof ERROR];
+function containsError(errors: readonly GraphQLError[] | undefined, errorCode: ErrorCode): boolean {
+	return errors?.some((err) => err.extensions?.errorCode === errorCode) || false;
+}
 
 const App = (): React.JSX.Element => {
 	const [currentLocation, setCurrentLocation] = useState<Location | undefined>();
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const {
-		publicNode,
-		errors,
-		nodeLinkId,
-		accessCodeRequired,
-		wrongAccessCode,
-		linkNotFound,
-		queryWithAccessCode
-	} = useGetPublicNode();
+	const { publicNode, errors, nodeLinkId, queryWithAccessCode } = useGetPublicNode();
 
 	useEffect(() => {
 		if (publicNode) {
@@ -56,13 +55,17 @@ const App = (): React.JSX.Element => {
 							<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
 						</Container>
 					)}
-					{currentLocation === undefined && linkNotFound && <LinkNotFoundContainer />}
-					{currentLocation === undefined && accessCodeRequired && (
-						<AccessCodeModal
-							queryWithAccessCode={queryWithAccessCode}
-							wrongAccessCode={wrongAccessCode}
-						/>
+					{currentLocation === undefined && containsError(errors, ERROR.linkNotFound) && (
+						<LinkNotFoundContainer />
 					)}
+					{currentLocation === undefined &&
+						(containsError(errors, ERROR.accessCodeRequired) ||
+							containsError(errors, ERROR.wrongAccessCode)) && (
+							<AccessCodeModal
+								queryWithAccessCode={queryWithAccessCode}
+								wrongAccessCode={containsError(errors, ERROR.wrongAccessCode)}
+							/>
+						)}
 				</Container>
 			</SnackbarManager>
 		</ThemeProvider>

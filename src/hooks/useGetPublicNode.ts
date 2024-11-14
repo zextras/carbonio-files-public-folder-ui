@@ -9,15 +9,11 @@ import { GraphQLError } from 'graphql/error';
 
 import { Node } from '../model/Node';
 import { client } from '../network/client';
-import { error } from '../utils/constants';
 
 type UseGetPublicNodeReturnType = {
 	publicNode: Pick<Node, 'id' | 'name'> | null | undefined;
 	errors: readonly GraphQLError[] | undefined;
 	nodeLinkId: string;
-	accessCodeRequired: boolean;
-	wrongAccessCode: boolean;
-	linkNotFound: boolean;
 	queryWithAccessCode: (accessCode: string) => void;
 };
 
@@ -26,9 +22,6 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 		UseGetPublicNodeReturnType['publicNode'] | undefined
 	>();
 	const [errors, setErrors] = useState<readonly GraphQLError[] | undefined>(undefined);
-	const [accessCodeRequired, setAccessCodeRequired] = useState(false);
-	const [wrongAccessCode, setWrongAccessCode] = useState(false);
-	const [linkNotFound, setLinkNotFound] = useState(false);
 
 	const nodeLinkId = window.location.pathname.split('/').slice(-1)[0];
 
@@ -51,24 +44,6 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 		getPublicNodeQuery();
 	}, [getPublicNodeQuery]);
 
-	useEffect(() => {
-		if (errors?.some((err) => err.extensions?.errorCode === error.accessCodeRequired)) {
-			setAccessCodeRequired(true);
-		}
-		if (errors?.some((err) => err.extensions?.errorCode === error.wrongAccessCode)) {
-			setAccessCodeRequired(true);
-			setWrongAccessCode(true);
-		}
-		if (errors?.some((err) => err.extensions?.errorCode === error.linkNotFound)) {
-			setLinkNotFound(true);
-		}
-		if (errors?.length === 0) {
-			setAccessCodeRequired(false);
-			setWrongAccessCode(false);
-			setLinkNotFound(false);
-		}
-	}, [errors]);
-
 	const queryWithAccessCode = useCallback(
 		(accessCode: string) => {
 			getPublicNodeQuery(accessCode);
@@ -80,9 +55,6 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 		publicNode,
 		errors,
 		nodeLinkId,
-		accessCodeRequired,
-		wrongAccessCode,
-		linkNotFound,
 		queryWithAccessCode
 	};
 };
