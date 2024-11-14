@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
 import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
 import { GraphQLError } from 'graphql/error';
@@ -38,34 +38,40 @@ const App = (): React.JSX.Element => {
 		}
 	}, [publicNode]);
 
+	const content = useMemo(() => {
+		if (currentLocation !== undefined) {
+			return (
+				<NodeList
+					navigateTo={setCurrentLocation}
+					currentId={currentLocation.id}
+					nodeLinkId={nodeLinkId}
+				/>
+			);
+		}
+		if (errors === undefined) {
+			return <LoadingIcon icon={'LoaderOutline'} size={'3rem'} />;
+		}
+		if (
+			containsError(errors, ERROR.accessCodeRequired) ||
+			containsError(errors, ERROR.wrongAccessCode)
+		) {
+			return (
+				<AccessCodeModal
+					queryWithAccessCode={queryWithAccessCode}
+					wrongAccessCode={containsError(errors, ERROR.wrongAccessCode)}
+				/>
+			);
+		}
+		// case Error.linkNotFound and default
+		return <LinkNotFoundContainer />;
+	}, [currentLocation, errors, nodeLinkId, queryWithAccessCode]);
+
 	return (
 		<ThemeProvider>
 			<SnackbarManager>
 				<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 					<HeaderBreadcrumbs crumbs={crumbs} />
-					{currentLocation !== undefined && (
-						<NodeList
-							navigateTo={setCurrentLocation}
-							currentId={currentLocation.id}
-							nodeLinkId={nodeLinkId}
-						/>
-					)}
-					{currentLocation === undefined && errors === undefined && (
-						<Container>
-							<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
-						</Container>
-					)}
-					{currentLocation === undefined && containsError(errors, ERROR.linkNotFound) && (
-						<LinkNotFoundContainer />
-					)}
-					{currentLocation === undefined &&
-						(containsError(errors, ERROR.accessCodeRequired) ||
-							containsError(errors, ERROR.wrongAccessCode)) && (
-							<AccessCodeModal
-								queryWithAccessCode={queryWithAccessCode}
-								wrongAccessCode={containsError(errors, ERROR.wrongAccessCode)}
-							/>
-						)}
+					{content}
 				</Container>
 			</SnackbarManager>
 		</ThemeProvider>

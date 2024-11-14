@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useCallback, useRef, useState } from 'react';
+import React, { useCallback, useState } from 'react';
 
 import { Button, Container, Input, InputProps, Modal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
@@ -19,6 +19,7 @@ export const AccessCodeModal = ({
 }: AccessCodeModalProps): React.JSX.Element => {
 	const [t] = useTranslation();
 
+	const [accessCode, setAccessCode] = useState('');
 	const [isAccessCodeShown, setIsAccessCodeShown] = useState(false);
 
 	const toggleShowAccessCode = useCallback(() => {
@@ -37,11 +38,14 @@ export const AccessCodeModal = ({
 		),
 		[isAccessCodeShown, toggleShowAccessCode]
 	);
-	const inputRef = useRef<HTMLInputElement>(null);
+
+	const inputOnChange = useCallback<NonNullable<InputProps['onChange']>>((e) => {
+		setAccessCode(e.target.value);
+	}, []);
 
 	const onConfirm = useCallback(() => {
-		queryWithAccessCode(inputRef.current?.value || '');
-	}, [queryWithAccessCode]);
+		queryWithAccessCode(accessCode);
+	}, [accessCode, queryWithAccessCode]);
 
 	return (
 		<Modal
@@ -53,6 +57,7 @@ export const AccessCodeModal = ({
 			open
 			confirmLabel={t('carbonio-public-folder-ui.accessCode.modal.button.confirm', 'Done')}
 			onConfirm={onConfirm}
+			confirmDisabled={accessCode.length === 0}
 		>
 			<Container gap={'1rem'} crossAlignment={'flex-start'}>
 				<Text>
@@ -62,9 +67,10 @@ export const AccessCodeModal = ({
 					)}
 				</Text>
 				<Input
-					inputRef={inputRef}
 					type={isAccessCodeShown ? 'text' : 'password'}
 					label={t('publicLink.accessCode.input.label', 'Access code')}
+					value={accessCode}
+					onChange={inputOnChange}
 					CustomIcon={CustomElement}
 					hasError={wrongAccessCode}
 					description={

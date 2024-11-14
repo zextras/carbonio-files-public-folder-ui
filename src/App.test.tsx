@@ -156,6 +156,7 @@ describe('App', () => {
 			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
 		});
 		expect(await screen.findByText('The link is secured by an access code')).toBeVisible();
+		expect(screen.getByTestId('modal')).toBeVisible();
 	});
 
 	it('should display an error message when the access code is wrong', async () => {
