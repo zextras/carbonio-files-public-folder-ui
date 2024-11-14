@@ -50,15 +50,18 @@ export const AccessCodeModal = ({
 	return (
 		<Modal
 			showCloseIcon={false}
-			title={t('publicLink.accessCode.title', 'The link is secured by an access code')}
+			title={t(
+				'carbonio-public-folder-ui.accessCode.modal.title',
+				'The link is secured by an access code'
+			)}
 			open
-			confirmLabel={t('publicLink.accessCode.confirm', 'Done')}
+			confirmLabel={t('carbonio-public-folder-ui.accessCode.modal.button.confirm', 'Done')}
 			onConfirm={onConfirm}
 		>
 			<Container gap={'1rem'} crossAlignment={'flex-start'}>
 				<Text>
 					{t(
-						'publicLink.accessCode.description',
+						'carbonio-public-folder-ui.accessCode.modal.description',
 						'Please, insert the access code to view the folder'
 					)}
 				</Text>
@@ -71,7 +74,10 @@ export const AccessCodeModal = ({
 					hasError={wrongAccessCode}
 					description={
 						wrongAccessCode
-							? t('publicLink.accessCode.wrong', 'Wrong access code, try again')
+							? t(
+									'carbonio-public-folder-ui.accessCode.modal.wrongAccessCode',
+									'Wrong access code, try again'
+								)
 							: undefined
 					}
 				/>
