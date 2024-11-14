@@ -5,6 +5,7 @@
  */
 import { faker } from '@faker-js/faker';
 import { graphql as executeGraphql } from 'graphql';
+import { GraphQLError } from 'graphql/error';
 import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
@@ -17,7 +18,7 @@ export function createGetPublicNodeHandler(
 		Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>,
 		'__typename'
 	> | null,
-	errors?: string[],
+	errors?: Partial<GraphQLError>[],
 	handlerOptions?: { delay?: Parameters<typeof delay>[0] }
 ): GraphQLHandler {
 	return graphql.query(GetPublicNodeDocument, async ({ query, variables }) => {

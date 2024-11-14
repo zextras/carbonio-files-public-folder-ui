@@ -15,6 +15,7 @@ import { server } from './mocks/server';
 import { client } from './network/client';
 import { ICONS, SELECTORS } from './test/constants';
 import { setup, triggerLoadMore } from './test/utils';
+import { error } from './utils/constants';
 
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
@@ -137,8 +138,67 @@ describe('App', () => {
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
+	it('should show access code modal when the request returns access code required error', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: error.accessCodeRequired }
+				}
+			])
+		);
+		setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(1);
+		});
+		expect(await screen.findByText('The link is secured by an access code')).toBeVisible();
+	});
+
+	it('should display an error message when the access code is wrong', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: error.accessCodeRequired }
+				}
+			])
+		);
+		const { user } = setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(1);
+		});
+		await screen.findByText('The link is secured by an access code');
+
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: error.wrongAccessCode }
+				}
+			])
+		);
+
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, 'wrong-access-code');
+		await user.click(screen.getByText('Done'));
+		expect(await screen.findByText('Wrong access code, try again')).toBeVisible();
+	});
+
 	it('should show unavailability page when the request to retrieve the public node returns an error', async () => {
-		server.use(createGetPublicNodeHandler(null));
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: error.linkNotFound }
+				}
+			])
+		);
 		setup(<App />);
 		expect(await screen.findByTestId(ICONS.unavailableFolder)).toBeVisible();
 		expect(screen.getByText('Public access link not available.')).toBeVisible();

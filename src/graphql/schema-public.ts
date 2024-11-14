@@ -520,31 +520,42 @@ export const schema = {
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 731, end: 743 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 731, end: 742 } },
+							type: {
+								kind: 'NamedType',
+								name: { kind: 'Name', value: 'String', loc: { start: 744, end: 750 } },
+								loc: { start: 744, end: 750 }
+							},
+							directives: [],
+							loc: { start: 731, end: 750 }
+						},
+						{
+							kind: 'InputValueDefinition',
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 752, end: 764 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 745, end: 751 } },
-									loc: { start: 745, end: 751 }
+									name: { kind: 'Name', value: 'String', loc: { start: 766, end: 772 } },
+									loc: { start: 766, end: 772 }
 								},
-								loc: { start: 745, end: 752 }
+								loc: { start: 766, end: 773 }
 							},
 							directives: [],
-							loc: { start: 731, end: 752 }
+							loc: { start: 752, end: 773 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 755, end: 759 } },
-						loc: { start: 755, end: 759 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 776, end: 780 } },
+						loc: { start: 776, end: 780 }
 					},
 					directives: [],
-					loc: { start: 717, end: 759 }
+					loc: { start: 717, end: 780 }
 				}
 			],
-			loc: { start: 610, end: 761 }
+			loc: { start: 610, end: 782 }
 		}
 	],
-	loc: { start: 0, end: 761 }
+	loc: { start: 0, end: 782 }
 } as unknown as DocumentNode;

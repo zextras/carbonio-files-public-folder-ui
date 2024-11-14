@@ -89,6 +89,7 @@ export type GQLQueryFindNodesArgs = {
 };
 
 export type GQLQueryGetPublicNodeArgs = {
+	access_code?: InputMaybe<Scalars['String']['input']>;
 	node_link_id: Scalars['String']['input'];
 };
 
@@ -129,6 +130,7 @@ export type GQLFindNodesQuery = {
 
 export type GQLGetPublicNodeQueryVariables = Exact<{
 	node_link_id: Scalars['String']['input'];
+	access_code?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GQLGetPublicNodeQuery = {
@@ -249,6 +251,11 @@ export const GetPublicNodeDocument = {
 						kind: 'NonNullType',
 						type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 					}
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 				}
 			],
 			selectionSet: {
@@ -262,6 +269,11 @@ export const GetPublicNodeDocument = {
 								kind: 'Argument',
 								name: { kind: 'Name', value: 'node_link_id' },
 								value: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'access_code' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } }
 							}
 						],
 						selectionSet: {

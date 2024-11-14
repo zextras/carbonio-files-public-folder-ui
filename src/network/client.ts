@@ -56,13 +56,14 @@ export const client = {
 		};
 	},
 	getPublicNodeQuery: async (
-		nodeLinkId: string
+		nodeLinkId: string,
+		accessCode?: string
 	): Promise<{
 		publicNode: { id: string; name: string } | undefined;
 		errors: readonly GraphQLError[] | undefined;
 	}> => {
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: nodeLinkId },
+			variables: { node_link_id: nodeLinkId, access_code: accessCode },
 			query: print(GetPublicNodeDocument)
 		};
 

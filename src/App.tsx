@@ -5,11 +5,11 @@
  */
 import React, { useEffect, useState } from 'react';
 
-import { Container, SnackbarManager, Text, ThemeProvider } from '@zextras/carbonio-design-system';
-import { useTranslation } from 'react-i18next';
+import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
 
+import { AccessCodeModal } from './components/AccessCodeModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
-import { IconBig } from './components/IconBig';
+import { LinkNotFoundContainer } from './components/LinkNotFoundContainer';
 import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
@@ -19,12 +19,20 @@ import './network/login-config';
 import { Location } from './model/Node';
 
 const App = (): React.JSX.Element => {
-	const [t] = useTranslation();
 	const [currentLocation, setCurrentLocation] = useState<Location | undefined>();
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const { publicNode, errors, nodeLinkId } = useGetPublicNode();
+	const {
+		publicNode,
+		errors,
+		nodeLinkId,
+		accessCodeRequired,
+		wrongAccessCode,
+		linkNotFound,
+		queryWithAccessCode
+	} = useGetPublicNode();
+
 	useEffect(() => {
 		if (publicNode) {
 			setCurrentLocation(publicNode);
@@ -48,30 +56,12 @@ const App = (): React.JSX.Element => {
 							<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
 						</Container>
 					)}
-					{currentLocation === undefined && errors !== undefined && (
-						<Container gap={'0.0625rem'}>
-							<IconBig icon={'EmptyFolder'} color={'gray5'} />
-							<Container height={'auto'} width={'auto'} gap={'0.5rem'}>
-								<Text weight={'bold'} color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.title',
-										'Public access link not available.'
-									)}
-								</Text>
-								<Text color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.description.line1',
-										'This link has been removed or is not valid.'
-									)}
-								</Text>
-								<Text color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.description.line2',
-										'For more information, try to contact the person who shared it with you.'
-									)}
-								</Text>
-							</Container>
-						</Container>
+					{currentLocation === undefined && linkNotFound && <LinkNotFoundContainer />}
+					{currentLocation === undefined && accessCodeRequired && (
+						<AccessCodeModal
+							queryWithAccessCode={queryWithAccessCode}
+							wrongAccessCode={wrongAccessCode}
+						/>
 					)}
 				</Container>
 			</SnackbarManager>
