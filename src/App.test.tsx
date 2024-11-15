@@ -13,8 +13,9 @@ import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
 import { client } from './network/client';
-import { ICONS, SELECTORS } from './test/constants';
+import { ICONS, SELECTORS, TIMERS } from './test/constants';
 import { setup, triggerLoadMore } from './test/utils';
+import { ERROR } from './utils/constants';
 
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
@@ -137,8 +138,68 @@ describe('App', () => {
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
+	it('should show access code modal when the request returns access code required error', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.accessCodeRequired }
+				}
+			])
+		);
+		setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+		expect(await screen.findByText('The link is secured by an access code')).toBeVisible();
+		expect(screen.getByTestId('modal')).toBeVisible();
+	});
+
+	it('should display an error message when the access code is wrong', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.accessCodeRequired }
+				}
+			])
+		);
+		const { user } = setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+		await screen.findByText('The link is secured by an access code');
+
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.wrongAccessCode }
+				}
+			])
+		);
+
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, 'wrong-access-code');
+		await user.click(screen.getByRole('button', { name: 'Done' }));
+		expect(await screen.findByText('Wrong access code, try again')).toBeVisible();
+	});
+
 	it('should show unavailability page when the request to retrieve the public node returns an error', async () => {
-		server.use(createGetPublicNodeHandler(null));
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.linkNotFound }
+				}
+			])
+		);
 		setup(<App />);
 		expect(await screen.findByTestId(ICONS.unavailableFolder)).toBeVisible();
 		expect(screen.getByText('Public access link not available.')).toBeVisible();

@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { useEffect, useState } from 'react';
+import { useCallback, useEffect, useState } from 'react';
 
 import { GraphQLError } from 'graphql/error';
 
@@ -14,6 +14,7 @@ type UseGetPublicNodeReturnType = {
 	publicNode: Pick<Node, 'id' | 'name'> | null | undefined;
 	errors: readonly GraphQLError[] | undefined;
 	nodeLinkId: string;
+	queryWithAccessCode: (accessCode: string) => void;
 };
 
 export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
@@ -24,17 +25,36 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 
 	const nodeLinkId = window.location.pathname.split('/').slice(-1)[0];
 
-	useEffect(() => {
-		client.getPublicNodeQuery(nodeLinkId).then((result) => {
-			if (result.publicNode) {
-				setPublicNode(result.publicNode);
-				setErrors(undefined);
-			} else {
-				setPublicNode(undefined);
-				setErrors(result.errors);
-			}
-		});
-	}, [nodeLinkId]);
+	const getPublicNodeQuery = useCallback(
+		(accessCode?: string) => {
+			client.getPublicNodeQuery(nodeLinkId, accessCode).then((result) => {
+				if (result.publicNode) {
+					setPublicNode(result.publicNode);
+					setErrors(undefined);
+				} else {
+					setPublicNode(undefined);
+					setErrors(result.errors);
+				}
+			});
+		},
+		[nodeLinkId]
+	);
 
-	return { publicNode, errors, nodeLinkId };
+	useEffect(() => {
+		getPublicNodeQuery();
+	}, [getPublicNodeQuery]);
+
+	const queryWithAccessCode = useCallback(
+		(accessCode: string) => {
+			getPublicNodeQuery(accessCode);
+		},
+		[getPublicNodeQuery]
+	);
+
+	return {
+		publicNode,
+		errors,
+		nodeLinkId,
+		queryWithAccessCode
+	};
 };

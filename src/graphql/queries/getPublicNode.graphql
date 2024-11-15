@@ -2,8 +2,8 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-query getPublicNode($node_link_id: String!) {
-	getPublicNode(node_link_id: $node_link_id) {
+query getPublicNode($node_link_id: String!, $access_code: String) {
+	getPublicNode(node_link_id: $node_link_id, access_code: $access_code) {
 		id
 		name
 		__typename

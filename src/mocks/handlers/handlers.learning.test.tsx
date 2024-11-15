@@ -32,7 +32,7 @@ describe('handlers', () => {
 		server.use(createGetPublicNodeHandler(node));
 
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: '' },
+			variables: { node_link_id: 'node_link_id' },
 			query: print(GetPublicNodeDocument)
 		};
 

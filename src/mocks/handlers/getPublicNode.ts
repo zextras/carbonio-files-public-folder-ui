@@ -5,55 +5,83 @@
  */
 import { faker } from '@faker-js/faker';
 import { graphql as executeGraphql } from 'graphql';
+import { GraphQLError } from 'graphql/error';
 import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import { GetPublicNodeDocument, GQLGetPublicNodeQuery } from '../../graphql/types';
+import {
+	GetPublicNodeDocument,
+	GQLGetPublicNodeQuery,
+	GQLGetPublicNodeQueryVariables
+} from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
-import { MakeRequired } from '../../utils/typeUtils';
+import { ERROR } from '../../utils/constants';
+
+function handleErrors<TNode>(
+	variables: GQLGetPublicNodeQueryVariables,
+	node: TNode
+): asserts node is NonNullable<TNode> {
+	if (
+		variables.node_link_id === 'invalid' ||
+		node === null ||
+		variables.node_link_id.trim() === ''
+	) {
+		throw new GraphQLError(`Could not find link with id ${variables.node_link_id}`, {
+			extensions: { errorCode: ERROR.linkNotFound }
+		});
+	}
+	if (variables.node_link_id === 'withAccessCode') {
+		if (variables.access_code === undefined) {
+			throw new GraphQLError('Access code required', {
+				extensions: { errorCode: ERROR.accessCodeRequired }
+			});
+		}
+		if (variables.access_code?.toLowerCase() !== 'accesscode') {
+			throw new GraphQLError('Invalid access code', {
+				extensions: { errorCode: ERROR.wrongAccessCode }
+			});
+		}
+	}
+}
 
 export function createGetPublicNodeHandler(
-	node: MakeRequired<
-		Partial<NonNullable<GQLGetPublicNodeQuery['getPublicNode']>>,
-		'__typename'
-	> | null,
-	errors?: string[],
-	handlerOptions?: { delay?: Parameters<typeof delay>[0] }
+	node: Partial<GQLGetPublicNodeQuery['getPublicNode']>,
+	errors?: Partial<GraphQLError>[],
+	handlerOptions?: { delay?: Parameters<typeof delay>[0]; once?: boolean }
 ): GraphQLHandler {
-	return graphql.query(GetPublicNodeDocument, async ({ query, variables }) => {
-		const { data, errors: gqlErrors } = await executeGraphql({
-			schema,
-			source: query,
-			variableValues: variables,
-			typeResolver: resolveByTypename,
-			rootValue: {
-				getPublicNode(): GQLGetPublicNodeQuery['getPublicNode'] {
-					if (variables.node_link_id === 'invalid' || node === null) {
-						throw new Error(`Could not find link with id ${variables.node_link_id}`);
-					}
-					if (variables.node_link_id === 'empty') {
+	return graphql.query(
+		GetPublicNodeDocument,
+		async ({ query, variables }) => {
+			const { data, errors: gqlErrors } = await executeGraphql({
+				schema,
+				source: query,
+				variableValues: variables,
+				typeResolver: resolveByTypename,
+				rootValue: {
+					getPublicNode(): GQLGetPublicNodeQuery['getPublicNode'] {
+						handleErrors(variables, node);
+						const emptyFolderId =
+							variables.node_link_id === 'empty' ? { id: 'empty-folder-id' } : {};
 						return {
-							name: faker.system.fileName({ extensionCount: 0 }),
+							__typename: 'Folder',
+							id: faker.string.uuid(),
+							name: faker.system.fileName(),
 							...node,
-							id: 'empty-folder-id'
+							...emptyFolderId
 						};
 					}
-					return {
-						name: faker.system.fileName({ extensionCount: 0 }),
-						id: faker.string.uuid(),
-						...node
-					};
 				}
+			});
+
+			if (handlerOptions?.delay) {
+				await delay(handlerOptions.delay);
 			}
-		});
 
-		if (handlerOptions?.delay) {
-			await delay(handlerOptions.delay);
-		}
-
-		return HttpResponse.json({
-			errors: errors || gqlErrors ? [...(errors ?? []), ...(gqlErrors ?? [])] : undefined,
-			data: { getPublicNode: null, ...data, __typename: 'Query' }
-		});
-	});
+			return HttpResponse.json({
+				errors: errors || gqlErrors ? [...(errors ?? []), ...(gqlErrors ?? [])] : undefined,
+				data: { getPublicNode: null, ...data, __typename: 'Query' }
+			});
+		},
+		{ once: handlerOptions?.once }
+	);
 }

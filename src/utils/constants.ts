@@ -58,3 +58,9 @@ export const COMPONENTS_ENDPOINT = `${CARBONIO_STATIC_PATH}components.json`;
 export const I18N_PATH = '/i18n/{{lng}}.json';
 export const FILES_PROJECT_NAME = 'carbonio-files-ui';
 export const LOGIN_V3_CONFIG_PATH = '/zx/login/v3/config';
+
+export const ERROR = {
+	accessCodeRequired: 'ACCESS_CODE_REQUIRED',
+	wrongAccessCode: 'WRONG_ACCESS_CODE',
+	linkNotFound: 'LINK_NOT_FOUND'
+} as const;
