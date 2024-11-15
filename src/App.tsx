@@ -3,13 +3,14 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import React, { useEffect, useState } from 'react';
+import React, { useEffect, useMemo, useState } from 'react';
 
-import { Container, SnackbarManager, Text, ThemeProvider } from '@zextras/carbonio-design-system';
-import { useTranslation } from 'react-i18next';
+import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
+import { GraphQLError } from 'graphql/error';
 
+import { AccessCodeModal } from './components/AccessCodeModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
-import { IconBig } from './components/IconBig';
+import { LinkNotFoundContainer } from './components/LinkNotFoundContainer';
 import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
 import { useCrumbs } from './hooks/useCrumbs';
@@ -17,58 +18,60 @@ import { useGetPublicNode } from './hooks/useGetPublicNode';
 import './i18n';
 import './network/login-config';
 import { Location } from './model/Node';
+import { ERROR } from './utils/constants';
+
+type ErrorCode = (typeof ERROR)[keyof typeof ERROR];
+function containsError(errors: readonly GraphQLError[] | undefined, errorCode: ErrorCode): boolean {
+	return errors?.some((err) => err.extensions?.errorCode === errorCode) || false;
+}
 
 const App = (): React.JSX.Element => {
-	const [t] = useTranslation();
 	const [currentLocation, setCurrentLocation] = useState<Location | undefined>();
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const { publicNode, errors } = useGetPublicNode();
+	const { publicNode, errors, nodeLinkId, queryWithAccessCode } = useGetPublicNode();
+
 	useEffect(() => {
 		if (publicNode) {
 			setCurrentLocation(publicNode);
 		}
 	}, [publicNode]);
 
+	const content = useMemo(() => {
+		if (currentLocation !== undefined) {
+			return (
+				<NodeList
+					navigateTo={setCurrentLocation}
+					currentId={currentLocation.id}
+					nodeLinkId={nodeLinkId}
+				/>
+			);
+		}
+		if (errors === undefined) {
+			return <LoadingIcon icon={'LoaderOutline'} size={'3rem'} />;
+		}
+		if (
+			containsError(errors, ERROR.accessCodeRequired) ||
+			containsError(errors, ERROR.wrongAccessCode)
+		) {
+			return (
+				<AccessCodeModal
+					queryWithAccessCode={queryWithAccessCode}
+					wrongAccessCode={containsError(errors, ERROR.wrongAccessCode)}
+				/>
+			);
+		}
+		// case Error.linkNotFound and default
+		return <LinkNotFoundContainer />;
+	}, [currentLocation, errors, nodeLinkId, queryWithAccessCode]);
+
 	return (
 		<ThemeProvider>
 			<SnackbarManager>
 				<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
 					<HeaderBreadcrumbs crumbs={crumbs} />
-					{currentLocation !== undefined && (
-						<NodeList navigateTo={setCurrentLocation} currentId={currentLocation.id} />
-					)}
-					{currentLocation === undefined && errors === undefined && (
-						<Container>
-							<LoadingIcon icon={'LoaderOutline'} size={'3rem'} />
-						</Container>
-					)}
-					{currentLocation === undefined && errors !== undefined && (
-						<Container gap={'0.0625rem'}>
-							<IconBig icon={'EmptyFolder'} color={'gray5'} />
-							<Container height={'auto'} width={'auto'} gap={'0.5rem'}>
-								<Text weight={'bold'} color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.title',
-										'Public access link not available.'
-									)}
-								</Text>
-								<Text color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.description.line1',
-										'This link has been removed or is not valid.'
-									)}
-								</Text>
-								<Text color={'secondary'}>
-									{t(
-										'carbonio-public-folder-ui.invalidLink.description.line2',
-										'For more information, try to contact the person who shared it with you.'
-									)}
-								</Text>
-							</Container>
-						</Container>
-					)}
+					{content}
 				</Container>
 			</SnackbarManager>
 		</ThemeProvider>

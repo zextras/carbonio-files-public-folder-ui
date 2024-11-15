@@ -24,63 +24,72 @@ export type Body<TVariables extends Record<string, unknown>> = {
 	query: string;
 };
 export const client = {
-	findNodesQuery: (
+	findNodesQuery: async (
 		folderId: string,
+		nodeLinkId: string,
 		token?: string
 	): Promise<{ newNodes: Array<Node>; newToken: string | null }> => {
 		const body: Body<GQLFindNodesQueryVariables> = {
-			variables: { folder_id: folderId, page_token: token, limit: FIND_NODES_LIMITS },
+			variables: {
+				folder_id: folderId,
+				page_token: token,
+				limit: FIND_NODES_LIMITS,
+				node_link_id: nodeLinkId
+			},
 			query: print(FindNodesDocument)
 		};
 
-		return fetch(new URL(API_ENDPOINT, window.location.origin), {
+		const response = await fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify(body),
 			method: 'POST'
-		})
-			.then((response): Promise<ExecutionResult<GQLFindNodesQuery>> => response.json())
-			.then((result) => {
-				const newNodes = result.data?.findNodes?.nodes
-					.filter((value): value is NodeOfFindNodes => value !== null)
-					.map((node) => convertGQLToNode(node));
-				return { newNodes: newNodes ?? [], newToken: result.data?.findNodes?.page_token ?? null };
-			});
+		});
+		const findNodesResult: ExecutionResult<GQLFindNodesQuery> = await response.json();
+		const newNodes = findNodesResult.data?.findNodes?.nodes
+			.filter((node): node is NodeOfFindNodes => node !== null)
+			.map((node) => convertGQLToNode(node));
+		return {
+			newNodes: newNodes ?? [],
+			newToken: findNodesResult.data?.findNodes?.page_token ?? null
+		};
 	},
-	getPublicNodeQuery: (
-		nodeLinkId: string
+	getPublicNodeQuery: async (
+		nodeLinkId: string,
+		accessCode?: string
 	): Promise<{
 		publicNode: { id: string; name: string } | undefined;
 		errors: readonly GraphQLError[] | undefined;
 	}> => {
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: nodeLinkId },
+			variables: { node_link_id: nodeLinkId, access_code: accessCode },
 			query: print(GetPublicNodeDocument)
 		};
 
-		return fetch(new URL(API_ENDPOINT, window.location.origin), {
+		const response = await fetch(new URL(API_ENDPOINT, window.location.origin), {
 			headers: {
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify(body),
 			method: 'POST'
-		})
-			.then((response): Promise<ExecutionResult<GQLGetPublicNodeQuery>> => response.json())
-			.then((result) => {
-				if (result.data?.getPublicNode?.id && result.data.getPublicNode.name) {
-					return {
-						publicNode: {
-							id: result.data.getPublicNode.id,
-							name: result.data.getPublicNode.name
-						},
-						errors: undefined
-					};
-				}
-				if (result.errors && result.errors.length > 0) {
-					return { publicNode: undefined, errors: result.errors };
-				}
-				throw new Error('Missing data and errors');
-			});
+		});
+		const getPublicNodeResult: ExecutionResult<GQLGetPublicNodeQuery> = await response.json();
+		if (
+			getPublicNodeResult.data?.getPublicNode?.id &&
+			getPublicNodeResult.data.getPublicNode.name
+		) {
+			return {
+				publicNode: {
+					id: getPublicNodeResult.data.getPublicNode.id,
+					name: getPublicNodeResult.data.getPublicNode.name
+				},
+				errors: undefined
+			};
+		}
+		if (getPublicNodeResult.errors && getPublicNodeResult.errors.length > 0) {
+			return { publicNode: undefined, errors: getPublicNodeResult.errors };
+		}
+		throw new Error('Missing data and errors');
 	}
-};
+} as const;

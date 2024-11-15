@@ -9,7 +9,9 @@ export const ICONS = {
 	contentLoader: 'icon: LoaderOutline',
 	queryLoading: 'icon: Refresh',
 	unavailableFolder: 'icon: EmptyFolder',
-	download: 'icon: DownloadOutline'
+	download: 'icon: DownloadOutline',
+	eyeOff: 'icon: EyeOffOutline',
+	eye: 'icon: EyeOutline'
 } as const;
 
 export const SELECTORS = {
@@ -22,3 +24,7 @@ export const COLORS = {
 	crumbHover: '#E6E6E6',
 	listItemHover: '#E6E6E6'
 };
+
+export const TIMERS = {
+	modalDelay: 1
+} as const;

@@ -32,7 +32,7 @@ describe('handlers', () => {
 		server.use(createGetPublicNodeHandler(node));
 
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
-			variables: { node_link_id: '' },
+			variables: { node_link_id: 'node_link_id' },
 			query: print(GetPublicNodeDocument)
 		};
 
@@ -48,10 +48,12 @@ describe('handlers', () => {
 	});
 
 	it('findNodes handler', async () => {
-		server.use(createFindNodesHandler({ nodes: [], variables: { folder_id: '' } }));
+		server.use(
+			createFindNodesHandler({ nodes: [], variables: { folder_id: '', node_link_id: '' } })
+		);
 
 		const body: Body<GQLFindNodesQueryVariables> = {
-			variables: { folder_id: '' },
+			variables: { folder_id: '', node_link_id: 'hash' },
 			query: print(FindNodesDocument)
 		};
 

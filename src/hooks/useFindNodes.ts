@@ -15,7 +15,7 @@ type UseFindNodesReturnType = {
 	findMore: () => void;
 };
 
-export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
+export const useFindNodes = (folderId: string, nodeLinkId: string): UseFindNodesReturnType => {
 	const [nodes, setNodes] = useState<Array<Node> | null>(nodesMap.get(folderId) ?? null);
 	const [token, setToken] = useState<string | undefined | null>();
 
@@ -32,13 +32,13 @@ export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
 			return;
 		}
 
-		client.findNodesQuery(folderId).then(({ newNodes, newToken }) => {
+		client.findNodesQuery(folderId, nodeLinkId).then(({ newNodes, newToken }) => {
 			setNodes(newNodes);
 			nodesMap.set(folderId, newNodes);
 			setToken(newToken);
 			tokenMap.set(folderId, newToken);
 		});
-	}, [folderId]);
+	}, [folderId, nodeLinkId]);
 
 	const findMore = useCallback(() => {
 		if (token === null) {
@@ -48,13 +48,13 @@ export const useFindNodes = (folderId: string): UseFindNodesReturnType => {
 			throw new Error('Cannot findMore when folderId is not defined');
 		}
 
-		client.findNodesQuery(folderId, token).then(({ newNodes, newToken }) => {
+		client.findNodesQuery(folderId, nodeLinkId, token).then(({ newNodes, newToken }) => {
 			setNodes((oldNodes) => [...(oldNodes ?? []), ...(newNodes ?? [])]);
 			setToken(newToken);
 			nodesMap.set(folderId, [...(nodesMap.get(folderId) ?? []), ...(newNodes ?? [])]);
 			tokenMap.set(folderId, newToken);
 		});
-	}, [folderId, token]);
+	}, [folderId, nodeLinkId, token]);
 
 	return { nodes, hasMore: token != null, findMore };
 };

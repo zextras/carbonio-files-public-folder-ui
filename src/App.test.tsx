@@ -13,8 +13,9 @@ import { createFindNodesHandler } from './mocks/handlers/findNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
 import { client } from './network/client';
-import { ICONS, SELECTORS } from './test/constants';
+import { ICONS, SELECTORS, TIMERS } from './test/constants';
 import { setup, triggerLoadMore } from './test/utils';
+import { ERROR } from './utils/constants';
 
 vi.mock('./network/login-config', () => ({
 	loginConfig: (): void => undefined
@@ -34,7 +35,7 @@ describe('App', () => {
 
 	const navigableFolderNodes = [...folderBuilder(10)];
 	beforeEach(() => {
-		const url = new URL(folderId, window.location.href);
+		const url = new URL(`${folderId}/linkHash`, window.location.href);
 
 		Object.defineProperty(window, 'location', {
 			value: url
@@ -49,17 +50,17 @@ describe('App', () => {
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
-					variables: { folder_id: folderId }
+					variables: { folder_id: folderId, node_link_id: 'linkHash' }
 				},
 				{
 					nodes: secondPageNodes,
 					nextPageToken: null,
-					variables: { folder_id: folderId, page_token: 'token1' }
+					variables: { folder_id: folderId, page_token: 'token1', node_link_id: 'linkHas' }
 				},
 				{
 					nodes: navigableFolderNodes,
 					nextPageToken: null,
-					variables: { folder_id: navigableFolder.id }
+					variables: { folder_id: navigableFolder.id, node_link_id: 'linkHash' }
 				}
 			)
 		);
@@ -137,8 +138,68 @@ describe('App', () => {
 		expect(screen.queryByTestId(ICONS.contentLoader)).not.toBeInTheDocument();
 	});
 
+	it('should show access code modal when the request returns access code required error', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.accessCodeRequired }
+				}
+			])
+		);
+		setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+		expect(await screen.findByText('The link is secured by an access code')).toBeVisible();
+		expect(screen.getByTestId('modal')).toBeVisible();
+	});
+
+	it('should display an error message when the access code is wrong', async () => {
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.accessCodeRequired }
+				}
+			])
+		);
+		const { user } = setup(<App />);
+
+		await act(async () => {
+			await vi.advanceTimersToNextTimerAsync();
+		});
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+		await screen.findByText('The link is secured by an access code');
+
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.wrongAccessCode }
+				}
+			])
+		);
+
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, 'wrong-access-code');
+		await user.click(screen.getByRole('button', { name: 'Done' }));
+		expect(await screen.findByText('Wrong access code, try again')).toBeVisible();
+	});
+
 	it('should show unavailability page when the request to retrieve the public node returns an error', async () => {
-		server.use(createGetPublicNodeHandler(null));
+		server.use(
+			createGetPublicNodeHandler(null, [
+				{
+					extensions: { errorCode: ERROR.linkNotFound }
+				}
+			])
+		);
 		setup(<App />);
 		expect(await screen.findByTestId(ICONS.unavailableFolder)).toBeVisible();
 		expect(screen.getByText('Public access link not available.')).toBeVisible();
@@ -169,18 +230,17 @@ describe('App', () => {
 
 	it('should not call client findNode when navigate again in an already navigated folder', async () => {
 		const findNodesQuerySpy = vi.spyOn(client, 'findNodesQuery');
-
 		const { user } = setup(<App />);
 		const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 		const navigableFolderElement = await screen.findByText(navigableFolder.name);
 		expect(findNodesQuerySpy).toBeCalledTimes(1);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash');
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);
@@ -200,13 +260,13 @@ describe('App', () => {
 		await screen.findByText(secondPageNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'token1');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash', 'token1');
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(3);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id);
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);

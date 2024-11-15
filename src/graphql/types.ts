@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2023 Zextras <https://www.zextras.com>
+ * SPDX-FileCopyrightText: 2024 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
@@ -84,10 +84,12 @@ export type GQLQuery = {
 export type GQLQueryFindNodesArgs = {
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
+	node_link_id?: InputMaybe<Scalars['String']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
 };
 
 export type GQLQueryGetPublicNodeArgs = {
+	access_code?: InputMaybe<Scalars['String']['input']>;
 	node_link_id: Scalars['String']['input'];
 };
 
@@ -95,6 +97,7 @@ export type GQLFindNodesQueryVariables = Exact<{
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
+	node_link_id?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GQLFindNodesQuery = {
@@ -127,6 +130,7 @@ export type GQLFindNodesQuery = {
 
 export type GQLGetPublicNodeQueryVariables = Exact<{
 	node_link_id: Scalars['String']['input'];
+	access_code?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GQLGetPublicNodeQuery = {
@@ -158,6 +162,11 @@ export const FindNodesDocument = {
 					kind: 'VariableDefinition',
 					variable: { kind: 'Variable', name: { kind: 'Name', value: 'page_token' } },
 					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 				}
 			],
 			selectionSet: {
@@ -181,6 +190,11 @@ export const FindNodesDocument = {
 								kind: 'Argument',
 								name: { kind: 'Name', value: 'page_token' },
 								value: { kind: 'Variable', name: { kind: 'Name', value: 'page_token' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'node_link_id' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } }
 							}
 						],
 						selectionSet: {
@@ -237,6 +251,11 @@ export const GetPublicNodeDocument = {
 						kind: 'NonNullType',
 						type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 					}
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 				}
 			],
 			selectionSet: {
@@ -250,6 +269,11 @@ export const GetPublicNodeDocument = {
 								kind: 'Argument',
 								name: { kind: 'Name', value: 'node_link_id' },
 								value: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'access_code' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } }
 							}
 						],
 						selectionSet: {
