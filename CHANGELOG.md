@@ -2,6 +2,18 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.7](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.6...v0.0.7) (2024-11-15)
+
+
+### Features
+
+* implement access with access code ([5ec818d](https://github.com/zextras/carbonio-files-public-folder-ui/commit/5ec818dab373406d4a6dedee9a4999106cd91c05)), closes [#117](https://github.com/zextras/carbonio-files-public-folder-ui/issues/117)
+
+
+### Bug Fixes
+
+* use node link id in requests to identify valid links ([d835118](https://github.com/zextras/carbonio-files-public-folder-ui/commit/d835118b9d04a4d739f0597175cf77d6ca91de62)), closes [#110](https://github.com/zextras/carbonio-files-public-folder-ui/issues/110)
+
 ### [0.0.6](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.5...v0.0.6) (2024-08-21)
 
 
