@@ -47,6 +47,8 @@ export const AccessCodeModal = ({
 		queryWithAccessCode(accessCode);
 	}, [accessCode, queryWithAccessCode]);
 
+	const confirmDisabled = accessCode.trim().length === 0;
+
 	return (
 		<Modal
 			showCloseIcon={false}
@@ -57,7 +59,7 @@ export const AccessCodeModal = ({
 			open
 			confirmLabel={t('carbonio-public-folder-ui.accessCode.modal.button.confirm', 'Done')}
 			onConfirm={onConfirm}
-			confirmDisabled={accessCode.length === 0}
+			confirmDisabled={confirmDisabled}
 		>
 			<Container gap={'1rem'} crossAlignment={'flex-start'}>
 				<Text>
@@ -67,6 +69,7 @@ export const AccessCodeModal = ({
 					)}
 				</Text>
 				<Input
+					onEnter={confirmDisabled ? undefined : onConfirm}
 					type={isAccessCodeShown ? 'text' : 'password'}
 					label={t('publicLink.accessCode.input.label', 'Access code')}
 					value={accessCode}

@@ -98,4 +98,54 @@ describe('AccessCodeModal', () => {
 		await user.type(accessCodeInput, 'access-code');
 		expect(screen.getByRole('button', { name: 'Done' })).toBeEnabled();
 	});
+
+	it('should disable done button when access code is composed by empty spaces', async () => {
+		const { user } = setup(
+			<AccessCodeModal wrongAccessCode={false} queryWithAccessCode={vi.fn()} />
+		);
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+
+		expect(screen.getByRole('button', { name: 'Done' })).toBeDisabled();
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, '   ');
+		expect(screen.getByRole('button', { name: 'Done' })).toBeDisabled();
+	});
+
+	it('should call queryWithAccessCode with the access code when the user clicks enter', async () => {
+		const queryWithAccessCode = vi.fn();
+		const { user } = setup(
+			<AccessCodeModal wrongAccessCode={false} queryWithAccessCode={queryWithAccessCode} />
+		);
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, 'access-code');
+		await user.keyboard('[Enter]');
+		expect(queryWithAccessCode).toHaveBeenCalledWith('access-code');
+	});
+
+	it('should not call queryWithAccessCode when the user clicks enter and the access code is empty or filled with empty spaces', async () => {
+		const queryWithAccessCode = vi.fn();
+		const { user } = setup(
+			<AccessCodeModal wrongAccessCode={false} queryWithAccessCode={queryWithAccessCode} />
+		);
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+
+		await user.keyboard('[Enter]');
+		expect(queryWithAccessCode).not.toHaveBeenCalled();
+
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, '   ');
+		await user.keyboard('[Enter]');
+		expect(queryWithAccessCode).not.toHaveBeenCalled();
+	});
 });
