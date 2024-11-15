@@ -83,4 +83,19 @@ describe('AccessCodeModal', () => {
 
 		expect(screen.getByText('Wrong access code, try again')).toBeVisible();
 	});
+
+	it('should disable done button when access code is empty and enabled when is not empty', async () => {
+		const { user } = setup(
+			<AccessCodeModal wrongAccessCode={false} queryWithAccessCode={vi.fn()} />
+		);
+
+		await act(async () => {
+			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);
+		});
+
+		expect(screen.getByRole('button', { name: 'Done' })).toBeDisabled();
+		const accessCodeInput = screen.getByLabelText<HTMLInputElement>(/access code/i);
+		await user.type(accessCodeInput, 'access-code');
+		expect(screen.getByRole('button', { name: 'Done' })).toBeEnabled();
+	});
 });
