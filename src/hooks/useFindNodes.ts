@@ -6,7 +6,7 @@
 import { useCallback, useEffect, useState } from 'react';
 
 import { nodesMap, tokenMap } from './NodesCache';
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 import { client } from '../network/client';
 
 type UseFindNodesReturnType = {

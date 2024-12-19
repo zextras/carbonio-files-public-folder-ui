@@ -5,7 +5,7 @@
  */
 import { faker } from '@faker-js/faker';
 import { screen, within } from '@testing-library/react';
-import { Crumb } from '@zextras/carbonio-design-system';
+import type { Crumb } from '@zextras/carbonio-design-system';
 import { expect, it } from 'vitest';
 
 import { HeaderBreadcrumbs } from './HeaderBreadcrumbs';

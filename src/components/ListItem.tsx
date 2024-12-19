@@ -7,9 +7,9 @@ import React from 'react';
 
 import { Avatar, Tooltip, IconButton, Text, useTheme } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import styled, { css, SimpleInterpolation } from 'styled-components';
+import styled, { css } from 'styled-components';
 
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE } from '../utils/constants';
 import { humanFileSize, preventTextSelectionOnDoubleClick } from '../utils/utils';
 
@@ -40,7 +40,7 @@ const RowGrid = styled.div`
 	align-items: center;
 	padding: 0.5rem 1.5rem;
 	gap: 0 1rem;
-	${({ onDoubleClick, theme }): SimpleInterpolation =>
+	${({ onDoubleClick, theme }): false | ReturnType<typeof css> =>
 		onDoubleClick !== undefined &&
 		css`
 			&:hover {

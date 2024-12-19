@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 
 export const nodesMap = new Map<string, Array<Node> | null>();
 

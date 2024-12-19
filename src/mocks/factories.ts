@@ -6,7 +6,8 @@
 
 import { faker } from '@faker-js/faker';
 
-import { GQLFile, GQLFolder, GQLNodeType } from '../graphql/types';
+import type { GQLFile, GQLFolder } from '../graphql/types';
+import { GQLNodeType } from '../graphql/types';
 
 export function createFile(file?: Partial<GQLFile>): GQLFile {
 	return {

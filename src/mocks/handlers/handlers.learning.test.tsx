@@ -4,21 +4,20 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import { faker } from '@faker-js/faker';
-import { ExecutionResult } from 'graphql/execution';
+import type { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 import { describe, expect, it } from 'vitest';
 
 import { createFindNodesHandler } from './findNodes';
 import { createGetPublicNodeHandler } from './getPublicNode';
-import {
-	FindNodesDocument,
-	GetPublicNodeDocument,
+import type {
 	GQLFindNodesQuery,
 	GQLFindNodesQueryVariables,
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables
 } from '../../graphql/types';
-import { Body } from '../../network/client';
+import { FindNodesDocument, GetPublicNodeDocument } from '../../graphql/types';
+import type { Body } from '../../network/client';
 import { API_ENDPOINT } from '../../utils/constants';
 import { server } from '../server';
 

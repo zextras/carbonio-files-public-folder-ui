@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { TOptionsBase } from 'i18next';
+import type { TOptionsBase } from 'i18next';
 
 function t(key: string, options?: TOptionsBase | string): string {
 	if (typeof options === 'string') {

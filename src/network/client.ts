@@ -3,20 +3,20 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { GraphQLError } from 'graphql/error';
-import { ExecutionResult } from 'graphql/execution';
+import type { GraphQLError } from 'graphql/error';
+import type { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
-import {
-	FindNodesDocument,
-	GetPublicNodeDocument,
+import type {
 	GQLFindNodesQuery,
 	GQLFindNodesQueryVariables,
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables
 } from '../graphql/types';
-import { convertGQLToNode, Node } from '../model/Node';
-import { NodeOfFindNodes } from '../types/types';
+import { FindNodesDocument, GetPublicNodeDocument } from '../graphql/types';
+import type { Node } from '../model/Node';
+import { convertGQLToNode } from '../model/Node';
+import type { NodeOfFindNodes } from '../types/types';
 import { API_ENDPOINT, FIND_NODES_LIMITS } from '../utils/constants';
 
 export type Body<TVariables extends Record<string, unknown>> = {

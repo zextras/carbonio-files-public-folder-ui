@@ -5,9 +5,9 @@
  */
 import { useCallback, useEffect, useState } from 'react';
 
-import { GraphQLError } from 'graphql/error';
+import type { GraphQLError } from 'graphql/error';
 
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 import { client } from '../network/client';
 
 type UseGetPublicNodeReturnType = {

@@ -6,14 +6,12 @@
 import { faker } from '@faker-js/faker';
 import { graphql as executeGraphql } from 'graphql';
 import { GraphQLError } from 'graphql/error';
-import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
+import type { GraphQLHandler } from 'msw';
+import { delay, graphql, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import {
-	GetPublicNodeDocument,
-	GQLGetPublicNodeQuery,
-	GQLGetPublicNodeQueryVariables
-} from '../../graphql/types';
+import type { GQLGetPublicNodeQuery, GQLGetPublicNodeQueryVariables } from '../../graphql/types';
+import { GetPublicNodeDocument } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 import { ERROR } from '../../utils/constants';
 
