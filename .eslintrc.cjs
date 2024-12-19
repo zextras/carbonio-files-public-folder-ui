@@ -46,7 +46,7 @@ module.exports = {
       }
     },
     {
-      files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts', '.eslintrc.json'],
+      files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts', '.eslintrc.cjs'],
       parserOptions: {
         project: 'tsconfig.node.json'
       },
