@@ -3,8 +3,8 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { GQLFindNodesQuery } from '../graphql/types';
-import { NonNullableListItem } from '../utils/typeUtils';
+import type { GQLFindNodesQuery } from '../graphql/types';
+import type { NonNullableListItem } from '../utils/typeUtils';
 
 export type NodeOfFindNodes = NonNullableListItem<
 	NonNullable<GQLFindNodesQuery['findNodes']>['nodes']

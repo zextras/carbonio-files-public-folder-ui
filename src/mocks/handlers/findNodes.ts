@@ -5,14 +5,12 @@
  */
 import { graphql as executeGraphql } from 'graphql';
 import { GraphQLError } from 'graphql/error';
-import { delay, graphql, GraphQLHandler, HttpResponse } from 'msw';
+import type { GraphQLHandler } from 'msw';
+import { delay, graphql, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import {
-	FindNodesDocument,
-	GQLFindNodesQuery,
-	GQLFindNodesQueryVariables
-} from '../../graphql/types';
+import type { GQLFindNodesQuery, GQLFindNodesQueryVariables } from '../../graphql/types';
+import { FindNodesDocument } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 
 export function createFindNodesHandler(

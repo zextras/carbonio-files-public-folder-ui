@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import { GQLFile, GQLNode } from '../graphql/types';
-import { NodeOfFindNodes } from '../types/types';
+import type { GQLFile, GQLNode } from '../graphql/types';
+import type { NodeOfFindNodes } from '../types/types';
 
 export type Node = {
 	createdAt: GQLNode['created_at'];

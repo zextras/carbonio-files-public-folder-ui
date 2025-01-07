@@ -12,7 +12,7 @@ import { IconBig } from './IconBig';
 import { List } from './List';
 import { LoadingIcon } from './LoadingIcon';
 import { useFindNodes } from '../hooks/useFindNodes';
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 import { downloadNode } from '../utils/utils';
 
 interface NodeListProps {

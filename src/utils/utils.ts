@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React from 'react';
+import type React from 'react';
 
 import { API_DOWNLOAD_ENDPOINT } from './constants';
 import i18n from '../i18n';

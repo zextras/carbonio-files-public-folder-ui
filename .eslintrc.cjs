@@ -25,6 +25,8 @@ module.exports = {
         templateFile: './notice.template.js'
       }
     ],
+    '@typescript-eslint/consistent-type-exports': 'error',
+    '@typescript-eslint/consistent-type-imports': 'error'
   },
   overrides: [
     {
@@ -44,7 +46,7 @@ module.exports = {
       }
     },
     {
-      files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts'],
+      files: ['vite.config.ts', 'commitlint.config.ts', 'codegen.ts', '.eslintrc.cjs'],
       parserOptions: {
         project: 'tsconfig.node.json'
       },
@@ -59,11 +61,15 @@ module.exports = {
       rules: {
         'prettier/prettier': 'error',
         '@graphql-eslint/known-type-names': 'error',
-        'notice/notice': 'off'
+        'notice/notice': 'off',
+        '@typescript-eslint/consistent-type-exports': 'off',
+        '@typescript-eslint/consistent-type-imports': 'off'
       },
       parserOptions: {
-        operations: './src/graphql/**/*.graphql',
-        schema: './src/graphql/schema-public.graphql'
+        graphQLConfig: {
+          operations: './src/graphql/**/*.graphql',
+          schema: './src/graphql/schema-public.graphql'
+        }
       }
     }
   ]
