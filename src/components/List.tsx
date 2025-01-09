@@ -11,7 +11,7 @@ import styled from 'styled-components';
 import { ListHeader } from './ListHeader';
 import { ListItem } from './ListItem';
 import { LoadingIcon } from './LoadingIcon';
-import { Node } from '../model/Node';
+import type { Node } from '../model/Node';
 
 const Grid = styled.div`
 	min-height: 0;

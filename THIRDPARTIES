@@ -5,17 +5,17 @@ MIT License (MIT) applies to:
 @commitlint/types, Copyright (c) 2016 - present Mario Nebl
 @faker-js/faker, Faker - Copyright (c) 2022-2024; faker.js - Copyright (c) 2020 Marak Squires
 @graphql-codegen/add, Copyright (c) 2016 Dotan Simha
-@graphql-codegen/cli, Copyright (c) 2016 Dotan Simha;
-@graphql-codegen/typed-document-node, Copyright (c) 2016 Dotan Simha;
-@graphql-codegen/typescript-operations, Copyright (c) 2016 Dotan Simha;
-@graphql-codegen/typescript, Copyright (c) 2016 Dotan Simha;
+@graphql-codegen/cli, Copyright (c) 2016 Dotan Simha
+@graphql-codegen/typed-document-node, Copyright (c) 2016 Dotan Simha
+@graphql-codegen/typescript-operations, Copyright (c) 2016 Dotan Simha
+@graphql-codegen/typescript, Copyright (c) 2016 Dotan Simha
+@graphql-eslint/eslint-plugin, Copyright (c) 2022 Dimitri POSTOLOV
 @testing-library/dom, Copyright (c) 2017 Kent C. Dodds
 @testing-library/jest-dom, Copyright (c) 2017 Kent C. Dodds
 @testing-library/react, Copyright (c) 2017 Kent C. Dodds
 @testing-library/user-event, Copyright (c) 2020 Giorgio Polvara
 @types/react-dom, Copyright (c) Microsoft Corporation.
 @types/react, Copyright (c) Microsoft Corporation.
-@types/styled-components, Copyright (c) Microsoft Corporation.
 @vitejs/plugin-react-swc, Copyright (c) Arnaud Barré (https://github.com/ArnaudBarre)
 @vitest/coverage-v8, Copyright (c) 2021-Present Vitest Team
 eslint-plugin-notice, Copyright (c) 2017 Nick Deis
@@ -23,7 +23,7 @@ eslint-plugin-react-refresh, Copyright (c) Arnaud Barré (https://github.com/Arn
 graphql, Copyright (c) GraphQL Contributors
 husky, Copyright (c) 2021 typicode
 i18next-browser-languagedetector, Copyright (c) 2023 i18next
-i18next-http-backend, Copyright (c) 2023 i18next
+i18next-http-backend, Copyright (c) 2024 i18next
 i18next, Copyright (c) 2024 i18next
 jsdom, Copyright (c) 2010 Elijah Insua
 msw, Copyright (c) 2018–present Artem Zakharchenko

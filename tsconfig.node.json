@@ -10,6 +10,7 @@
     "vite.config.ts",
     "commitlint.config.ts",
     "codegen.ts",
-    "package.json"
+    "package.json",
+    ".eslintrc.cjs"
   ]
 }
