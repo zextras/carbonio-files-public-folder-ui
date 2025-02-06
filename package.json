@@ -19,7 +19,7 @@
     "codegen": "graphql-codegen --config codegen.ts"
   },
   "dependencies": {
-    "@zextras/carbonio-design-system": "9.0.0-devel.13",
+    "@zextras/carbonio-design-system": "9.0.0",
     "graphql": "^16.9.0",
     "i18next": "^24.2.2",
     "i18next-browser-languagedetector": "^8.0.2",
