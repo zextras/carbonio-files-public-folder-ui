@@ -5,8 +5,9 @@
  */
 import React from 'react';
 
-import { Icon, IconButton, IconButtonProps, IconProps } from '@zextras/carbonio-design-system';
-import styled, { css, keyframes, SimpleInterpolation } from 'styled-components';
+import type { IconButtonProps, IconProps } from '@zextras/carbonio-design-system';
+import { Icon, Button } from '@zextras/carbonio-design-system';
+import styled, { css, keyframes } from 'styled-components';
 
 const rotate = keyframes`
   from {
@@ -17,13 +18,13 @@ const rotate = keyframes`
   }
 `;
 
-const StyledIconButton = styled(IconButton)`
+const StyledIconButton = styled(Button)`
 	animation: ${rotate} 1s linear infinite;
 `;
 
 const StyledIcon = styled(Icon)<{ $size?: string }>`
 	animation: ${rotate} 1s linear infinite;
-	${({ $size }): SimpleInterpolation =>
+	${({ $size }): undefined | string | ReturnType<typeof css> =>
 		$size &&
 		css`
 			height: ${$size};
@@ -31,18 +32,21 @@ const StyledIcon = styled(Icon)<{ $size?: string }>`
 		`}
 `;
 
-type LoadingIconButtonProps = Omit<IconButtonProps, 'onClick'>;
+type LoadingIconButtonProps = Omit<
+	IconButtonProps,
+	'onClick' | 'type' | 'color' | 'backgroundColor' | 'labelColor'
+>;
 
 type LoadingIconIconProps = Omit<IconProps, 'size'> & { size?: string };
 
 type LoadingIconProps =
 	| ({ onClick: IconButtonProps['onClick'] } & LoadingIconButtonProps)
-	| ({ onClick?: undefined } & LoadingIconIconProps);
+	| ({ onClick?: never } & LoadingIconIconProps);
 
 export const LoadingIcon = React.forwardRef<HTMLDivElement, LoadingIconProps>(
 	function LoadingIconFn(props, ref) {
 		return props.onClick !== undefined ? (
-			<StyledIconButton type={'ghost'} shape={'round'} {...props} ref={ref} />
+			<StyledIconButton type={'ghost'} color={'text'} shape={'round'} {...props} ref={ref} />
 		) : (
 			<StyledIcon {...props} size={undefined} $size={props.size} />
 		);

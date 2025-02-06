@@ -4,36 +4,35 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import React, { PropsWithChildren, ReactElement } from 'react';
+import type { PropsWithChildren, ReactElement } from 'react';
+import React from 'react';
 
 import { faker } from '@faker-js/faker';
-import {
-	act,
+import type {
 	ByRoleMatcher,
 	ByRoleOptions,
 	GetAllBy,
+	RenderOptions,
+	RenderResult,
+	Screen
+} from '@testing-library/react';
+import {
+	act,
 	queries,
 	queryHelpers,
 	render,
-	RenderOptions,
-	RenderResult,
-	Screen,
 	screen as rtlScreen,
 	within as rtlWithin
 } from '@testing-library/react';
 import { userEvent } from '@testing-library/user-event';
-import {
-	BreadcrumbsProps,
-	Crumb,
-	SnackbarManager,
-	ThemeProvider
-} from '@zextras/carbonio-design-system';
+import type { BreadcrumbsProps, Crumb } from '@zextras/carbonio-design-system';
+import { SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
 import i18n from 'i18next';
 import { initReactI18next } from 'react-i18next';
 import { vi } from 'vitest';
 
 import { ICONS } from './constants';
-import { ListItemProps } from '../components/ListItem';
+import type { ListItemProps } from '../components/ListItem';
 import { GQLNodeType } from '../graphql/types';
 
 type ByRoleWithIconOptions = ByRoleOptions & {

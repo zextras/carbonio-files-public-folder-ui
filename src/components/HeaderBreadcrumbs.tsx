@@ -5,7 +5,8 @@
  */
 import React from 'react';
 
-import { Breadcrumbs, BreadcrumbsProps, Container } from '@zextras/carbonio-design-system';
+import type { BreadcrumbsProps } from '@zextras/carbonio-design-system';
+import { Breadcrumbs, Container } from '@zextras/carbonio-design-system';
 import styled from 'styled-components';
 
 const CustomBreadcrumbs = styled(Breadcrumbs)`

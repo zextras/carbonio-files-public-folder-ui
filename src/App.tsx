@@ -6,7 +6,7 @@
 import React, { useEffect, useMemo, useState } from 'react';
 
 import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
-import { GraphQLError } from 'graphql/error';
+import type { GraphQLError } from 'graphql/error';
 
 import { AccessCodeModal } from './components/AccessCodeModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
@@ -17,7 +17,7 @@ import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
 import './i18n';
 import './network/login-config';
-import { Location } from './model/Node';
+import type { Location } from './model/Node';
 import { ERROR } from './utils/constants';
 
 type ErrorCode = (typeof ERROR)[keyof typeof ERROR];

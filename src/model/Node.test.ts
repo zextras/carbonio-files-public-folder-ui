@@ -6,8 +6,10 @@
 import { faker } from '@faker-js/faker';
 import { describe, expect, it } from 'vitest';
 
-import { convertGQLToNode, Node } from './Node';
-import { GQLFile, GQLFolder, GQLNodeType } from '../graphql/types';
+import type { Node } from './Node';
+import { convertGQLToNode } from './Node';
+import type { GQLFile, GQLFolder } from '../graphql/types';
+import { GQLNodeType } from '../graphql/types';
 
 describe('convertGQLToNode function', () => {
 	it('should convert a GQLFile to a Node with the fields specific to files valued', () => {

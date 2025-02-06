@@ -5,9 +5,9 @@
  */
 import { useEffect, useState } from 'react';
 
-import { Crumb } from '@zextras/carbonio-design-system';
+import type { Crumb } from '@zextras/carbonio-design-system';
 
-import { Location } from '../model/Node';
+import type { Location } from '../model/Node';
 
 type UseCrumbsReturnType = {
 	crumbs: Array<Crumb>;

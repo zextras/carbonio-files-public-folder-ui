@@ -5,7 +5,8 @@
  */
 import React, { useCallback, useState } from 'react';
 
-import { Button, Container, Input, InputProps, Modal, Text } from '@zextras/carbonio-design-system';
+import type { InputProps } from '@zextras/carbonio-design-system';
+import { Button, Container, Input, Modal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
 interface AccessCodeModalProps {
