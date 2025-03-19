@@ -234,13 +234,18 @@ describe('App', () => {
 		const breadCrumbs = screen.getByTestId(SELECTORS.breadcrumbs);
 		const navigableFolderElement = await screen.findByText(navigableFolder.name);
 		expect(findNodesQuerySpy).toBeCalledTimes(1);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash', undefined, undefined);
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(
+			navigableFolder.id,
+			'linkHash',
+			undefined,
+			undefined
+		);
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);
@@ -260,13 +265,18 @@ describe('App', () => {
 		await screen.findByText(secondPageNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(2);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash', 'token1');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(folderId, 'linkHash', 'token1', undefined);
 
 		await user.dblClick(navigableFolderElement);
 		await screen.findByText(navigableFolderNodes[0].name);
 
 		expect(findNodesQuerySpy).toBeCalledTimes(3);
-		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(navigableFolder.id, 'linkHash');
+		expect(findNodesQuerySpy).toHaveBeenLastCalledWith(
+			navigableFolder.id,
+			'linkHash',
+			undefined,
+			undefined
+		);
 
 		await user.click(within(breadCrumbs).getByText(folderName));
 		await screen.findByText(firstPageNodes[5].name);

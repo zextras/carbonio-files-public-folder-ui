@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2024 Zextras <https://www.zextras.com>
+ * SPDX-FileCopyrightText: 2025 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
@@ -82,6 +82,7 @@ export type GQLQuery = {
 };
 
 export type GQLQueryFindNodesArgs = {
+	access_code?: InputMaybe<Scalars['String']['input']>;
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	node_link_id?: InputMaybe<Scalars['String']['input']>;
@@ -98,6 +99,7 @@ export type GQLFindNodesQueryVariables = Exact<{
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
 	node_link_id?: InputMaybe<Scalars['String']['input']>;
+	access_code?: InputMaybe<Scalars['String']['input']>;
 }>;
 
 export type GQLFindNodesQuery = {
@@ -134,7 +136,9 @@ export type GQLGetPublicNodeQueryVariables = Exact<{
 }>;
 
 export type GQLGetPublicNodeQuery = {
-	getPublicNode?: ({ id: string; name: string } & { __typename: 'File' | 'Folder' }) | null;
+	getPublicNode?:
+		| ({ id: string; name: string; type: GQLNodeType } & { __typename: 'File' | 'Folder' })
+		| null;
 } & { __typename: 'Query' };
 
 export const FindNodesDocument = {
@@ -167,6 +171,11 @@ export const FindNodesDocument = {
 					kind: 'VariableDefinition',
 					variable: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } },
 					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
+				},
+				{
+					kind: 'VariableDefinition',
+					variable: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } },
+					type: { kind: 'NamedType', name: { kind: 'Name', value: 'String' } }
 				}
 			],
 			selectionSet: {
@@ -195,6 +204,11 @@ export const FindNodesDocument = {
 								kind: 'Argument',
 								name: { kind: 'Name', value: 'node_link_id' },
 								value: { kind: 'Variable', name: { kind: 'Name', value: 'node_link_id' } }
+							},
+							{
+								kind: 'Argument',
+								name: { kind: 'Name', value: 'access_code' },
+								value: { kind: 'Variable', name: { kind: 'Name', value: 'access_code' } }
 							}
 						],
 						selectionSet: {
@@ -281,6 +295,7 @@ export const GetPublicNodeDocument = {
 							selections: [
 								{ kind: 'Field', name: { kind: 'Name', value: 'id' } },
 								{ kind: 'Field', name: { kind: 'Name', value: 'name' } },
+								{ kind: 'Field', name: { kind: 'Name', value: 'type' } },
 								{ kind: 'Field', name: { kind: 'Name', value: '__typename' } }
 							]
 						}

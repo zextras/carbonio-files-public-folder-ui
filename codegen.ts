@@ -5,9 +5,9 @@
  */
 
 import type { CodegenConfig } from '@graphql-codegen/cli';
-import { TypeScriptTypedDocumentNodesConfig } from '@graphql-codegen/typed-document-node';
-import { TypeScriptPluginConfig } from '@graphql-codegen/typescript';
-import { TypeScriptDocumentsPluginConfig } from '@graphql-codegen/typescript-operations';
+import type { TypeScriptTypedDocumentNodesConfig } from '@graphql-codegen/typed-document-node';
+import type { TypeScriptPluginConfig } from '@graphql-codegen/typescript';
+import type { TypeScriptDocumentsPluginConfig } from '@graphql-codegen/typescript-operations';
 
 const config: CodegenConfig = {
 	overwrite: true,

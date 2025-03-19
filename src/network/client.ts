@@ -7,13 +7,14 @@ import type { GraphQLError } from 'graphql/error';
 import type { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
+import { FindNodesDocument, GetPublicNodeDocument } from '../graphql/types';
 import type {
 	GQLFindNodesQuery,
 	GQLFindNodesQueryVariables,
 	GQLGetPublicNodeQuery,
-	GQLGetPublicNodeQueryVariables
+	GQLGetPublicNodeQueryVariables,
+	GQLNodeType
 } from '../graphql/types';
-import { FindNodesDocument, GetPublicNodeDocument } from '../graphql/types';
 import type { Node } from '../model/Node';
 import { convertGQLToNode } from '../model/Node';
 import type { NodeOfFindNodes } from '../types/types';
@@ -27,12 +28,14 @@ export const client = {
 	findNodesQuery: async (
 		folderId: string,
 		nodeLinkId: string,
-		token?: string
+		token?: string,
+		accessCode?: string
 	): Promise<{ newNodes: Array<Node>; newToken: string | null }> => {
 		const body: Body<GQLFindNodesQueryVariables> = {
 			variables: {
 				folder_id: folderId,
 				page_token: token,
+				access_code: accessCode,
 				limit: FIND_NODES_LIMITS,
 				node_link_id: nodeLinkId
 			},
@@ -59,7 +62,7 @@ export const client = {
 		nodeLinkId: string,
 		accessCode?: string
 	): Promise<{
-		publicNode: { id: string; name: string } | undefined;
+		publicNode: { id: string; name: string; type: GQLNodeType } | undefined;
 		errors: readonly GraphQLError[] | undefined;
 	}> => {
 		const body: Body<GQLGetPublicNodeQueryVariables> = {
@@ -82,7 +85,8 @@ export const client = {
 			return {
 				publicNode: {
 					id: getPublicNodeResult.data.getPublicNode.id,
-					name: getPublicNodeResult.data.getPublicNode.name
+					name: getPublicNodeResult.data.getPublicNode.name,
+					type: getPublicNodeResult.data.getPublicNode.type
 				},
 				errors: undefined
 			};

@@ -66,7 +66,7 @@ export const AccessCodeModal = ({
 				<Text>
 					{t(
 						'carbonio-public-folder-ui.accessCode.modal.description',
-						'Please, insert the access code to view the folder'
+						'Please, insert the access code to proceed'
 					)}
 				</Text>
 				<Input
