@@ -51,7 +51,7 @@ export const DownloadModal = ({
 		>
 			<Container gap={'1rem'} crossAlignment={'center'}>
 				<CustomIcon icon={'Checkmark'} color={'success'} />
-				<Text>
+				<Text overflow={'break-word'}>
 					{t(
 						'carbonio-public-folder-ui.fileDownload.modal.description',
 						'Access code entered correctly. Now you can download the file.'
