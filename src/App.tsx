@@ -9,10 +9,12 @@ import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-des
 import type { GraphQLError } from 'graphql/error';
 
 import { AccessCodeModal } from './components/AccessCodeModal';
+import { DownloadModal } from './components/DownloadModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
 import { LinkNotFoundContainer } from './components/LinkNotFoundContainer';
 import { LoadingIcon } from './components/LoadingIcon';
 import { NodeList } from './components/NodeList';
+import { GQLNodeType } from './graphql/types';
 import { useCrumbs } from './hooks/useCrumbs';
 import { useGetPublicNode } from './hooks/useGetPublicNode';
 import './i18n';
@@ -30,10 +32,10 @@ const App = (): React.JSX.Element => {
 
 	const { crumbs } = useCrumbs(currentLocation, setCurrentLocation);
 
-	const { publicNode, errors, nodeLinkId, queryWithAccessCode } = useGetPublicNode();
+	const { publicNode, errors, nodeLinkId, queryWithAccessCode, accessCode } = useGetPublicNode();
 
 	useEffect(() => {
-		if (publicNode) {
+		if (publicNode && publicNode.type === GQLNodeType.Folder) {
 			setCurrentLocation(publicNode);
 		}
 	}, [publicNode]);
@@ -45,7 +47,13 @@ const App = (): React.JSX.Element => {
 					navigateTo={setCurrentLocation}
 					currentId={currentLocation.id}
 					nodeLinkId={nodeLinkId}
+					accessCode={accessCode}
 				/>
+			);
+		}
+		if (publicNode && publicNode.type !== GQLNodeType.Folder && accessCode) {
+			return (
+				<DownloadModal nodeId={publicNode.id} nodeLinkId={nodeLinkId} accessCode={accessCode} />
 			);
 		}
 		if (errors === undefined) {
@@ -64,7 +72,7 @@ const App = (): React.JSX.Element => {
 		}
 		// case Error.linkNotFound and default
 		return <LinkNotFoundContainer />;
-	}, [currentLocation, errors, nodeLinkId, queryWithAccessCode]);
+	}, [accessCode, currentLocation, errors, nodeLinkId, publicNode, queryWithAccessCode]);
 
 	return (
 		<ThemeProvider>

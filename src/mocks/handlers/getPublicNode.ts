@@ -11,7 +11,7 @@ import { delay, graphql, HttpResponse } from 'msw';
 
 import { schema } from './schema';
 import type { GQLGetPublicNodeQuery, GQLGetPublicNodeQueryVariables } from '../../graphql/types';
-import { GetPublicNodeDocument } from '../../graphql/types';
+import { GetPublicNodeDocument, GQLNodeType } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 import { ERROR } from '../../utils/constants';
 
@@ -64,6 +64,7 @@ export function createGetPublicNodeHandler(
 							__typename: 'Folder',
 							id: faker.string.uuid(),
 							name: faker.system.fileName(),
+							type: faker.helpers.arrayElement([GQLNodeType.Folder]),
 							...node,
 							...emptyFolderId
 						};
