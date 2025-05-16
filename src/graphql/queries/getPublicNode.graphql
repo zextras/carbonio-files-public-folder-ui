@@ -6,6 +6,7 @@ query getPublicNode($node_link_id: String!, $access_code: String) {
 	getPublicNode(node_link_id: $node_link_id, access_code: $access_code) {
 		id
 		name
+		type
 		__typename
 	}
 }

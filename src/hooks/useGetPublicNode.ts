@@ -11,10 +11,11 @@ import type { Node } from '../model/Node';
 import { client } from '../network/client';
 
 type UseGetPublicNodeReturnType = {
-	publicNode: Pick<Node, 'id' | 'name'> | null | undefined;
+	publicNode: Pick<Node, 'id' | 'name' | 'type'> | null | undefined;
 	errors: readonly GraphQLError[] | undefined;
 	nodeLinkId: string;
 	queryWithAccessCode: (accessCode: string) => void;
+	accessCode?: string;
 };
 
 export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
@@ -22,12 +23,13 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 		UseGetPublicNodeReturnType['publicNode'] | undefined
 	>();
 	const [errors, setErrors] = useState<readonly GraphQLError[] | undefined>(undefined);
+	const [accessCode, setAccessCode] = useState<string | undefined>(undefined);
 
 	const nodeLinkId = window.location.pathname.split('/').slice(-1)[0];
 
 	const getPublicNodeQuery = useCallback(
-		(accessCode?: string) => {
-			client.getPublicNodeQuery(nodeLinkId, accessCode).then((result) => {
+		(accessCodeArg?: string) => {
+			client.getPublicNodeQuery(nodeLinkId, accessCodeArg).then((result) => {
 				if (result.publicNode) {
 					setPublicNode(result.publicNode);
 					setErrors(undefined);
@@ -45,8 +47,9 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 	}, [getPublicNodeQuery]);
 
 	const queryWithAccessCode = useCallback(
-		(accessCode: string) => {
-			getPublicNodeQuery(accessCode);
+		(accessCodeArg: string) => {
+			getPublicNodeQuery(accessCodeArg);
+			setAccessCode(accessCodeArg);
 		},
 		[getPublicNodeQuery]
 	);
@@ -55,6 +58,7 @@ export const useGetPublicNode = (): UseGetPublicNodeReturnType => {
 		publicNode,
 		errors,
 		nodeLinkId,
-		queryWithAccessCode
+		queryWithAccessCode,
+		accessCode
 	};
 };

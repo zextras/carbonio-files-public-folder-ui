@@ -19,13 +19,19 @@ interface NodeListProps {
 	currentId: string;
 	navigateTo: (node: Node) => void;
 	nodeLinkId: string;
+	accessCode?: string;
 }
 
-export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo, nodeLinkId }) => {
+export const NodeList: React.FC<NodeListProps> = ({
+	currentId,
+	navigateTo,
+	nodeLinkId,
+	accessCode
+}) => {
 	const [t] = useTranslation();
 	const createSnackbar = useSnackbar();
 
-	const { nodes, hasMore, findMore } = useFindNodes(currentId, nodeLinkId);
+	const { nodes, hasMore, findMore } = useFindNodes(currentId, nodeLinkId, accessCode);
 
 	const onItemDoubleClick = useCallback<(node: Node) => (() => void) | undefined>(
 		(node) => {
@@ -40,7 +46,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo, nodeL
 		(node) => {
 			if (node.isFile) {
 				return (): void => {
-					downloadNode(node.id, nodeLinkId);
+					downloadNode(node.id, nodeLinkId, accessCode);
 					createSnackbar({
 						key: new Date().toLocaleString(),
 						severity: 'info',
@@ -52,7 +58,7 @@ export const NodeList: React.FC<NodeListProps> = ({ currentId, navigateTo, nodeL
 			}
 			return undefined;
 		},
-		[createSnackbar, nodeLinkId, t]
+		[accessCode, createSnackbar, nodeLinkId, t]
 	);
 
 	return (

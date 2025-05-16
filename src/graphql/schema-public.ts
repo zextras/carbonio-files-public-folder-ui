@@ -1,5 +1,5 @@
 /*
- * SPDX-FileCopyrightText: 2024 Zextras <https://www.zextras.com>
+ * SPDX-FileCopyrightText: 2025 Zextras <https://www.zextras.com>
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
@@ -459,103 +459,114 @@ export const schema = {
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'folder_id', loc: { start: 635, end: 644 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 635, end: 646 } },
+							type: {
+								kind: 'NamedType',
+								name: { kind: 'Name', value: 'String', loc: { start: 648, end: 654 } },
+								loc: { start: 648, end: 654 }
+							},
+							directives: [],
+							loc: { start: 635, end: 654 }
+						},
+						{
+							kind: 'InputValueDefinition',
+							name: { kind: 'Name', value: 'folder_id', loc: { start: 656, end: 665 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 646, end: 648 } },
-									loc: { start: 646, end: 648 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 667, end: 669 } },
+									loc: { start: 667, end: 669 }
 								},
-								loc: { start: 646, end: 649 }
+								loc: { start: 667, end: 670 }
 							},
 							directives: [],
-							loc: { start: 635, end: 649 }
+							loc: { start: 656, end: 670 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 651, end: 656 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 672, end: 677 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 658, end: 661 } },
-								loc: { start: 658, end: 661 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 679, end: 682 } },
+								loc: { start: 679, end: 682 }
 							},
 							directives: [],
-							loc: { start: 651, end: 661 }
+							loc: { start: 672, end: 682 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 663, end: 675 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 684, end: 696 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 677, end: 683 } },
-								loc: { start: 677, end: 683 }
+								name: { kind: 'Name', value: 'String', loc: { start: 698, end: 704 } },
+								loc: { start: 698, end: 704 }
 							},
 							directives: [],
-							loc: { start: 663, end: 683 }
+							loc: { start: 684, end: 704 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 685, end: 695 } },
+							name: { kind: 'Name', value: 'page_token', loc: { start: 706, end: 716 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 697, end: 703 } },
-								loc: { start: 697, end: 703 }
+								name: { kind: 'Name', value: 'String', loc: { start: 718, end: 724 } },
+								loc: { start: 718, end: 724 }
 							},
 							directives: [],
-							loc: { start: 685, end: 703 }
+							loc: { start: 706, end: 724 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'NodePage', loc: { start: 706, end: 714 } },
-						loc: { start: 706, end: 714 }
+						name: { kind: 'Name', value: 'NodePage', loc: { start: 727, end: 735 } },
+						loc: { start: 727, end: 735 }
 					},
 					directives: [],
-					loc: { start: 625, end: 714 }
+					loc: { start: 625, end: 735 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 717, end: 730 } },
+					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 738, end: 751 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'access_code', loc: { start: 731, end: 742 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 752, end: 763 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 744, end: 750 } },
-								loc: { start: 744, end: 750 }
+								name: { kind: 'Name', value: 'String', loc: { start: 765, end: 771 } },
+								loc: { start: 765, end: 771 }
 							},
 							directives: [],
-							loc: { start: 731, end: 750 }
+							loc: { start: 752, end: 771 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 752, end: 764 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 773, end: 785 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 766, end: 772 } },
-									loc: { start: 766, end: 772 }
+									name: { kind: 'Name', value: 'String', loc: { start: 787, end: 793 } },
+									loc: { start: 787, end: 793 }
 								},
-								loc: { start: 766, end: 773 }
+								loc: { start: 787, end: 794 }
 							},
 							directives: [],
-							loc: { start: 752, end: 773 }
+							loc: { start: 773, end: 794 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 776, end: 780 } },
-						loc: { start: 776, end: 780 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 797, end: 801 } },
+						loc: { start: 797, end: 801 }
 					},
 					directives: [],
-					loc: { start: 717, end: 780 }
+					loc: { start: 738, end: 801 }
 				}
 			],
-			loc: { start: 610, end: 782 }
+			loc: { start: 610, end: 803 }
 		}
 	],
-	loc: { start: 0, end: 782 }
+	loc: { start: 0, end: 803 }
 } as unknown as DocumentNode;

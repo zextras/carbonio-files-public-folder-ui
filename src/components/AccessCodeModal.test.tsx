@@ -20,7 +20,7 @@ describe('AccessCodeModal', () => {
 		});
 
 		expect(screen.getByText('The link is secured by an access code')).toBeVisible();
-		expect(screen.getByText('Please, insert the access code to view the folder')).toBeVisible();
+		expect(screen.getByText('Please, insert the access code to proceed')).toBeVisible();
 		expect(screen.getByRole('button', { name: 'Done' })).toBeVisible();
 	});
 

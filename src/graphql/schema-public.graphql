@@ -51,6 +51,12 @@ enum NodeType {
 }
 
 type Query {
-	findNodes(folder_id: ID!, limit: Int, node_link_id: String, page_token: String): NodePage
+	findNodes(
+		access_code: String
+		folder_id: ID!
+		limit: Int
+		node_link_id: String
+		page_token: String
+	): NodePage
 	getPublicNode(access_code: String, node_link_id: String!): Node
 }

@@ -15,7 +15,11 @@ type UseFindNodesReturnType = {
 	findMore: () => void;
 };
 
-export const useFindNodes = (folderId: string, nodeLinkId: string): UseFindNodesReturnType => {
+export const useFindNodes = (
+	folderId: string,
+	nodeLinkId: string,
+	accessCode?: string
+): UseFindNodesReturnType => {
 	const [nodes, setNodes] = useState<Array<Node> | null>(nodesMap.get(folderId) ?? null);
 	const [token, setToken] = useState<string | undefined | null>();
 
@@ -32,13 +36,15 @@ export const useFindNodes = (folderId: string, nodeLinkId: string): UseFindNodes
 			return;
 		}
 
-		client.findNodesQuery(folderId, nodeLinkId).then(({ newNodes, newToken }) => {
-			setNodes(newNodes);
-			nodesMap.set(folderId, newNodes);
-			setToken(newToken);
-			tokenMap.set(folderId, newToken);
-		});
-	}, [folderId, nodeLinkId]);
+		client
+			.findNodesQuery(folderId, nodeLinkId, undefined, accessCode)
+			.then(({ newNodes, newToken }) => {
+				setNodes(newNodes);
+				nodesMap.set(folderId, newNodes);
+				setToken(newToken);
+				tokenMap.set(folderId, newToken);
+			});
+	}, [accessCode, folderId, nodeLinkId]);
 
 	const findMore = useCallback(() => {
 		if (token === null) {
@@ -48,13 +54,15 @@ export const useFindNodes = (folderId: string, nodeLinkId: string): UseFindNodes
 			throw new Error('Cannot findMore when folderId is not defined');
 		}
 
-		client.findNodesQuery(folderId, nodeLinkId, token).then(({ newNodes, newToken }) => {
-			setNodes((oldNodes) => [...(oldNodes ?? []), ...(newNodes ?? [])]);
-			setToken(newToken);
-			nodesMap.set(folderId, [...(nodesMap.get(folderId) ?? []), ...(newNodes ?? [])]);
-			tokenMap.set(folderId, newToken);
-		});
-	}, [folderId, nodeLinkId, token]);
+		client
+			.findNodesQuery(folderId, nodeLinkId, token, accessCode)
+			.then(({ newNodes, newToken }) => {
+				setNodes((oldNodes) => [...(oldNodes ?? []), ...(newNodes ?? [])]);
+				setToken(newToken);
+				nodesMap.set(folderId, [...(nodesMap.get(folderId) ?? []), ...(newNodes ?? [])]);
+				tokenMap.set(folderId, newToken);
+			});
+	}, [accessCode, folderId, nodeLinkId, token]);
 
 	return { nodes, hasMore: token != null, findMore };
 };

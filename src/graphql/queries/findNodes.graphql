@@ -2,12 +2,19 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-query findNodes($folder_id: ID!, $limit: Int, $page_token: String, $node_link_id: String) {
+query findNodes(
+	$folder_id: ID!
+	$limit: Int
+	$page_token: String
+	$node_link_id: String
+	$access_code: String
+) {
 	findNodes(
 		folder_id: $folder_id
 		limit: $limit
 		page_token: $page_token
 		node_link_id: $node_link_id
+		access_code: $access_code
 	) {
 		nodes {
 			created_at
