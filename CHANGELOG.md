@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.9](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.8...v0.0.9) (2025-05-16)
+
+
+### Features
+
+* enable access code on single file ([3ff91f8](https://github.com/zextras/carbonio-files-public-folder-ui/commit/3ff91f83af7e36cc1a730dc7d2dd47d07215492f)), closes [#161](https://github.com/zextras/carbonio-files-public-folder-ui/issues/161)
+
 ### [0.0.8](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.7...v0.0.8) (2025-02-06)
 
 ### [0.0.7](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.6...v0.0.7) (2024-11-15)
