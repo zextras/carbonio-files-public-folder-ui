@@ -6,9 +6,9 @@
 
 import React, { useCallback, useState } from 'react';
 
+import styled from '@emotion/styled';
 import { Container, Icon, Modal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 
 import { downloadNode } from '../utils/utils';
 

@@ -4,8 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
+import styled from '@emotion/styled';
 import { Icon } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
 
 export const IconBig = styled(Icon)`
 	height: 14.5rem;

@@ -5,8 +5,8 @@
  */
 import React, { useEffect, useRef } from 'react';
 
+import styled from '@emotion/styled';
 import { Divider, Row, useIsVisible } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
 
 import { ListHeader } from './ListHeader';
 import { ListItem } from './ListItem';
