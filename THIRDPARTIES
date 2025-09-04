@@ -3,7 +3,9 @@ MIT License (MIT) applies to:
 @commitlint/cli, Copyright (c) 2016 - present Mario Nebl
 @commitlint/config-conventional, Copyright (c) 2016 - present Mario Nebl
 @commitlint/types, Copyright (c) 2016 - present Mario Nebl
-@faker-js/faker, Faker - Copyright (c) 2022-2024; faker.js - Copyright (c) 2020 Marak Squires
+@emotion/react, Copyright (c) Emotion team and other contributors
+@emotion/styled, Copyright (c) Emotion team and other contributors
+@faker-js/faker, Faker - Copyright (c) 2022-2025; faker.js - Copyright (c) 2011-2020 Marak Squires
 @graphql-codegen/add, Copyright (c) 2016 Dotan Simha
 @graphql-codegen/cli, Copyright (c) 2016 Dotan Simha
 @graphql-codegen/typed-document-node, Copyright (c) 2016 Dotan Simha
@@ -22,27 +24,36 @@ eslint-plugin-notice, Copyright (c) 2017 Nick Deis
 eslint-plugin-react-refresh, Copyright (c) Arnaud Barré (https://github.com/ArnaudBarre)
 graphql, Copyright (c) GraphQL Contributors
 husky, Copyright (c) 2021 typicode
-i18next-browser-languagedetector, Copyright (c) 2023 i18next
+i18next-browser-languagedetector, Copyright (c) 2024 i18next
 i18next-http-backend, Copyright (c) 2024 i18next
-i18next, Copyright (c) 2024 i18next
+i18next, Copyright (c) 2025 i18next
 jsdom, Copyright (c) 2010 Elijah Insua
 msw, Copyright (c) 2018–present Artem Zakharchenko
 react-dom, Copyright (c) Facebook, Inc. and its affiliates.
 react-i18next, Copyright (c) 2024 i18next
 react, Copyright (c) Facebook, Inc. and its affiliates.
 vite-plugin-static-copy, Copyright (c) 2021 sapphi-red
-vite, Copyright (c) 2019-present, Yuxi (Evan) You and Vite contributors
+vite, Copyright (c) 2019-present, VoidZero Inc. and Vite contributors
 vitest, Copyright (c) 2021-Present Vitest Team
 
 MIT License
 
 Copyright (c) <year> <copyright holders>
 
-Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and
+associated documentation files (the "Software"), to deal in the Software without restriction, including
+without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the
+following conditions:
 
-The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+The above copyright notice and this permission notice shall be included in all copies or substantial
+portions of the Software.
 
-THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT
+LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO
+EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER
+IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE
+USE OR OTHER DEALINGS IN THE SOFTWARE.
 
 
 
