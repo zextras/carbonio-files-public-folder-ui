@@ -5,9 +5,9 @@
  */
 import React from 'react';
 
+import styled from '@emotion/styled';
 import type { BreadcrumbsProps } from '@zextras/carbonio-design-system';
 import { Breadcrumbs, Container } from '@zextras/carbonio-design-system';
-import styled from 'styled-components';
 
 const CustomBreadcrumbs = styled(Breadcrumbs)`
 	.crumb {
@@ -16,10 +16,6 @@ const CustomBreadcrumbs = styled(Breadcrumbs)`
 			&:hover {
 				background-color: ${({ theme }): string => theme.palette.gray6.hover};
 			}
-		}
-
-		&:not(.item-clickable) {
-			cursor: default;
 		}
 	}
 `;
@@ -33,9 +29,12 @@ export const HeaderBreadcrumbs: React.FC<HeaderBreadcrumbsProps> = ({ crumbs }) 
 		const isLastCrumb = index === crumbs.length - 1;
 		return {
 			...item,
-			className: `crumb ${isLastCrumb ? '' : 'item-clickable'}`,
+			className: `crumb ${!isLastCrumb && 'item-clickable'}`,
 			onClick: isLastCrumb ? undefined : item.onClick,
-			'data-testid': 'crumb'
+			'data-testid': 'crumb',
+			style: isLastCrumb
+				? { cursor: 'default', ...item.style }
+				: { cursor: 'pointer', ...item.style }
 		};
 	});
 	return (
