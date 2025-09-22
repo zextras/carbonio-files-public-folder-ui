@@ -22,12 +22,20 @@ depends=(
   "carbonio-nginx"
   "jq"
 )
+source=(
+  "${pkgname}-dist.tar.gz"
+)
+sha256sums=(
+  'SKIP'
+)
 
 package() {
-  cd "${srcdir}"
-  mkdir -p "${pkgdir}/opt/zextras/web/${pkgname}"
-  cp -a  ../../dist/* "${pkgdir}/opt/zextras/web/${pkgname}"
+  install -dm755 \
+    "${pkgdir}/opt/zextras/web/${pkgname}"
+  cp -a "${srcdir}/dist/"* \
+    "${pkgdir}/opt/zextras/web/${pkgname}"
   chown root:root -R "${pkgdir}/opt/zextras/web/${pkgname}"
+  
   chmod 644 -R "${pkgdir}/opt/zextras/web/${pkgname}"
   find "${pkgdir}/opt/zextras/web/${pkgname}" -type d -exec chmod a+x "{}" \;
 }
