@@ -13,7 +13,7 @@ import { List } from './List';
 import { LoadingIcon } from './LoadingIcon';
 import { useFindNodes } from '../hooks/useFindNodes';
 import type { Node } from '../model/Node';
-import { downloadNode } from '../utils/utils';
+import { downloadMultipleNodes, downloadNode } from '../utils/utils';
 
 interface NodeListProps {
 	currentId: string;
@@ -54,6 +54,11 @@ export const NodeList: React.FC<NodeListProps> = ({
 						replace: true,
 						hideButton: true
 					});
+				};
+			}
+			if (node.isDirectory) {
+				return (): void => {
+					downloadMultipleNodes([node.id], nodeLinkId, accessCode);
 				};
 			}
 			return undefined;
