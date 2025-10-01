@@ -5,10 +5,16 @@
  */
 import React, { useEffect, useMemo, useState } from 'react';
 
-import { Container, SnackbarManager, ThemeProvider } from '@zextras/carbonio-design-system';
+import {
+	Container,
+	ModalManager,
+	SnackbarManager,
+	ThemeProvider
+} from '@zextras/carbonio-design-system';
 import type { GraphQLError } from 'graphql/error';
 
 import { AccessCodeModal } from './components/AccessCodeModal';
+import { DownloadAll } from './components/DownloadAll';
 import { DownloadModal } from './components/DownloadModal';
 import { HeaderBreadcrumbs } from './components/HeaderBreadcrumbs';
 import { LinkNotFoundContainer } from './components/LinkNotFoundContainer';
@@ -77,10 +83,21 @@ const App = (): React.JSX.Element => {
 	return (
 		<ThemeProvider>
 			<SnackbarManager>
-				<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
-					<HeaderBreadcrumbs crumbs={crumbs} />
-					{content}
-				</Container>
+				<ModalManager>
+					<Container maxHeight={'100vh'} height={'100vh'} mainAlignment={'flex-start'}>
+						<HeaderBreadcrumbs crumbs={crumbs}>
+							{currentLocation && (
+								<DownloadAll
+									currentFolderId={currentLocation.id}
+									folderName={currentLocation.name}
+									nodeLinkId={nodeLinkId}
+									accessCode={accessCode}
+								/>
+							)}
+						</HeaderBreadcrumbs>
+						{content}
+					</Container>
+				</ModalManager>
 			</SnackbarManager>
 		</ThemeProvider>
 	);
