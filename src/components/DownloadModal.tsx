@@ -10,6 +10,8 @@ import styled from '@emotion/styled';
 import { Container, Icon, Modal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
+import { useCustomSnackbars } from '../hooks/useCustomSnackbars';
+import { HTTP_STATUS_CODE } from '../utils/constants';
 import { downloadNode } from '../utils/utils';
 
 const CustomIcon = styled(Icon)`
@@ -29,11 +31,16 @@ export const DownloadModal = ({
 	accessCode
 }: AccessCodeModalProps): React.JSX.Element => {
 	const [t] = useTranslation();
+	const { createDownloadSizeExceedsSnackbar } = useCustomSnackbars();
 	const [downloaded, setDownloaded] = useState(false);
 	const onConfirm = useCallback(() => {
-		downloadNode(nodeId, nodeLinkId, accessCode);
+		downloadNode(nodeId, nodeLinkId, accessCode).then((response) => {
+			if (response.status === HTTP_STATUS_CODE.fileSizeExceeded) {
+				createDownloadSizeExceedsSnackbar();
+			}
+		});
 		setDownloaded(true);
-	}, [accessCode, nodeId, nodeLinkId]);
+	}, [accessCode, createDownloadSizeExceedsSnackbar, nodeId, nodeLinkId]);
 	return (
 		<Modal
 			showCloseIcon={false}

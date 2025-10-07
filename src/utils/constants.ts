@@ -60,3 +60,8 @@ export const ERROR = {
 	wrongAccessCode: 'WRONG_ACCESS_CODE',
 	linkNotFound: 'LINK_NOT_FOUND'
 } as const;
+
+export const HTTP_STATUS_CODE = {
+	/** file size exceeded quota */
+	fileSizeExceeded: 413
+} as const;

@@ -31,8 +31,9 @@ describe('DownloadModal', () => {
 	});
 
 	it('calls downloadNode and sets downloaded to true on confirm', async () => {
-		const downloadNodeSpy = vi.spyOn(utils, 'downloadNode');
-
+		const downloadNodeSpy = vi
+			.spyOn(utils, 'downloadNode')
+			.mockResolvedValue({ ok: true } as Response);
 		const { user } = setup(<DownloadModal {...mockProps} />);
 		await act(async () => {
 			await vi.advanceTimersByTimeAsync(TIMERS.modalDelay);

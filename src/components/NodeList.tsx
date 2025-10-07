@@ -5,14 +5,16 @@
  */
 import React, { useCallback } from 'react';
 
-import { Container, Text, useSnackbar } from '@zextras/carbonio-design-system';
+import { Container, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
 import { IconBig } from './IconBig';
 import { List } from './List';
 import { LoadingIcon } from './LoadingIcon';
+import { useCustomSnackbars } from '../hooks/useCustomSnackbars';
 import { useFindNodes } from '../hooks/useFindNodes';
 import type { Node } from '../model/Node';
+import { HTTP_STATUS_CODE } from '../utils/constants';
 import { downloadMultipleNodes, downloadNode } from '../utils/utils';
 
 interface NodeListProps {
@@ -29,7 +31,8 @@ export const NodeList: React.FC<NodeListProps> = ({
 	accessCode
 }) => {
 	const [t] = useTranslation();
-	const createSnackbar = useSnackbar();
+	const { createDownloadSizeExceedsSnackbar, createDownloadWillStartSoonSnackbar } =
+		useCustomSnackbars();
 
 	const { nodes, hasMore, findMore } = useFindNodes(currentId, nodeLinkId, accessCode);
 
@@ -44,26 +47,27 @@ export const NodeList: React.FC<NodeListProps> = ({
 	);
 	const download = useCallback<(node: Node) => (() => void) | undefined>(
 		(node) => {
+			const handleResponse = (response: Response): void => {
+				if (response.ok) {
+					createDownloadWillStartSoonSnackbar();
+				} else if (response.status === HTTP_STATUS_CODE.fileSizeExceeded) {
+					createDownloadSizeExceedsSnackbar();
+				}
+			};
+
 			if (node.isFile) {
 				return (): void => {
-					downloadNode(node.id, nodeLinkId, accessCode);
-					createSnackbar({
-						key: new Date().toLocaleString(),
-						severity: 'info',
-						label: t('snackbar.download.start', 'Your download will start soon'),
-						replace: true,
-						hideButton: true
-					});
+					downloadNode(node.id, nodeLinkId, accessCode).then(handleResponse);
 				};
 			}
 			if (node.isDirectory) {
 				return (): void => {
-					downloadMultipleNodes([node.id], nodeLinkId, accessCode);
+					downloadMultipleNodes([node.id], nodeLinkId, accessCode).then(handleResponse);
 				};
 			}
 			return undefined;
 		},
-		[accessCode, createSnackbar, nodeLinkId, t]
+		[accessCode, createDownloadSizeExceedsSnackbar, createDownloadWillStartSoonSnackbar, nodeLinkId]
 	);
 
 	return (

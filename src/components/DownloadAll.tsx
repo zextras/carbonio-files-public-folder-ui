@@ -8,6 +8,8 @@ import React, { useCallback } from 'react';
 import { IconButton, Tooltip, useModal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
+import { useCustomSnackbars } from '../hooks/useCustomSnackbars';
+import { HTTP_STATUS_CODE } from '../utils/constants';
 import { downloadMultipleNodes } from '../utils/utils';
 
 type DownloadAllProps = {
@@ -25,7 +27,18 @@ export const DownloadAll = ({
 	const { createModal, closeModal } = useModal();
 	const [t] = useTranslation();
 
+	const { createDownloadSizeExceedsSnackbar, createDownloadWillStartSoonSnackbar } =
+		useCustomSnackbars();
+
 	const download = useCallback(() => {
+		const handleResponse = (response: Response): void => {
+			if (response.ok) {
+				createDownloadWillStartSoonSnackbar();
+			} else if (response.status === HTTP_STATUS_CODE.fileSizeExceeded) {
+				createDownloadSizeExceedsSnackbar();
+			}
+		};
+
 		createModal({
 			id: currentFolderId,
 			title: t('actions.download.multiple.modal.folder.title', 'Download {{folderName}}', {
@@ -43,7 +56,7 @@ export const DownloadAll = ({
 			),
 			confirmLabel: t('actions.download.multiple.modal.button.label', 'Download all'),
 			onConfirm: () => {
-				downloadMultipleNodes([currentFolderId], nodeLinkId, accessCode);
+				downloadMultipleNodes([currentFolderId], nodeLinkId, accessCode).then(handleResponse);
 				closeModal(currentFolderId);
 			},
 			onSecondaryAction: () => closeModal(currentFolderId),
@@ -51,7 +64,17 @@ export const DownloadAll = ({
 			onClose: () => closeModal(currentFolderId),
 			closeIconTooltip: t('modal.close.tooltip', 'Close')
 		});
-	}, [accessCode, closeModal, createModal, currentFolderId, folderName, nodeLinkId, t]);
+	}, [
+		accessCode,
+		closeModal,
+		createDownloadSizeExceedsSnackbar,
+		createDownloadWillStartSoonSnackbar,
+		createModal,
+		currentFolderId,
+		folderName,
+		nodeLinkId,
+		t
+	]);
 
 	return (
 		<Tooltip label="download all" placement={'top'}>
