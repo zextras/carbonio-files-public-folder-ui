@@ -77,7 +77,10 @@ export const DownloadAll = ({
 	]);
 
 	return (
-		<Tooltip label="download all" placement={'top'}>
+		<Tooltip
+			label={t('actions.download.multiple.button.tooltip', 'Download all')}
+			placement={'top'}
+		>
 			<Button
 				icon={'DownloadOutline'}
 				size={'large'}
