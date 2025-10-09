@@ -5,7 +5,7 @@
  */
 import React, { useCallback } from 'react';
 
-import { IconButton, Tooltip, useModal, Text } from '@zextras/carbonio-design-system';
+import { Button, Tooltip, useModal, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
 
 import { useCustomSnackbars } from '../hooks/useCustomSnackbars';
@@ -78,7 +78,14 @@ export const DownloadAll = ({
 
 	return (
 		<Tooltip label="download all" placement={'top'}>
-			<IconButton icon={'DownloadOutline'} size={'large'} borderRadius="round" onClick={download} />
+			<Button
+				icon={'DownloadOutline'}
+				size={'large'}
+				onClick={download}
+				type={'ghost'}
+				shape={'round'}
+				color={'text'}
+			/>
 		</Tooltip>
 	);
 };

@@ -20,7 +20,7 @@ export const useCustomSnackbars = (): {
 		createSnackbar({
 			key: new Date().toLocaleString(),
 			label: t(
-				'snackbar.download.error2',
+				'snackbar.download.sizeExceedsError',
 				'Download size exceeds the maximum limit. Please reduce items to download'
 			),
 			severity: 'warning',
