@@ -22,9 +22,10 @@ const CustomBreadcrumbs = styled(Breadcrumbs)`
 
 interface HeaderBreadcrumbsProps {
 	crumbs: BreadcrumbsProps['crumbs'];
+	children?: React.ReactNode;
 }
 
-export const HeaderBreadcrumbs: React.FC<HeaderBreadcrumbsProps> = ({ crumbs }) => {
+export const HeaderBreadcrumbs: React.FC<HeaderBreadcrumbsProps> = ({ crumbs, children }) => {
 	const styledCrumbs = crumbs.map((item, index) => {
 		const isLastCrumb = index === crumbs.length - 1;
 		return {
@@ -38,8 +39,15 @@ export const HeaderBreadcrumbs: React.FC<HeaderBreadcrumbsProps> = ({ crumbs }) 
 		};
 	});
 	return (
-		<Container height={'auto'} padding={{ all: '1rem' }} width="100vw" background={'gray5'}>
+		<Container
+			height={'auto'}
+			padding={{ all: '1rem' }}
+			width="100vw"
+			background={'gray5'}
+			orientation={'horizontal'}
+		>
 			<CustomBreadcrumbs data-testid={'breadcrumbs'} crumbs={styledCrumbs} />
+			{children}
 		</Container>
 	);
 };
