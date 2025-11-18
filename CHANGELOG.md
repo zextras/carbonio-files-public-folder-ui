@@ -2,6 +2,13 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.10](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.9...v0.0.10) (2025-11-18)
+
+
+### Features
+
+* add download multiple feature ([631573e](https://github.com/zextras/carbonio-files-public-folder-ui/commit/631573ef52b9074c2b2048869e84bbb8b817692a)), closes [#218](https://github.com/zextras/carbonio-files-public-folder-ui/issues/218)
+
 ### [0.0.9](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.8...v0.0.9) (2025-05-16)
 
 
