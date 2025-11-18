@@ -5,9 +5,10 @@
  */
 import React from 'react';
 
+import { css, keyframes } from '@emotion/react';
+import styled from '@emotion/styled';
 import type { IconButtonProps, IconProps } from '@zextras/carbonio-design-system';
 import { Icon, Button } from '@zextras/carbonio-design-system';
-import styled, { css, keyframes } from 'styled-components';
 
 const rotate = keyframes`
   from {

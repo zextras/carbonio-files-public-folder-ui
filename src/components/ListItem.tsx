@@ -5,9 +5,10 @@
  */
 import React from 'react';
 
-import { Avatar, Tooltip, IconButton, Text, useTheme } from '@zextras/carbonio-design-system';
+import { css } from '@emotion/react';
+import styled from '@emotion/styled';
+import { Avatar, Tooltip, Text, useTheme, Button } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import styled, { css } from 'styled-components';
 
 import type { Node } from '../model/Node';
 import { ICON_BY_NODE_TYPE, ICON_COLOR_BY_NODE_TYPE } from '../utils/constants';
@@ -92,11 +93,13 @@ export const ListItem: React.FC<ListItemProps> = ({
 			<span>
 				{downloadNode !== undefined && (
 					<Tooltip label={t('preview.actions.tooltip.download', 'Download')} placement={'top'}>
-						<IconButton
+						<Button
 							icon={'DownloadOutline'}
 							size={'large'}
-							borderRadius="round"
 							onClick={downloadNode}
+							type={'ghost'}
+							shape={'round'}
+							color={'text'}
 						/>
 					</Tooltip>
 				)}

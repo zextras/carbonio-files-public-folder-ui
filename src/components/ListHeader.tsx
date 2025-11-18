@@ -5,9 +5,9 @@
  */
 import React from 'react';
 
+import styled from '@emotion/styled';
 import { Padding, Text } from '@zextras/carbonio-design-system';
 import { useTranslation } from 'react-i18next';
-import styled from 'styled-components';
 
 const Span2 = styled.span`
 	grid-column: 1 / span 2;

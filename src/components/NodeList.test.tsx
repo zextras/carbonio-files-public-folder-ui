@@ -13,6 +13,7 @@ import { createFindNodesHandler } from '../mocks/handlers/findNodes';
 import { server } from '../mocks/server';
 import { ICONS } from '../test/constants';
 import { screen, setup, triggerLoadMore } from '../test/utils';
+import * as utils from '../utils/utils';
 
 describe('NodeList', () => {
 	const folderId = faker.string.uuid();
@@ -125,7 +126,7 @@ describe('NodeList', () => {
 		expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
 	});
 
-	it('should not show the download button for folders', async () => {
+	it('should show the download button for folders', async () => {
 		const folder = createFolder();
 		server.use(
 			createFindNodesHandler({
@@ -136,10 +137,11 @@ describe('NodeList', () => {
 		const navigateToMock = vi.fn();
 		setup(<NodeList currentId={folderId} navigateTo={navigateToMock} nodeLinkId={'hash'} />);
 		await screen.findByText(folder.name);
-		expect(screen.queryByRoleWithIcon('button', { icon: ICONS.download })).not.toBeInTheDocument();
+		expect(await screen.findByRoleWithIcon('button', { icon: ICONS.download })).toBeVisible();
 	});
 
 	it('should show the snackbar when the user clicks on download icon', async () => {
+		vi.spyOn(utils, 'downloadNode').mockResolvedValue({ ok: true } as Response);
 		server.use(
 			createFindNodesHandler({
 				nodes: [file],
