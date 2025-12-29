@@ -31,9 +31,9 @@
     "react-i18next": "^16.0.0"
   },
   "devDependencies": {
-    "@commitlint/cli": "^20.1.0",
-    "@commitlint/config-conventional": "^20.0.0",
-    "@commitlint/types": "^20.0.0",
+    "@commitlint/cli": "^20.2.0",
+    "@commitlint/config-conventional": "^20.2.0",
+    "@commitlint/types": "^20.2.0",
     "@faker-js/faker": "^9.7.0",
     "@graphql-codegen/add": "^6.0.0",
     "@graphql-codegen/cli": "^6.0.0",
