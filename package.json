@@ -2,7 +2,7 @@
   "name": "carbonio-files-public-folder-ui",
   "description": "Files Public Folder module",
   "private": true,
-  "version": "0.0.10",
+  "version": "0.0.11",
   "type": "module",
   "scripts": {
     "dev": "vite",
