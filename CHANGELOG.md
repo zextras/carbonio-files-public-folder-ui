@@ -2,6 +2,15 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+### [0.0.12](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.11...v0.0.12) (2026-02-23)
+
+### [0.0.11](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.10...v0.0.11) (2026-02-23)
+
+
+### Bug Fixes
+
+* add sonarqube-scanner dependency to resolve CI permission issue ([5614bd7](https://github.com/zextras/carbonio-files-public-folder-ui/commit/5614bd70ee3b96b94fb9c87725bceb4dbd5be97c)), closes [#253](https://github.com/zextras/carbonio-files-public-folder-ui/issues/253)
+
 ### [0.0.10](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.9...v0.0.10) (2025-11-18)
 
 
