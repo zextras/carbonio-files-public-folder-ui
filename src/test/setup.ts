@@ -4,7 +4,8 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 import '@testing-library/jest-dom/vitest';
-import { beforeAll, afterEach, afterAll, beforeEach, vi } from 'vitest';
+import { matchers } from '@emotion/jest';
+import { beforeAll, afterEach, afterAll, beforeEach, expect, vi } from 'vitest';
 
 import { resetCache } from '../hooks/NodesCache';
 import { server } from '../mocks/server';
@@ -13,6 +14,8 @@ declare global {
 	// eslint-disable-next-line no-var,vars-on-top
 	var jest: Record<string, unknown>;
 }
+
+expect.extend(matchers as unknown as Parameters<typeof expect.extend>[0]);
 beforeEach(() => {
 	vi.useFakeTimers();
 

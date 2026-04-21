@@ -3,7 +3,7 @@ SPDX-PackageName = "carbonio-public-folder-ui"
 SPDX-PackageSupplier = "<>"
 
 [[annotations]]
-path = ["**.json", "package/**"]
+path = ["**.json", "package/**", "pnpm-lock.yaml"]
 precedence = "aggregate"
 SPDX-FileCopyrightText = "2023 Zextras <https://www.zextras.com>"
 SPDX-License-Identifier = "AGPL-3.0-only"

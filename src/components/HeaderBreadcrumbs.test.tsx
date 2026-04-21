@@ -53,31 +53,27 @@ it('should show 25 crumbs when 25 crumbs are provided', () => {
 	});
 });
 
-it('should show overlay on hover on clickable item', async () => {
+it('should show overlay on hover on clickable item', () => {
 	const crumbs = crumbsBuilder(2);
-	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
-	await user.hover(screen.getByText(crumbs[0].label as string));
-	expect(
-		screen
-			.getAllByTestId(SELECTORS.crumb)
-			.find((crumb) => within(crumb).queryByText(crumbs[0].label as string) !== null)
-	).toHaveStyle({
-		backgroundColor: COLORS.crumbHover,
-		cursor: 'pointer'
-	});
+	setup(<HeaderBreadcrumbs crumbs={crumbs} />);
+	const firstCrumb = screen
+		.getAllByTestId(SELECTORS.crumb)
+		.find((crumb) => within(crumb).queryByText(crumbs[0].label as string) !== null);
+	expect(firstCrumb).toHaveClass('item-clickable');
+	expect(firstCrumb).toHaveStyle({ cursor: 'pointer' });
+	expect(screen.getByTestId(SELECTORS.breadcrumbs)).toHaveStyleRule(
+		'background-color',
+		COLORS.crumbHover,
+		{ target: ' .crumb.item-clickable:hover' }
+	);
 });
 
-it('should not show overlay on hover on last item', async () => {
+it('should not show overlay on hover on last item', () => {
 	const crumbs = crumbsBuilder(2);
-	const { user } = setup(<HeaderBreadcrumbs crumbs={crumbs} />);
-	await user.hover(screen.getByText(crumbs[0].label as string));
+	setup(<HeaderBreadcrumbs crumbs={crumbs} />);
 	const lastCrumb = screen
 		.getAllByTestId(SELECTORS.crumb)
 		.find((crumb) => within(crumb).queryByText(crumbs[1].label as string) !== null);
-	expect(lastCrumb).not.toHaveStyle({
-		backgroundColor: COLORS.crumbHover
-	});
-	expect(lastCrumb).toHaveStyle({
-		cursor: 'default'
-	});
+	expect(lastCrumb).not.toHaveClass('item-clickable');
+	expect(lastCrumb).toHaveStyle({ cursor: 'default' });
 });

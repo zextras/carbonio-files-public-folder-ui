@@ -25,21 +25,23 @@ Files Public Folder module for Zextras Carbonio
 
 - clone this repo
 - install the dependencies
+
 ```
-npm install
+pnpm install
 ```
 
 #### Dev Mode
 
 ```
-npm run dev
+pnpm run dev
 ```
 
 #### Preview Mode
 
 ```
-npm run preview
+pnpm run preview
 ```
+
 To proxy requests to an existing Carbonio installation, create a `.env.preview.local` file as the following
 
 ```dotenv
@@ -55,10 +57,11 @@ It does not re-create the build on changes.
 #### Build
 
 ```
-npm run build
+pnpm run build
 ```
 
 ## License
+
 Carbonio Files Public Folder UI - Web client for Zextras Carbonio Files module
 
 Copyright (C) 2023 Zextras <https://www.zextras.com>
@@ -74,8 +77,7 @@ for more details.
 
 You should have received a copy of the GNU Affero General Public License
 along with this program. If not, see [Licenses - GNU Project - Free
-Software Foundation](https://www.gnu.org/licenses/licenses.html
-"https://www.gnu.org/licenses/licenses.html")
+Software Foundation](https://www.gnu.org/licenses/licenses.html 'https://www.gnu.org/licenses/licenses.html')
 
 See [COPYING](COPYING) file for the project license details
 
@@ -87,12 +89,12 @@ All non-software material (such as, for example, names, images, logos, sounds) i
 
 Where not specified, all source files owned by Zextras s.r.l. are licensed under AGPL-3.0-only
 
-[contributors-badge]: https://img.shields.io/github/contributors/zextras/carbonio-files-public-folder-ui "Contributors"
-[contributors]: https://github.com/zextras/carbonio-files-public-folder-ui/graphs/contributors "Contributors"
-[activity-badge]: https://img.shields.io/github/commit-activity/m/zextras/carbonio-files-public-folder-ui "Activity"
-[activity]: https://github.com/zextras/carbonio-files-public-folder-ui/pulse "Activity"
-[license-badge]: https://img.shields.io/badge/license-AGPL%203-green "License AGPL 3"
-[project-badge]: https://img.shields.io/badge/project-carbonio-informational "Project Carbonio"
-[project]: https://www.zextras.com/carbonio/ "Project Carbonio"
-[twitter-badge]: https://img.shields.io/twitter/follow/zextras?style=social&logo=twitter "Follow on Twitter"
-[twitter]: https://twitter.com/intent/follow?screen_name=zextras "Follow Zextras on Twitter"
+[contributors-badge]: https://img.shields.io/github/contributors/zextras/carbonio-files-public-folder-ui 'Contributors'
+[contributors]: https://github.com/zextras/carbonio-files-public-folder-ui/graphs/contributors 'Contributors'
+[activity-badge]: https://img.shields.io/github/commit-activity/m/zextras/carbonio-files-public-folder-ui 'Activity'
+[activity]: https://github.com/zextras/carbonio-files-public-folder-ui/pulse 'Activity'
+[license-badge]: https://img.shields.io/badge/license-AGPL%203-green 'License AGPL 3'
+[project-badge]: https://img.shields.io/badge/project-carbonio-informational 'Project Carbonio'
+[project]: https://www.zextras.com/carbonio/ 'Project Carbonio'
+[twitter-badge]: https://img.shields.io/twitter/follow/zextras?style=social&logo=twitter 'Follow on Twitter'
+[twitter]: https://twitter.com/intent/follow?screen_name=zextras 'Follow Zextras on Twitter'
