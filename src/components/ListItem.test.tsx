@@ -125,8 +125,8 @@ it('should show the extension if provided', () => {
 	expect(screen.getByText(extension)).toBeVisible();
 });
 
-it('should show overlay on hover if onDoubleClick is valued', async () => {
-	const { user } = setup(
+it('should show overlay on hover if onDoubleClick is valued', () => {
+	setup(
 		<ListItem
 			{...listItemPropsBuilder()}
 			onDoubleClick={(): void => undefined}
@@ -134,21 +134,19 @@ it('should show overlay on hover if onDoubleClick is valued', async () => {
 		/>
 	);
 	const listItem = screen.getByTestId(SELECTORS.listItem);
-	await user.hover(listItem);
-	expect(listItem).toHaveStyle({
-		backgroundColor: COLORS.listItemHover,
-		cursor: 'pointer'
+	expect(listItem).toHaveStyleRule('background-color', COLORS.listItemHover, {
+		target: ':hover'
 	});
+	expect(listItem).toHaveStyleRule('cursor', 'pointer', { target: ':hover' });
 });
 
-it('should not show overlay on hover if onDoubleClick is not valued', async () => {
-	const { user } = setup(<ListItem {...listItemPropsBuilder()} onDoubleClick={undefined} />);
+it('should not show overlay on hover if onDoubleClick is not valued', () => {
+	setup(<ListItem {...listItemPropsBuilder()} onDoubleClick={undefined} />);
 	const listItem = screen.getByTestId(SELECTORS.listItem);
-	await user.hover(listItem);
-	expect(listItem).not.toHaveStyle({
-		backgroundColor: COLORS.listItemHover
+	expect(listItem).not.toHaveStyleRule('background-color', COLORS.listItemHover, {
+		target: ':hover'
 	});
-	expect(listItem).not.toHaveStyle({ cursor: 'pointer' });
+	expect(listItem).not.toHaveStyleRule('cursor', 'pointer', { target: ':hover' });
 });
 
 it('should show the download button icon if downloadNode is not undefined', () => {

@@ -21,8 +21,8 @@ export const SELECTORS = {
 } as const;
 
 export const COLORS = {
-	crumbHover: '#E6E6E6',
-	listItemHover: '#E6E6E6'
+	crumbHover: '#e6e6e6',
+	listItemHover: '#e6e6e6'
 };
 
 export const TIMERS = {
