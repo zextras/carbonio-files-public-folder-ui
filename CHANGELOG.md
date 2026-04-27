@@ -1,3 +1,14 @@
+## [0.0.15](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.14...v0.0.15) (2026-04-27)
+
+### Bug Fixes
+
+* use is-ci to skip husky in CI environments ([#297](https://github.com/zextras/carbonio-files-public-folder-ui/issues/297)) ([ca60940](https://github.com/zextras/carbonio-files-public-folder-ui/commit/ca609405c886cef61a74018ccfb8995e03089fc1))
+
+### Other changes
+
+* migrate to pnpm, pin versions, update jsdom ([#290](https://github.com/zextras/carbonio-files-public-folder-ui/issues/290)) ([29d59c6](https://github.com/zextras/carbonio-files-public-folder-ui/commit/29d59c6687060b92ef63a9336735061b6fc0db0a))
+* **release:** migrate to semantic-release ([#293](https://github.com/zextras/carbonio-files-public-folder-ui/issues/293)) ([5e41779](https://github.com/zextras/carbonio-files-public-folder-ui/commit/5e4177957a8400c737b500fc2166a8d5618021b3))
+
 # Changelog
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
