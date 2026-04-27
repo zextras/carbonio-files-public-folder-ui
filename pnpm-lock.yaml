@@ -132,6 +132,9 @@ importers:
       husky:
         specifier: 9.1.7
         version: 9.1.7
+      is-ci:
+        specifier: 4.1.0
+        version: 4.1.0
       jsdom:
         specifier: 29.0.2
         version: 29.0.2
@@ -2273,6 +2276,10 @@ packages:
     resolution: {integrity: sha512-7VT13fmjotKpGipCW9JEQAusEPE+Ei8nl6/g4FBAmIm0GOOLMua9NDDo/DWp0ZAxCr3cPq5ZpBqmPAQgDda2Pw==}
     engines: {node: '>= 8.10.0'}
 
+  ci-info@4.4.0:
+    resolution: {integrity: sha512-77PSwercCZU2Fc4sX94eF8k8Pxte6JAwL4/ICZLFjJLqegs7kCuAsqqj/70NQF6TvDpgFjkubQB2FW2ZZddvQg==}
+    engines: {node: '>=8'}
+
   clean-stack@2.2.0:
     resolution: {integrity: sha512-4diC9HaTE+KRAMWhDhrGOECgWZxoevMc5TlkObMqNSsVU62PYzXZ/SMTjzyGAFF1YusgxGcSWTEXBhp0CPwQ1A==}
     engines: {node: '>=6'}
@@ -3395,6 +3402,10 @@ packages:
   is-callable@1.2.7:
     resolution: {integrity: sha512-1BC0BVFhS/p0qtw6enp8e+8OD0UrK0oFLztSjNzhcKA3WDuJxxAPXzPuPtKkjEY9UUoEWlX/8fgKeu2S8i9JTA==}
     engines: {node: '>= 0.4'}
+
+  is-ci@4.1.0:
+    resolution: {integrity: sha512-Ab9bQDQ11lWootZUI5qxgN2ZXwxNI5hTwnsvOc1wyxQ7zQ8OkEDw79mI0+9jI3x432NfwbVRru+3noJfXF6lSQ==}
+    hasBin: true
 
   is-core-module@2.16.1:
     resolution: {integrity: sha512-UfoeMA6fIJ8wTYFEUjelnaGI67v6+N7qXJEvQuIGa99l4xsCruSYOVSQ0uPANn4dAzm8lkYPaKLrrijLq7x23w==}
@@ -7757,6 +7768,8 @@ snapshots:
     optionalDependencies:
       fsevents: 2.3.3
 
+  ci-info@4.4.0: {}
+
   clean-stack@2.2.0: {}
 
   clean-stack@5.3.0:
@@ -9041,6 +9054,10 @@ snapshots:
       semver: 7.7.4
 
   is-callable@1.2.7: {}
+
+  is-ci@4.1.0:
+    dependencies:
+      ci-info: 4.4.0
 
   is-core-module@2.16.1:
     dependencies:
