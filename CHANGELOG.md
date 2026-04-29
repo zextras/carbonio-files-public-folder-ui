@@ -1,3 +1,9 @@
+## [0.0.17](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.16...v0.0.17) (2026-04-29)
+
+### Bug Fixes
+
+* **deps:** update dependency @zextras/carbonio-design-system to v12.0.2 ([#295](https://github.com/zextras/carbonio-files-public-folder-ui/issues/295)) ([8d75519](https://github.com/zextras/carbonio-files-public-folder-ui/commit/8d75519cd5fa7b2ca2419f25da932d63831f229a))
+
 ## [0.0.16](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.15...v0.0.16) (2026-04-29)
 
 ### Bug Fixes
