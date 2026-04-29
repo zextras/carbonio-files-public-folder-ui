@@ -1,3 +1,9 @@
+## [0.0.16](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.15...v0.0.16) (2026-04-29)
+
+### Bug Fixes
+
+* **deps:** update dependency i18next-http-backend to v3.0.5 [security] ([#292](https://github.com/zextras/carbonio-files-public-folder-ui/issues/292)) ([667ea50](https://github.com/zextras/carbonio-files-public-folder-ui/commit/667ea50eba5f61184064baa0adc62db70b2e10f1))
+
 ## [0.0.15](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.14...v0.0.15) (2026-04-27)
 
 ### Bug Fixes
