@@ -2,7 +2,7 @@
 	"name": "carbonio-files-public-folder-ui",
 	"description": "Files Public Folder module",
 	"private": true,
-	"version": "0.0.15",
+	"version": "0.0.16",
 	"type": "module",
 	"packageManager": "pnpm@10.33.0",
 	"engines": {
@@ -31,7 +31,7 @@
 		"graphql": "16.10.0",
 		"i18next": "25.6.0",
 		"i18next-browser-languagedetector": "8.2.0",
-		"i18next-http-backend": "3.0.2",
+		"i18next-http-backend": "3.0.5",
 		"react": "18.3.1",
 		"react-dom": "18.3.1",
 		"react-i18next": "16.0.0"
@@ -67,7 +67,7 @@
 		"msw": "2.11.3",
 		"sonarqube-scanner": "4.3.6",
 		"typescript": "5.8.2",
-		"vite": "6.4.1",
+		"vite": "6.4.2",
 		"vite-plugin-static-copy": "3.1.4",
 		"vitest": "3.2.4",
 		"@semantic-release/changelog": "6.0.3",
