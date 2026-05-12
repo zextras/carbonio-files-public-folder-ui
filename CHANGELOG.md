@@ -1,3 +1,9 @@
+## [0.0.18](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.17...v0.0.18) (2026-05-12)
+
+### Other changes
+
+* **release:** update jenkins-lib-ui to 1.0.13 ([d111fdf](https://github.com/zextras/carbonio-files-public-folder-ui/commit/d111fdf7910aa79a0b825ebec14397ef2a6ffc75))
+
 ## [0.0.17](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.16...v0.0.17) (2026-04-29)
 
 ### Bug Fixes
