@@ -1,3 +1,9 @@
+## [0.0.19](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.18...v0.0.19) (2026-05-14)
+
+### Bug Fixes
+
+* **ci:** migrate Jenkinsfile to jenkins-lib-common ([#301](https://github.com/zextras/carbonio-files-public-folder-ui/issues/301)) ([b6c1d77](https://github.com/zextras/carbonio-files-public-folder-ui/commit/b6c1d77baaa601b59716217308b15041162b4759))
+
 ## [0.0.18](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.17...v0.0.18) (2026-05-12)
 
 ### Other changes
