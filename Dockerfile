@@ -1,4 +1,4 @@
-FROM --platform=$BUILDPLATFORM backplane/jq:latest AS builder
+FROM --platform=$BUILDPLATFORM docker.io/backplane/jq:latest AS builder
 
 # Define path variables
 ENV IRIS_BASE_PATH="/opt/zextras/web/iris" \
@@ -12,7 +12,7 @@ RUN mkdir -p "${WEB_PATH}" \
     && mv /tmp/dist/* "${WEB_PATH}"
 
 # Final stage - built for all target platforms
-FROM backplane/jq:latest
+FROM docker.io/backplane/jq:latest
 
 # Re-define path variable for final stage
 ENV IRIS_BASE_PATH="/opt/zextras/web/iris"
