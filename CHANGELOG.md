@@ -1,3 +1,9 @@
+## [0.0.20](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.19...v0.0.20) (2026-06-05)
+
+### Other changes
+
+* migrate to buildah (FQDN images + jenkins-lib-common@v2.10.0) ([#312](https://github.com/zextras/carbonio-files-public-folder-ui/issues/312)) ([d05b494](https://github.com/zextras/carbonio-files-public-folder-ui/commit/d05b4940f764fdc183b1ecea4a271d8e1839b5fb))
+
 ## [0.0.19](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.18...v0.0.19) (2026-05-14)
 
 ### Bug Fixes
