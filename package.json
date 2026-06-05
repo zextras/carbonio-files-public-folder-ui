@@ -37,9 +37,9 @@
 		"react-i18next": "16.6.6"
 	},
 	"devDependencies": {
-		"@commitlint/cli": "20.5.3",
-		"@commitlint/config-conventional": "20.5.3",
-		"@commitlint/types": "20.5.0",
+		"@commitlint/cli": "21.0.2",
+		"@commitlint/config-conventional": "21.0.2",
+		"@commitlint/types": "21.0.1",
 		"@emotion/jest": "11.14.2",
 		"@faker-js/faker": "10.4.0",
 		"@graphql-codegen/add": "6.0.1",
