@@ -9,10 +9,21 @@ import { faker } from '@faker-js/faker';
 import type { GQLFile, GQLFolder } from '../graphql/types';
 import { GQLNodeType } from '../graphql/types';
 
+// faker.system.fileName draws from a small dictionary, so generating many nodes
+// occasionally yields duplicate names. Tests query nodes by their exact name with
+// getByText, which then throws "found multiple elements". A monotonic suffix keeps
+// the realistic faker name while guaranteeing uniqueness across a single test run.
+let uniqueNodeNameCounter = 0;
+
+function uniqueNodeName(): string {
+	uniqueNodeNameCounter += 1;
+	return `${faker.system.fileName({ extensionCount: 0 })}-${uniqueNodeNameCounter}`;
+}
+
 export function createFile(file?: Partial<GQLFile>): GQLFile {
 	return {
 		id: faker.string.uuid(),
-		name: faker.system.fileName({ extensionCount: 0 }),
+		name: uniqueNodeName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
 		type: faker.helpers.arrayElement(
@@ -29,7 +40,7 @@ export function createFile(file?: Partial<GQLFile>): GQLFile {
 export function createFolder(folder?: Partial<GQLFolder>): GQLFolder {
 	return {
 		id: faker.string.uuid(),
-		name: faker.system.fileName({ extensionCount: 0 }),
+		name: uniqueNodeName(),
 		created_at: faker.date.past().valueOf(),
 		updated_at: faker.date.recent().valueOf(),
 		type: GQLNodeType.Folder,
