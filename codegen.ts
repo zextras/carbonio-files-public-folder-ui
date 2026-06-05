@@ -12,7 +12,7 @@ import type { TypeScriptDocumentsPluginConfig } from '@graphql-codegen/typescrip
 const config: CodegenConfig = {
 	overwrite: true,
 	schema:
-		'https://raw.githubusercontent.com/zextras/carbonio-files-ce/refs/heads/develop/core/src/main/resources/api/public-schema.graphql',
+		'https://raw.githubusercontent.com/zextras/carbonio-files-ce/refs/heads/devel/core/src/main/resources/api/public-schema.graphql',
 	documents: 'src/graphql/queries/*.graphql',
 	generates: {
 		'src/graphql/schema-public.graphql': {
