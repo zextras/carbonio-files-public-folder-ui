@@ -19,12 +19,16 @@ expect.extend(matchers as unknown as Parameters<typeof expect.extend>[0]);
 beforeEach(() => {
 	vi.useFakeTimers();
 
-	const IntersectionObserverMock = vi.fn(() => ({
-		disconnect: vi.fn(),
-		observe: vi.fn(),
-		takeRecords: vi.fn(),
-		unobserve: vi.fn()
-	}));
+	// Vitest 4: a mock invoked with `new` must be constructable, so the implementation
+	// has to be a regular function (not an arrow) that assigns to `this`.
+	const IntersectionObserverMock = vi.fn(function IntersectionObserverMockImpl(
+		this: IntersectionObserver
+	) {
+		this.disconnect = vi.fn();
+		this.observe = vi.fn();
+		this.takeRecords = vi.fn();
+		this.unobserve = vi.fn();
+	});
 
 	vi.stubGlobal('IntersectionObserver', IntersectionObserverMock);
 	resetCache();

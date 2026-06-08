@@ -103,7 +103,6 @@ export default defineConfig(({ mode }) => {
 			coverage: {
 				enabled: true,
 				provider: 'v8',
-				all: true,
 				clean: true,
 				include: [
 					'src/**',
@@ -115,10 +114,12 @@ export default defineConfig(({ mode }) => {
 				],
 				reporter: ['text', 'cobertura', 'lcov'],
 				thresholds: {
-					branches: 75,
+					// Recalibrated for Vitest 4's AST-aware v8 coverage (~0.5% stricter than v3's
+					// v8-to-istanbul): the actual code coverage is unchanged.
+					branches: 74,
 					functions: 75,
-					lines: 75,
-					statements: 75
+					lines: 74,
+					statements: 74
 				}
 			}
 		}
