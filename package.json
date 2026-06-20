@@ -72,7 +72,7 @@
 		"jsdom": "29.1.1",
 		"msw": "2.14.6",
 		"semantic-release": "25.0.5",
-		"sonarqube-scanner": "4.3.6",
+		"sonarqube-scanner": "4.3.8",
 		"typescript": "5.9.3",
 		"vite": "6.4.3",
 		"vite-plugin-static-copy": "3.4.0",
