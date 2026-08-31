@@ -1,5 +1,9 @@
 FROM --platform=$BUILDPLATFORM docker.io/backplane/jq:latest AS builder
 
+# The base image defaults to the unprivileged "nobody" user, which cannot write under /opt
+USER root
+
+
 # Define path variables
 ENV IRIS_BASE_PATH="/opt/zextras/web/iris" \
     WEB_PATH="/opt/zextras/web/iris/carbonio-files-public-folder-ui"
