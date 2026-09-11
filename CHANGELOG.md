@@ -1,3 +1,5 @@
+## [0.0.21](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.20...v0.0.21) (2026-08-31)
+
 ## [0.0.20](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.19...v0.0.20) (2026-06-05)
 
 ### Other changes
