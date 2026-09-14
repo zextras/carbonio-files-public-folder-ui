@@ -1,3 +1,15 @@
+## [0.0.22](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.21...v0.0.22) (2026-09-14)
+
+### Other changes
+
+* **deps:** update dependency zextras/jenkins-lib-common to v4.10.10 ([#345](https://github.com/zextras/carbonio-files-public-folder-ui/issues/345)) ([3d33c8b](https://github.com/zextras/carbonio-files-public-folder-ui/commit/3d33c8b032a11e92fac63c1052fcf5946063ad91))
+* **deps:** update dependency zextras/jenkins-lib-common to v4.10.2 ([#335](https://github.com/zextras/carbonio-files-public-folder-ui/issues/335)) ([715e2d7](https://github.com/zextras/carbonio-files-public-folder-ui/commit/715e2d7afa5054a85f4efd92f10b5bef5167bf18))
+* **deps:** update dependency zextras/jenkins-lib-common to v4.10.5 ([#339](https://github.com/zextras/carbonio-files-public-folder-ui/issues/339)) ([826d06f](https://github.com/zextras/carbonio-files-public-folder-ui/commit/826d06fd18525480a6a6889523ec09f428f81f83))
+* **deps:** update dependency zextras/jenkins-lib-common to v4.10.6 ([#341](https://github.com/zextras/carbonio-files-public-folder-ui/issues/341)) ([4c54cde](https://github.com/zextras/carbonio-files-public-folder-ui/commit/4c54cdebb0c082c773903bc4c14ffac838a0da2d))
+* **deps:** update dependency zextras/jenkins-lib-common to v4.10.7 ([#342](https://github.com/zextras/carbonio-files-public-folder-ui/issues/342)) ([146e65a](https://github.com/zextras/carbonio-files-public-folder-ui/commit/146e65ae91670a56bfd799fa20918f04fe50effa))
+* **deps:** update sonarqube-scanner to 4.4.0 ([#343](https://github.com/zextras/carbonio-files-public-folder-ui/issues/343)) ([7f72b7a](https://github.com/zextras/carbonio-files-public-folder-ui/commit/7f72b7ae8904bf8f2f99091f6959b613a723af6c))
+* **deps:** update sonarqube-scanner to 5.0.0 ([#346](https://github.com/zextras/carbonio-files-public-folder-ui/issues/346)) ([2d70fcd](https://github.com/zextras/carbonio-files-public-folder-ui/commit/2d70fcdb70b67ed351778f33232065bd6236d3d9))
+
 ## [0.0.21](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.20...v0.0.21) (2026-08-31)
 
 ## [0.0.20](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.19...v0.0.20) (2026-06-05)
