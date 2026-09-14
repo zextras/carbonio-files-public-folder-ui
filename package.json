@@ -79,6 +79,9 @@
 		"vitest": "3.2.6"
 	},
 	"pnpm": {
+		"overrides": {
+			"conventional-changelog-conventionalcommits": "9.3.1"
+		},
 		"onlyBuiltDependencies": [
 			"@swc/core",
 			"core-js",
