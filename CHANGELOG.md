@@ -1,3 +1,9 @@
+## [0.0.23](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.22...v0.0.23) (2026-09-15)
+
+### Bug Fixes
+
+* **dockerfile:** fix upstream change of default user ([#336](https://github.com/zextras/carbonio-files-public-folder-ui/issues/336)) ([29f0cd2](https://github.com/zextras/carbonio-files-public-folder-ui/commit/29f0cd2bd9363e4664064209664fbde7920b3149))
+
 ## [0.0.22](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.21...v0.0.22) (2026-09-14)
 
 ### Other changes
