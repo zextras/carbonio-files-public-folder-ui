@@ -1,3 +1,9 @@
+## [0.0.24](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.23...v0.0.24) (2026-09-16)
+
+### Bug Fixes
+
+* resolve lint errors surfaced by [@typescript-eslint](https://github.com/typescript-eslint) v8 ([#348](https://github.com/zextras/carbonio-files-public-folder-ui/issues/348)) ([4fc3aa4](https://github.com/zextras/carbonio-files-public-folder-ui/commit/4fc3aa4cb15efec9230d179023743af4f9b16035)), closes [zextras/carbonio-ui-configs#160](https://github.com/zextras/carbonio-ui-configs/issues/160) [ui-configs#160](https://github.com/zextras/ui-configs/issues/160)
+
 ## [0.0.23](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.22...v0.0.23) (2026-09-15)
 
 ### Bug Fixes
