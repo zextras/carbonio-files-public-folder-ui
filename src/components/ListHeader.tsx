@@ -14,8 +14,7 @@ const Span2 = styled.span`
 	line-height: 1.5;
 `;
 
-interface ListHeaderProps {}
-export const ListHeader: React.FC<ListHeaderProps> = () => {
+export const ListHeader: React.FC = () => {
 	const [t] = useTranslation();
 	return (
 		<>
