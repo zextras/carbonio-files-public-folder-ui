@@ -39,7 +39,7 @@ export const NodeList: React.FC<NodeListProps> = ({
 	const onItemDoubleClick = useCallback<(node: Node) => (() => void) | undefined>(
 		(node) => {
 			if (node.isDirectory) {
-				return () => navigateTo(node);
+				return (): void => navigateTo(node);
 			}
 			return undefined;
 		},
