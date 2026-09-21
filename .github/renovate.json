@@ -21,6 +21,12 @@
       "matchUpdateTypes": ["minor", "patch"],
       "groupName": "devDependencies (weekly)",
       "schedule": ["before 6am on monday"]
+    },
+    {
+      "description": "eslint-plugin-react-refresh 0.5+ is ESM-only and requires ESLint 9 with flat config: stay on 0.4.x until the project migrates off eslint 8 and .eslintrc.cjs",
+      "matchManagers": ["npm"],
+      "matchPackageNames": ["eslint-plugin-react-refresh"],
+      "allowedVersions": "<0.5.0"
     }
   ]
 }
