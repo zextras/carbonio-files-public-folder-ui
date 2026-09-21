@@ -1,3 +1,9 @@
+## [0.0.26](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.25...v0.0.26) (2026-09-21)
+
+### Bug Fixes
+
+* **deps:** update i18next ([#350](https://github.com/zextras/carbonio-files-public-folder-ui/issues/350)) ([97316e7](https://github.com/zextras/carbonio-files-public-folder-ui/commit/97316e7cc25b5fafab7746e8c457238b035c4f01))
+
 ## [0.0.25](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.24...v0.0.25) (2026-09-16)
 
 ### Other changes
