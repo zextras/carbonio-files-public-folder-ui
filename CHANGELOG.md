@@ -1,3 +1,9 @@
+## [0.0.35](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.34...v0.0.35) (2026-10-13)
+
+### Other changes
+
+* **deps:** update dependency vite to v6.4.4 ([#363](https://github.com/zextras/carbonio-files-public-folder-ui/issues/363)) ([be0ed01](https://github.com/zextras/carbonio-files-public-folder-ui/commit/be0ed01570fa48f5671aa11b4edbd02d2763f06a))
+
 ## [0.0.34](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.33...v0.0.34) (2026-10-06)
 
 ### Other changes
