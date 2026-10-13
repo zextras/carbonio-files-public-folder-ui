@@ -9,7 +9,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import App from './App';
 import { createFile, createFolder, fileBuilder, folderBuilder } from './mocks/factories';
-import { createFindNodesHandler } from './mocks/handlers/findNodes';
+import { createFindPublicNodesHandler } from './mocks/handlers/findPublicNodes';
 import { createGetPublicNodeHandler } from './mocks/handlers/getPublicNode';
 import { server } from './mocks/server';
 import { client } from './network/client';
@@ -42,11 +42,11 @@ describe('App', () => {
 		});
 		server.use(
 			createGetPublicNodeHandler({
-				__typename: 'Folder',
+				__typename: 'PublicFolder',
 				id: folderId,
 				name: folderName
 			}),
-			createFindNodesHandler(
+			createFindPublicNodesHandler(
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
@@ -118,7 +118,7 @@ describe('App', () => {
 	it('should show the loader while the request is loading', async () => {
 		server.use(
 			createGetPublicNodeHandler(
-				{ id: folderId, name: folderName, __typename: 'Folder' },
+				{ id: folderId, name: folderName, __typename: 'PublicFolder' },
 				undefined,
 				{ delay: 1000 }
 			)
@@ -211,7 +211,7 @@ describe('App', () => {
 
 	it('should show folder content when there are errors but partial data are returned', async () => {
 		server.use(
-			createGetPublicNodeHandler({ id: folderId, name: folderName, __typename: 'Folder' }, [
+			createGetPublicNodeHandler({ id: folderId, name: folderName, __typename: 'PublicFolder' }, [
 				'generic error'
 			])
 		);

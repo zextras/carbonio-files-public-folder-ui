@@ -24,43 +24,30 @@ export type Scalars = {
 	Boolean: { input: boolean; output: boolean };
 	Int: { input: number; output: number };
 	Float: { input: number; output: number };
-	DateTime: { input: number; output: number };
+	BigInteger: { input: number; output: number };
 };
 
-export type GQLFile = GQLNode & {
-	__typename: 'File';
-	created_at: Scalars['DateTime']['output'];
-	extension?: Maybe<Scalars['String']['output']>;
-	id: Scalars['ID']['output'];
-	mime_type: Scalars['String']['output'];
-	name: Scalars['String']['output'];
-	size: Scalars['Float']['output'];
-	type: GQLNodeType;
-	updated_at: Scalars['DateTime']['output'];
-};
+export enum GQLAddedNodeType {
+	Copy = 'COPY',
+	Create = 'CREATE',
+	Move = 'MOVE',
+	Upload = 'UPLOAD'
+}
 
-export type GQLFolder = GQLNode & {
-	__typename: 'Folder';
-	created_at: Scalars['DateTime']['output'];
-	id: Scalars['ID']['output'];
-	name: Scalars['String']['output'];
-	type: GQLNodeType;
-	updated_at: Scalars['DateTime']['output'];
-};
-
-export type GQLNode = {
-	created_at: Scalars['DateTime']['output'];
-	id: Scalars['ID']['output'];
-	name: Scalars['String']['output'];
-	type: GQLNodeType;
-	updated_at: Scalars['DateTime']['output'];
-};
-
-export type GQLNodePage = {
-	__typename: 'NodePage';
-	nodes: Array<Maybe<GQLNode>>;
-	page_token?: Maybe<Scalars['String']['output']>;
-};
+export enum GQLNodeSort {
+	LastEditorAsc = 'LAST_EDITOR_ASC',
+	LastEditorDesc = 'LAST_EDITOR_DESC',
+	NameAsc = 'NAME_ASC',
+	NameDesc = 'NAME_DESC',
+	OwnerAsc = 'OWNER_ASC',
+	OwnerDesc = 'OWNER_DESC',
+	SizeAsc = 'SIZE_ASC',
+	SizeDesc = 'SIZE_DESC',
+	TypeAsc = 'TYPE_ASC',
+	TypeDesc = 'TYPE_DESC',
+	UpdatedAtAsc = 'UPDATED_AT_ASC',
+	UpdatedAtDesc = 'UPDATED_AT_DESC'
+}
 
 export enum GQLNodeType {
 	Application = 'APPLICATION',
@@ -70,31 +57,44 @@ export enum GQLNodeType {
 	Message = 'MESSAGE',
 	Other = 'OTHER',
 	Presentation = 'PRESENTATION',
+	Root = 'ROOT',
 	Spreadsheet = 'SPREADSHEET',
 	Text = 'TEXT',
 	Video = 'VIDEO'
 }
 
-export type GQLQuery = {
-	__typename: 'Query';
-	findNodes?: Maybe<GQLNodePage>;
-	getPublicNode?: Maybe<GQLNode>;
-};
+export enum GQLNotificationType {
+	AddedNode = 'ADDED_NODE',
+	NewShare = 'NEW_SHARE',
+	RemovedNode = 'REMOVED_NODE',
+	SucceededRecording = 'SUCCEEDED_RECORDING',
+	TransferredOwnership = 'TRANSFERRED_OWNERSHIP'
+}
 
-export type GQLQueryFindNodesArgs = {
-	access_code?: InputMaybe<Scalars['String']['input']>;
-	folder_id: Scalars['ID']['input'];
-	limit?: InputMaybe<Scalars['Int']['input']>;
-	node_link_id?: InputMaybe<Scalars['String']['input']>;
-	page_token?: InputMaybe<Scalars['String']['input']>;
-};
+export enum GQLRemovedNodeType {
+	Delete = 'DELETE',
+	Move = 'MOVE'
+}
 
-export type GQLQueryGetPublicNodeArgs = {
-	access_code?: InputMaybe<Scalars['String']['input']>;
-	node_link_id: Scalars['String']['input'];
-};
+export enum GQLSharePermission {
+	ReadAndShare = 'READ_AND_SHARE',
+	ReadAndWrite = 'READ_AND_WRITE',
+	ReadOnly = 'READ_ONLY',
+	ReadWriteAndShare = 'READ_WRITE_AND_SHARE'
+}
 
-export type GQLFindNodesQueryVariables = Exact<{
+export enum GQLShareSort {
+	CreationAsc = 'CREATION_ASC',
+	CreationDesc = 'CREATION_DESC',
+	ExpirationAsc = 'EXPIRATION_ASC',
+	ExpirationDesc = 'EXPIRATION_DESC',
+	SharePermissionsAsc = 'SHARE_PERMISSIONS_ASC',
+	SharePermissionsDesc = 'SHARE_PERMISSIONS_DESC',
+	TargetUserAsc = 'TARGET_USER_ASC',
+	TargetUserDesc = 'TARGET_USER_DESC'
+}
+
+export type GQLFindPublicNodesQueryVariables = Exact<{
 	folder_id: Scalars['ID']['input'];
 	limit?: InputMaybe<Scalars['Int']['input']>;
 	page_token?: InputMaybe<Scalars['String']['input']>;
@@ -102,8 +102,8 @@ export type GQLFindNodesQueryVariables = Exact<{
 	access_code?: InputMaybe<Scalars['String']['input']>;
 }>;
 
-export type GQLFindNodesQuery = {
-	findNodes?:
+export type GQLFindPublicNodesQuery = {
+	findPublicNodes?:
 		| ({
 				page_token?: string | null;
 				nodes: Array<
@@ -116,17 +116,17 @@ export type GQLFindNodesQuery = {
 							name: string;
 							type: GQLNodeType;
 							updated_at: number;
-					  } & { __typename: 'File' })
+					  } & { __typename: 'PublicFile' })
 					| ({
 							created_at: number;
 							id: string;
 							name: string;
 							type: GQLNodeType;
 							updated_at: number;
-					  } & { __typename: 'Folder' })
+					  } & { __typename: 'PublicFolder' })
 					| null
 				>;
-		  } & { __typename: 'NodePage' })
+		  } & { __typename: 'PublicNodePage' })
 		| null;
 } & { __typename: 'Query' };
 
@@ -137,17 +137,19 @@ export type GQLGetPublicNodeQueryVariables = Exact<{
 
 export type GQLGetPublicNodeQuery = {
 	getPublicNode?:
-		| ({ id: string; name: string; type: GQLNodeType } & { __typename: 'File' | 'Folder' })
+		| ({ id: string; name: string; type: GQLNodeType } & {
+				__typename: 'PublicFile' | 'PublicFolder';
+		  })
 		| null;
 } & { __typename: 'Query' };
 
-export const FindNodesDocument = {
+export const FindPublicNodesDocument = {
 	kind: 'Document',
 	definitions: [
 		{
 			kind: 'OperationDefinition',
 			operation: 'query',
-			name: { kind: 'Name', value: 'findNodes' },
+			name: { kind: 'Name', value: 'findPublicNodes' },
 			variableDefinitions: [
 				{
 					kind: 'VariableDefinition',
@@ -183,7 +185,7 @@ export const FindNodesDocument = {
 				selections: [
 					{
 						kind: 'Field',
-						name: { kind: 'Name', value: 'findNodes' },
+						name: { kind: 'Name', value: 'findPublicNodes' },
 						arguments: [
 							{
 								kind: 'Argument',
@@ -228,7 +230,10 @@ export const FindNodesDocument = {
 											{ kind: 'Field', name: { kind: 'Name', value: '__typename' } },
 											{
 												kind: 'InlineFragment',
-												typeCondition: { kind: 'NamedType', name: { kind: 'Name', value: 'File' } },
+												typeCondition: {
+													kind: 'NamedType',
+													name: { kind: 'Name', value: 'PublicFile' }
+												},
 												selectionSet: {
 													kind: 'SelectionSet',
 													selections: [
@@ -249,7 +254,7 @@ export const FindNodesDocument = {
 			}
 		}
 	]
-} as unknown as DocumentNode<GQLFindNodesQuery, GQLFindNodesQueryVariables>;
+} as unknown as DocumentNode<GQLFindPublicNodesQuery, GQLFindPublicNodesQueryVariables>;
 export const GetPublicNodeDocument = {
 	kind: 'Document',
 	definitions: [

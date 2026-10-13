@@ -7,10 +7,10 @@ import type { GraphQLError } from 'graphql/error';
 import type { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 
-import { FindNodesDocument, GetPublicNodeDocument } from '../graphql/types';
+import { FindPublicNodesDocument, GetPublicNodeDocument } from '../graphql/types';
 import type {
-	GQLFindNodesQuery,
-	GQLFindNodesQueryVariables,
+	GQLFindPublicNodesQuery,
+	GQLFindPublicNodesQueryVariables,
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables,
 	GQLNodeType
@@ -31,7 +31,7 @@ export const client = {
 		token?: string,
 		accessCode?: string
 	): Promise<{ newNodes: Array<Node>; newToken: string | null }> => {
-		const body: Body<GQLFindNodesQueryVariables> = {
+		const body: Body<GQLFindPublicNodesQueryVariables> = {
 			variables: {
 				folder_id: folderId,
 				page_token: token,
@@ -39,7 +39,7 @@ export const client = {
 				limit: FIND_NODES_LIMITS,
 				node_link_id: nodeLinkId
 			},
-			query: print(FindNodesDocument)
+			query: print(FindPublicNodesDocument)
 		};
 
 		const response = await fetch(new URL(API_ENDPOINT, window.location.origin), {
@@ -47,15 +47,16 @@ export const client = {
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify(body),
-			method: 'POST'
+			method: 'POST',
+			credentials: 'omit'
 		});
-		const findNodesResult: ExecutionResult<GQLFindNodesQuery> = await response.json();
-		const newNodes = findNodesResult.data?.findNodes?.nodes
+		const findNodesResult: ExecutionResult<GQLFindPublicNodesQuery> = await response.json();
+		const newNodes = findNodesResult.data?.findPublicNodes?.nodes
 			.filter((node): node is NodeOfFindNodes => node !== null)
 			.map((node) => convertGQLToNode(node));
 		return {
 			newNodes: newNodes ?? [],
-			newToken: findNodesResult.data?.findNodes?.page_token ?? null
+			newToken: findNodesResult.data?.findPublicNodes?.page_token ?? null
 		};
 	},
 	getPublicNodeQuery: async (
@@ -75,7 +76,8 @@ export const client = {
 				'content-type': 'application/json'
 			},
 			body: JSON.stringify(body),
-			method: 'POST'
+			method: 'POST',
+			credentials: 'omit'
 		});
 		const getPublicNodeResult: ExecutionResult<GQLGetPublicNodeQuery> = await response.json();
 		if (

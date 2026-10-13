@@ -3,9 +3,13 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import type { GQLFindNodesQuery } from '../graphql/types';
+import type { GQLFindPublicNodesQuery } from '../graphql/types';
 import type { NonNullableListItem } from '../utils/typeUtils';
 
 export type NodeOfFindNodes = NonNullableListItem<
-	NonNullable<GQLFindNodesQuery['findNodes']>['nodes']
+	NonNullable<GQLFindPublicNodesQuery['findPublicNodes']>['nodes']
 >;
+
+export type PublicNode = NodeOfFindNodes;
+export type PublicFile = Extract<NodeOfFindNodes, { __typename: 'PublicFile' }>;
+export type PublicFolder = Extract<NodeOfFindNodes, { __typename: 'PublicFolder' }>;

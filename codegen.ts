@@ -12,7 +12,7 @@ import type { TypeScriptDocumentsPluginConfig } from '@graphql-codegen/typescrip
 const config: CodegenConfig = {
 	overwrite: true,
 	schema:
-		'https://raw.githubusercontent.com/zextras/carbonio-files-ce/refs/heads/devel/core/src/main/resources/api/public-schema.graphql',
+		'https://raw.githubusercontent.com/zextras/carbonio-files-ce/d23b996d23196a10bec930a89e3f28e76b63fb5e/app/docs/schema.graphql',
 	documents: 'src/graphql/queries/*.graphql',
 	generates: {
 		'src/graphql/schema-public.graphql': {
@@ -54,8 +54,9 @@ const config: CodegenConfig = {
 				exportFragmentSpreadSubTypes: true,
 				mergeFragmentTypes: true,
 				nonOptionalTypename: true,
+				onlyOperationTypes: true,
 				scalars: {
-					DateTime: 'number'
+					BigInteger: 'number'
 				},
 				strictScalars: true,
 				useTypeImports: true

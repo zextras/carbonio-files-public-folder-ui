@@ -9,7 +9,7 @@ import { beforeEach, describe, expect, it, vi } from 'vitest';
 
 import { NodeList } from './NodeList';
 import { createFile, createFolder, fileBuilder, folderBuilder } from '../mocks/factories';
-import { createFindNodesHandler } from '../mocks/handlers/findNodes';
+import { createFindPublicNodesHandler } from '../mocks/handlers/findPublicNodes';
 import { server } from '../mocks/server';
 import { ICONS } from '../test/constants';
 import { screen, setup, triggerLoadMore } from '../test/utils';
@@ -29,7 +29,7 @@ describe('NodeList', () => {
 
 	beforeEach(() => {
 		server.use(
-			createFindNodesHandler(
+			createFindPublicNodesHandler(
 				{
 					nodes: firstPageNodes,
 					nextPageToken: 'token1',
@@ -59,7 +59,7 @@ describe('NodeList', () => {
 
 	it('should show empty folder message and icon when folder is empty', async () => {
 		server.use(
-			createFindNodesHandler({
+			createFindPublicNodesHandler({
 				nodes: [],
 				nextPageToken: null,
 				variables: { folder_id: folderId, node_link_id: 'hash' }
@@ -80,7 +80,7 @@ describe('NodeList', () => {
 
 	it('should show the loader while the content is loading', async () => {
 		server.use(
-			createFindNodesHandler({
+			createFindPublicNodesHandler({
 				nodes: firstPageNodes,
 				nextPageToken: null,
 				variables: { folder_id: folderId, node_link_id: 'hash' },
@@ -116,7 +116,7 @@ describe('NodeList', () => {
 
 	it('should show the download button for files', async () => {
 		server.use(
-			createFindNodesHandler({
+			createFindPublicNodesHandler({
 				nodes: [file],
 				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
@@ -129,7 +129,7 @@ describe('NodeList', () => {
 	it('should show the download button for folders', async () => {
 		const folder = createFolder();
 		server.use(
-			createFindNodesHandler({
+			createFindPublicNodesHandler({
 				nodes: [folder],
 				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
@@ -143,7 +143,7 @@ describe('NodeList', () => {
 	it('should show the snackbar when the user clicks on download icon', async () => {
 		vi.spyOn(utils, 'downloadNode').mockResolvedValue({ ok: true } as Response);
 		server.use(
-			createFindNodesHandler({
+			createFindPublicNodesHandler({
 				nodes: [file],
 				variables: { folder_id: folderId, node_link_id: 'hash' }
 			})
