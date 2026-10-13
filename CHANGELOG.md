@@ -1,3 +1,9 @@
+## [0.0.36](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.35...v0.0.36) (2026-10-13)
+
+### Other changes
+
+* **deps:** update dependency zextras/jenkins-lib-common to v4.15.0 ([#365](https://github.com/zextras/carbonio-files-public-folder-ui/issues/365)) ([91ef126](https://github.com/zextras/carbonio-files-public-folder-ui/commit/91ef126a6a69464cee24e9ec8c6277696a9b0f58))
+
 ## [0.0.35](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.34...v0.0.35) (2026-10-13)
 
 ### Other changes
