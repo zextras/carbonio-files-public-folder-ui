@@ -8,13 +8,13 @@ import { describe, expect, it } from 'vitest';
 
 import type { Node } from './Node';
 import { convertGQLToNode } from './Node';
-import type { GQLFile, GQLFolder } from '../graphql/types';
 import { GQLNodeType } from '../graphql/types';
+import type { PublicFile, PublicFolder } from '../types/types';
 
 describe('convertGQLToNode function', () => {
 	it('should convert a GQLFile to a Node with the fields specific to files valued', () => {
-		const gqlFile: GQLFile = {
-			__typename: 'File',
+		const gqlFile: PublicFile = {
+			__typename: 'PublicFile',
 			id: faker.string.uuid(),
 			name: faker.system.fileName({ extensionCount: 0 }),
 			created_at: faker.date.past().valueOf(),
@@ -41,8 +41,8 @@ describe('convertGQLToNode function', () => {
 	});
 
 	it('should convert a GQLFolder to a Node with the specific file fields set to undefined', () => {
-		const gqlFile: GQLFolder = {
-			__typename: 'Folder',
+		const gqlFile: PublicFolder = {
+			__typename: 'PublicFolder',
 			id: faker.string.uuid(),
 			name: faker.system.fileName({ extensionCount: 0 }),
 			created_at: faker.date.past().valueOf(),

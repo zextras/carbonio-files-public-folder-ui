@@ -8,15 +8,15 @@ import type { ExecutionResult } from 'graphql/execution';
 import { print } from 'graphql/language';
 import { describe, expect, it } from 'vitest';
 
-import { createFindNodesHandler } from './findNodes';
+import { createFindPublicNodesHandler } from './findPublicNodes';
 import { createGetPublicNodeHandler } from './getPublicNode';
 import type {
-	GQLFindNodesQuery,
-	GQLFindNodesQueryVariables,
+	GQLFindPublicNodesQuery,
+	GQLFindPublicNodesQueryVariables,
 	GQLGetPublicNodeQuery,
 	GQLGetPublicNodeQueryVariables
 } from '../../graphql/types';
-import { FindNodesDocument, GetPublicNodeDocument } from '../../graphql/types';
+import { FindPublicNodesDocument, GetPublicNodeDocument } from '../../graphql/types';
 import type { Body } from '../../network/client';
 import { API_ENDPOINT } from '../../utils/constants';
 import { server } from '../server';
@@ -26,7 +26,7 @@ describe('handlers', () => {
 		const node: Parameters<typeof createGetPublicNodeHandler>[0] = {
 			id: faker.string.uuid(),
 			name: faker.system.commonFileName(),
-			__typename: 'Folder'
+			__typename: 'PublicFolder'
 		};
 		server.use(createGetPublicNodeHandler(node));
 
@@ -48,12 +48,12 @@ describe('handlers', () => {
 
 	it('findNodes handler', async () => {
 		server.use(
-			createFindNodesHandler({ nodes: [], variables: { folder_id: '', node_link_id: '' } })
+			createFindPublicNodesHandler({ nodes: [], variables: { folder_id: '', node_link_id: '' } })
 		);
 
-		const body: Body<GQLFindNodesQueryVariables> = {
+		const body: Body<GQLFindPublicNodesQueryVariables> = {
 			variables: { folder_id: '', node_link_id: 'hash' },
-			query: print(FindNodesDocument)
+			query: print(FindPublicNodesDocument)
 		};
 
 		const result = await fetch(new URL(API_ENDPOINT, window.location.origin), {
@@ -62,8 +62,8 @@ describe('handlers', () => {
 			},
 			body: JSON.stringify(body),
 			method: 'POST'
-		}).then((response): Promise<ExecutionResult<GQLFindNodesQuery>> => response.json());
+		}).then((response): Promise<ExecutionResult<GQLFindPublicNodesQuery>> => response.json());
 
-		expect(result.data?.findNodes?.nodes.length).toBe(0);
+		expect(result.data?.findPublicNodes?.nodes.length).toBe(0);
 	});
 });

@@ -61,7 +61,7 @@ export function createGetPublicNodeHandler(
 						const emptyFolderId =
 							variables.node_link_id === 'empty' ? { id: 'empty-folder-id' } : {};
 						return {
-							__typename: 'Folder',
+							__typename: 'PublicFolder',
 							id: faker.string.uuid(),
 							name: faker.system.fileName(),
 							type: faker.helpers.arrayElement([GQLNodeType.Folder]),

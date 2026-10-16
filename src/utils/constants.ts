@@ -20,6 +20,7 @@ export const ICON_BY_NODE_TYPE = {
 	[GQLNodeType.Message]: (): keyof Theme['icons'] => 'Email',
 	[GQLNodeType.Other]: (): keyof Theme['icons'] => 'File',
 	[GQLNodeType.Presentation]: (): keyof Theme['icons'] => 'FilePresentation',
+	[GQLNodeType.Root]: (): keyof Theme['icons'] => 'Folder',
 	[GQLNodeType.Spreadsheet]: (): keyof Theme['icons'] => 'FileCalc',
 	[GQLNodeType.Text]: (mimeType?: string): keyof Theme['icons'] =>
 		mimeType === MIME_TYPE['application/pdf'] ? 'FilePdf' : 'FileText',
@@ -34,6 +35,7 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 	[GQLNodeType.Message]: (theme?: Theme): string => theme?.palette.primary.regular ?? '#2b73d2',
 	[GQLNodeType.Other]: (theme?: Theme): string => theme?.palette.primary.regular ?? '#2b73d2',
 	[GQLNodeType.Presentation]: (theme?: Theme): string => theme?.avatarColors.avatar_47 ?? '#FFA726',
+	[GQLNodeType.Root]: (theme?: Theme): string => theme?.palette.secondary.regular ?? '#828282',
 	[GQLNodeType.Spreadsheet]: (theme?: Theme): string => theme?.palette.success.regular ?? '#8bc34a',
 	[GQLNodeType.Text]: (theme?: Theme, mimeType?: string): string =>
 		mimeType === MIME_TYPE['application/pdf']
@@ -44,7 +46,7 @@ export const ICON_COLOR_BY_NODE_TYPE = {
 
 export const FIND_NODES_LIMITS = 25;
 
-export const API_ENDPOINT = '/services/files/public/graphql/';
+export const API_ENDPOINT = '/services/files/graphql/';
 export const API_DOWNLOAD_ENDPOINT = '/services/files/public/download';
 export const API_DOWNLOAD_MULTIPLE_ENDPOINT = '/services/files/public/download-multiple';
 export const DOWNLOAD_PATH_CHECK = '/check';

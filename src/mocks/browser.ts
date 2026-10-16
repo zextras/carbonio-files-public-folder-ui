@@ -8,7 +8,7 @@ import { faker } from '@faker-js/faker';
 import { setupWorker } from 'msw/browser';
 
 import { fileBuilder, folderBuilder } from './factories';
-import { createFindNodesHandler } from './handlers/findNodes';
+import { createFindPublicNodesHandler } from './handlers/findPublicNodes';
 import { createGetPublicNodeHandler } from './handlers/getPublicNode';
 
 const firstPageNodes = [...folderBuilder(5), ...fileBuilder(20)];
@@ -17,10 +17,10 @@ const folderId = faker.string.uuid();
 
 export const worker = setupWorker(
 	createGetPublicNodeHandler({
-		__typename: 'Folder',
+		__typename: 'PublicFolder',
 		id: folderId
 	}),
-	createFindNodesHandler(
+	createFindPublicNodesHandler(
 		{
 			nodes: firstPageNodes,
 			nextPageToken: 'token1',
