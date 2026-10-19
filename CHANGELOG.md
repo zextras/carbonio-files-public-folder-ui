@@ -1,3 +1,9 @@
+## [0.0.40](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.39...v0.0.40) (2026-10-19)
+
+### Other changes
+
+* **deps:** update devdependencies (weekly) ([#369](https://github.com/zextras/carbonio-files-public-folder-ui/issues/369)) ([3be8ecd](https://github.com/zextras/carbonio-files-public-folder-ui/commit/3be8ecd010655c3d9280513302d5d0beeab6b92f))
+
 ## [0.0.39](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.38...v0.0.39) (2026-10-16)
 
 ### Other changes
