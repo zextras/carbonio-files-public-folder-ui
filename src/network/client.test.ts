@@ -3,7 +3,7 @@
  *
  * SPDX-License-Identifier: AGPL-3.0-only
  */
-import { afterEach, describe, expect, it, vi } from 'vitest';
+import { describe, expect, it, vi } from 'vitest';
 
 import { client } from './client';
 
@@ -11,10 +11,6 @@ const jsonResponse = (payload: unknown): Response =>
 	new Response(JSON.stringify(payload), { headers: { 'content-type': 'application/json' } });
 
 describe('client', () => {
-	afterEach(() => {
-		vi.restoreAllMocks();
-	});
-
 	it('findNodesQuery posts to the unified GraphQL endpoint without credentials', async () => {
 		const fetchSpy = vi
 			.spyOn(globalThis, 'fetch')

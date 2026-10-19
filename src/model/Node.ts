@@ -4,7 +4,7 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import type { NodeOfFindNodes, PublicFile, PublicNode } from '../types/types';
+import type { PublicFile, PublicNode } from '../types/types';
 
 export type Node = {
 	createdAt: PublicNode['created_at'];
@@ -26,7 +26,7 @@ export type Node = {
 	  }
 );
 
-export function convertGQLToNode(node: NodeOfFindNodes): Node {
+export function convertGQLToNode(node: PublicNode): Node {
 	const commonNode = {
 		id: node.id,
 		name: node.name,

@@ -22,6 +22,9 @@ enum AddedNodeType {
 	UPLOAD
 }
 
+"""
+Scalar for BigInteger
+"""
 scalar BigInteger
 
 type CollaborationLink {

@@ -182,203 +182,209 @@ export const schema = {
 		},
 		{
 			kind: 'ScalarTypeDefinition',
-			name: { kind: 'Name', value: 'BigInteger', loc: { start: 330, end: 340 } },
+			description: {
+				kind: 'StringValue',
+				value: 'Scalar for BigInteger',
+				block: true,
+				loc: { start: 323, end: 350 }
+			},
+			name: { kind: 'Name', value: 'BigInteger', loc: { start: 358, end: 368 } },
 			directives: [],
-			loc: { start: 323, end: 340 }
+			loc: { start: 323, end: 368 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 347, end: 364 } },
+			name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 375, end: 392 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 369, end: 379 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 397, end: 407 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 381, end: 391 } },
-							loc: { start: 381, end: 391 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 409, end: 419 } },
+							loc: { start: 409, end: 419 }
 						},
-						loc: { start: 381, end: 392 }
+						loc: { start: 409, end: 420 }
 					},
 					directives: [],
-					loc: { start: 369, end: 392 }
+					loc: { start: 397, end: 420 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 395, end: 397 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 423, end: 425 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 399, end: 401 } },
-							loc: { start: 399, end: 401 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 427, end: 429 } },
+							loc: { start: 427, end: 429 }
 						},
-						loc: { start: 399, end: 402 }
+						loc: { start: 427, end: 430 }
 					},
 					directives: [],
-					loc: { start: 395, end: 402 }
+					loc: { start: 423, end: 430 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'node', loc: { start: 405, end: 409 } },
+					name: { kind: 'Name', value: 'node', loc: { start: 433, end: 437 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 411, end: 415 } },
-							loc: { start: 411, end: 415 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 439, end: 443 } },
+							loc: { start: 439, end: 443 }
 						},
-						loc: { start: 411, end: 416 }
+						loc: { start: 439, end: 444 }
 					},
 					directives: [],
-					loc: { start: 405, end: 416 }
+					loc: { start: 433, end: 444 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'permission', loc: { start: 419, end: 429 } },
+					name: { kind: 'Name', value: 'permission', loc: { start: 447, end: 457 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SharePermission', loc: { start: 431, end: 446 } },
-							loc: { start: 431, end: 446 }
+							name: { kind: 'Name', value: 'SharePermission', loc: { start: 459, end: 474 } },
+							loc: { start: 459, end: 474 }
 						},
-						loc: { start: 431, end: 447 }
+						loc: { start: 459, end: 475 }
 					},
 					directives: [],
-					loc: { start: 419, end: 447 }
+					loc: { start: 447, end: 475 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'url', loc: { start: 450, end: 453 } },
+					name: { kind: 'Name', value: 'url', loc: { start: 478, end: 481 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 455, end: 461 } },
-							loc: { start: 455, end: 461 }
+							name: { kind: 'Name', value: 'String', loc: { start: 483, end: 489 } },
+							loc: { start: 483, end: 489 }
 						},
-						loc: { start: 455, end: 462 }
+						loc: { start: 483, end: 490 }
 					},
 					directives: [],
-					loc: { start: 450, end: 462 }
+					loc: { start: 478, end: 490 }
 				}
 			],
-			loc: { start: 342, end: 464 }
+			loc: { start: 370, end: 492 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Config', loc: { start: 471, end: 477 } },
+			name: { kind: 'Name', value: 'Config', loc: { start: 499, end: 505 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 482, end: 486 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 510, end: 514 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 488, end: 494 } },
-							loc: { start: 488, end: 494 }
+							name: { kind: 'Name', value: 'String', loc: { start: 516, end: 522 } },
+							loc: { start: 516, end: 522 }
 						},
-						loc: { start: 488, end: 495 }
+						loc: { start: 516, end: 523 }
 					},
 					directives: [],
-					loc: { start: 482, end: 495 }
+					loc: { start: 510, end: 523 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'value', loc: { start: 498, end: 503 } },
+					name: { kind: 'Name', value: 'value', loc: { start: 526, end: 531 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 505, end: 511 } },
-						loc: { start: 505, end: 511 }
+						name: { kind: 'Name', value: 'String', loc: { start: 533, end: 539 } },
+						loc: { start: 533, end: 539 }
 					},
 					directives: [],
-					loc: { start: 498, end: 511 }
+					loc: { start: 526, end: 539 }
 				}
 			],
-			loc: { start: 466, end: 513 }
+			loc: { start: 494, end: 541 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'DistributionList', loc: { start: 520, end: 536 } },
+			name: { kind: 'Name', value: 'DistributionList', loc: { start: 548, end: 564 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 541, end: 543 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 569, end: 571 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 545, end: 547 } },
-							loc: { start: 545, end: 547 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 573, end: 575 } },
+							loc: { start: 573, end: 575 }
 						},
-						loc: { start: 545, end: 548 }
+						loc: { start: 573, end: 576 }
 					},
 					directives: [],
-					loc: { start: 541, end: 548 }
+					loc: { start: 569, end: 576 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 551, end: 555 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 579, end: 583 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 557, end: 563 } },
-							loc: { start: 557, end: 563 }
+							name: { kind: 'Name', value: 'String', loc: { start: 585, end: 591 } },
+							loc: { start: 585, end: 591 }
 						},
-						loc: { start: 557, end: 564 }
+						loc: { start: 585, end: 592 }
 					},
 					directives: [],
-					loc: { start: 551, end: 564 }
+					loc: { start: 579, end: 592 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'users', loc: { start: 567, end: 572 } },
+					name: { kind: 'Name', value: 'users', loc: { start: 595, end: 600 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'cursor', loc: { start: 573, end: 579 } },
+							name: { kind: 'Name', value: 'cursor', loc: { start: 601, end: 607 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 581, end: 587 } },
-								loc: { start: 581, end: 587 }
+								name: { kind: 'Name', value: 'String', loc: { start: 609, end: 615 } },
+								loc: { start: 609, end: 615 }
 							},
 							directives: [],
-							loc: { start: 573, end: 587 }
+							loc: { start: 601, end: 615 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 589, end: 594 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 617, end: 622 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 596, end: 599 } },
-									loc: { start: 596, end: 599 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 624, end: 627 } },
+									loc: { start: 624, end: 627 }
 								},
-								loc: { start: 596, end: 600 }
+								loc: { start: 624, end: 628 }
 							},
 							directives: [],
-							loc: { start: 589, end: 600 }
+							loc: { start: 617, end: 628 }
 						}
 					],
 					type: {
@@ -387,46 +393,46 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'User', loc: { start: 604, end: 608 } },
-								loc: { start: 604, end: 608 }
+								name: { kind: 'Name', value: 'User', loc: { start: 632, end: 636 } },
+								loc: { start: 632, end: 636 }
 							},
-							loc: { start: 603, end: 609 }
+							loc: { start: 631, end: 637 }
 						},
-						loc: { start: 603, end: 610 }
+						loc: { start: 631, end: 638 }
 					},
 					directives: [],
-					loc: { start: 567, end: 610 }
+					loc: { start: 595, end: 638 }
 				}
 			],
-			loc: { start: 515, end: 612 }
+			loc: { start: 543, end: 640 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'File', loc: { start: 619, end: 623 } },
+			name: { kind: 'Name', value: 'File', loc: { start: 647, end: 651 } },
 			interfaces: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'Node', loc: { start: 635, end: 639 } },
-					loc: { start: 635, end: 639 }
+					name: { kind: 'Name', value: 'Node', loc: { start: 663, end: 667 } },
+					loc: { start: 663, end: 667 }
 				}
 			],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'cloned_from_version', loc: { start: 644, end: 663 } },
+					name: { kind: 'Name', value: 'cloned_from_version', loc: { start: 672, end: 691 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Int', loc: { start: 665, end: 668 } },
-						loc: { start: 665, end: 668 }
+						name: { kind: 'Name', value: 'Int', loc: { start: 693, end: 696 } },
+						loc: { start: 693, end: 696 }
 					},
 					directives: [],
-					loc: { start: 644, end: 668 }
+					loc: { start: 672, end: 696 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 671, end: 690 } },
+					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 699, end: 718 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -434,155 +440,155 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 693, end: 710 } },
-								loc: { start: 693, end: 710 }
+								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 721, end: 738 } },
+								loc: { start: 721, end: 738 }
 							},
-							loc: { start: 692, end: 711 }
+							loc: { start: 720, end: 739 }
 						},
-						loc: { start: 692, end: 712 }
+						loc: { start: 720, end: 740 }
 					},
 					directives: [],
-					loc: { start: 671, end: 712 }
+					loc: { start: 699, end: 740 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 715, end: 725 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 743, end: 753 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 727, end: 737 } },
-							loc: { start: 727, end: 737 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 755, end: 765 } },
+							loc: { start: 755, end: 765 }
 						},
-						loc: { start: 727, end: 738 }
+						loc: { start: 755, end: 766 }
 					},
 					directives: [],
-					loc: { start: 715, end: 738 }
+					loc: { start: 743, end: 766 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'creator', loc: { start: 741, end: 748 } },
+					name: { kind: 'Name', value: 'creator', loc: { start: 769, end: 776 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'User', loc: { start: 750, end: 754 } },
-							loc: { start: 750, end: 754 }
+							name: { kind: 'Name', value: 'User', loc: { start: 778, end: 782 } },
+							loc: { start: 778, end: 782 }
 						},
-						loc: { start: 750, end: 755 }
+						loc: { start: 778, end: 783 }
 					},
 					directives: [],
-					loc: { start: 741, end: 755 }
+					loc: { start: 769, end: 783 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'description', loc: { start: 758, end: 769 } },
+					name: { kind: 'Name', value: 'description', loc: { start: 786, end: 797 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 771, end: 777 } },
-							loc: { start: 771, end: 777 }
+							name: { kind: 'Name', value: 'String', loc: { start: 799, end: 805 } },
+							loc: { start: 799, end: 805 }
 						},
-						loc: { start: 771, end: 778 }
+						loc: { start: 799, end: 806 }
 					},
 					directives: [],
-					loc: { start: 758, end: 778 }
+					loc: { start: 786, end: 806 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'digest', loc: { start: 781, end: 787 } },
+					name: { kind: 'Name', value: 'digest', loc: { start: 809, end: 815 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 789, end: 795 } },
-							loc: { start: 789, end: 795 }
+							name: { kind: 'Name', value: 'String', loc: { start: 817, end: 823 } },
+							loc: { start: 817, end: 823 }
 						},
-						loc: { start: 789, end: 796 }
+						loc: { start: 817, end: 824 }
 					},
 					directives: [],
-					loc: { start: 781, end: 796 }
+					loc: { start: 809, end: 824 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'extension', loc: { start: 799, end: 808 } },
+					name: { kind: 'Name', value: 'extension', loc: { start: 827, end: 836 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 810, end: 816 } },
-						loc: { start: 810, end: 816 }
+						name: { kind: 'Name', value: 'String', loc: { start: 838, end: 844 } },
+						loc: { start: 838, end: 844 }
 					},
 					directives: [],
-					loc: { start: 799, end: 816 }
+					loc: { start: 827, end: 844 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'flagged', loc: { start: 819, end: 826 } },
+					name: { kind: 'Name', value: 'flagged', loc: { start: 847, end: 854 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 828, end: 835 } },
-							loc: { start: 828, end: 835 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 856, end: 863 } },
+							loc: { start: 856, end: 863 }
 						},
-						loc: { start: 828, end: 836 }
+						loc: { start: 856, end: 864 }
 					},
 					directives: [],
-					loc: { start: 819, end: 836 }
+					loc: { start: 847, end: 864 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 839, end: 841 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 867, end: 869 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 843, end: 845 } },
-							loc: { start: 843, end: 845 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 871, end: 873 } },
+							loc: { start: 871, end: 873 }
 						},
-						loc: { start: 843, end: 846 }
+						loc: { start: 871, end: 874 }
 					},
 					directives: [],
-					loc: { start: 839, end: 846 }
+					loc: { start: 867, end: 874 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'keep_forever', loc: { start: 849, end: 861 } },
+					name: { kind: 'Name', value: 'keep_forever', loc: { start: 877, end: 889 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 863, end: 870 } },
-							loc: { start: 863, end: 870 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 891, end: 898 } },
+							loc: { start: 891, end: 898 }
 						},
-						loc: { start: 863, end: 871 }
+						loc: { start: 891, end: 899 }
 					},
 					directives: [],
-					loc: { start: 849, end: 871 }
+					loc: { start: 877, end: 899 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'last_editor', loc: { start: 874, end: 885 } },
+					name: { kind: 'Name', value: 'last_editor', loc: { start: 902, end: 913 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 887, end: 891 } },
-						loc: { start: 887, end: 891 }
+						name: { kind: 'Name', value: 'User', loc: { start: 915, end: 919 } },
+						loc: { start: 915, end: 919 }
 					},
 					directives: [],
-					loc: { start: 874, end: 891 }
+					loc: { start: 902, end: 919 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'links', loc: { start: 894, end: 899 } },
+					name: { kind: 'Name', value: 'links', loc: { start: 922, end: 927 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -590,176 +596,176 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Link', loc: { start: 902, end: 906 } },
-								loc: { start: 902, end: 906 }
+								name: { kind: 'Name', value: 'Link', loc: { start: 930, end: 934 } },
+								loc: { start: 930, end: 934 }
 							},
-							loc: { start: 901, end: 907 }
+							loc: { start: 929, end: 935 }
 						},
-						loc: { start: 901, end: 908 }
+						loc: { start: 929, end: 936 }
 					},
 					directives: [],
-					loc: { start: 894, end: 908 }
+					loc: { start: 922, end: 936 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'mime_type', loc: { start: 911, end: 920 } },
+					name: { kind: 'Name', value: 'mime_type', loc: { start: 939, end: 948 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 922, end: 928 } },
-							loc: { start: 922, end: 928 }
+							name: { kind: 'Name', value: 'String', loc: { start: 950, end: 956 } },
+							loc: { start: 950, end: 956 }
 						},
-						loc: { start: 922, end: 929 }
+						loc: { start: 950, end: 957 }
 					},
 					directives: [],
-					loc: { start: 911, end: 929 }
+					loc: { start: 939, end: 957 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 932, end: 936 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 960, end: 964 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 938, end: 944 } },
-							loc: { start: 938, end: 944 }
+							name: { kind: 'Name', value: 'String', loc: { start: 966, end: 972 } },
+							loc: { start: 966, end: 972 }
 						},
-						loc: { start: 938, end: 945 }
+						loc: { start: 966, end: 973 }
 					},
 					directives: [],
-					loc: { start: 932, end: 945 }
+					loc: { start: 960, end: 973 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'owner', loc: { start: 948, end: 953 } },
+					name: { kind: 'Name', value: 'owner', loc: { start: 976, end: 981 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 955, end: 959 } },
-						loc: { start: 955, end: 959 }
+						name: { kind: 'Name', value: 'User', loc: { start: 983, end: 987 } },
+						loc: { start: 983, end: 987 }
 					},
 					directives: [],
-					loc: { start: 948, end: 959 }
+					loc: { start: 976, end: 987 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'parent', loc: { start: 962, end: 968 } },
+					name: { kind: 'Name', value: 'parent', loc: { start: 990, end: 996 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 970, end: 974 } },
-						loc: { start: 970, end: 974 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 998, end: 1002 } },
+						loc: { start: 998, end: 1002 }
 					},
 					directives: [],
-					loc: { start: 962, end: 974 }
+					loc: { start: 990, end: 1002 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'permissions', loc: { start: 977, end: 988 } },
+					name: { kind: 'Name', value: 'permissions', loc: { start: 1005, end: 1016 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Permissions', loc: { start: 990, end: 1001 } },
-							loc: { start: 990, end: 1001 }
+							name: { kind: 'Name', value: 'Permissions', loc: { start: 1018, end: 1029 } },
+							loc: { start: 1018, end: 1029 }
 						},
-						loc: { start: 990, end: 1002 }
+						loc: { start: 1018, end: 1030 }
 					},
 					directives: [],
-					loc: { start: 977, end: 1002 }
+					loc: { start: 1005, end: 1030 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'rootId', loc: { start: 1005, end: 1011 } },
+					name: { kind: 'Name', value: 'rootId', loc: { start: 1033, end: 1039 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'ID', loc: { start: 1013, end: 1015 } },
-						loc: { start: 1013, end: 1015 }
+						name: { kind: 'Name', value: 'ID', loc: { start: 1041, end: 1043 } },
+						loc: { start: 1041, end: 1043 }
 					},
 					directives: [],
-					loc: { start: 1005, end: 1015 }
+					loc: { start: 1033, end: 1043 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'share', loc: { start: 1018, end: 1023 } },
+					name: { kind: 'Name', value: 'share', loc: { start: 1046, end: 1051 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_id', loc: { start: 1024, end: 1039 } },
+							name: { kind: 'Name', value: 'share_target_id', loc: { start: 1052, end: 1067 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 1041, end: 1043 } },
-									loc: { start: 1041, end: 1043 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 1069, end: 1071 } },
+									loc: { start: 1069, end: 1071 }
 								},
-								loc: { start: 1041, end: 1044 }
+								loc: { start: 1069, end: 1072 }
 							},
 							directives: [],
-							loc: { start: 1024, end: 1044 }
+							loc: { start: 1052, end: 1072 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Share', loc: { start: 1047, end: 1052 } },
-						loc: { start: 1047, end: 1052 }
+						name: { kind: 'Name', value: 'Share', loc: { start: 1075, end: 1080 } },
+						loc: { start: 1075, end: 1080 }
 					},
 					directives: [],
-					loc: { start: 1018, end: 1052 }
+					loc: { start: 1046, end: 1080 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'shares', loc: { start: 1055, end: 1061 } },
+					name: { kind: 'Name', value: 'shares', loc: { start: 1083, end: 1089 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'cursor', loc: { start: 1062, end: 1068 } },
+							name: { kind: 'Name', value: 'cursor', loc: { start: 1090, end: 1096 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 1070, end: 1076 } },
-								loc: { start: 1070, end: 1076 }
+								name: { kind: 'Name', value: 'String', loc: { start: 1098, end: 1104 } },
+								loc: { start: 1098, end: 1104 }
 							},
 							directives: [],
-							loc: { start: 1062, end: 1076 }
+							loc: { start: 1090, end: 1104 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 1078, end: 1083 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 1106, end: 1111 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 1085, end: 1088 } },
-									loc: { start: 1085, end: 1088 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 1113, end: 1116 } },
+									loc: { start: 1113, end: 1116 }
 								},
-								loc: { start: 1085, end: 1089 }
+								loc: { start: 1113, end: 1117 }
 							},
 							directives: [],
-							loc: { start: 1078, end: 1089 }
+							loc: { start: 1106, end: 1117 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'sorts', loc: { start: 1091, end: 1096 } },
+							name: { kind: 'Name', value: 'sorts', loc: { start: 1119, end: 1124 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'ShareSort', loc: { start: 1099, end: 1108 } },
-										loc: { start: 1099, end: 1108 }
+										name: { kind: 'Name', value: 'ShareSort', loc: { start: 1127, end: 1136 } },
+										loc: { start: 1127, end: 1136 }
 									},
-									loc: { start: 1099, end: 1109 }
+									loc: { start: 1127, end: 1137 }
 								},
-								loc: { start: 1098, end: 1110 }
+								loc: { start: 1126, end: 1138 }
 							},
 							directives: [],
-							loc: { start: 1091, end: 1110 }
+							loc: { start: 1119, end: 1138 }
 						}
 					],
 					type: {
@@ -768,156 +774,156 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Share', loc: { start: 1114, end: 1119 } },
-								loc: { start: 1114, end: 1119 }
+								name: { kind: 'Name', value: 'Share', loc: { start: 1142, end: 1147 } },
+								loc: { start: 1142, end: 1147 }
 							},
-							loc: { start: 1113, end: 1120 }
+							loc: { start: 1141, end: 1148 }
 						},
-						loc: { start: 1113, end: 1121 }
+						loc: { start: 1141, end: 1149 }
 					},
 					directives: [],
-					loc: { start: 1055, end: 1121 }
+					loc: { start: 1083, end: 1149 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'size', loc: { start: 1124, end: 1128 } },
+					name: { kind: 'Name', value: 'size', loc: { start: 1152, end: 1156 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Float', loc: { start: 1130, end: 1135 } },
-							loc: { start: 1130, end: 1135 }
+							name: { kind: 'Name', value: 'Float', loc: { start: 1158, end: 1163 } },
+							loc: { start: 1158, end: 1163 }
 						},
-						loc: { start: 1130, end: 1136 }
+						loc: { start: 1158, end: 1164 }
 					},
 					directives: [],
-					loc: { start: 1124, end: 1136 }
+					loc: { start: 1152, end: 1164 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 1139, end: 1143 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 1167, end: 1171 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 1145, end: 1153 } },
-							loc: { start: 1145, end: 1153 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 1173, end: 1181 } },
+							loc: { start: 1173, end: 1181 }
 						},
-						loc: { start: 1145, end: 1154 }
+						loc: { start: 1173, end: 1182 }
 					},
 					directives: [],
-					loc: { start: 1139, end: 1154 }
+					loc: { start: 1167, end: 1182 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 1157, end: 1167 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 1185, end: 1195 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1169, end: 1179 } },
-							loc: { start: 1169, end: 1179 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1197, end: 1207 } },
+							loc: { start: 1197, end: 1207 }
 						},
-						loc: { start: 1169, end: 1180 }
+						loc: { start: 1197, end: 1208 }
 					},
 					directives: [],
-					loc: { start: 1157, end: 1180 }
+					loc: { start: 1185, end: 1208 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'version', loc: { start: 1183, end: 1190 } },
+					name: { kind: 'Name', value: 'version', loc: { start: 1211, end: 1218 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Int', loc: { start: 1192, end: 1195 } },
-							loc: { start: 1192, end: 1195 }
+							name: { kind: 'Name', value: 'Int', loc: { start: 1220, end: 1223 } },
+							loc: { start: 1220, end: 1223 }
 						},
-						loc: { start: 1192, end: 1196 }
+						loc: { start: 1220, end: 1224 }
 					},
 					directives: [],
-					loc: { start: 1183, end: 1196 }
+					loc: { start: 1211, end: 1224 }
 				}
 			],
-			loc: { start: 614, end: 1198 }
+			loc: { start: 642, end: 1226 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Folder', loc: { start: 1205, end: 1211 } },
+			name: { kind: 'Name', value: 'Folder', loc: { start: 1233, end: 1239 } },
 			interfaces: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'Node', loc: { start: 1223, end: 1227 } },
-					loc: { start: 1223, end: 1227 }
+					name: { kind: 'Name', value: 'Node', loc: { start: 1251, end: 1255 } },
+					loc: { start: 1251, end: 1255 }
 				}
 			],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'children', loc: { start: 1232, end: 1240 } },
+					name: { kind: 'Name', value: 'children', loc: { start: 1260, end: 1268 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 1241, end: 1246 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 1269, end: 1274 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 1248, end: 1251 } },
-									loc: { start: 1248, end: 1251 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 1276, end: 1279 } },
+									loc: { start: 1276, end: 1279 }
 								},
-								loc: { start: 1248, end: 1252 }
+								loc: { start: 1276, end: 1280 }
 							},
 							directives: [],
-							loc: { start: 1241, end: 1252 }
+							loc: { start: 1269, end: 1280 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 1254, end: 1264 } },
+							name: { kind: 'Name', value: 'page_token', loc: { start: 1282, end: 1292 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 1266, end: 1272 } },
-								loc: { start: 1266, end: 1272 }
+								name: { kind: 'Name', value: 'String', loc: { start: 1294, end: 1300 } },
+								loc: { start: 1294, end: 1300 }
 							},
 							directives: [],
-							loc: { start: 1254, end: 1272 }
+							loc: { start: 1282, end: 1300 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'sort', loc: { start: 1274, end: 1278 } },
+							name: { kind: 'Name', value: 'sort', loc: { start: 1302, end: 1306 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'NodeSort', loc: { start: 1280, end: 1288 } },
-									loc: { start: 1280, end: 1288 }
+									name: { kind: 'Name', value: 'NodeSort', loc: { start: 1308, end: 1316 } },
+									loc: { start: 1308, end: 1316 }
 								},
-								loc: { start: 1280, end: 1289 }
+								loc: { start: 1308, end: 1317 }
 							},
 							directives: [],
-							loc: { start: 1274, end: 1289 }
+							loc: { start: 1302, end: 1317 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodePage', loc: { start: 1292, end: 1300 } },
-							loc: { start: 1292, end: 1300 }
+							name: { kind: 'Name', value: 'NodePage', loc: { start: 1320, end: 1328 } },
+							loc: { start: 1320, end: 1328 }
 						},
-						loc: { start: 1292, end: 1301 }
+						loc: { start: 1320, end: 1329 }
 					},
 					directives: [],
-					loc: { start: 1232, end: 1301 }
+					loc: { start: 1260, end: 1329 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 1304, end: 1323 } },
+					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 1332, end: 1351 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -925,111 +931,111 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 1326, end: 1343 } },
-								loc: { start: 1326, end: 1343 }
+								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 1354, end: 1371 } },
+								loc: { start: 1354, end: 1371 }
 							},
-							loc: { start: 1325, end: 1344 }
+							loc: { start: 1353, end: 1372 }
 						},
-						loc: { start: 1325, end: 1345 }
+						loc: { start: 1353, end: 1373 }
 					},
 					directives: [],
-					loc: { start: 1304, end: 1345 }
+					loc: { start: 1332, end: 1373 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 1348, end: 1358 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 1376, end: 1386 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1360, end: 1370 } },
-							loc: { start: 1360, end: 1370 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1388, end: 1398 } },
+							loc: { start: 1388, end: 1398 }
 						},
-						loc: { start: 1360, end: 1371 }
+						loc: { start: 1388, end: 1399 }
 					},
 					directives: [],
-					loc: { start: 1348, end: 1371 }
+					loc: { start: 1376, end: 1399 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'creator', loc: { start: 1374, end: 1381 } },
+					name: { kind: 'Name', value: 'creator', loc: { start: 1402, end: 1409 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'User', loc: { start: 1383, end: 1387 } },
-							loc: { start: 1383, end: 1387 }
+							name: { kind: 'Name', value: 'User', loc: { start: 1411, end: 1415 } },
+							loc: { start: 1411, end: 1415 }
 						},
-						loc: { start: 1383, end: 1388 }
+						loc: { start: 1411, end: 1416 }
 					},
 					directives: [],
-					loc: { start: 1374, end: 1388 }
+					loc: { start: 1402, end: 1416 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'description', loc: { start: 1391, end: 1402 } },
+					name: { kind: 'Name', value: 'description', loc: { start: 1419, end: 1430 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 1404, end: 1410 } },
-							loc: { start: 1404, end: 1410 }
+							name: { kind: 'Name', value: 'String', loc: { start: 1432, end: 1438 } },
+							loc: { start: 1432, end: 1438 }
 						},
-						loc: { start: 1404, end: 1411 }
+						loc: { start: 1432, end: 1439 }
 					},
 					directives: [],
-					loc: { start: 1391, end: 1411 }
+					loc: { start: 1419, end: 1439 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'flagged', loc: { start: 1414, end: 1421 } },
+					name: { kind: 'Name', value: 'flagged', loc: { start: 1442, end: 1449 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 1423, end: 1430 } },
-							loc: { start: 1423, end: 1430 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 1451, end: 1458 } },
+							loc: { start: 1451, end: 1458 }
 						},
-						loc: { start: 1423, end: 1431 }
+						loc: { start: 1451, end: 1459 }
 					},
 					directives: [],
-					loc: { start: 1414, end: 1431 }
+					loc: { start: 1442, end: 1459 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 1434, end: 1436 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 1462, end: 1464 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 1438, end: 1440 } },
-							loc: { start: 1438, end: 1440 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 1466, end: 1468 } },
+							loc: { start: 1466, end: 1468 }
 						},
-						loc: { start: 1438, end: 1441 }
+						loc: { start: 1466, end: 1469 }
 					},
 					directives: [],
-					loc: { start: 1434, end: 1441 }
+					loc: { start: 1462, end: 1469 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'last_editor', loc: { start: 1444, end: 1455 } },
+					name: { kind: 'Name', value: 'last_editor', loc: { start: 1472, end: 1483 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 1457, end: 1461 } },
-						loc: { start: 1457, end: 1461 }
+						name: { kind: 'Name', value: 'User', loc: { start: 1485, end: 1489 } },
+						loc: { start: 1485, end: 1489 }
 					},
 					directives: [],
-					loc: { start: 1444, end: 1461 }
+					loc: { start: 1472, end: 1489 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'links', loc: { start: 1464, end: 1469 } },
+					name: { kind: 'Name', value: 'links', loc: { start: 1492, end: 1497 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -1037,160 +1043,160 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Link', loc: { start: 1472, end: 1476 } },
-								loc: { start: 1472, end: 1476 }
+								name: { kind: 'Name', value: 'Link', loc: { start: 1500, end: 1504 } },
+								loc: { start: 1500, end: 1504 }
 							},
-							loc: { start: 1471, end: 1477 }
+							loc: { start: 1499, end: 1505 }
 						},
-						loc: { start: 1471, end: 1478 }
+						loc: { start: 1499, end: 1506 }
 					},
 					directives: [],
-					loc: { start: 1464, end: 1478 }
+					loc: { start: 1492, end: 1506 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 1481, end: 1485 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 1509, end: 1513 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 1487, end: 1493 } },
-							loc: { start: 1487, end: 1493 }
+							name: { kind: 'Name', value: 'String', loc: { start: 1515, end: 1521 } },
+							loc: { start: 1515, end: 1521 }
 						},
-						loc: { start: 1487, end: 1494 }
+						loc: { start: 1515, end: 1522 }
 					},
 					directives: [],
-					loc: { start: 1481, end: 1494 }
+					loc: { start: 1509, end: 1522 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'owner', loc: { start: 1497, end: 1502 } },
+					name: { kind: 'Name', value: 'owner', loc: { start: 1525, end: 1530 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 1504, end: 1508 } },
-						loc: { start: 1504, end: 1508 }
+						name: { kind: 'Name', value: 'User', loc: { start: 1532, end: 1536 } },
+						loc: { start: 1532, end: 1536 }
 					},
 					directives: [],
-					loc: { start: 1497, end: 1508 }
+					loc: { start: 1525, end: 1536 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'parent', loc: { start: 1511, end: 1517 } },
+					name: { kind: 'Name', value: 'parent', loc: { start: 1539, end: 1545 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 1519, end: 1523 } },
-						loc: { start: 1519, end: 1523 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 1547, end: 1551 } },
+						loc: { start: 1547, end: 1551 }
 					},
 					directives: [],
-					loc: { start: 1511, end: 1523 }
+					loc: { start: 1539, end: 1551 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'permissions', loc: { start: 1526, end: 1537 } },
+					name: { kind: 'Name', value: 'permissions', loc: { start: 1554, end: 1565 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Permissions', loc: { start: 1539, end: 1550 } },
-							loc: { start: 1539, end: 1550 }
+							name: { kind: 'Name', value: 'Permissions', loc: { start: 1567, end: 1578 } },
+							loc: { start: 1567, end: 1578 }
 						},
-						loc: { start: 1539, end: 1551 }
+						loc: { start: 1567, end: 1579 }
 					},
 					directives: [],
-					loc: { start: 1526, end: 1551 }
+					loc: { start: 1554, end: 1579 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'rootId', loc: { start: 1554, end: 1560 } },
+					name: { kind: 'Name', value: 'rootId', loc: { start: 1582, end: 1588 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'ID', loc: { start: 1562, end: 1564 } },
-						loc: { start: 1562, end: 1564 }
+						name: { kind: 'Name', value: 'ID', loc: { start: 1590, end: 1592 } },
+						loc: { start: 1590, end: 1592 }
 					},
 					directives: [],
-					loc: { start: 1554, end: 1564 }
+					loc: { start: 1582, end: 1592 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'share', loc: { start: 1567, end: 1572 } },
+					name: { kind: 'Name', value: 'share', loc: { start: 1595, end: 1600 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_id', loc: { start: 1573, end: 1588 } },
+							name: { kind: 'Name', value: 'share_target_id', loc: { start: 1601, end: 1616 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 1590, end: 1592 } },
-									loc: { start: 1590, end: 1592 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 1618, end: 1620 } },
+									loc: { start: 1618, end: 1620 }
 								},
-								loc: { start: 1590, end: 1593 }
+								loc: { start: 1618, end: 1621 }
 							},
 							directives: [],
-							loc: { start: 1573, end: 1593 }
+							loc: { start: 1601, end: 1621 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Share', loc: { start: 1596, end: 1601 } },
-						loc: { start: 1596, end: 1601 }
+						name: { kind: 'Name', value: 'Share', loc: { start: 1624, end: 1629 } },
+						loc: { start: 1624, end: 1629 }
 					},
 					directives: [],
-					loc: { start: 1567, end: 1601 }
+					loc: { start: 1595, end: 1629 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'shares', loc: { start: 1604, end: 1610 } },
+					name: { kind: 'Name', value: 'shares', loc: { start: 1632, end: 1638 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'cursor', loc: { start: 1611, end: 1617 } },
+							name: { kind: 'Name', value: 'cursor', loc: { start: 1639, end: 1645 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 1619, end: 1625 } },
-								loc: { start: 1619, end: 1625 }
+								name: { kind: 'Name', value: 'String', loc: { start: 1647, end: 1653 } },
+								loc: { start: 1647, end: 1653 }
 							},
 							directives: [],
-							loc: { start: 1611, end: 1625 }
+							loc: { start: 1639, end: 1653 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 1627, end: 1632 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 1655, end: 1660 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 1634, end: 1637 } },
-									loc: { start: 1634, end: 1637 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 1662, end: 1665 } },
+									loc: { start: 1662, end: 1665 }
 								},
-								loc: { start: 1634, end: 1638 }
+								loc: { start: 1662, end: 1666 }
 							},
 							directives: [],
-							loc: { start: 1627, end: 1638 }
+							loc: { start: 1655, end: 1666 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'sorts', loc: { start: 1640, end: 1645 } },
+							name: { kind: 'Name', value: 'sorts', loc: { start: 1668, end: 1673 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'ShareSort', loc: { start: 1648, end: 1657 } },
-										loc: { start: 1648, end: 1657 }
+										name: { kind: 'Name', value: 'ShareSort', loc: { start: 1676, end: 1685 } },
+										loc: { start: 1676, end: 1685 }
 									},
-									loc: { start: 1648, end: 1658 }
+									loc: { start: 1676, end: 1686 }
 								},
-								loc: { start: 1647, end: 1659 }
+								loc: { start: 1675, end: 1687 }
 							},
 							directives: [],
-							loc: { start: 1640, end: 1659 }
+							loc: { start: 1668, end: 1687 }
 						}
 					],
 					type: {
@@ -1199,155 +1205,155 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Share', loc: { start: 1663, end: 1668 } },
-								loc: { start: 1663, end: 1668 }
+								name: { kind: 'Name', value: 'Share', loc: { start: 1691, end: 1696 } },
+								loc: { start: 1691, end: 1696 }
 							},
-							loc: { start: 1662, end: 1669 }
+							loc: { start: 1690, end: 1697 }
 						},
-						loc: { start: 1662, end: 1670 }
+						loc: { start: 1690, end: 1698 }
 					},
 					directives: [],
-					loc: { start: 1604, end: 1670 }
+					loc: { start: 1632, end: 1698 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 1673, end: 1677 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 1701, end: 1705 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 1679, end: 1687 } },
-							loc: { start: 1679, end: 1687 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 1707, end: 1715 } },
+							loc: { start: 1707, end: 1715 }
 						},
-						loc: { start: 1679, end: 1688 }
+						loc: { start: 1707, end: 1716 }
 					},
 					directives: [],
-					loc: { start: 1673, end: 1688 }
+					loc: { start: 1701, end: 1716 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 1691, end: 1701 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 1719, end: 1729 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1703, end: 1713 } },
-							loc: { start: 1703, end: 1713 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1731, end: 1741 } },
+							loc: { start: 1731, end: 1741 }
 						},
-						loc: { start: 1703, end: 1714 }
+						loc: { start: 1731, end: 1742 }
 					},
 					directives: [],
-					loc: { start: 1691, end: 1714 }
+					loc: { start: 1719, end: 1742 }
 				}
 			],
-			loc: { start: 1200, end: 1716 }
+			loc: { start: 1228, end: 1744 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Link', loc: { start: 1723, end: 1727 } },
+			name: { kind: 'Name', value: 'Link', loc: { start: 1751, end: 1755 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'access_code', loc: { start: 1732, end: 1743 } },
+					name: { kind: 'Name', value: 'access_code', loc: { start: 1760, end: 1771 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 1745, end: 1751 } },
-						loc: { start: 1745, end: 1751 }
+						name: { kind: 'Name', value: 'String', loc: { start: 1773, end: 1779 } },
+						loc: { start: 1773, end: 1779 }
 					},
 					directives: [],
-					loc: { start: 1732, end: 1751 }
+					loc: { start: 1760, end: 1779 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 1754, end: 1764 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 1782, end: 1792 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1766, end: 1776 } },
-							loc: { start: 1766, end: 1776 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 1794, end: 1804 } },
+							loc: { start: 1794, end: 1804 }
 						},
-						loc: { start: 1766, end: 1777 }
+						loc: { start: 1794, end: 1805 }
 					},
 					directives: [],
-					loc: { start: 1754, end: 1777 }
+					loc: { start: 1782, end: 1805 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'description', loc: { start: 1780, end: 1791 } },
+					name: { kind: 'Name', value: 'description', loc: { start: 1808, end: 1819 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 1793, end: 1799 } },
-						loc: { start: 1793, end: 1799 }
+						name: { kind: 'Name', value: 'String', loc: { start: 1821, end: 1827 } },
+						loc: { start: 1821, end: 1827 }
 					},
 					directives: [],
-					loc: { start: 1780, end: 1799 }
+					loc: { start: 1808, end: 1827 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'expires_at', loc: { start: 1802, end: 1812 } },
+					name: { kind: 'Name', value: 'expires_at', loc: { start: 1830, end: 1840 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'BigInteger', loc: { start: 1814, end: 1824 } },
-						loc: { start: 1814, end: 1824 }
+						name: { kind: 'Name', value: 'BigInteger', loc: { start: 1842, end: 1852 } },
+						loc: { start: 1842, end: 1852 }
 					},
 					directives: [],
-					loc: { start: 1802, end: 1824 }
+					loc: { start: 1830, end: 1852 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 1827, end: 1829 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 1855, end: 1857 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 1831, end: 1833 } },
-							loc: { start: 1831, end: 1833 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 1859, end: 1861 } },
+							loc: { start: 1859, end: 1861 }
 						},
-						loc: { start: 1831, end: 1834 }
+						loc: { start: 1859, end: 1862 }
 					},
 					directives: [],
-					loc: { start: 1827, end: 1834 }
+					loc: { start: 1855, end: 1862 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'node', loc: { start: 1837, end: 1841 } },
+					name: { kind: 'Name', value: 'node', loc: { start: 1865, end: 1869 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 1843, end: 1847 } },
-							loc: { start: 1843, end: 1847 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 1871, end: 1875 } },
+							loc: { start: 1871, end: 1875 }
 						},
-						loc: { start: 1843, end: 1848 }
+						loc: { start: 1871, end: 1876 }
 					},
 					directives: [],
-					loc: { start: 1837, end: 1848 }
+					loc: { start: 1865, end: 1876 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'url', loc: { start: 1851, end: 1854 } },
+					name: { kind: 'Name', value: 'url', loc: { start: 1879, end: 1882 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 1856, end: 1862 } },
-						loc: { start: 1856, end: 1862 }
+						name: { kind: 'Name', value: 'String', loc: { start: 1884, end: 1890 } },
+						loc: { start: 1884, end: 1890 }
 					},
 					directives: [],
-					loc: { start: 1851, end: 1862 }
+					loc: { start: 1879, end: 1890 }
 				}
 			],
-			loc: { start: 1718, end: 1864 }
+			loc: { start: 1746, end: 1892 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
@@ -1355,96 +1361,96 @@ export const schema = {
 				kind: 'StringValue',
 				value: 'Mutation root',
 				block: true,
-				loc: { start: 1866, end: 1885 }
+				loc: { start: 1894, end: 1913 }
 			},
-			name: { kind: 'Name', value: 'Mutation', loc: { start: 1891, end: 1899 } },
+			name: { kind: 'Name', value: 'Mutation', loc: { start: 1919, end: 1927 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'cloneVersion', loc: { start: 1904, end: 1916 } },
+					name: { kind: 'Name', value: 'cloneVersion', loc: { start: 1932, end: 1944 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 1917, end: 1924 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 1945, end: 1952 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 1926, end: 1928 } },
-									loc: { start: 1926, end: 1928 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 1954, end: 1956 } },
+									loc: { start: 1954, end: 1956 }
 								},
-								loc: { start: 1926, end: 1929 }
+								loc: { start: 1954, end: 1957 }
 							},
 							directives: [],
-							loc: { start: 1917, end: 1929 }
+							loc: { start: 1945, end: 1957 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'version', loc: { start: 1931, end: 1938 } },
+							name: { kind: 'Name', value: 'version', loc: { start: 1959, end: 1966 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 1940, end: 1943 } },
-									loc: { start: 1940, end: 1943 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 1968, end: 1971 } },
+									loc: { start: 1968, end: 1971 }
 								},
-								loc: { start: 1940, end: 1944 }
+								loc: { start: 1968, end: 1972 }
 							},
 							directives: [],
-							loc: { start: 1931, end: 1944 }
+							loc: { start: 1959, end: 1972 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'File', loc: { start: 1947, end: 1951 } },
-							loc: { start: 1947, end: 1951 }
+							name: { kind: 'Name', value: 'File', loc: { start: 1975, end: 1979 } },
+							loc: { start: 1975, end: 1979 }
 						},
-						loc: { start: 1947, end: 1952 }
+						loc: { start: 1975, end: 1980 }
 					},
 					directives: [],
-					loc: { start: 1904, end: 1952 }
+					loc: { start: 1932, end: 1980 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'copyNodes', loc: { start: 1955, end: 1964 } },
+					name: { kind: 'Name', value: 'copyNodes', loc: { start: 1983, end: 1992 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'destination_id', loc: { start: 1965, end: 1979 } },
+							name: { kind: 'Name', value: 'destination_id', loc: { start: 1993, end: 2007 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 1981, end: 1983 } },
-									loc: { start: 1981, end: 1983 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2009, end: 2011 } },
+									loc: { start: 2009, end: 2011 }
 								},
-								loc: { start: 1981, end: 1984 }
+								loc: { start: 2009, end: 2012 }
 							},
 							directives: [],
-							loc: { start: 1965, end: 1984 }
+							loc: { start: 1993, end: 2012 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 1986, end: 1994 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2014, end: 2022 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 1997, end: 2003 } },
-										loc: { start: 1997, end: 2003 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2025, end: 2031 } },
+										loc: { start: 2025, end: 2031 }
 									},
-									loc: { start: 1997, end: 2004 }
+									loc: { start: 2025, end: 2032 }
 								},
-								loc: { start: 1996, end: 2005 }
+								loc: { start: 2024, end: 2033 }
 							},
 							directives: [],
-							loc: { start: 1986, end: 2005 }
+							loc: { start: 2014, end: 2033 }
 						}
 					],
 					type: {
@@ -1453,265 +1459,265 @@ export const schema = {
 							kind: 'NonNullType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Node', loc: { start: 2009, end: 2013 } },
-								loc: { start: 2009, end: 2013 }
+								name: { kind: 'Name', value: 'Node', loc: { start: 2037, end: 2041 } },
+								loc: { start: 2037, end: 2041 }
 							},
-							loc: { start: 2009, end: 2014 }
+							loc: { start: 2037, end: 2042 }
 						},
-						loc: { start: 2008, end: 2015 }
+						loc: { start: 2036, end: 2043 }
 					},
 					directives: [],
-					loc: { start: 1955, end: 2015 }
+					loc: { start: 1983, end: 2043 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'createCollaborationLink', loc: { start: 2018, end: 2041 } },
+					name: { kind: 'Name', value: 'createCollaborationLink', loc: { start: 2046, end: 2069 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2042, end: 2049 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2070, end: 2077 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2051, end: 2053 } },
-									loc: { start: 2051, end: 2053 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2079, end: 2081 } },
+									loc: { start: 2079, end: 2081 }
 								},
-								loc: { start: 2051, end: 2054 }
+								loc: { start: 2079, end: 2082 }
 							},
 							directives: [],
-							loc: { start: 2042, end: 2054 }
+							loc: { start: 2070, end: 2082 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'permission', loc: { start: 2056, end: 2066 } },
+							name: { kind: 'Name', value: 'permission', loc: { start: 2084, end: 2094 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'SharePermission', loc: { start: 2068, end: 2083 } },
-									loc: { start: 2068, end: 2083 }
+									name: { kind: 'Name', value: 'SharePermission', loc: { start: 2096, end: 2111 } },
+									loc: { start: 2096, end: 2111 }
 								},
-								loc: { start: 2068, end: 2084 }
+								loc: { start: 2096, end: 2112 }
 							},
 							directives: [],
-							loc: { start: 2056, end: 2084 }
+							loc: { start: 2084, end: 2112 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 2087, end: 2104 } },
-							loc: { start: 2087, end: 2104 }
+							name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 2115, end: 2132 } },
+							loc: { start: 2115, end: 2132 }
 						},
-						loc: { start: 2087, end: 2105 }
+						loc: { start: 2115, end: 2133 }
 					},
 					directives: [],
-					loc: { start: 2018, end: 2105 }
+					loc: { start: 2046, end: 2133 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'createFolder', loc: { start: 2108, end: 2120 } },
+					name: { kind: 'Name', value: 'createFolder', loc: { start: 2136, end: 2148 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'destination_id', loc: { start: 2121, end: 2135 } },
+							name: { kind: 'Name', value: 'destination_id', loc: { start: 2149, end: 2163 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 2137, end: 2143 } },
-									loc: { start: 2137, end: 2143 }
+									name: { kind: 'Name', value: 'String', loc: { start: 2165, end: 2171 } },
+									loc: { start: 2165, end: 2171 }
 								},
-								loc: { start: 2137, end: 2144 }
+								loc: { start: 2165, end: 2172 }
 							},
 							directives: [],
-							loc: { start: 2121, end: 2144 }
+							loc: { start: 2149, end: 2172 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'name', loc: { start: 2146, end: 2150 } },
+							name: { kind: 'Name', value: 'name', loc: { start: 2174, end: 2178 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 2152, end: 2158 } },
-									loc: { start: 2152, end: 2158 }
+									name: { kind: 'Name', value: 'String', loc: { start: 2180, end: 2186 } },
+									loc: { start: 2180, end: 2186 }
 								},
-								loc: { start: 2152, end: 2159 }
+								loc: { start: 2180, end: 2187 }
 							},
 							directives: [],
-							loc: { start: 2146, end: 2159 }
+							loc: { start: 2174, end: 2187 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 2162, end: 2166 } },
-							loc: { start: 2162, end: 2166 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 2190, end: 2194 } },
+							loc: { start: 2190, end: 2194 }
 						},
-						loc: { start: 2162, end: 2167 }
+						loc: { start: 2190, end: 2195 }
 					},
 					directives: [],
-					loc: { start: 2108, end: 2167 }
+					loc: { start: 2136, end: 2195 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'createLink', loc: { start: 2170, end: 2180 } },
+					name: { kind: 'Name', value: 'createLink', loc: { start: 2198, end: 2208 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'access_code', loc: { start: 2181, end: 2192 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 2209, end: 2220 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 2194, end: 2200 } },
-								loc: { start: 2194, end: 2200 }
+								name: { kind: 'Name', value: 'String', loc: { start: 2222, end: 2228 } },
+								loc: { start: 2222, end: 2228 }
 							},
 							directives: [],
-							loc: { start: 2181, end: 2200 }
+							loc: { start: 2209, end: 2228 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'description', loc: { start: 2202, end: 2213 } },
+							name: { kind: 'Name', value: 'description', loc: { start: 2230, end: 2241 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 2215, end: 2221 } },
-								loc: { start: 2215, end: 2221 }
+								name: { kind: 'Name', value: 'String', loc: { start: 2243, end: 2249 } },
+								loc: { start: 2243, end: 2249 }
 							},
 							directives: [],
-							loc: { start: 2202, end: 2221 }
+							loc: { start: 2230, end: 2249 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'expires_at', loc: { start: 2223, end: 2233 } },
+							name: { kind: 'Name', value: 'expires_at', loc: { start: 2251, end: 2261 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'BigInteger', loc: { start: 2235, end: 2245 } },
-								loc: { start: 2235, end: 2245 }
+								name: { kind: 'Name', value: 'BigInteger', loc: { start: 2263, end: 2273 } },
+								loc: { start: 2263, end: 2273 }
 							},
 							directives: [],
-							loc: { start: 2223, end: 2245 }
+							loc: { start: 2251, end: 2273 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2247, end: 2254 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2275, end: 2282 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2256, end: 2258 } },
-									loc: { start: 2256, end: 2258 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2284, end: 2286 } },
+									loc: { start: 2284, end: 2286 }
 								},
-								loc: { start: 2256, end: 2259 }
+								loc: { start: 2284, end: 2287 }
 							},
 							directives: [],
-							loc: { start: 2247, end: 2259 }
+							loc: { start: 2275, end: 2287 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Link', loc: { start: 2262, end: 2266 } },
-							loc: { start: 2262, end: 2266 }
+							name: { kind: 'Name', value: 'Link', loc: { start: 2290, end: 2294 } },
+							loc: { start: 2290, end: 2294 }
 						},
-						loc: { start: 2262, end: 2267 }
+						loc: { start: 2290, end: 2295 }
 					},
 					directives: [],
-					loc: { start: 2170, end: 2267 }
+					loc: { start: 2198, end: 2295 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'createShare', loc: { start: 2270, end: 2281 } },
+					name: { kind: 'Name', value: 'createShare', loc: { start: 2298, end: 2309 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'custom_message', loc: { start: 2282, end: 2296 } },
+							name: { kind: 'Name', value: 'custom_message', loc: { start: 2310, end: 2324 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 2298, end: 2304 } },
-								loc: { start: 2298, end: 2304 }
+								name: { kind: 'Name', value: 'String', loc: { start: 2326, end: 2332 } },
+								loc: { start: 2326, end: 2332 }
 							},
 							directives: [],
-							loc: { start: 2282, end: 2304 }
+							loc: { start: 2310, end: 2332 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'expires_at', loc: { start: 2306, end: 2316 } },
+							name: { kind: 'Name', value: 'expires_at', loc: { start: 2334, end: 2344 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'BigInteger', loc: { start: 2318, end: 2328 } },
-								loc: { start: 2318, end: 2328 }
+								name: { kind: 'Name', value: 'BigInteger', loc: { start: 2346, end: 2356 } },
+								loc: { start: 2346, end: 2356 }
 							},
 							directives: [],
-							loc: { start: 2306, end: 2328 }
+							loc: { start: 2334, end: 2356 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2330, end: 2337 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2358, end: 2365 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2339, end: 2341 } },
-									loc: { start: 2339, end: 2341 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2367, end: 2369 } },
+									loc: { start: 2367, end: 2369 }
 								},
-								loc: { start: 2339, end: 2342 }
+								loc: { start: 2367, end: 2370 }
 							},
 							directives: [],
-							loc: { start: 2330, end: 2342 }
+							loc: { start: 2358, end: 2370 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'permission', loc: { start: 2344, end: 2354 } },
+							name: { kind: 'Name', value: 'permission', loc: { start: 2372, end: 2382 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'SharePermission', loc: { start: 2356, end: 2371 } },
-									loc: { start: 2356, end: 2371 }
+									name: { kind: 'Name', value: 'SharePermission', loc: { start: 2384, end: 2399 } },
+									loc: { start: 2384, end: 2399 }
 								},
-								loc: { start: 2356, end: 2372 }
+								loc: { start: 2384, end: 2400 }
 							},
 							directives: [],
-							loc: { start: 2344, end: 2372 }
+							loc: { start: 2372, end: 2400 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_id', loc: { start: 2374, end: 2389 } },
+							name: { kind: 'Name', value: 'share_target_id', loc: { start: 2402, end: 2417 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2391, end: 2393 } },
-									loc: { start: 2391, end: 2393 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2419, end: 2421 } },
+									loc: { start: 2419, end: 2421 }
 								},
-								loc: { start: 2391, end: 2394 }
+								loc: { start: 2419, end: 2422 }
 							},
 							directives: [],
-							loc: { start: 2374, end: 2394 }
+							loc: { start: 2402, end: 2422 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Share', loc: { start: 2397, end: 2402 } },
-							loc: { start: 2397, end: 2402 }
+							name: { kind: 'Name', value: 'Share', loc: { start: 2425, end: 2430 } },
+							loc: { start: 2425, end: 2430 }
 						},
-						loc: { start: 2397, end: 2403 }
+						loc: { start: 2425, end: 2431 }
 					},
 					directives: [],
-					loc: { start: 2270, end: 2403 }
+					loc: { start: 2298, end: 2431 }
 				},
 				{
 					kind: 'FieldDefinition',
 					name: {
 						kind: 'Name',
 						value: 'deleteCollaborationLinks',
-						loc: { start: 2406, end: 2430 }
+						loc: { start: 2434, end: 2458 }
 					},
 					arguments: [
 						{
@@ -1719,7 +1725,7 @@ export const schema = {
 							name: {
 								kind: 'Name',
 								value: 'collaboration_link_ids',
-								loc: { start: 2431, end: 2453 }
+								loc: { start: 2459, end: 2481 }
 							},
 							type: {
 								kind: 'NonNullType',
@@ -1729,17 +1735,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'String', loc: { start: 2456, end: 2462 } },
-											loc: { start: 2456, end: 2462 }
+											name: { kind: 'Name', value: 'String', loc: { start: 2484, end: 2490 } },
+											loc: { start: 2484, end: 2490 }
 										},
-										loc: { start: 2456, end: 2463 }
+										loc: { start: 2484, end: 2491 }
 									},
-									loc: { start: 2455, end: 2464 }
+									loc: { start: 2483, end: 2492 }
 								},
-								loc: { start: 2455, end: 2465 }
+								loc: { start: 2483, end: 2493 }
 							},
 							directives: [],
-							loc: { start: 2431, end: 2465 }
+							loc: { start: 2459, end: 2493 }
 						}
 					],
 					type: {
@@ -1748,23 +1754,23 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2469, end: 2471 } },
-								loc: { start: 2469, end: 2471 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2497, end: 2499 } },
+								loc: { start: 2497, end: 2499 }
 							},
-							loc: { start: 2468, end: 2472 }
+							loc: { start: 2496, end: 2500 }
 						},
-						loc: { start: 2468, end: 2473 }
+						loc: { start: 2496, end: 2501 }
 					},
 					directives: [],
-					loc: { start: 2406, end: 2473 }
+					loc: { start: 2434, end: 2501 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'deleteLinks', loc: { start: 2476, end: 2487 } },
+					name: { kind: 'Name', value: 'deleteLinks', loc: { start: 2504, end: 2515 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'link_ids', loc: { start: 2488, end: 2496 } },
+							name: { kind: 'Name', value: 'link_ids', loc: { start: 2516, end: 2524 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
@@ -1773,17 +1779,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'String', loc: { start: 2499, end: 2505 } },
-											loc: { start: 2499, end: 2505 }
+											name: { kind: 'Name', value: 'String', loc: { start: 2527, end: 2533 } },
+											loc: { start: 2527, end: 2533 }
 										},
-										loc: { start: 2499, end: 2506 }
+										loc: { start: 2527, end: 2534 }
 									},
-									loc: { start: 2498, end: 2507 }
+									loc: { start: 2526, end: 2535 }
 								},
-								loc: { start: 2498, end: 2508 }
+								loc: { start: 2526, end: 2536 }
 							},
 							directives: [],
-							loc: { start: 2488, end: 2508 }
+							loc: { start: 2516, end: 2536 }
 						}
 					],
 					type: {
@@ -1792,38 +1798,38 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2512, end: 2514 } },
-								loc: { start: 2512, end: 2514 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2540, end: 2542 } },
+								loc: { start: 2540, end: 2542 }
 							},
-							loc: { start: 2511, end: 2515 }
+							loc: { start: 2539, end: 2543 }
 						},
-						loc: { start: 2511, end: 2516 }
+						loc: { start: 2539, end: 2544 }
 					},
 					directives: [],
-					loc: { start: 2476, end: 2516 }
+					loc: { start: 2504, end: 2544 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'deleteNodes', loc: { start: 2519, end: 2530 } },
+					name: { kind: 'Name', value: 'deleteNodes', loc: { start: 2547, end: 2558 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 2531, end: 2539 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2559, end: 2567 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 2542, end: 2548 } },
-										loc: { start: 2542, end: 2548 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2570, end: 2576 } },
+										loc: { start: 2570, end: 2576 }
 									},
-									loc: { start: 2542, end: 2549 }
+									loc: { start: 2570, end: 2577 }
 								},
-								loc: { start: 2541, end: 2550 }
+								loc: { start: 2569, end: 2578 }
 							},
 							directives: [],
-							loc: { start: 2531, end: 2550 }
+							loc: { start: 2559, end: 2578 }
 						}
 					],
 					type: {
@@ -1832,38 +1838,38 @@ export const schema = {
 							kind: 'NonNullType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2554, end: 2556 } },
-								loc: { start: 2554, end: 2556 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2582, end: 2584 } },
+								loc: { start: 2582, end: 2584 }
 							},
-							loc: { start: 2554, end: 2557 }
+							loc: { start: 2582, end: 2585 }
 						},
-						loc: { start: 2553, end: 2558 }
+						loc: { start: 2581, end: 2586 }
 					},
 					directives: [],
-					loc: { start: 2519, end: 2558 }
+					loc: { start: 2547, end: 2586 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'deleteShares', loc: { start: 2561, end: 2573 } },
+					name: { kind: 'Name', value: 'deleteShares', loc: { start: 2589, end: 2601 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2574, end: 2581 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2602, end: 2609 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2583, end: 2585 } },
-									loc: { start: 2583, end: 2585 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2611, end: 2613 } },
+									loc: { start: 2611, end: 2613 }
 								},
-								loc: { start: 2583, end: 2586 }
+								loc: { start: 2611, end: 2614 }
 							},
 							directives: [],
-							loc: { start: 2574, end: 2586 }
+							loc: { start: 2602, end: 2614 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_ids', loc: { start: 2588, end: 2604 } },
+							name: { kind: 'Name', value: 'share_target_ids', loc: { start: 2616, end: 2632 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
@@ -1872,17 +1878,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'String', loc: { start: 2607, end: 2613 } },
-											loc: { start: 2607, end: 2613 }
+											name: { kind: 'Name', value: 'String', loc: { start: 2635, end: 2641 } },
+											loc: { start: 2635, end: 2641 }
 										},
-										loc: { start: 2607, end: 2614 }
+										loc: { start: 2635, end: 2642 }
 									},
-									loc: { start: 2606, end: 2615 }
+									loc: { start: 2634, end: 2643 }
 								},
-								loc: { start: 2606, end: 2616 }
+								loc: { start: 2634, end: 2644 }
 							},
 							directives: [],
-							loc: { start: 2588, end: 2616 }
+							loc: { start: 2616, end: 2644 }
 						}
 					],
 					type: {
@@ -1891,53 +1897,53 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2620, end: 2622 } },
-								loc: { start: 2620, end: 2622 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2648, end: 2650 } },
+								loc: { start: 2648, end: 2650 }
 							},
-							loc: { start: 2619, end: 2623 }
+							loc: { start: 2647, end: 2651 }
 						},
-						loc: { start: 2619, end: 2624 }
+						loc: { start: 2647, end: 2652 }
 					},
 					directives: [],
-					loc: { start: 2561, end: 2624 }
+					loc: { start: 2589, end: 2652 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'deleteVersions', loc: { start: 2627, end: 2641 } },
+					name: { kind: 'Name', value: 'deleteVersions', loc: { start: 2655, end: 2669 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2642, end: 2649 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2670, end: 2677 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2651, end: 2653 } },
-									loc: { start: 2651, end: 2653 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2679, end: 2681 } },
+									loc: { start: 2679, end: 2681 }
 								},
-								loc: { start: 2651, end: 2654 }
+								loc: { start: 2679, end: 2682 }
 							},
 							directives: [],
-							loc: { start: 2642, end: 2654 }
+							loc: { start: 2670, end: 2682 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'versions', loc: { start: 2656, end: 2664 } },
+							name: { kind: 'Name', value: 'versions', loc: { start: 2684, end: 2692 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'Int', loc: { start: 2667, end: 2670 } },
-										loc: { start: 2667, end: 2670 }
+										name: { kind: 'Name', value: 'Int', loc: { start: 2695, end: 2698 } },
+										loc: { start: 2695, end: 2698 }
 									},
-									loc: { start: 2667, end: 2671 }
+									loc: { start: 2695, end: 2699 }
 								},
-								loc: { start: 2666, end: 2672 }
+								loc: { start: 2694, end: 2700 }
 							},
 							directives: [],
-							loc: { start: 2656, end: 2672 }
+							loc: { start: 2684, end: 2700 }
 						}
 					],
 					type: {
@@ -1946,53 +1952,53 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 2676, end: 2679 } },
-								loc: { start: 2676, end: 2679 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 2704, end: 2707 } },
+								loc: { start: 2704, end: 2707 }
 							},
-							loc: { start: 2675, end: 2680 }
+							loc: { start: 2703, end: 2708 }
 						},
-						loc: { start: 2675, end: 2681 }
+						loc: { start: 2703, end: 2709 }
 					},
 					directives: [],
-					loc: { start: 2627, end: 2681 }
+					loc: { start: 2655, end: 2709 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'flagNodes', loc: { start: 2684, end: 2693 } },
+					name: { kind: 'Name', value: 'flagNodes', loc: { start: 2712, end: 2721 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'flag', loc: { start: 2694, end: 2698 } },
+							name: { kind: 'Name', value: 'flag', loc: { start: 2722, end: 2726 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Boolean', loc: { start: 2700, end: 2707 } },
-									loc: { start: 2700, end: 2707 }
+									name: { kind: 'Name', value: 'Boolean', loc: { start: 2728, end: 2735 } },
+									loc: { start: 2728, end: 2735 }
 								},
-								loc: { start: 2700, end: 2708 }
+								loc: { start: 2728, end: 2736 }
 							},
 							directives: [],
-							loc: { start: 2694, end: 2708 }
+							loc: { start: 2722, end: 2736 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 2710, end: 2718 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2738, end: 2746 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 2721, end: 2727 } },
-										loc: { start: 2721, end: 2727 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2749, end: 2755 } },
+										loc: { start: 2749, end: 2755 }
 									},
-									loc: { start: 2721, end: 2728 }
+									loc: { start: 2749, end: 2756 }
 								},
-								loc: { start: 2720, end: 2729 }
+								loc: { start: 2748, end: 2757 }
 							},
 							directives: [],
-							loc: { start: 2710, end: 2729 }
+							loc: { start: 2738, end: 2757 }
 						}
 					],
 					type: {
@@ -2001,53 +2007,53 @@ export const schema = {
 							kind: 'NonNullType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2733, end: 2735 } },
-								loc: { start: 2733, end: 2735 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2761, end: 2763 } },
+								loc: { start: 2761, end: 2763 }
 							},
-							loc: { start: 2733, end: 2736 }
+							loc: { start: 2761, end: 2764 }
 						},
-						loc: { start: 2732, end: 2737 }
+						loc: { start: 2760, end: 2765 }
 					},
 					directives: [],
-					loc: { start: 2684, end: 2737 }
+					loc: { start: 2712, end: 2765 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'keepVersions', loc: { start: 2740, end: 2752 } },
+					name: { kind: 'Name', value: 'keepVersions', loc: { start: 2768, end: 2780 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'keep_forever', loc: { start: 2753, end: 2765 } },
+							name: { kind: 'Name', value: 'keep_forever', loc: { start: 2781, end: 2793 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Boolean', loc: { start: 2767, end: 2774 } },
-									loc: { start: 2767, end: 2774 }
+									name: { kind: 'Name', value: 'Boolean', loc: { start: 2795, end: 2802 } },
+									loc: { start: 2795, end: 2802 }
 								},
-								loc: { start: 2767, end: 2775 }
+								loc: { start: 2795, end: 2803 }
 							},
 							directives: [],
-							loc: { start: 2753, end: 2775 }
+							loc: { start: 2781, end: 2803 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 2777, end: 2784 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 2805, end: 2812 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2786, end: 2788 } },
-									loc: { start: 2786, end: 2788 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2814, end: 2816 } },
+									loc: { start: 2814, end: 2816 }
 								},
-								loc: { start: 2786, end: 2789 }
+								loc: { start: 2814, end: 2817 }
 							},
 							directives: [],
-							loc: { start: 2777, end: 2789 }
+							loc: { start: 2805, end: 2817 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'versions', loc: { start: 2791, end: 2799 } },
+							name: { kind: 'Name', value: 'versions', loc: { start: 2819, end: 2827 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
@@ -2056,17 +2062,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'Int', loc: { start: 2802, end: 2805 } },
-											loc: { start: 2802, end: 2805 }
+											name: { kind: 'Name', value: 'Int', loc: { start: 2830, end: 2833 } },
+											loc: { start: 2830, end: 2833 }
 										},
-										loc: { start: 2802, end: 2806 }
+										loc: { start: 2830, end: 2834 }
 									},
-									loc: { start: 2801, end: 2807 }
+									loc: { start: 2829, end: 2835 }
 								},
-								loc: { start: 2801, end: 2808 }
+								loc: { start: 2829, end: 2836 }
 							},
 							directives: [],
-							loc: { start: 2791, end: 2808 }
+							loc: { start: 2819, end: 2836 }
 						}
 					],
 					type: {
@@ -2075,53 +2081,53 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 2812, end: 2815 } },
-								loc: { start: 2812, end: 2815 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 2840, end: 2843 } },
+								loc: { start: 2840, end: 2843 }
 							},
-							loc: { start: 2811, end: 2816 }
+							loc: { start: 2839, end: 2844 }
 						},
-						loc: { start: 2811, end: 2817 }
+						loc: { start: 2839, end: 2845 }
 					},
 					directives: [],
-					loc: { start: 2740, end: 2817 }
+					loc: { start: 2768, end: 2845 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'moveNodes', loc: { start: 2820, end: 2829 } },
+					name: { kind: 'Name', value: 'moveNodes', loc: { start: 2848, end: 2857 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'destination_id', loc: { start: 2830, end: 2844 } },
+							name: { kind: 'Name', value: 'destination_id', loc: { start: 2858, end: 2872 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 2846, end: 2848 } },
-									loc: { start: 2846, end: 2848 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 2874, end: 2876 } },
+									loc: { start: 2874, end: 2876 }
 								},
-								loc: { start: 2846, end: 2849 }
+								loc: { start: 2874, end: 2877 }
 							},
 							directives: [],
-							loc: { start: 2830, end: 2849 }
+							loc: { start: 2858, end: 2877 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 2851, end: 2859 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2879, end: 2887 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 2862, end: 2868 } },
-										loc: { start: 2862, end: 2868 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2890, end: 2896 } },
+										loc: { start: 2890, end: 2896 }
 									},
-									loc: { start: 2862, end: 2869 }
+									loc: { start: 2890, end: 2897 }
 								},
-								loc: { start: 2861, end: 2870 }
+								loc: { start: 2889, end: 2898 }
 							},
 							directives: [],
-							loc: { start: 2851, end: 2870 }
+							loc: { start: 2879, end: 2898 }
 						}
 					],
 					type: {
@@ -2130,74 +2136,74 @@ export const schema = {
 							kind: 'NonNullType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Node', loc: { start: 2874, end: 2878 } },
-								loc: { start: 2874, end: 2878 }
+								name: { kind: 'Name', value: 'Node', loc: { start: 2902, end: 2906 } },
+								loc: { start: 2902, end: 2906 }
 							},
-							loc: { start: 2874, end: 2879 }
+							loc: { start: 2902, end: 2907 }
 						},
-						loc: { start: 2873, end: 2880 }
+						loc: { start: 2901, end: 2908 }
 					},
 					directives: [],
-					loc: { start: 2820, end: 2880 }
+					loc: { start: 2848, end: 2908 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'restoreNodes', loc: { start: 2883, end: 2895 } },
+					name: { kind: 'Name', value: 'restoreNodes', loc: { start: 2911, end: 2923 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 2896, end: 2904 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2924, end: 2932 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 2907, end: 2913 } },
-										loc: { start: 2907, end: 2913 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2935, end: 2941 } },
+										loc: { start: 2935, end: 2941 }
 									},
-									loc: { start: 2907, end: 2914 }
+									loc: { start: 2935, end: 2942 }
 								},
-								loc: { start: 2906, end: 2915 }
+								loc: { start: 2934, end: 2943 }
 							},
 							directives: [],
-							loc: { start: 2896, end: 2915 }
+							loc: { start: 2924, end: 2943 }
 						}
 					],
 					type: {
 						kind: 'ListType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 2919, end: 2923 } },
-							loc: { start: 2919, end: 2923 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 2947, end: 2951 } },
+							loc: { start: 2947, end: 2951 }
 						},
-						loc: { start: 2918, end: 2924 }
+						loc: { start: 2946, end: 2952 }
 					},
 					directives: [],
-					loc: { start: 2883, end: 2924 }
+					loc: { start: 2911, end: 2952 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'trashNodes', loc: { start: 2927, end: 2937 } },
+					name: { kind: 'Name', value: 'trashNodes', loc: { start: 2955, end: 2965 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_ids', loc: { start: 2938, end: 2946 } },
+							name: { kind: 'Name', value: 'node_ids', loc: { start: 2966, end: 2974 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 2949, end: 2955 } },
-										loc: { start: 2949, end: 2955 }
+										name: { kind: 'Name', value: 'String', loc: { start: 2977, end: 2983 } },
+										loc: { start: 2977, end: 2983 }
 									},
-									loc: { start: 2949, end: 2956 }
+									loc: { start: 2977, end: 2984 }
 								},
-								loc: { start: 2948, end: 2957 }
+								loc: { start: 2976, end: 2985 }
 							},
 							directives: [],
-							loc: { start: 2938, end: 2957 }
+							loc: { start: 2966, end: 2985 }
 						}
 					],
 					type: {
@@ -2206,186 +2212,186 @@ export const schema = {
 							kind: 'NonNullType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'ID', loc: { start: 2961, end: 2963 } },
-								loc: { start: 2961, end: 2963 }
+								name: { kind: 'Name', value: 'ID', loc: { start: 2989, end: 2991 } },
+								loc: { start: 2989, end: 2991 }
 							},
-							loc: { start: 2961, end: 2964 }
+							loc: { start: 2989, end: 2992 }
 						},
-						loc: { start: 2960, end: 2965 }
+						loc: { start: 2988, end: 2993 }
 					},
 					directives: [],
-					loc: { start: 2927, end: 2965 }
+					loc: { start: 2955, end: 2993 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updateLink', loc: { start: 2968, end: 2978 } },
+					name: { kind: 'Name', value: 'updateLink', loc: { start: 2996, end: 3006 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'access_code', loc: { start: 2979, end: 2990 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 3007, end: 3018 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 2992, end: 2998 } },
-								loc: { start: 2992, end: 2998 }
+								name: { kind: 'Name', value: 'String', loc: { start: 3020, end: 3026 } },
+								loc: { start: 3020, end: 3026 }
 							},
 							directives: [],
-							loc: { start: 2979, end: 2998 }
+							loc: { start: 3007, end: 3026 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'description', loc: { start: 3000, end: 3011 } },
+							name: { kind: 'Name', value: 'description', loc: { start: 3028, end: 3039 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 3013, end: 3019 } },
-								loc: { start: 3013, end: 3019 }
+								name: { kind: 'Name', value: 'String', loc: { start: 3041, end: 3047 } },
+								loc: { start: 3041, end: 3047 }
 							},
 							directives: [],
-							loc: { start: 3000, end: 3019 }
+							loc: { start: 3028, end: 3047 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'expires_at', loc: { start: 3021, end: 3031 } },
+							name: { kind: 'Name', value: 'expires_at', loc: { start: 3049, end: 3059 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'BigInteger', loc: { start: 3033, end: 3043 } },
-								loc: { start: 3033, end: 3043 }
+								name: { kind: 'Name', value: 'BigInteger', loc: { start: 3061, end: 3071 } },
+								loc: { start: 3061, end: 3071 }
 							},
 							directives: [],
-							loc: { start: 3021, end: 3043 }
+							loc: { start: 3049, end: 3071 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'link_id', loc: { start: 3045, end: 3052 } },
+							name: { kind: 'Name', value: 'link_id', loc: { start: 3073, end: 3080 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 3054, end: 3056 } },
-									loc: { start: 3054, end: 3056 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 3082, end: 3084 } },
+									loc: { start: 3082, end: 3084 }
 								},
-								loc: { start: 3054, end: 3057 }
+								loc: { start: 3082, end: 3085 }
 							},
 							directives: [],
-							loc: { start: 3045, end: 3057 }
+							loc: { start: 3073, end: 3085 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Link', loc: { start: 3060, end: 3064 } },
-						loc: { start: 3060, end: 3064 }
+						name: { kind: 'Name', value: 'Link', loc: { start: 3088, end: 3092 } },
+						loc: { start: 3088, end: 3092 }
 					},
 					directives: [],
-					loc: { start: 2968, end: 3064 }
+					loc: { start: 2996, end: 3092 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updateNode', loc: { start: 3067, end: 3077 } },
+					name: { kind: 'Name', value: 'updateNode', loc: { start: 3095, end: 3105 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'description', loc: { start: 3078, end: 3089 } },
+							name: { kind: 'Name', value: 'description', loc: { start: 3106, end: 3117 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 3091, end: 3097 } },
-								loc: { start: 3091, end: 3097 }
+								name: { kind: 'Name', value: 'String', loc: { start: 3119, end: 3125 } },
+								loc: { start: 3119, end: 3125 }
 							},
 							directives: [],
-							loc: { start: 3078, end: 3097 }
+							loc: { start: 3106, end: 3125 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'flagged', loc: { start: 3099, end: 3106 } },
+							name: { kind: 'Name', value: 'flagged', loc: { start: 3127, end: 3134 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 3108, end: 3115 } },
-								loc: { start: 3108, end: 3115 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 3136, end: 3143 } },
+								loc: { start: 3136, end: 3143 }
 							},
 							directives: [],
-							loc: { start: 3099, end: 3115 }
+							loc: { start: 3127, end: 3143 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'name', loc: { start: 3117, end: 3121 } },
+							name: { kind: 'Name', value: 'name', loc: { start: 3145, end: 3149 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 3123, end: 3129 } },
-								loc: { start: 3123, end: 3129 }
+								name: { kind: 'Name', value: 'String', loc: { start: 3151, end: 3157 } },
+								loc: { start: 3151, end: 3157 }
 							},
 							directives: [],
-							loc: { start: 3117, end: 3129 }
+							loc: { start: 3145, end: 3157 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 3131, end: 3138 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 3159, end: 3166 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 3140, end: 3146 } },
-									loc: { start: 3140, end: 3146 }
+									name: { kind: 'Name', value: 'String', loc: { start: 3168, end: 3174 } },
+									loc: { start: 3168, end: 3174 }
 								},
-								loc: { start: 3140, end: 3147 }
+								loc: { start: 3168, end: 3175 }
 							},
 							directives: [],
-							loc: { start: 3131, end: 3147 }
+							loc: { start: 3159, end: 3175 }
 						}
 					],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 3150, end: 3154 } },
-							loc: { start: 3150, end: 3154 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 3178, end: 3182 } },
+							loc: { start: 3178, end: 3182 }
 						},
-						loc: { start: 3150, end: 3155 }
+						loc: { start: 3178, end: 3183 }
 					},
 					directives: [],
-					loc: { start: 3067, end: 3155 }
+					loc: { start: 3095, end: 3183 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updateShares', loc: { start: 3158, end: 3170 } },
+					name: { kind: 'Name', value: 'updateShares', loc: { start: 3186, end: 3198 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'expires_at', loc: { start: 3171, end: 3181 } },
+							name: { kind: 'Name', value: 'expires_at', loc: { start: 3199, end: 3209 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'BigInteger', loc: { start: 3183, end: 3193 } },
-								loc: { start: 3183, end: 3193 }
+								name: { kind: 'Name', value: 'BigInteger', loc: { start: 3211, end: 3221 } },
+								loc: { start: 3211, end: 3221 }
 							},
 							directives: [],
-							loc: { start: 3171, end: 3193 }
+							loc: { start: 3199, end: 3221 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 3195, end: 3202 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 3223, end: 3230 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 3204, end: 3206 } },
-									loc: { start: 3204, end: 3206 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 3232, end: 3234 } },
+									loc: { start: 3232, end: 3234 }
 								},
-								loc: { start: 3204, end: 3207 }
+								loc: { start: 3232, end: 3235 }
 							},
 							directives: [],
-							loc: { start: 3195, end: 3207 }
+							loc: { start: 3223, end: 3235 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'permission', loc: { start: 3209, end: 3219 } },
+							name: { kind: 'Name', value: 'permission', loc: { start: 3237, end: 3247 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'SharePermission', loc: { start: 3221, end: 3236 } },
-								loc: { start: 3221, end: 3236 }
+								name: { kind: 'Name', value: 'SharePermission', loc: { start: 3249, end: 3264 } },
+								loc: { start: 3249, end: 3264 }
 							},
 							directives: [],
-							loc: { start: 3209, end: 3236 }
+							loc: { start: 3237, end: 3264 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_ids', loc: { start: 3238, end: 3254 } },
+							name: { kind: 'Name', value: 'share_target_ids', loc: { start: 3266, end: 3282 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
@@ -2394,17 +2400,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'String', loc: { start: 3257, end: 3263 } },
-											loc: { start: 3257, end: 3263 }
+											name: { kind: 'Name', value: 'String', loc: { start: 3285, end: 3291 } },
+											loc: { start: 3285, end: 3291 }
 										},
-										loc: { start: 3257, end: 3264 }
+										loc: { start: 3285, end: 3292 }
 									},
-									loc: { start: 3256, end: 3265 }
+									loc: { start: 3284, end: 3293 }
 								},
-								loc: { start: 3256, end: 3266 }
+								loc: { start: 3284, end: 3294 }
 							},
 							directives: [],
-							loc: { start: 3238, end: 3266 }
+							loc: { start: 3266, end: 3294 }
 						}
 					],
 					type: {
@@ -2413,117 +2419,117 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Share', loc: { start: 3270, end: 3275 } },
-								loc: { start: 3270, end: 3275 }
+								name: { kind: 'Name', value: 'Share', loc: { start: 3298, end: 3303 } },
+								loc: { start: 3298, end: 3303 }
 							},
-							loc: { start: 3269, end: 3276 }
+							loc: { start: 3297, end: 3304 }
 						},
-						loc: { start: 3269, end: 3277 }
+						loc: { start: 3297, end: 3305 }
 					},
 					directives: [],
-					loc: { start: 3158, end: 3277 }
+					loc: { start: 3186, end: 3305 }
 				}
 			],
-			loc: { start: 1866, end: 3279 }
+			loc: { start: 1894, end: 3307 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'NewShare', loc: { start: 3286, end: 3294 } },
+			name: { kind: 'Name', value: 'NewShare', loc: { start: 3314, end: 3322 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 3299, end: 3309 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 3327, end: 3337 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3311, end: 3321 } },
-							loc: { start: 3311, end: 3321 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3339, end: 3349 } },
+							loc: { start: 3339, end: 3349 }
 						},
-						loc: { start: 3311, end: 3322 }
+						loc: { start: 3339, end: 3350 }
 					},
 					directives: [],
-					loc: { start: 3299, end: 3322 }
+					loc: { start: 3327, end: 3350 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 3325, end: 3327 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 3353, end: 3355 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 3329, end: 3331 } },
-							loc: { start: 3329, end: 3331 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 3357, end: 3359 } },
+							loc: { start: 3357, end: 3359 }
 						},
-						loc: { start: 3329, end: 3332 }
+						loc: { start: 3357, end: 3360 }
 					},
 					directives: [],
-					loc: { start: 3325, end: 3332 }
+					loc: { start: 3353, end: 3360 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'node', loc: { start: 3335, end: 3339 } },
+					name: { kind: 'Name', value: 'node', loc: { start: 3363, end: 3367 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 3341, end: 3353 } },
-							loc: { start: 3341, end: 3353 }
+							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 3369, end: 3381 } },
+							loc: { start: 3369, end: 3381 }
 						},
-						loc: { start: 3341, end: 3354 }
+						loc: { start: 3369, end: 3382 }
 					},
 					directives: [],
-					loc: { start: 3335, end: 3354 }
+					loc: { start: 3363, end: 3382 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'notification_type', loc: { start: 3357, end: 3374 } },
+					name: { kind: 'Name', value: 'notification_type', loc: { start: 3385, end: 3402 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NotificationType', loc: { start: 3376, end: 3392 } },
-							loc: { start: 3376, end: 3392 }
+							name: { kind: 'Name', value: 'NotificationType', loc: { start: 3404, end: 3420 } },
+							loc: { start: 3404, end: 3420 }
 						},
-						loc: { start: 3376, end: 3393 }
+						loc: { start: 3404, end: 3421 }
 					},
 					directives: [],
-					loc: { start: 3357, end: 3393 }
+					loc: { start: 3385, end: 3421 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'triggering_user', loc: { start: 3396, end: 3411 } },
+					name: { kind: 'Name', value: 'triggering_user', loc: { start: 3424, end: 3439 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 3413, end: 3425 } },
-							loc: { start: 3413, end: 3425 }
+							name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 3441, end: 3453 } },
+							loc: { start: 3441, end: 3453 }
 						},
-						loc: { start: 3413, end: 3426 }
+						loc: { start: 3441, end: 3454 }
 					},
 					directives: [],
-					loc: { start: 3396, end: 3426 }
+					loc: { start: 3424, end: 3454 }
 				}
 			],
-			loc: { start: 3281, end: 3428 }
+			loc: { start: 3309, end: 3456 }
 		},
 		{
 			kind: 'InterfaceTypeDefinition',
-			name: { kind: 'Name', value: 'Node', loc: { start: 3440, end: 3444 } },
+			name: { kind: 'Name', value: 'Node', loc: { start: 3468, end: 3472 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 3449, end: 3468 } },
+					name: { kind: 'Name', value: 'collaboration_links', loc: { start: 3477, end: 3496 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -2531,111 +2537,111 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 3471, end: 3488 } },
-								loc: { start: 3471, end: 3488 }
+								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 3499, end: 3516 } },
+								loc: { start: 3499, end: 3516 }
 							},
-							loc: { start: 3470, end: 3489 }
+							loc: { start: 3498, end: 3517 }
 						},
-						loc: { start: 3470, end: 3490 }
+						loc: { start: 3498, end: 3518 }
 					},
 					directives: [],
-					loc: { start: 3449, end: 3490 }
+					loc: { start: 3477, end: 3518 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 3493, end: 3503 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 3521, end: 3531 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3505, end: 3515 } },
-							loc: { start: 3505, end: 3515 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3533, end: 3543 } },
+							loc: { start: 3533, end: 3543 }
 						},
-						loc: { start: 3505, end: 3516 }
+						loc: { start: 3533, end: 3544 }
 					},
 					directives: [],
-					loc: { start: 3493, end: 3516 }
+					loc: { start: 3521, end: 3544 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'creator', loc: { start: 3519, end: 3526 } },
+					name: { kind: 'Name', value: 'creator', loc: { start: 3547, end: 3554 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'User', loc: { start: 3528, end: 3532 } },
-							loc: { start: 3528, end: 3532 }
+							name: { kind: 'Name', value: 'User', loc: { start: 3556, end: 3560 } },
+							loc: { start: 3556, end: 3560 }
 						},
-						loc: { start: 3528, end: 3533 }
+						loc: { start: 3556, end: 3561 }
 					},
 					directives: [],
-					loc: { start: 3519, end: 3533 }
+					loc: { start: 3547, end: 3561 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'description', loc: { start: 3536, end: 3547 } },
+					name: { kind: 'Name', value: 'description', loc: { start: 3564, end: 3575 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 3549, end: 3555 } },
-							loc: { start: 3549, end: 3555 }
+							name: { kind: 'Name', value: 'String', loc: { start: 3577, end: 3583 } },
+							loc: { start: 3577, end: 3583 }
 						},
-						loc: { start: 3549, end: 3556 }
+						loc: { start: 3577, end: 3584 }
 					},
 					directives: [],
-					loc: { start: 3536, end: 3556 }
+					loc: { start: 3564, end: 3584 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'flagged', loc: { start: 3559, end: 3566 } },
+					name: { kind: 'Name', value: 'flagged', loc: { start: 3587, end: 3594 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 3568, end: 3575 } },
-							loc: { start: 3568, end: 3575 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 3596, end: 3603 } },
+							loc: { start: 3596, end: 3603 }
 						},
-						loc: { start: 3568, end: 3576 }
+						loc: { start: 3596, end: 3604 }
 					},
 					directives: [],
-					loc: { start: 3559, end: 3576 }
+					loc: { start: 3587, end: 3604 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 3579, end: 3581 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 3607, end: 3609 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 3583, end: 3585 } },
-							loc: { start: 3583, end: 3585 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 3611, end: 3613 } },
+							loc: { start: 3611, end: 3613 }
 						},
-						loc: { start: 3583, end: 3586 }
+						loc: { start: 3611, end: 3614 }
 					},
 					directives: [],
-					loc: { start: 3579, end: 3586 }
+					loc: { start: 3607, end: 3614 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'last_editor', loc: { start: 3589, end: 3600 } },
+					name: { kind: 'Name', value: 'last_editor', loc: { start: 3617, end: 3628 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 3602, end: 3606 } },
-						loc: { start: 3602, end: 3606 }
+						name: { kind: 'Name', value: 'User', loc: { start: 3630, end: 3634 } },
+						loc: { start: 3630, end: 3634 }
 					},
 					directives: [],
-					loc: { start: 3589, end: 3606 }
+					loc: { start: 3617, end: 3634 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'links', loc: { start: 3609, end: 3614 } },
+					name: { kind: 'Name', value: 'links', loc: { start: 3637, end: 3642 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -2643,160 +2649,160 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Link', loc: { start: 3617, end: 3621 } },
-								loc: { start: 3617, end: 3621 }
+								name: { kind: 'Name', value: 'Link', loc: { start: 3645, end: 3649 } },
+								loc: { start: 3645, end: 3649 }
 							},
-							loc: { start: 3616, end: 3622 }
+							loc: { start: 3644, end: 3650 }
 						},
-						loc: { start: 3616, end: 3623 }
+						loc: { start: 3644, end: 3651 }
 					},
 					directives: [],
-					loc: { start: 3609, end: 3623 }
+					loc: { start: 3637, end: 3651 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 3626, end: 3630 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 3654, end: 3658 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 3632, end: 3638 } },
-							loc: { start: 3632, end: 3638 }
+							name: { kind: 'Name', value: 'String', loc: { start: 3660, end: 3666 } },
+							loc: { start: 3660, end: 3666 }
 						},
-						loc: { start: 3632, end: 3639 }
+						loc: { start: 3660, end: 3667 }
 					},
 					directives: [],
-					loc: { start: 3626, end: 3639 }
+					loc: { start: 3654, end: 3667 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'owner', loc: { start: 3642, end: 3647 } },
+					name: { kind: 'Name', value: 'owner', loc: { start: 3670, end: 3675 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 3649, end: 3653 } },
-						loc: { start: 3649, end: 3653 }
+						name: { kind: 'Name', value: 'User', loc: { start: 3677, end: 3681 } },
+						loc: { start: 3677, end: 3681 }
 					},
 					directives: [],
-					loc: { start: 3642, end: 3653 }
+					loc: { start: 3670, end: 3681 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'parent', loc: { start: 3656, end: 3662 } },
+					name: { kind: 'Name', value: 'parent', loc: { start: 3684, end: 3690 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 3664, end: 3668 } },
-						loc: { start: 3664, end: 3668 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 3692, end: 3696 } },
+						loc: { start: 3692, end: 3696 }
 					},
 					directives: [],
-					loc: { start: 3656, end: 3668 }
+					loc: { start: 3684, end: 3696 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'permissions', loc: { start: 3671, end: 3682 } },
+					name: { kind: 'Name', value: 'permissions', loc: { start: 3699, end: 3710 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Permissions', loc: { start: 3684, end: 3695 } },
-							loc: { start: 3684, end: 3695 }
+							name: { kind: 'Name', value: 'Permissions', loc: { start: 3712, end: 3723 } },
+							loc: { start: 3712, end: 3723 }
 						},
-						loc: { start: 3684, end: 3696 }
+						loc: { start: 3712, end: 3724 }
 					},
 					directives: [],
-					loc: { start: 3671, end: 3696 }
+					loc: { start: 3699, end: 3724 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'rootId', loc: { start: 3699, end: 3705 } },
+					name: { kind: 'Name', value: 'rootId', loc: { start: 3727, end: 3733 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'ID', loc: { start: 3707, end: 3709 } },
-						loc: { start: 3707, end: 3709 }
+						name: { kind: 'Name', value: 'ID', loc: { start: 3735, end: 3737 } },
+						loc: { start: 3735, end: 3737 }
 					},
 					directives: [],
-					loc: { start: 3699, end: 3709 }
+					loc: { start: 3727, end: 3737 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'share', loc: { start: 3712, end: 3717 } },
+					name: { kind: 'Name', value: 'share', loc: { start: 3740, end: 3745 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_id', loc: { start: 3718, end: 3733 } },
+							name: { kind: 'Name', value: 'share_target_id', loc: { start: 3746, end: 3761 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 3735, end: 3737 } },
-									loc: { start: 3735, end: 3737 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 3763, end: 3765 } },
+									loc: { start: 3763, end: 3765 }
 								},
-								loc: { start: 3735, end: 3738 }
+								loc: { start: 3763, end: 3766 }
 							},
 							directives: [],
-							loc: { start: 3718, end: 3738 }
+							loc: { start: 3746, end: 3766 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Share', loc: { start: 3741, end: 3746 } },
-						loc: { start: 3741, end: 3746 }
+						name: { kind: 'Name', value: 'Share', loc: { start: 3769, end: 3774 } },
+						loc: { start: 3769, end: 3774 }
 					},
 					directives: [],
-					loc: { start: 3712, end: 3746 }
+					loc: { start: 3740, end: 3774 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'shares', loc: { start: 3749, end: 3755 } },
+					name: { kind: 'Name', value: 'shares', loc: { start: 3777, end: 3783 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'cursor', loc: { start: 3756, end: 3762 } },
+							name: { kind: 'Name', value: 'cursor', loc: { start: 3784, end: 3790 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 3764, end: 3770 } },
-								loc: { start: 3764, end: 3770 }
+								name: { kind: 'Name', value: 'String', loc: { start: 3792, end: 3798 } },
+								loc: { start: 3792, end: 3798 }
 							},
 							directives: [],
-							loc: { start: 3756, end: 3770 }
+							loc: { start: 3784, end: 3798 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 3772, end: 3777 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 3800, end: 3805 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Int', loc: { start: 3779, end: 3782 } },
-									loc: { start: 3779, end: 3782 }
+									name: { kind: 'Name', value: 'Int', loc: { start: 3807, end: 3810 } },
+									loc: { start: 3807, end: 3810 }
 								},
-								loc: { start: 3779, end: 3783 }
+								loc: { start: 3807, end: 3811 }
 							},
 							directives: [],
-							loc: { start: 3772, end: 3783 }
+							loc: { start: 3800, end: 3811 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'sorts', loc: { start: 3785, end: 3790 } },
+							name: { kind: 'Name', value: 'sorts', loc: { start: 3813, end: 3818 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'ShareSort', loc: { start: 3793, end: 3802 } },
-										loc: { start: 3793, end: 3802 }
+										name: { kind: 'Name', value: 'ShareSort', loc: { start: 3821, end: 3830 } },
+										loc: { start: 3821, end: 3830 }
 									},
-									loc: { start: 3793, end: 3803 }
+									loc: { start: 3821, end: 3831 }
 								},
-								loc: { start: 3792, end: 3804 }
+								loc: { start: 3820, end: 3832 }
 							},
 							directives: [],
-							loc: { start: 3785, end: 3804 }
+							loc: { start: 3813, end: 3832 }
 						}
 					],
 					type: {
@@ -2805,60 +2811,60 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Share', loc: { start: 3808, end: 3813 } },
-								loc: { start: 3808, end: 3813 }
+								name: { kind: 'Name', value: 'Share', loc: { start: 3836, end: 3841 } },
+								loc: { start: 3836, end: 3841 }
 							},
-							loc: { start: 3807, end: 3814 }
+							loc: { start: 3835, end: 3842 }
 						},
-						loc: { start: 3807, end: 3815 }
+						loc: { start: 3835, end: 3843 }
 					},
 					directives: [],
-					loc: { start: 3749, end: 3815 }
+					loc: { start: 3777, end: 3843 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 3818, end: 3822 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 3846, end: 3850 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 3824, end: 3832 } },
-							loc: { start: 3824, end: 3832 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 3852, end: 3860 } },
+							loc: { start: 3852, end: 3860 }
 						},
-						loc: { start: 3824, end: 3833 }
+						loc: { start: 3852, end: 3861 }
 					},
 					directives: [],
-					loc: { start: 3818, end: 3833 }
+					loc: { start: 3846, end: 3861 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 3836, end: 3846 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 3864, end: 3874 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3848, end: 3858 } },
-							loc: { start: 3848, end: 3858 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 3876, end: 3886 } },
+							loc: { start: 3876, end: 3886 }
 						},
-						loc: { start: 3848, end: 3859 }
+						loc: { start: 3876, end: 3887 }
 					},
 					directives: [],
-					loc: { start: 3836, end: 3859 }
+					loc: { start: 3864, end: 3887 }
 				}
 			],
-			loc: { start: 3430, end: 3861 }
+			loc: { start: 3458, end: 3889 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'NodePage', loc: { start: 3868, end: 3876 } },
+			name: { kind: 'Name', value: 'NodePage', loc: { start: 3896, end: 3904 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'nodes', loc: { start: 3881, end: 3886 } },
+					name: { kind: 'Name', value: 'nodes', loc: { start: 3909, end: 3914 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -2866,233 +2872,233 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Node', loc: { start: 3889, end: 3893 } },
-								loc: { start: 3889, end: 3893 }
+								name: { kind: 'Name', value: 'Node', loc: { start: 3917, end: 3921 } },
+								loc: { start: 3917, end: 3921 }
 							},
-							loc: { start: 3888, end: 3894 }
+							loc: { start: 3916, end: 3922 }
 						},
-						loc: { start: 3888, end: 3895 }
+						loc: { start: 3916, end: 3923 }
 					},
 					directives: [],
-					loc: { start: 3881, end: 3895 }
+					loc: { start: 3909, end: 3923 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'page_token', loc: { start: 3898, end: 3908 } },
+					name: { kind: 'Name', value: 'page_token', loc: { start: 3926, end: 3936 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 3910, end: 3916 } },
-						loc: { start: 3910, end: 3916 }
+						name: { kind: 'Name', value: 'String', loc: { start: 3938, end: 3944 } },
+						loc: { start: 3938, end: 3944 }
 					},
 					directives: [],
-					loc: { start: 3898, end: 3916 }
+					loc: { start: 3926, end: 3944 }
 				}
 			],
-			loc: { start: 3863, end: 3918 }
+			loc: { start: 3891, end: 3946 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'NodeSort', loc: { start: 3925, end: 3933 } },
+			name: { kind: 'Name', value: 'NodeSort', loc: { start: 3953, end: 3961 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'LAST_EDITOR_ASC', loc: { start: 3938, end: 3953 } },
+					name: { kind: 'Name', value: 'LAST_EDITOR_ASC', loc: { start: 3966, end: 3981 } },
 					directives: [],
-					loc: { start: 3938, end: 3953 }
+					loc: { start: 3966, end: 3981 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'LAST_EDITOR_DESC', loc: { start: 3956, end: 3972 } },
+					name: { kind: 'Name', value: 'LAST_EDITOR_DESC', loc: { start: 3984, end: 4000 } },
 					directives: [],
-					loc: { start: 3956, end: 3972 }
+					loc: { start: 3984, end: 4000 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'NAME_ASC', loc: { start: 3975, end: 3983 } },
+					name: { kind: 'Name', value: 'NAME_ASC', loc: { start: 4003, end: 4011 } },
 					directives: [],
-					loc: { start: 3975, end: 3983 }
+					loc: { start: 4003, end: 4011 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'NAME_DESC', loc: { start: 3986, end: 3995 } },
+					name: { kind: 'Name', value: 'NAME_DESC', loc: { start: 4014, end: 4023 } },
 					directives: [],
-					loc: { start: 3986, end: 3995 }
+					loc: { start: 4014, end: 4023 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'OWNER_ASC', loc: { start: 3998, end: 4007 } },
+					name: { kind: 'Name', value: 'OWNER_ASC', loc: { start: 4026, end: 4035 } },
 					directives: [],
-					loc: { start: 3998, end: 4007 }
+					loc: { start: 4026, end: 4035 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'OWNER_DESC', loc: { start: 4010, end: 4020 } },
+					name: { kind: 'Name', value: 'OWNER_DESC', loc: { start: 4038, end: 4048 } },
 					directives: [],
-					loc: { start: 4010, end: 4020 }
+					loc: { start: 4038, end: 4048 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SIZE_ASC', loc: { start: 4023, end: 4031 } },
+					name: { kind: 'Name', value: 'SIZE_ASC', loc: { start: 4051, end: 4059 } },
 					directives: [],
-					loc: { start: 4023, end: 4031 }
+					loc: { start: 4051, end: 4059 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SIZE_DESC', loc: { start: 4034, end: 4043 } },
+					name: { kind: 'Name', value: 'SIZE_DESC', loc: { start: 4062, end: 4071 } },
 					directives: [],
-					loc: { start: 4034, end: 4043 }
+					loc: { start: 4062, end: 4071 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TYPE_ASC', loc: { start: 4046, end: 4054 } },
+					name: { kind: 'Name', value: 'TYPE_ASC', loc: { start: 4074, end: 4082 } },
 					directives: [],
-					loc: { start: 4046, end: 4054 }
+					loc: { start: 4074, end: 4082 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TYPE_DESC', loc: { start: 4057, end: 4066 } },
+					name: { kind: 'Name', value: 'TYPE_DESC', loc: { start: 4085, end: 4094 } },
 					directives: [],
-					loc: { start: 4057, end: 4066 }
+					loc: { start: 4085, end: 4094 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'UPDATED_AT_ASC', loc: { start: 4069, end: 4083 } },
+					name: { kind: 'Name', value: 'UPDATED_AT_ASC', loc: { start: 4097, end: 4111 } },
 					directives: [],
-					loc: { start: 4069, end: 4083 }
+					loc: { start: 4097, end: 4111 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'UPDATED_AT_DESC', loc: { start: 4086, end: 4101 } },
+					name: { kind: 'Name', value: 'UPDATED_AT_DESC', loc: { start: 4114, end: 4129 } },
 					directives: [],
-					loc: { start: 4086, end: 4101 }
+					loc: { start: 4114, end: 4129 }
 				}
 			],
-			loc: { start: 3920, end: 4103 }
+			loc: { start: 3948, end: 4131 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'NodeType', loc: { start: 4110, end: 4118 } },
+			name: { kind: 'Name', value: 'NodeType', loc: { start: 4138, end: 4146 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'APPLICATION', loc: { start: 4123, end: 4134 } },
+					name: { kind: 'Name', value: 'APPLICATION', loc: { start: 4151, end: 4162 } },
 					directives: [],
-					loc: { start: 4123, end: 4134 }
+					loc: { start: 4151, end: 4162 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'AUDIO', loc: { start: 4137, end: 4142 } },
+					name: { kind: 'Name', value: 'AUDIO', loc: { start: 4165, end: 4170 } },
 					directives: [],
-					loc: { start: 4137, end: 4142 }
+					loc: { start: 4165, end: 4170 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'FOLDER', loc: { start: 4145, end: 4151 } },
+					name: { kind: 'Name', value: 'FOLDER', loc: { start: 4173, end: 4179 } },
 					directives: [],
-					loc: { start: 4145, end: 4151 }
+					loc: { start: 4173, end: 4179 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'IMAGE', loc: { start: 4154, end: 4159 } },
+					name: { kind: 'Name', value: 'IMAGE', loc: { start: 4182, end: 4187 } },
 					directives: [],
-					loc: { start: 4154, end: 4159 }
+					loc: { start: 4182, end: 4187 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'MESSAGE', loc: { start: 4162, end: 4169 } },
+					name: { kind: 'Name', value: 'MESSAGE', loc: { start: 4190, end: 4197 } },
 					directives: [],
-					loc: { start: 4162, end: 4169 }
+					loc: { start: 4190, end: 4197 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'OTHER', loc: { start: 4172, end: 4177 } },
+					name: { kind: 'Name', value: 'OTHER', loc: { start: 4200, end: 4205 } },
 					directives: [],
-					loc: { start: 4172, end: 4177 }
+					loc: { start: 4200, end: 4205 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'PRESENTATION', loc: { start: 4180, end: 4192 } },
+					name: { kind: 'Name', value: 'PRESENTATION', loc: { start: 4208, end: 4220 } },
 					directives: [],
-					loc: { start: 4180, end: 4192 }
+					loc: { start: 4208, end: 4220 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'ROOT', loc: { start: 4195, end: 4199 } },
+					name: { kind: 'Name', value: 'ROOT', loc: { start: 4223, end: 4227 } },
 					directives: [],
-					loc: { start: 4195, end: 4199 }
+					loc: { start: 4223, end: 4227 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SPREADSHEET', loc: { start: 4202, end: 4213 } },
+					name: { kind: 'Name', value: 'SPREADSHEET', loc: { start: 4230, end: 4241 } },
 					directives: [],
-					loc: { start: 4202, end: 4213 }
+					loc: { start: 4230, end: 4241 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TEXT', loc: { start: 4216, end: 4220 } },
+					name: { kind: 'Name', value: 'TEXT', loc: { start: 4244, end: 4248 } },
 					directives: [],
-					loc: { start: 4216, end: 4220 }
+					loc: { start: 4244, end: 4248 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'VIDEO', loc: { start: 4223, end: 4228 } },
+					name: { kind: 'Name', value: 'VIDEO', loc: { start: 4251, end: 4256 } },
 					directives: [],
-					loc: { start: 4223, end: 4228 }
+					loc: { start: 4251, end: 4256 }
 				}
 			],
-			loc: { start: 4105, end: 4230 }
+			loc: { start: 4133, end: 4258 }
 		},
 		{
 			kind: 'UnionTypeDefinition',
-			name: { kind: 'Name', value: 'Notification', loc: { start: 4238, end: 4250 } },
+			name: { kind: 'Name', value: 'Notification', loc: { start: 4266, end: 4278 } },
 			directives: [],
 			types: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'AddedNode', loc: { start: 4253, end: 4262 } },
-					loc: { start: 4253, end: 4262 }
+					name: { kind: 'Name', value: 'AddedNode', loc: { start: 4281, end: 4290 } },
+					loc: { start: 4281, end: 4290 }
 				},
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'NewShare', loc: { start: 4265, end: 4273 } },
-					loc: { start: 4265, end: 4273 }
+					name: { kind: 'Name', value: 'NewShare', loc: { start: 4293, end: 4301 } },
+					loc: { start: 4293, end: 4301 }
 				},
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'RemovedNode', loc: { start: 4276, end: 4287 } },
-					loc: { start: 4276, end: 4287 }
+					name: { kind: 'Name', value: 'RemovedNode', loc: { start: 4304, end: 4315 } },
+					loc: { start: 4304, end: 4315 }
 				}
 			],
-			loc: { start: 4232, end: 4287 }
+			loc: { start: 4260, end: 4315 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'NotificationPage', loc: { start: 4294, end: 4310 } },
+			name: { kind: 'Name', value: 'NotificationPage', loc: { start: 4322, end: 4338 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'last_seen', loc: { start: 4315, end: 4324 } },
+					name: { kind: 'Name', value: 'last_seen', loc: { start: 4343, end: 4352 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 4326, end: 4336 } },
-							loc: { start: 4326, end: 4336 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 4354, end: 4364 } },
+							loc: { start: 4354, end: 4364 }
 						},
-						loc: { start: 4326, end: 4337 }
+						loc: { start: 4354, end: 4365 }
 					},
 					directives: [],
-					loc: { start: 4315, end: 4337 }
+					loc: { start: 4343, end: 4365 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'notifications', loc: { start: 4340, end: 4353 } },
+					name: { kind: 'Name', value: 'notifications', loc: { start: 4368, end: 4381 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -3100,110 +3106,94 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Notification', loc: { start: 4356, end: 4368 } },
-								loc: { start: 4356, end: 4368 }
+								name: { kind: 'Name', value: 'Notification', loc: { start: 4384, end: 4396 } },
+								loc: { start: 4384, end: 4396 }
 							},
-							loc: { start: 4355, end: 4369 }
+							loc: { start: 4383, end: 4397 }
 						},
-						loc: { start: 4355, end: 4370 }
+						loc: { start: 4383, end: 4398 }
 					},
 					directives: [],
-					loc: { start: 4340, end: 4370 }
+					loc: { start: 4368, end: 4398 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'page_token', loc: { start: 4373, end: 4383 } },
+					name: { kind: 'Name', value: 'page_token', loc: { start: 4401, end: 4411 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 4385, end: 4391 } },
-						loc: { start: 4385, end: 4391 }
+						name: { kind: 'Name', value: 'String', loc: { start: 4413, end: 4419 } },
+						loc: { start: 4413, end: 4419 }
 					},
 					directives: [],
-					loc: { start: 4373, end: 4391 }
+					loc: { start: 4401, end: 4419 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'unread', loc: { start: 4394, end: 4400 } },
+					name: { kind: 'Name', value: 'unread', loc: { start: 4422, end: 4428 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Int', loc: { start: 4402, end: 4405 } },
-							loc: { start: 4402, end: 4405 }
+							name: { kind: 'Name', value: 'Int', loc: { start: 4430, end: 4433 } },
+							loc: { start: 4430, end: 4433 }
 						},
-						loc: { start: 4402, end: 4406 }
+						loc: { start: 4430, end: 4434 }
 					},
 					directives: [],
-					loc: { start: 4394, end: 4406 }
+					loc: { start: 4422, end: 4434 }
 				}
 			],
-			loc: { start: 4289, end: 4408 }
+			loc: { start: 4317, end: 4436 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'NotificationType', loc: { start: 4415, end: 4431 } },
+			name: { kind: 'Name', value: 'NotificationType', loc: { start: 4443, end: 4459 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'ADDED_NODE', loc: { start: 4436, end: 4446 } },
+					name: { kind: 'Name', value: 'ADDED_NODE', loc: { start: 4464, end: 4474 } },
 					directives: [],
-					loc: { start: 4436, end: 4446 }
+					loc: { start: 4464, end: 4474 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'NEW_SHARE', loc: { start: 4449, end: 4458 } },
+					name: { kind: 'Name', value: 'NEW_SHARE', loc: { start: 4477, end: 4486 } },
 					directives: [],
-					loc: { start: 4449, end: 4458 }
+					loc: { start: 4477, end: 4486 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'REMOVED_NODE', loc: { start: 4461, end: 4473 } },
+					name: { kind: 'Name', value: 'REMOVED_NODE', loc: { start: 4489, end: 4501 } },
 					directives: [],
-					loc: { start: 4461, end: 4473 }
+					loc: { start: 4489, end: 4501 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SUCCEEDED_RECORDING', loc: { start: 4476, end: 4495 } },
+					name: { kind: 'Name', value: 'SUCCEEDED_RECORDING', loc: { start: 4504, end: 4523 } },
 					directives: [],
-					loc: { start: 4476, end: 4495 }
+					loc: { start: 4504, end: 4523 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TRANSFERRED_OWNERSHIP', loc: { start: 4498, end: 4519 } },
+					name: { kind: 'Name', value: 'TRANSFERRED_OWNERSHIP', loc: { start: 4526, end: 4547 } },
 					directives: [],
-					loc: { start: 4498, end: 4519 }
+					loc: { start: 4526, end: 4547 }
 				}
 			],
-			loc: { start: 4410, end: 4521 }
+			loc: { start: 4438, end: 4549 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Permissions', loc: { start: 4528, end: 4539 } },
+			name: { kind: 'Name', value: 'Permissions', loc: { start: 4556, end: 4567 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_add_version', loc: { start: 4544, end: 4559 } },
-					arguments: [],
-					type: {
-						kind: 'NonNullType',
-						type: {
-							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4561, end: 4568 } },
-							loc: { start: 4561, end: 4568 }
-						},
-						loc: { start: 4561, end: 4569 }
-					},
-					directives: [],
-					loc: { start: 4544, end: 4569 }
-				},
-				{
-					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_change_link', loc: { start: 4572, end: 4587 } },
+					name: { kind: 'Name', value: 'can_add_version', loc: { start: 4572, end: 4587 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -3219,467 +3209,483 @@ export const schema = {
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_change_share', loc: { start: 4600, end: 4616 } },
+					name: { kind: 'Name', value: 'can_change_link', loc: { start: 4600, end: 4615 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4618, end: 4625 } },
-							loc: { start: 4618, end: 4625 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4617, end: 4624 } },
+							loc: { start: 4617, end: 4624 }
 						},
-						loc: { start: 4618, end: 4626 }
+						loc: { start: 4617, end: 4625 }
 					},
 					directives: [],
-					loc: { start: 4600, end: 4626 }
+					loc: { start: 4600, end: 4625 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_delete', loc: { start: 4629, end: 4639 } },
+					name: { kind: 'Name', value: 'can_change_share', loc: { start: 4628, end: 4644 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4641, end: 4648 } },
-							loc: { start: 4641, end: 4648 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4646, end: 4653 } },
+							loc: { start: 4646, end: 4653 }
 						},
-						loc: { start: 4641, end: 4649 }
+						loc: { start: 4646, end: 4654 }
 					},
 					directives: [],
-					loc: { start: 4629, end: 4649 }
+					loc: { start: 4628, end: 4654 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_read', loc: { start: 4652, end: 4660 } },
+					name: { kind: 'Name', value: 'can_delete', loc: { start: 4657, end: 4667 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4662, end: 4669 } },
-							loc: { start: 4662, end: 4669 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4669, end: 4676 } },
+							loc: { start: 4669, end: 4676 }
 						},
-						loc: { start: 4662, end: 4670 }
+						loc: { start: 4669, end: 4677 }
 					},
 					directives: [],
-					loc: { start: 4652, end: 4670 }
+					loc: { start: 4657, end: 4677 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_read_link', loc: { start: 4673, end: 4686 } },
+					name: { kind: 'Name', value: 'can_read', loc: { start: 4680, end: 4688 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4688, end: 4695 } },
-							loc: { start: 4688, end: 4695 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4690, end: 4697 } },
+							loc: { start: 4690, end: 4697 }
 						},
-						loc: { start: 4688, end: 4696 }
+						loc: { start: 4690, end: 4698 }
 					},
 					directives: [],
-					loc: { start: 4673, end: 4696 }
+					loc: { start: 4680, end: 4698 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_read_share', loc: { start: 4699, end: 4713 } },
+					name: { kind: 'Name', value: 'can_read_link', loc: { start: 4701, end: 4714 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4715, end: 4722 } },
-							loc: { start: 4715, end: 4722 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4716, end: 4723 } },
+							loc: { start: 4716, end: 4723 }
 						},
-						loc: { start: 4715, end: 4723 }
+						loc: { start: 4716, end: 4724 }
 					},
 					directives: [],
-					loc: { start: 4699, end: 4723 }
+					loc: { start: 4701, end: 4724 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_share', loc: { start: 4726, end: 4735 } },
+					name: { kind: 'Name', value: 'can_read_share', loc: { start: 4727, end: 4741 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4737, end: 4744 } },
-							loc: { start: 4737, end: 4744 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4743, end: 4750 } },
+							loc: { start: 4743, end: 4750 }
 						},
-						loc: { start: 4737, end: 4745 }
+						loc: { start: 4743, end: 4751 }
 					},
 					directives: [],
-					loc: { start: 4726, end: 4745 }
+					loc: { start: 4727, end: 4751 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_write_file', loc: { start: 4748, end: 4762 } },
+					name: { kind: 'Name', value: 'can_share', loc: { start: 4754, end: 4763 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4764, end: 4771 } },
-							loc: { start: 4764, end: 4771 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4765, end: 4772 } },
+							loc: { start: 4765, end: 4772 }
 						},
-						loc: { start: 4764, end: 4772 }
+						loc: { start: 4765, end: 4773 }
 					},
 					directives: [],
-					loc: { start: 4748, end: 4772 }
+					loc: { start: 4754, end: 4773 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'can_write_folder', loc: { start: 4775, end: 4791 } },
+					name: { kind: 'Name', value: 'can_write_file', loc: { start: 4776, end: 4790 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Boolean', loc: { start: 4793, end: 4800 } },
-							loc: { start: 4793, end: 4800 }
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4792, end: 4799 } },
+							loc: { start: 4792, end: 4799 }
 						},
-						loc: { start: 4793, end: 4801 }
+						loc: { start: 4792, end: 4800 }
 					},
 					directives: [],
-					loc: { start: 4775, end: 4801 }
+					loc: { start: 4776, end: 4800 }
+				},
+				{
+					kind: 'FieldDefinition',
+					name: { kind: 'Name', value: 'can_write_folder', loc: { start: 4803, end: 4819 } },
+					arguments: [],
+					type: {
+						kind: 'NonNullType',
+						type: {
+							kind: 'NamedType',
+							name: { kind: 'Name', value: 'Boolean', loc: { start: 4821, end: 4828 } },
+							loc: { start: 4821, end: 4828 }
+						},
+						loc: { start: 4821, end: 4829 }
+					},
+					directives: [],
+					loc: { start: 4803, end: 4829 }
 				}
 			],
-			loc: { start: 4523, end: 4803 }
+			loc: { start: 4551, end: 4831 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'PublicFile', loc: { start: 4810, end: 4820 } },
+			name: { kind: 'Name', value: 'PublicFile', loc: { start: 4838, end: 4848 } },
 			interfaces: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'PublicNode', loc: { start: 4832, end: 4842 } },
-					loc: { start: 4832, end: 4842 }
+					name: { kind: 'Name', value: 'PublicNode', loc: { start: 4860, end: 4870 } },
+					loc: { start: 4860, end: 4870 }
 				}
 			],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 4847, end: 4857 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 4875, end: 4885 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 4859, end: 4869 } },
-							loc: { start: 4859, end: 4869 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 4887, end: 4897 } },
+							loc: { start: 4887, end: 4897 }
 						},
-						loc: { start: 4859, end: 4870 }
+						loc: { start: 4887, end: 4898 }
 					},
 					directives: [],
-					loc: { start: 4847, end: 4870 }
+					loc: { start: 4875, end: 4898 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'extension', loc: { start: 4873, end: 4882 } },
+					name: { kind: 'Name', value: 'extension', loc: { start: 4901, end: 4910 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 4884, end: 4890 } },
-						loc: { start: 4884, end: 4890 }
+						name: { kind: 'Name', value: 'String', loc: { start: 4912, end: 4918 } },
+						loc: { start: 4912, end: 4918 }
 					},
 					directives: [],
-					loc: { start: 4873, end: 4890 }
+					loc: { start: 4901, end: 4918 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 4893, end: 4895 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 4921, end: 4923 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 4897, end: 4899 } },
-							loc: { start: 4897, end: 4899 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 4925, end: 4927 } },
+							loc: { start: 4925, end: 4927 }
 						},
-						loc: { start: 4897, end: 4900 }
+						loc: { start: 4925, end: 4928 }
 					},
 					directives: [],
-					loc: { start: 4893, end: 4900 }
+					loc: { start: 4921, end: 4928 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'mime_type', loc: { start: 4903, end: 4912 } },
+					name: { kind: 'Name', value: 'mime_type', loc: { start: 4931, end: 4940 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 4914, end: 4920 } },
-							loc: { start: 4914, end: 4920 }
+							name: { kind: 'Name', value: 'String', loc: { start: 4942, end: 4948 } },
+							loc: { start: 4942, end: 4948 }
 						},
-						loc: { start: 4914, end: 4921 }
+						loc: { start: 4942, end: 4949 }
 					},
 					directives: [],
-					loc: { start: 4903, end: 4921 }
+					loc: { start: 4931, end: 4949 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 4924, end: 4928 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 4952, end: 4956 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 4930, end: 4936 } },
-							loc: { start: 4930, end: 4936 }
+							name: { kind: 'Name', value: 'String', loc: { start: 4958, end: 4964 } },
+							loc: { start: 4958, end: 4964 }
 						},
-						loc: { start: 4930, end: 4937 }
+						loc: { start: 4958, end: 4965 }
 					},
 					directives: [],
-					loc: { start: 4924, end: 4937 }
+					loc: { start: 4952, end: 4965 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'size', loc: { start: 4940, end: 4944 } },
+					name: { kind: 'Name', value: 'size', loc: { start: 4968, end: 4972 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Float', loc: { start: 4946, end: 4951 } },
-							loc: { start: 4946, end: 4951 }
+							name: { kind: 'Name', value: 'Float', loc: { start: 4974, end: 4979 } },
+							loc: { start: 4974, end: 4979 }
 						},
-						loc: { start: 4946, end: 4952 }
+						loc: { start: 4974, end: 4980 }
 					},
 					directives: [],
-					loc: { start: 4940, end: 4952 }
+					loc: { start: 4968, end: 4980 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 4955, end: 4959 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 4983, end: 4987 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 4961, end: 4969 } },
-							loc: { start: 4961, end: 4969 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 4989, end: 4997 } },
+							loc: { start: 4989, end: 4997 }
 						},
-						loc: { start: 4961, end: 4970 }
+						loc: { start: 4989, end: 4998 }
 					},
 					directives: [],
-					loc: { start: 4955, end: 4970 }
+					loc: { start: 4983, end: 4998 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 4973, end: 4983 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 5001, end: 5011 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 4985, end: 4995 } },
-							loc: { start: 4985, end: 4995 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5013, end: 5023 } },
+							loc: { start: 5013, end: 5023 }
 						},
-						loc: { start: 4985, end: 4996 }
+						loc: { start: 5013, end: 5024 }
 					},
 					directives: [],
-					loc: { start: 4973, end: 4996 }
+					loc: { start: 5001, end: 5024 }
 				}
 			],
-			loc: { start: 4805, end: 4998 }
+			loc: { start: 4833, end: 5026 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'PublicFolder', loc: { start: 5005, end: 5017 } },
+			name: { kind: 'Name', value: 'PublicFolder', loc: { start: 5033, end: 5045 } },
 			interfaces: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'PublicNode', loc: { start: 5029, end: 5039 } },
-					loc: { start: 5029, end: 5039 }
+					name: { kind: 'Name', value: 'PublicNode', loc: { start: 5057, end: 5067 } },
+					loc: { start: 5057, end: 5067 }
 				}
 			],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 5044, end: 5054 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 5072, end: 5082 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5056, end: 5066 } },
-							loc: { start: 5056, end: 5066 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5084, end: 5094 } },
+							loc: { start: 5084, end: 5094 }
 						},
-						loc: { start: 5056, end: 5067 }
+						loc: { start: 5084, end: 5095 }
 					},
 					directives: [],
-					loc: { start: 5044, end: 5067 }
+					loc: { start: 5072, end: 5095 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 5070, end: 5072 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 5098, end: 5100 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 5074, end: 5076 } },
-							loc: { start: 5074, end: 5076 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 5102, end: 5104 } },
+							loc: { start: 5102, end: 5104 }
 						},
-						loc: { start: 5074, end: 5077 }
+						loc: { start: 5102, end: 5105 }
 					},
 					directives: [],
-					loc: { start: 5070, end: 5077 }
+					loc: { start: 5098, end: 5105 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 5080, end: 5084 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 5108, end: 5112 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 5086, end: 5092 } },
-							loc: { start: 5086, end: 5092 }
+							name: { kind: 'Name', value: 'String', loc: { start: 5114, end: 5120 } },
+							loc: { start: 5114, end: 5120 }
 						},
-						loc: { start: 5086, end: 5093 }
+						loc: { start: 5114, end: 5121 }
 					},
 					directives: [],
-					loc: { start: 5080, end: 5093 }
+					loc: { start: 5108, end: 5121 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 5096, end: 5100 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 5124, end: 5128 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 5102, end: 5110 } },
-							loc: { start: 5102, end: 5110 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 5130, end: 5138 } },
+							loc: { start: 5130, end: 5138 }
 						},
-						loc: { start: 5102, end: 5111 }
+						loc: { start: 5130, end: 5139 }
 					},
 					directives: [],
-					loc: { start: 5096, end: 5111 }
+					loc: { start: 5124, end: 5139 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 5114, end: 5124 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 5142, end: 5152 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5126, end: 5136 } },
-							loc: { start: 5126, end: 5136 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5154, end: 5164 } },
+							loc: { start: 5154, end: 5164 }
 						},
-						loc: { start: 5126, end: 5137 }
+						loc: { start: 5154, end: 5165 }
 					},
 					directives: [],
-					loc: { start: 5114, end: 5137 }
+					loc: { start: 5142, end: 5165 }
 				}
 			],
-			loc: { start: 5000, end: 5139 }
+			loc: { start: 5028, end: 5167 }
 		},
 		{
 			kind: 'InterfaceTypeDefinition',
-			name: { kind: 'Name', value: 'PublicNode', loc: { start: 5151, end: 5161 } },
+			name: { kind: 'Name', value: 'PublicNode', loc: { start: 5179, end: 5189 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 5166, end: 5176 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 5194, end: 5204 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5178, end: 5188 } },
-							loc: { start: 5178, end: 5188 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5206, end: 5216 } },
+							loc: { start: 5206, end: 5216 }
 						},
-						loc: { start: 5178, end: 5189 }
+						loc: { start: 5206, end: 5217 }
 					},
 					directives: [],
-					loc: { start: 5166, end: 5189 }
+					loc: { start: 5194, end: 5217 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 5192, end: 5194 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 5220, end: 5222 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 5196, end: 5198 } },
-							loc: { start: 5196, end: 5198 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 5224, end: 5226 } },
+							loc: { start: 5224, end: 5226 }
 						},
-						loc: { start: 5196, end: 5199 }
+						loc: { start: 5224, end: 5227 }
 					},
 					directives: [],
-					loc: { start: 5192, end: 5199 }
+					loc: { start: 5220, end: 5227 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 5202, end: 5206 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 5230, end: 5234 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 5208, end: 5214 } },
-							loc: { start: 5208, end: 5214 }
+							name: { kind: 'Name', value: 'String', loc: { start: 5236, end: 5242 } },
+							loc: { start: 5236, end: 5242 }
 						},
-						loc: { start: 5208, end: 5215 }
+						loc: { start: 5236, end: 5243 }
 					},
 					directives: [],
-					loc: { start: 5202, end: 5215 }
+					loc: { start: 5230, end: 5243 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 5218, end: 5222 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 5246, end: 5250 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 5224, end: 5232 } },
-							loc: { start: 5224, end: 5232 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 5252, end: 5260 } },
+							loc: { start: 5252, end: 5260 }
 						},
-						loc: { start: 5224, end: 5233 }
+						loc: { start: 5252, end: 5261 }
 					},
 					directives: [],
-					loc: { start: 5218, end: 5233 }
+					loc: { start: 5246, end: 5261 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'updated_at', loc: { start: 5236, end: 5246 } },
+					name: { kind: 'Name', value: 'updated_at', loc: { start: 5264, end: 5274 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5248, end: 5258 } },
-							loc: { start: 5248, end: 5258 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 5276, end: 5286 } },
+							loc: { start: 5276, end: 5286 }
 						},
-						loc: { start: 5248, end: 5259 }
+						loc: { start: 5276, end: 5287 }
 					},
 					directives: [],
-					loc: { start: 5236, end: 5259 }
+					loc: { start: 5264, end: 5287 }
 				}
 			],
-			loc: { start: 5141, end: 5261 }
+			loc: { start: 5169, end: 5289 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'PublicNodePage', loc: { start: 5268, end: 5282 } },
+			name: { kind: 'Name', value: 'PublicNodePage', loc: { start: 5296, end: 5310 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'nodes', loc: { start: 5287, end: 5292 } },
+					name: { kind: 'Name', value: 'nodes', loc: { start: 5315, end: 5320 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -3687,30 +3693,30 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'PublicNode', loc: { start: 5295, end: 5305 } },
-								loc: { start: 5295, end: 5305 }
+								name: { kind: 'Name', value: 'PublicNode', loc: { start: 5323, end: 5333 } },
+								loc: { start: 5323, end: 5333 }
 							},
-							loc: { start: 5294, end: 5306 }
+							loc: { start: 5322, end: 5334 }
 						},
-						loc: { start: 5294, end: 5307 }
+						loc: { start: 5322, end: 5335 }
 					},
 					directives: [],
-					loc: { start: 5287, end: 5307 }
+					loc: { start: 5315, end: 5335 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'page_token', loc: { start: 5310, end: 5320 } },
+					name: { kind: 'Name', value: 'page_token', loc: { start: 5338, end: 5348 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'String', loc: { start: 5322, end: 5328 } },
-						loc: { start: 5322, end: 5328 }
+						name: { kind: 'Name', value: 'String', loc: { start: 5350, end: 5356 } },
+						loc: { start: 5350, end: 5356 }
 					},
 					directives: [],
-					loc: { start: 5310, end: 5328 }
+					loc: { start: 5338, end: 5356 }
 				}
 			],
-			loc: { start: 5263, end: 5330 }
+			loc: { start: 5291, end: 5358 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
@@ -3718,272 +3724,272 @@ export const schema = {
 				kind: 'StringValue',
 				value: 'Query root',
 				block: true,
-				loc: { start: 5332, end: 5348 }
+				loc: { start: 5360, end: 5376 }
 			},
-			name: { kind: 'Name', value: 'Query', loc: { start: 5354, end: 5359 } },
+			name: { kind: 'Name', value: 'Query', loc: { start: 5382, end: 5387 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'findNodes', loc: { start: 5364, end: 5373 } },
+					name: { kind: 'Name', value: 'findNodes', loc: { start: 5392, end: 5401 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'cascade', loc: { start: 5374, end: 5381 } },
+							name: { kind: 'Name', value: 'cascade', loc: { start: 5402, end: 5409 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 5383, end: 5390 } },
-								loc: { start: 5383, end: 5390 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 5411, end: 5418 } },
+								loc: { start: 5411, end: 5418 }
 							},
 							directives: [],
-							loc: { start: 5374, end: 5390 }
+							loc: { start: 5402, end: 5418 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'direct_share', loc: { start: 5392, end: 5404 } },
+							name: { kind: 'Name', value: 'direct_share', loc: { start: 5420, end: 5432 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 5406, end: 5413 } },
-								loc: { start: 5406, end: 5413 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 5434, end: 5441 } },
+								loc: { start: 5434, end: 5441 }
 							},
 							directives: [],
-							loc: { start: 5392, end: 5413 }
+							loc: { start: 5420, end: 5441 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'flagged', loc: { start: 5415, end: 5422 } },
+							name: { kind: 'Name', value: 'flagged', loc: { start: 5443, end: 5450 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 5424, end: 5431 } },
-								loc: { start: 5424, end: 5431 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 5452, end: 5459 } },
+								loc: { start: 5452, end: 5459 }
 							},
 							directives: [],
-							loc: { start: 5415, end: 5431 }
+							loc: { start: 5443, end: 5459 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'folder_id', loc: { start: 5433, end: 5442 } },
+							name: { kind: 'Name', value: 'folder_id', loc: { start: 5461, end: 5470 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5444, end: 5450 } },
-								loc: { start: 5444, end: 5450 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5472, end: 5478 } },
+								loc: { start: 5472, end: 5478 }
 							},
 							directives: [],
-							loc: { start: 5433, end: 5450 }
+							loc: { start: 5461, end: 5478 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'keywords', loc: { start: 5452, end: 5460 } },
+							name: { kind: 'Name', value: 'keywords', loc: { start: 5480, end: 5488 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'String', loc: { start: 5463, end: 5469 } },
-										loc: { start: 5463, end: 5469 }
+										name: { kind: 'Name', value: 'String', loc: { start: 5491, end: 5497 } },
+										loc: { start: 5491, end: 5497 }
 									},
-									loc: { start: 5463, end: 5470 }
+									loc: { start: 5491, end: 5498 }
 								},
-								loc: { start: 5462, end: 5471 }
+								loc: { start: 5490, end: 5499 }
 							},
 							directives: [],
-							loc: { start: 5452, end: 5471 }
+							loc: { start: 5480, end: 5499 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 5473, end: 5478 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 5501, end: 5506 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 5480, end: 5483 } },
-								loc: { start: 5480, end: 5483 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 5508, end: 5511 } },
+								loc: { start: 5508, end: 5511 }
 							},
 							directives: [],
-							loc: { start: 5473, end: 5483 }
+							loc: { start: 5501, end: 5511 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'owner_id', loc: { start: 5485, end: 5493 } },
+							name: { kind: 'Name', value: 'owner_id', loc: { start: 5513, end: 5521 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5495, end: 5501 } },
-								loc: { start: 5495, end: 5501 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5523, end: 5529 } },
+								loc: { start: 5523, end: 5529 }
 							},
 							directives: [],
-							loc: { start: 5485, end: 5501 }
+							loc: { start: 5513, end: 5529 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 5503, end: 5513 } },
+							name: { kind: 'Name', value: 'page_token', loc: { start: 5531, end: 5541 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5515, end: 5521 } },
-								loc: { start: 5515, end: 5521 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5543, end: 5549 } },
+								loc: { start: 5543, end: 5549 }
 							},
 							directives: [],
-							loc: { start: 5503, end: 5521 }
+							loc: { start: 5531, end: 5549 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'shared_by_me', loc: { start: 5523, end: 5535 } },
+							name: { kind: 'Name', value: 'shared_by_me', loc: { start: 5551, end: 5563 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 5537, end: 5544 } },
-								loc: { start: 5537, end: 5544 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 5565, end: 5572 } },
+								loc: { start: 5565, end: 5572 }
 							},
 							directives: [],
-							loc: { start: 5523, end: 5544 }
+							loc: { start: 5551, end: 5572 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'shared_with_me', loc: { start: 5546, end: 5560 } },
+							name: { kind: 'Name', value: 'shared_with_me', loc: { start: 5574, end: 5588 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Boolean', loc: { start: 5562, end: 5569 } },
-								loc: { start: 5562, end: 5569 }
+								name: { kind: 'Name', value: 'Boolean', loc: { start: 5590, end: 5597 } },
+								loc: { start: 5590, end: 5597 }
 							},
 							directives: [],
-							loc: { start: 5546, end: 5569 }
+							loc: { start: 5574, end: 5597 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'sort', loc: { start: 5571, end: 5575 } },
+							name: { kind: 'Name', value: 'sort', loc: { start: 5599, end: 5603 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'NodeSort', loc: { start: 5577, end: 5585 } },
-								loc: { start: 5577, end: 5585 }
+								name: { kind: 'Name', value: 'NodeSort', loc: { start: 5605, end: 5613 } },
+								loc: { start: 5605, end: 5613 }
 							},
 							directives: [],
-							loc: { start: 5571, end: 5585 }
+							loc: { start: 5599, end: 5613 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'type', loc: { start: 5587, end: 5591 } },
+							name: { kind: 'Name', value: 'type', loc: { start: 5615, end: 5619 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'NodeType', loc: { start: 5593, end: 5601 } },
-								loc: { start: 5593, end: 5601 }
+								name: { kind: 'Name', value: 'NodeType', loc: { start: 5621, end: 5629 } },
+								loc: { start: 5621, end: 5629 }
 							},
 							directives: [],
-							loc: { start: 5587, end: 5601 }
+							loc: { start: 5615, end: 5629 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'NodePage', loc: { start: 5604, end: 5612 } },
-						loc: { start: 5604, end: 5612 }
+						name: { kind: 'Name', value: 'NodePage', loc: { start: 5632, end: 5640 } },
+						loc: { start: 5632, end: 5640 }
 					},
 					directives: [],
-					loc: { start: 5364, end: 5612 }
+					loc: { start: 5392, end: 5640 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'findPublicNodes', loc: { start: 5615, end: 5630 } },
+					name: { kind: 'Name', value: 'findPublicNodes', loc: { start: 5643, end: 5658 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'access_code', loc: { start: 5631, end: 5642 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 5659, end: 5670 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5644, end: 5650 } },
-								loc: { start: 5644, end: 5650 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5672, end: 5678 } },
+								loc: { start: 5672, end: 5678 }
 							},
 							directives: [],
-							loc: { start: 5631, end: 5650 }
+							loc: { start: 5659, end: 5678 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'folder_id', loc: { start: 5652, end: 5661 } },
+							name: { kind: 'Name', value: 'folder_id', loc: { start: 5680, end: 5689 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 5663, end: 5665 } },
-									loc: { start: 5663, end: 5665 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 5691, end: 5693 } },
+									loc: { start: 5691, end: 5693 }
 								},
-								loc: { start: 5663, end: 5666 }
+								loc: { start: 5691, end: 5694 }
 							},
 							directives: [],
-							loc: { start: 5652, end: 5666 }
+							loc: { start: 5680, end: 5694 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 5668, end: 5673 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 5696, end: 5701 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 5675, end: 5678 } },
-								loc: { start: 5675, end: 5678 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 5703, end: 5706 } },
+								loc: { start: 5703, end: 5706 }
 							},
 							directives: [],
-							loc: { start: 5668, end: 5678 }
+							loc: { start: 5696, end: 5706 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 5680, end: 5692 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 5708, end: 5720 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5694, end: 5700 } },
-								loc: { start: 5694, end: 5700 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5722, end: 5728 } },
+								loc: { start: 5722, end: 5728 }
 							},
 							directives: [],
-							loc: { start: 5680, end: 5700 }
+							loc: { start: 5708, end: 5728 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 5702, end: 5712 } },
+							name: { kind: 'Name', value: 'page_token', loc: { start: 5730, end: 5740 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 5714, end: 5720 } },
-								loc: { start: 5714, end: 5720 }
+								name: { kind: 'Name', value: 'String', loc: { start: 5742, end: 5748 } },
+								loc: { start: 5742, end: 5748 }
 							},
 							directives: [],
-							loc: { start: 5702, end: 5720 }
+							loc: { start: 5730, end: 5748 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'PublicNodePage', loc: { start: 5723, end: 5737 } },
-						loc: { start: 5723, end: 5737 }
+						name: { kind: 'Name', value: 'PublicNodePage', loc: { start: 5751, end: 5765 } },
+						loc: { start: 5751, end: 5765 }
 					},
 					directives: [],
-					loc: { start: 5615, end: 5737 }
+					loc: { start: 5643, end: 5765 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getAccountByEmail', loc: { start: 5740, end: 5757 } },
+					name: { kind: 'Name', value: 'getAccountByEmail', loc: { start: 5768, end: 5785 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'email', loc: { start: 5758, end: 5763 } },
+							name: { kind: 'Name', value: 'email', loc: { start: 5786, end: 5791 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 5765, end: 5771 } },
-									loc: { start: 5765, end: 5771 }
+									name: { kind: 'Name', value: 'String', loc: { start: 5793, end: 5799 } },
+									loc: { start: 5793, end: 5799 }
 								},
-								loc: { start: 5765, end: 5772 }
+								loc: { start: 5793, end: 5800 }
 							},
 							directives: [],
-							loc: { start: 5758, end: 5772 }
+							loc: { start: 5786, end: 5800 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Account', loc: { start: 5775, end: 5782 } },
-						loc: { start: 5775, end: 5782 }
+						name: { kind: 'Name', value: 'Account', loc: { start: 5803, end: 5810 } },
+						loc: { start: 5803, end: 5810 }
 					},
 					directives: [],
-					loc: { start: 5740, end: 5782 }
+					loc: { start: 5768, end: 5810 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getAccountsByEmail', loc: { start: 5785, end: 5803 } },
+					name: { kind: 'Name', value: 'getAccountsByEmail', loc: { start: 5813, end: 5831 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'emails', loc: { start: 5804, end: 5810 } },
+							name: { kind: 'Name', value: 'emails', loc: { start: 5832, end: 5838 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
@@ -3992,17 +3998,17 @@ export const schema = {
 										kind: 'NonNullType',
 										type: {
 											kind: 'NamedType',
-											name: { kind: 'Name', value: 'String', loc: { start: 5813, end: 5819 } },
-											loc: { start: 5813, end: 5819 }
+											name: { kind: 'Name', value: 'String', loc: { start: 5841, end: 5847 } },
+											loc: { start: 5841, end: 5847 }
 										},
-										loc: { start: 5813, end: 5820 }
+										loc: { start: 5841, end: 5848 }
 									},
-									loc: { start: 5812, end: 5821 }
+									loc: { start: 5840, end: 5849 }
 								},
-								loc: { start: 5812, end: 5822 }
+								loc: { start: 5840, end: 5850 }
 							},
 							directives: [],
-							loc: { start: 5804, end: 5822 }
+							loc: { start: 5832, end: 5850 }
 						}
 					],
 					type: {
@@ -4011,34 +4017,34 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Account', loc: { start: 5826, end: 5833 } },
-								loc: { start: 5826, end: 5833 }
+								name: { kind: 'Name', value: 'Account', loc: { start: 5854, end: 5861 } },
+								loc: { start: 5854, end: 5861 }
 							},
-							loc: { start: 5825, end: 5834 }
+							loc: { start: 5853, end: 5862 }
 						},
-						loc: { start: 5825, end: 5835 }
+						loc: { start: 5853, end: 5863 }
 					},
 					directives: [],
-					loc: { start: 5785, end: 5835 }
+					loc: { start: 5813, end: 5863 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getCollaborationLinks', loc: { start: 5838, end: 5859 } },
+					name: { kind: 'Name', value: 'getCollaborationLinks', loc: { start: 5866, end: 5887 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 5860, end: 5867 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 5888, end: 5895 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 5869, end: 5871 } },
-									loc: { start: 5869, end: 5871 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 5897, end: 5899 } },
+									loc: { start: 5897, end: 5899 }
 								},
-								loc: { start: 5869, end: 5872 }
+								loc: { start: 5897, end: 5900 }
 							},
 							directives: [],
-							loc: { start: 5860, end: 5872 }
+							loc: { start: 5888, end: 5900 }
 						}
 					],
 					type: {
@@ -4047,19 +4053,19 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 5876, end: 5893 } },
-								loc: { start: 5876, end: 5893 }
+								name: { kind: 'Name', value: 'CollaborationLink', loc: { start: 5904, end: 5921 } },
+								loc: { start: 5904, end: 5921 }
 							},
-							loc: { start: 5875, end: 5894 }
+							loc: { start: 5903, end: 5922 }
 						},
-						loc: { start: 5875, end: 5895 }
+						loc: { start: 5903, end: 5923 }
 					},
 					directives: [],
-					loc: { start: 5838, end: 5895 }
+					loc: { start: 5866, end: 5923 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getConfigs', loc: { start: 5898, end: 5908 } },
+					name: { kind: 'Name', value: 'getConfigs', loc: { start: 5926, end: 5936 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -4067,34 +4073,34 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Config', loc: { start: 5911, end: 5917 } },
-								loc: { start: 5911, end: 5917 }
+								name: { kind: 'Name', value: 'Config', loc: { start: 5939, end: 5945 } },
+								loc: { start: 5939, end: 5945 }
 							},
-							loc: { start: 5910, end: 5918 }
+							loc: { start: 5938, end: 5946 }
 						},
-						loc: { start: 5910, end: 5919 }
+						loc: { start: 5938, end: 5947 }
 					},
 					directives: [],
-					loc: { start: 5898, end: 5919 }
+					loc: { start: 5926, end: 5947 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getLinks', loc: { start: 5922, end: 5930 } },
+					name: { kind: 'Name', value: 'getLinks', loc: { start: 5950, end: 5958 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 5931, end: 5938 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 5959, end: 5966 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 5940, end: 5942 } },
-									loc: { start: 5940, end: 5942 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 5968, end: 5970 } },
+									loc: { start: 5968, end: 5970 }
 								},
-								loc: { start: 5940, end: 5943 }
+								loc: { start: 5968, end: 5971 }
 							},
 							directives: [],
-							loc: { start: 5931, end: 5943 }
+							loc: { start: 5959, end: 5971 }
 						}
 					],
 					type: {
@@ -4103,123 +4109,123 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Link', loc: { start: 5947, end: 5951 } },
-								loc: { start: 5947, end: 5951 }
+								name: { kind: 'Name', value: 'Link', loc: { start: 5975, end: 5979 } },
+								loc: { start: 5975, end: 5979 }
 							},
-							loc: { start: 5946, end: 5952 }
+							loc: { start: 5974, end: 5980 }
 						},
-						loc: { start: 5946, end: 5953 }
+						loc: { start: 5974, end: 5981 }
 					},
 					directives: [],
-					loc: { start: 5922, end: 5953 }
+					loc: { start: 5950, end: 5981 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getNode', loc: { start: 5956, end: 5963 } },
+					name: { kind: 'Name', value: 'getNode', loc: { start: 5984, end: 5991 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 5964, end: 5971 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 5992, end: 5999 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 5973, end: 5975 } },
-									loc: { start: 5973, end: 5975 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6001, end: 6003 } },
+									loc: { start: 6001, end: 6003 }
 								},
-								loc: { start: 5973, end: 5976 }
+								loc: { start: 6001, end: 6004 }
 							},
 							directives: [],
-							loc: { start: 5964, end: 5976 }
+							loc: { start: 5992, end: 6004 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'version', loc: { start: 5978, end: 5985 } },
+							name: { kind: 'Name', value: 'version', loc: { start: 6006, end: 6013 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 5987, end: 5990 } },
-								loc: { start: 5987, end: 5990 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 6015, end: 6018 } },
+								loc: { start: 6015, end: 6018 }
 							},
 							directives: [],
-							loc: { start: 5978, end: 5990 }
+							loc: { start: 6006, end: 6018 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Node', loc: { start: 5993, end: 5997 } },
-						loc: { start: 5993, end: 5997 }
+						name: { kind: 'Name', value: 'Node', loc: { start: 6021, end: 6025 } },
+						loc: { start: 6021, end: 6025 }
 					},
 					directives: [],
-					loc: { start: 5956, end: 5997 }
+					loc: { start: 5984, end: 6025 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getNotifications', loc: { start: 6000, end: 6016 } },
+					name: { kind: 'Name', value: 'getNotifications', loc: { start: 6028, end: 6044 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'limit', loc: { start: 6017, end: 6022 } },
+							name: { kind: 'Name', value: 'limit', loc: { start: 6045, end: 6050 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Int', loc: { start: 6024, end: 6027 } },
-								loc: { start: 6024, end: 6027 }
+								name: { kind: 'Name', value: 'Int', loc: { start: 6052, end: 6055 } },
+								loc: { start: 6052, end: 6055 }
 							},
 							directives: [],
-							loc: { start: 6017, end: 6027 }
+							loc: { start: 6045, end: 6055 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'page_token', loc: { start: 6029, end: 6039 } },
+							name: { kind: 'Name', value: 'page_token', loc: { start: 6057, end: 6067 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 6041, end: 6047 } },
-								loc: { start: 6041, end: 6047 }
+								name: { kind: 'Name', value: 'String', loc: { start: 6069, end: 6075 } },
+								loc: { start: 6069, end: 6075 }
 							},
 							directives: [],
-							loc: { start: 6029, end: 6047 }
+							loc: { start: 6057, end: 6075 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'update_last_seen', loc: { start: 6049, end: 6065 } },
+							name: { kind: 'Name', value: 'update_last_seen', loc: { start: 6077, end: 6093 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'Boolean', loc: { start: 6067, end: 6074 } },
-									loc: { start: 6067, end: 6074 }
+									name: { kind: 'Name', value: 'Boolean', loc: { start: 6095, end: 6102 } },
+									loc: { start: 6095, end: 6102 }
 								},
-								loc: { start: 6067, end: 6075 }
+								loc: { start: 6095, end: 6103 }
 							},
 							directives: [],
-							loc: { start: 6049, end: 6075 }
+							loc: { start: 6077, end: 6103 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'NotificationPage', loc: { start: 6078, end: 6094 } },
-						loc: { start: 6078, end: 6094 }
+						name: { kind: 'Name', value: 'NotificationPage', loc: { start: 6106, end: 6122 } },
+						loc: { start: 6106, end: 6122 }
 					},
 					directives: [],
-					loc: { start: 6000, end: 6094 }
+					loc: { start: 6028, end: 6122 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getPath', loc: { start: 6097, end: 6104 } },
+					name: { kind: 'Name', value: 'getPath', loc: { start: 6125, end: 6132 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 6105, end: 6112 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 6133, end: 6140 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 6114, end: 6116 } },
-									loc: { start: 6114, end: 6116 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6142, end: 6144 } },
+									loc: { start: 6142, end: 6144 }
 								},
-								loc: { start: 6114, end: 6117 }
+								loc: { start: 6142, end: 6145 }
 							},
 							directives: [],
-							loc: { start: 6105, end: 6117 }
+							loc: { start: 6133, end: 6145 }
 						}
 					],
 					type: {
@@ -4228,58 +4234,58 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Node', loc: { start: 6121, end: 6125 } },
-								loc: { start: 6121, end: 6125 }
+								name: { kind: 'Name', value: 'Node', loc: { start: 6149, end: 6153 } },
+								loc: { start: 6149, end: 6153 }
 							},
-							loc: { start: 6120, end: 6126 }
+							loc: { start: 6148, end: 6154 }
 						},
-						loc: { start: 6120, end: 6127 }
+						loc: { start: 6148, end: 6155 }
 					},
 					directives: [],
-					loc: { start: 6097, end: 6127 }
+					loc: { start: 6125, end: 6155 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 6130, end: 6143 } },
+					name: { kind: 'Name', value: 'getPublicNode', loc: { start: 6158, end: 6171 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'access_code', loc: { start: 6144, end: 6155 } },
+							name: { kind: 'Name', value: 'access_code', loc: { start: 6172, end: 6183 } },
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'String', loc: { start: 6157, end: 6163 } },
-								loc: { start: 6157, end: 6163 }
+								name: { kind: 'Name', value: 'String', loc: { start: 6185, end: 6191 } },
+								loc: { start: 6185, end: 6191 }
 							},
 							directives: [],
-							loc: { start: 6144, end: 6163 }
+							loc: { start: 6172, end: 6191 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_link_id', loc: { start: 6165, end: 6177 } },
+							name: { kind: 'Name', value: 'node_link_id', loc: { start: 6193, end: 6205 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'String', loc: { start: 6179, end: 6185 } },
-									loc: { start: 6179, end: 6185 }
+									name: { kind: 'Name', value: 'String', loc: { start: 6207, end: 6213 } },
+									loc: { start: 6207, end: 6213 }
 								},
-								loc: { start: 6179, end: 6186 }
+								loc: { start: 6207, end: 6214 }
 							},
 							directives: [],
-							loc: { start: 6165, end: 6186 }
+							loc: { start: 6193, end: 6214 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'PublicNode', loc: { start: 6189, end: 6199 } },
-						loc: { start: 6189, end: 6199 }
+						name: { kind: 'Name', value: 'PublicNode', loc: { start: 6217, end: 6227 } },
+						loc: { start: 6217, end: 6227 }
 					},
 					directives: [],
-					loc: { start: 6130, end: 6199 }
+					loc: { start: 6158, end: 6227 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getRootsList', loc: { start: 6202, end: 6214 } },
+					name: { kind: 'Name', value: 'getRootsList', loc: { start: 6230, end: 6242 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
@@ -4287,124 +4293,124 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'Root', loc: { start: 6217, end: 6221 } },
-								loc: { start: 6217, end: 6221 }
+								name: { kind: 'Name', value: 'Root', loc: { start: 6245, end: 6249 } },
+								loc: { start: 6245, end: 6249 }
 							},
-							loc: { start: 6216, end: 6222 }
+							loc: { start: 6244, end: 6250 }
 						},
-						loc: { start: 6216, end: 6223 }
+						loc: { start: 6244, end: 6251 }
 					},
 					directives: [],
-					loc: { start: 6202, end: 6223 }
+					loc: { start: 6230, end: 6251 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getShare', loc: { start: 6226, end: 6234 } },
+					name: { kind: 'Name', value: 'getShare', loc: { start: 6254, end: 6262 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 6235, end: 6242 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 6263, end: 6270 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 6244, end: 6246 } },
-									loc: { start: 6244, end: 6246 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6272, end: 6274 } },
+									loc: { start: 6272, end: 6274 }
 								},
-								loc: { start: 6244, end: 6247 }
+								loc: { start: 6272, end: 6275 }
 							},
 							directives: [],
-							loc: { start: 6235, end: 6247 }
+							loc: { start: 6263, end: 6275 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'share_target_id', loc: { start: 6249, end: 6264 } },
+							name: { kind: 'Name', value: 'share_target_id', loc: { start: 6277, end: 6292 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 6266, end: 6268 } },
-									loc: { start: 6266, end: 6268 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6294, end: 6296 } },
+									loc: { start: 6294, end: 6296 }
 								},
-								loc: { start: 6266, end: 6269 }
+								loc: { start: 6294, end: 6297 }
 							},
 							directives: [],
-							loc: { start: 6249, end: 6269 }
+							loc: { start: 6277, end: 6297 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'Share', loc: { start: 6272, end: 6277 } },
-						loc: { start: 6272, end: 6277 }
+						name: { kind: 'Name', value: 'Share', loc: { start: 6300, end: 6305 } },
+						loc: { start: 6300, end: 6305 }
 					},
 					directives: [],
-					loc: { start: 6226, end: 6277 }
+					loc: { start: 6254, end: 6305 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getUserById', loc: { start: 6280, end: 6291 } },
+					name: { kind: 'Name', value: 'getUserById', loc: { start: 6308, end: 6319 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'user_id', loc: { start: 6292, end: 6299 } },
+							name: { kind: 'Name', value: 'user_id', loc: { start: 6320, end: 6327 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 6301, end: 6303 } },
-									loc: { start: 6301, end: 6303 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6329, end: 6331 } },
+									loc: { start: 6329, end: 6331 }
 								},
-								loc: { start: 6301, end: 6304 }
+								loc: { start: 6329, end: 6332 }
 							},
 							directives: [],
-							loc: { start: 6292, end: 6304 }
+							loc: { start: 6320, end: 6332 }
 						}
 					],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'User', loc: { start: 6307, end: 6311 } },
-						loc: { start: 6307, end: 6311 }
+						name: { kind: 'Name', value: 'User', loc: { start: 6335, end: 6339 } },
+						loc: { start: 6335, end: 6339 }
 					},
 					directives: [],
-					loc: { start: 6280, end: 6311 }
+					loc: { start: 6308, end: 6339 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'getVersions', loc: { start: 6314, end: 6325 } },
+					name: { kind: 'Name', value: 'getVersions', loc: { start: 6342, end: 6353 } },
 					arguments: [
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'node_id', loc: { start: 6326, end: 6333 } },
+							name: { kind: 'Name', value: 'node_id', loc: { start: 6354, end: 6361 } },
 							type: {
 								kind: 'NonNullType',
 								type: {
 									kind: 'NamedType',
-									name: { kind: 'Name', value: 'ID', loc: { start: 6335, end: 6337 } },
-									loc: { start: 6335, end: 6337 }
+									name: { kind: 'Name', value: 'ID', loc: { start: 6363, end: 6365 } },
+									loc: { start: 6363, end: 6365 }
 								},
-								loc: { start: 6335, end: 6338 }
+								loc: { start: 6363, end: 6366 }
 							},
 							directives: [],
-							loc: { start: 6326, end: 6338 }
+							loc: { start: 6354, end: 6366 }
 						},
 						{
 							kind: 'InputValueDefinition',
-							name: { kind: 'Name', value: 'versions', loc: { start: 6340, end: 6348 } },
+							name: { kind: 'Name', value: 'versions', loc: { start: 6368, end: 6376 } },
 							type: {
 								kind: 'ListType',
 								type: {
 									kind: 'NonNullType',
 									type: {
 										kind: 'NamedType',
-										name: { kind: 'Name', value: 'Int', loc: { start: 6351, end: 6354 } },
-										loc: { start: 6351, end: 6354 }
+										name: { kind: 'Name', value: 'Int', loc: { start: 6379, end: 6382 } },
+										loc: { start: 6379, end: 6382 }
 									},
-									loc: { start: 6351, end: 6355 }
+									loc: { start: 6379, end: 6383 }
 								},
-								loc: { start: 6350, end: 6356 }
+								loc: { start: 6378, end: 6384 }
 							},
 							directives: [],
-							loc: { start: 6340, end: 6356 }
+							loc: { start: 6368, end: 6384 }
 						}
 					],
 					type: {
@@ -4413,619 +4419,619 @@ export const schema = {
 							kind: 'ListType',
 							type: {
 								kind: 'NamedType',
-								name: { kind: 'Name', value: 'File', loc: { start: 6360, end: 6364 } },
-								loc: { start: 6360, end: 6364 }
+								name: { kind: 'Name', value: 'File', loc: { start: 6388, end: 6392 } },
+								loc: { start: 6388, end: 6392 }
 							},
-							loc: { start: 6359, end: 6365 }
+							loc: { start: 6387, end: 6393 }
 						},
-						loc: { start: 6359, end: 6366 }
+						loc: { start: 6387, end: 6394 }
 					},
 					directives: [],
-					loc: { start: 6314, end: 6366 }
+					loc: { start: 6342, end: 6394 }
 				}
 			],
-			loc: { start: 5332, end: 6368 }
+			loc: { start: 5360, end: 6396 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'RemovedNode', loc: { start: 6375, end: 6386 } },
+			name: { kind: 'Name', value: 'RemovedNode', loc: { start: 6403, end: 6414 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 6391, end: 6401 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 6419, end: 6429 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 6403, end: 6413 } },
-							loc: { start: 6403, end: 6413 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 6431, end: 6441 } },
+							loc: { start: 6431, end: 6441 }
 						},
-						loc: { start: 6403, end: 6414 }
+						loc: { start: 6431, end: 6442 }
 					},
 					directives: [],
-					loc: { start: 6391, end: 6414 }
+					loc: { start: 6419, end: 6442 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 6417, end: 6419 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 6445, end: 6447 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 6421, end: 6423 } },
-							loc: { start: 6421, end: 6423 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 6449, end: 6451 } },
+							loc: { start: 6449, end: 6451 }
 						},
-						loc: { start: 6421, end: 6424 }
+						loc: { start: 6449, end: 6452 }
 					},
 					directives: [],
-					loc: { start: 6417, end: 6424 }
+					loc: { start: 6445, end: 6452 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'notification_type', loc: { start: 6427, end: 6444 } },
+					name: { kind: 'Name', value: 'notification_type', loc: { start: 6455, end: 6472 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NotificationType', loc: { start: 6446, end: 6462 } },
-							loc: { start: 6446, end: 6462 }
+							name: { kind: 'Name', value: 'NotificationType', loc: { start: 6474, end: 6490 } },
+							loc: { start: 6474, end: 6490 }
 						},
-						loc: { start: 6446, end: 6463 }
+						loc: { start: 6474, end: 6491 }
 					},
 					directives: [],
-					loc: { start: 6427, end: 6463 }
+					loc: { start: 6455, end: 6491 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'origin_folder', loc: { start: 6466, end: 6479 } },
+					name: { kind: 'Name', value: 'origin_folder', loc: { start: 6494, end: 6507 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 6481, end: 6493 } },
-							loc: { start: 6481, end: 6493 }
+							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 6509, end: 6521 } },
+							loc: { start: 6509, end: 6521 }
 						},
-						loc: { start: 6481, end: 6494 }
+						loc: { start: 6509, end: 6522 }
 					},
 					directives: [],
-					loc: { start: 6466, end: 6494 }
+					loc: { start: 6494, end: 6522 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'removed_node', loc: { start: 6497, end: 6509 } },
+					name: { kind: 'Name', value: 'removed_node', loc: { start: 6525, end: 6537 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 6511, end: 6523 } },
-							loc: { start: 6511, end: 6523 }
+							name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 6539, end: 6551 } },
+							loc: { start: 6539, end: 6551 }
 						},
-						loc: { start: 6511, end: 6524 }
+						loc: { start: 6539, end: 6552 }
 					},
 					directives: [],
-					loc: { start: 6497, end: 6524 }
+					loc: { start: 6525, end: 6552 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'removed_node_type', loc: { start: 6527, end: 6544 } },
+					name: { kind: 'Name', value: 'removed_node_type', loc: { start: 6555, end: 6572 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'RemovedNodeType', loc: { start: 6546, end: 6561 } },
-							loc: { start: 6546, end: 6561 }
+							name: { kind: 'Name', value: 'RemovedNodeType', loc: { start: 6574, end: 6589 } },
+							loc: { start: 6574, end: 6589 }
 						},
-						loc: { start: 6546, end: 6562 }
+						loc: { start: 6574, end: 6590 }
 					},
 					directives: [],
-					loc: { start: 6527, end: 6562 }
+					loc: { start: 6555, end: 6590 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'triggering_user', loc: { start: 6565, end: 6580 } },
+					name: { kind: 'Name', value: 'triggering_user', loc: { start: 6593, end: 6608 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 6582, end: 6594 } },
-							loc: { start: 6582, end: 6594 }
+							name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 6610, end: 6622 } },
+							loc: { start: 6610, end: 6622 }
 						},
-						loc: { start: 6582, end: 6595 }
+						loc: { start: 6610, end: 6623 }
 					},
 					directives: [],
-					loc: { start: 6565, end: 6595 }
+					loc: { start: 6593, end: 6623 }
 				}
 			],
-			loc: { start: 6370, end: 6597 }
+			loc: { start: 6398, end: 6625 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'RemovedNodeType', loc: { start: 6604, end: 6619 } },
+			name: { kind: 'Name', value: 'RemovedNodeType', loc: { start: 6632, end: 6647 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'DELETE', loc: { start: 6624, end: 6630 } },
+					name: { kind: 'Name', value: 'DELETE', loc: { start: 6652, end: 6658 } },
 					directives: [],
-					loc: { start: 6624, end: 6630 }
+					loc: { start: 6652, end: 6658 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'MOVE', loc: { start: 6633, end: 6637 } },
+					name: { kind: 'Name', value: 'MOVE', loc: { start: 6661, end: 6665 } },
 					directives: [],
-					loc: { start: 6633, end: 6637 }
+					loc: { start: 6661, end: 6665 }
 				}
 			],
-			loc: { start: 6599, end: 6639 }
+			loc: { start: 6627, end: 6667 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Root', loc: { start: 6646, end: 6650 } },
+			name: { kind: 'Name', value: 'Root', loc: { start: 6674, end: 6678 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 6655, end: 6657 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 6683, end: 6685 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 6659, end: 6661 } },
-							loc: { start: 6659, end: 6661 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 6687, end: 6689 } },
+							loc: { start: 6687, end: 6689 }
 						},
-						loc: { start: 6659, end: 6662 }
+						loc: { start: 6687, end: 6690 }
 					},
 					directives: [],
-					loc: { start: 6655, end: 6662 }
+					loc: { start: 6683, end: 6690 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 6665, end: 6669 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 6693, end: 6697 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 6671, end: 6677 } },
-							loc: { start: 6671, end: 6677 }
+							name: { kind: 'Name', value: 'String', loc: { start: 6699, end: 6705 } },
+							loc: { start: 6699, end: 6705 }
 						},
-						loc: { start: 6671, end: 6678 }
+						loc: { start: 6699, end: 6706 }
 					},
 					directives: [],
-					loc: { start: 6665, end: 6678 }
+					loc: { start: 6693, end: 6706 }
 				}
 			],
-			loc: { start: 6641, end: 6680 }
+			loc: { start: 6669, end: 6708 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'Share', loc: { start: 6687, end: 6692 } },
+			name: { kind: 'Name', value: 'Share', loc: { start: 6715, end: 6720 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 6697, end: 6707 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 6725, end: 6735 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 6709, end: 6719 } },
-							loc: { start: 6709, end: 6719 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 6737, end: 6747 } },
+							loc: { start: 6737, end: 6747 }
 						},
-						loc: { start: 6709, end: 6720 }
+						loc: { start: 6737, end: 6748 }
 					},
 					directives: [],
-					loc: { start: 6697, end: 6720 }
+					loc: { start: 6725, end: 6748 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'expires_at', loc: { start: 6723, end: 6733 } },
+					name: { kind: 'Name', value: 'expires_at', loc: { start: 6751, end: 6761 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'BigInteger', loc: { start: 6735, end: 6745 } },
-						loc: { start: 6735, end: 6745 }
+						name: { kind: 'Name', value: 'BigInteger', loc: { start: 6763, end: 6773 } },
+						loc: { start: 6763, end: 6773 }
 					},
 					directives: [],
-					loc: { start: 6723, end: 6745 }
+					loc: { start: 6751, end: 6773 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'node', loc: { start: 6748, end: 6752 } },
+					name: { kind: 'Name', value: 'node', loc: { start: 6776, end: 6780 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'Node', loc: { start: 6754, end: 6758 } },
-							loc: { start: 6754, end: 6758 }
+							name: { kind: 'Name', value: 'Node', loc: { start: 6782, end: 6786 } },
+							loc: { start: 6782, end: 6786 }
 						},
-						loc: { start: 6754, end: 6759 }
+						loc: { start: 6782, end: 6787 }
 					},
 					directives: [],
-					loc: { start: 6748, end: 6759 }
+					loc: { start: 6776, end: 6787 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'permission', loc: { start: 6762, end: 6772 } },
+					name: { kind: 'Name', value: 'permission', loc: { start: 6790, end: 6800 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'SharePermission', loc: { start: 6774, end: 6789 } },
-							loc: { start: 6774, end: 6789 }
+							name: { kind: 'Name', value: 'SharePermission', loc: { start: 6802, end: 6817 } },
+							loc: { start: 6802, end: 6817 }
 						},
-						loc: { start: 6774, end: 6790 }
+						loc: { start: 6802, end: 6818 }
 					},
 					directives: [],
-					loc: { start: 6762, end: 6790 }
+					loc: { start: 6790, end: 6818 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'share_target', loc: { start: 6793, end: 6805 } },
+					name: { kind: 'Name', value: 'share_target', loc: { start: 6821, end: 6833 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'SharedTarget', loc: { start: 6807, end: 6819 } },
-						loc: { start: 6807, end: 6819 }
+						name: { kind: 'Name', value: 'SharedTarget', loc: { start: 6835, end: 6847 } },
+						loc: { start: 6835, end: 6847 }
 					},
 					directives: [],
-					loc: { start: 6793, end: 6819 }
+					loc: { start: 6821, end: 6847 }
 				}
 			],
-			loc: { start: 6682, end: 6821 }
+			loc: { start: 6710, end: 6849 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'SharePermission', loc: { start: 6828, end: 6843 } },
+			name: { kind: 'Name', value: 'SharePermission', loc: { start: 6856, end: 6871 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'READ_AND_SHARE', loc: { start: 6848, end: 6862 } },
+					name: { kind: 'Name', value: 'READ_AND_SHARE', loc: { start: 6876, end: 6890 } },
 					directives: [],
-					loc: { start: 6848, end: 6862 }
+					loc: { start: 6876, end: 6890 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'READ_AND_WRITE', loc: { start: 6865, end: 6879 } },
+					name: { kind: 'Name', value: 'READ_AND_WRITE', loc: { start: 6893, end: 6907 } },
 					directives: [],
-					loc: { start: 6865, end: 6879 }
+					loc: { start: 6893, end: 6907 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'READ_ONLY', loc: { start: 6882, end: 6891 } },
+					name: { kind: 'Name', value: 'READ_ONLY', loc: { start: 6910, end: 6919 } },
 					directives: [],
-					loc: { start: 6882, end: 6891 }
+					loc: { start: 6910, end: 6919 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'READ_WRITE_AND_SHARE', loc: { start: 6894, end: 6914 } },
+					name: { kind: 'Name', value: 'READ_WRITE_AND_SHARE', loc: { start: 6922, end: 6942 } },
 					directives: [],
-					loc: { start: 6894, end: 6914 }
+					loc: { start: 6922, end: 6942 }
 				}
 			],
-			loc: { start: 6823, end: 6916 }
+			loc: { start: 6851, end: 6944 }
 		},
 		{
 			kind: 'EnumTypeDefinition',
-			name: { kind: 'Name', value: 'ShareSort', loc: { start: 6923, end: 6932 } },
+			name: { kind: 'Name', value: 'ShareSort', loc: { start: 6951, end: 6960 } },
 			directives: [],
 			values: [
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'CREATION_ASC', loc: { start: 6937, end: 6949 } },
+					name: { kind: 'Name', value: 'CREATION_ASC', loc: { start: 6965, end: 6977 } },
 					directives: [],
-					loc: { start: 6937, end: 6949 }
+					loc: { start: 6965, end: 6977 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'CREATION_DESC', loc: { start: 6952, end: 6965 } },
+					name: { kind: 'Name', value: 'CREATION_DESC', loc: { start: 6980, end: 6993 } },
 					directives: [],
-					loc: { start: 6952, end: 6965 }
+					loc: { start: 6980, end: 6993 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'EXPIRATION_ASC', loc: { start: 6968, end: 6982 } },
+					name: { kind: 'Name', value: 'EXPIRATION_ASC', loc: { start: 6996, end: 7010 } },
 					directives: [],
-					loc: { start: 6968, end: 6982 }
+					loc: { start: 6996, end: 7010 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'EXPIRATION_DESC', loc: { start: 6985, end: 7000 } },
+					name: { kind: 'Name', value: 'EXPIRATION_DESC', loc: { start: 7013, end: 7028 } },
 					directives: [],
-					loc: { start: 6985, end: 7000 }
+					loc: { start: 7013, end: 7028 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SHARE_PERMISSIONS_ASC', loc: { start: 7003, end: 7024 } },
+					name: { kind: 'Name', value: 'SHARE_PERMISSIONS_ASC', loc: { start: 7031, end: 7052 } },
 					directives: [],
-					loc: { start: 7003, end: 7024 }
+					loc: { start: 7031, end: 7052 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'SHARE_PERMISSIONS_DESC', loc: { start: 7027, end: 7049 } },
+					name: { kind: 'Name', value: 'SHARE_PERMISSIONS_DESC', loc: { start: 7055, end: 7077 } },
 					directives: [],
-					loc: { start: 7027, end: 7049 }
+					loc: { start: 7055, end: 7077 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TARGET_USER_ASC', loc: { start: 7052, end: 7067 } },
+					name: { kind: 'Name', value: 'TARGET_USER_ASC', loc: { start: 7080, end: 7095 } },
 					directives: [],
-					loc: { start: 7052, end: 7067 }
+					loc: { start: 7080, end: 7095 }
 				},
 				{
 					kind: 'EnumValueDefinition',
-					name: { kind: 'Name', value: 'TARGET_USER_DESC', loc: { start: 7070, end: 7086 } },
+					name: { kind: 'Name', value: 'TARGET_USER_DESC', loc: { start: 7098, end: 7114 } },
 					directives: [],
-					loc: { start: 7070, end: 7086 }
+					loc: { start: 7098, end: 7114 }
 				}
 			],
-			loc: { start: 6918, end: 7088 }
+			loc: { start: 6946, end: 7116 }
 		},
 		{
 			kind: 'UnionTypeDefinition',
-			name: { kind: 'Name', value: 'SharedTarget', loc: { start: 7096, end: 7108 } },
+			name: { kind: 'Name', value: 'SharedTarget', loc: { start: 7124, end: 7136 } },
 			directives: [],
 			types: [
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'DistributionList', loc: { start: 7111, end: 7127 } },
-					loc: { start: 7111, end: 7127 }
+					name: { kind: 'Name', value: 'DistributionList', loc: { start: 7139, end: 7155 } },
+					loc: { start: 7139, end: 7155 }
 				},
 				{
 					kind: 'NamedType',
-					name: { kind: 'Name', value: 'User', loc: { start: 7130, end: 7134 } },
-					loc: { start: 7130, end: 7134 }
+					name: { kind: 'Name', value: 'User', loc: { start: 7158, end: 7162 } },
+					loc: { start: 7158, end: 7162 }
 				}
 			],
-			loc: { start: 7090, end: 7134 }
+			loc: { start: 7118, end: 7162 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 7141, end: 7153 } },
+			name: { kind: 'Name', value: 'SnapshotNode', loc: { start: 7169, end: 7181 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'created_at', loc: { start: 7158, end: 7168 } },
+					name: { kind: 'Name', value: 'created_at', loc: { start: 7186, end: 7196 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'BigInteger', loc: { start: 7170, end: 7180 } },
-							loc: { start: 7170, end: 7180 }
+							name: { kind: 'Name', value: 'BigInteger', loc: { start: 7198, end: 7208 } },
+							loc: { start: 7198, end: 7208 }
 						},
-						loc: { start: 7170, end: 7181 }
+						loc: { start: 7198, end: 7209 }
 					},
 					directives: [],
-					loc: { start: 7158, end: 7181 }
+					loc: { start: 7186, end: 7209 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'name', loc: { start: 7184, end: 7188 } },
+					name: { kind: 'Name', value: 'name', loc: { start: 7212, end: 7216 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 7190, end: 7196 } },
-							loc: { start: 7190, end: 7196 }
+							name: { kind: 'Name', value: 'String', loc: { start: 7218, end: 7224 } },
+							loc: { start: 7218, end: 7224 }
 						},
-						loc: { start: 7190, end: 7197 }
+						loc: { start: 7218, end: 7225 }
 					},
 					directives: [],
-					loc: { start: 7184, end: 7197 }
+					loc: { start: 7212, end: 7225 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'node_id', loc: { start: 7200, end: 7207 } },
+					name: { kind: 'Name', value: 'node_id', loc: { start: 7228, end: 7235 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 7209, end: 7211 } },
-							loc: { start: 7209, end: 7211 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 7237, end: 7239 } },
+							loc: { start: 7237, end: 7239 }
 						},
-						loc: { start: 7209, end: 7212 }
+						loc: { start: 7237, end: 7240 }
 					},
 					directives: [],
-					loc: { start: 7200, end: 7212 }
+					loc: { start: 7228, end: 7240 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'owner_id', loc: { start: 7215, end: 7223 } },
+					name: { kind: 'Name', value: 'owner_id', loc: { start: 7243, end: 7251 } },
 					arguments: [],
 					type: {
 						kind: 'NamedType',
-						name: { kind: 'Name', value: 'ID', loc: { start: 7225, end: 7227 } },
-						loc: { start: 7225, end: 7227 }
+						name: { kind: 'Name', value: 'ID', loc: { start: 7253, end: 7255 } },
+						loc: { start: 7253, end: 7255 }
 					},
 					directives: [],
-					loc: { start: 7215, end: 7227 }
+					loc: { start: 7243, end: 7255 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'snapshot_node_id', loc: { start: 7230, end: 7246 } },
+					name: { kind: 'Name', value: 'snapshot_node_id', loc: { start: 7258, end: 7274 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 7248, end: 7250 } },
-							loc: { start: 7248, end: 7250 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 7276, end: 7278 } },
+							loc: { start: 7276, end: 7278 }
 						},
-						loc: { start: 7248, end: 7251 }
+						loc: { start: 7276, end: 7279 }
 					},
 					directives: [],
-					loc: { start: 7230, end: 7251 }
+					loc: { start: 7258, end: 7279 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'type', loc: { start: 7254, end: 7258 } },
+					name: { kind: 'Name', value: 'type', loc: { start: 7282, end: 7286 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'NodeType', loc: { start: 7260, end: 7268 } },
-							loc: { start: 7260, end: 7268 }
+							name: { kind: 'Name', value: 'NodeType', loc: { start: 7288, end: 7296 } },
+							loc: { start: 7288, end: 7296 }
 						},
-						loc: { start: 7260, end: 7269 }
+						loc: { start: 7288, end: 7297 }
 					},
 					directives: [],
-					loc: { start: 7254, end: 7269 }
+					loc: { start: 7282, end: 7297 }
 				}
 			],
-			loc: { start: 7136, end: 7271 }
+			loc: { start: 7164, end: 7299 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 7278, end: 7290 } },
+			name: { kind: 'Name', value: 'SnapshotUser', loc: { start: 7306, end: 7318 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'email', loc: { start: 7295, end: 7300 } },
+					name: { kind: 'Name', value: 'email', loc: { start: 7323, end: 7328 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 7302, end: 7308 } },
-							loc: { start: 7302, end: 7308 }
+							name: { kind: 'Name', value: 'String', loc: { start: 7330, end: 7336 } },
+							loc: { start: 7330, end: 7336 }
 						},
-						loc: { start: 7302, end: 7309 }
+						loc: { start: 7330, end: 7337 }
 					},
 					directives: [],
-					loc: { start: 7295, end: 7309 }
+					loc: { start: 7323, end: 7337 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'full_name', loc: { start: 7312, end: 7321 } },
+					name: { kind: 'Name', value: 'full_name', loc: { start: 7340, end: 7349 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 7323, end: 7329 } },
-							loc: { start: 7323, end: 7329 }
+							name: { kind: 'Name', value: 'String', loc: { start: 7351, end: 7357 } },
+							loc: { start: 7351, end: 7357 }
 						},
-						loc: { start: 7323, end: 7330 }
+						loc: { start: 7351, end: 7358 }
 					},
 					directives: [],
-					loc: { start: 7312, end: 7330 }
+					loc: { start: 7340, end: 7358 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'snapshot_user_id', loc: { start: 7333, end: 7349 } },
+					name: { kind: 'Name', value: 'snapshot_user_id', loc: { start: 7361, end: 7377 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 7351, end: 7353 } },
-							loc: { start: 7351, end: 7353 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 7379, end: 7381 } },
+							loc: { start: 7379, end: 7381 }
 						},
-						loc: { start: 7351, end: 7354 }
+						loc: { start: 7379, end: 7382 }
 					},
 					directives: [],
-					loc: { start: 7333, end: 7354 }
+					loc: { start: 7361, end: 7382 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'user_id', loc: { start: 7357, end: 7364 } },
+					name: { kind: 'Name', value: 'user_id', loc: { start: 7385, end: 7392 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 7366, end: 7368 } },
-							loc: { start: 7366, end: 7368 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 7394, end: 7396 } },
+							loc: { start: 7394, end: 7396 }
 						},
-						loc: { start: 7366, end: 7369 }
+						loc: { start: 7394, end: 7397 }
 					},
 					directives: [],
-					loc: { start: 7357, end: 7369 }
+					loc: { start: 7385, end: 7397 }
 				}
 			],
-			loc: { start: 7273, end: 7371 }
+			loc: { start: 7301, end: 7399 }
 		},
 		{
 			kind: 'ObjectTypeDefinition',
-			name: { kind: 'Name', value: 'User', loc: { start: 7378, end: 7382 } },
+			name: { kind: 'Name', value: 'User', loc: { start: 7406, end: 7410 } },
 			interfaces: [],
 			directives: [],
 			fields: [
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'email', loc: { start: 7387, end: 7392 } },
+					name: { kind: 'Name', value: 'email', loc: { start: 7415, end: 7420 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 7394, end: 7400 } },
-							loc: { start: 7394, end: 7400 }
+							name: { kind: 'Name', value: 'String', loc: { start: 7422, end: 7428 } },
+							loc: { start: 7422, end: 7428 }
 						},
-						loc: { start: 7394, end: 7401 }
+						loc: { start: 7422, end: 7429 }
 					},
 					directives: [],
-					loc: { start: 7387, end: 7401 }
+					loc: { start: 7415, end: 7429 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'full_name', loc: { start: 7404, end: 7413 } },
+					name: { kind: 'Name', value: 'full_name', loc: { start: 7432, end: 7441 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'String', loc: { start: 7415, end: 7421 } },
-							loc: { start: 7415, end: 7421 }
+							name: { kind: 'Name', value: 'String', loc: { start: 7443, end: 7449 } },
+							loc: { start: 7443, end: 7449 }
 						},
-						loc: { start: 7415, end: 7422 }
+						loc: { start: 7443, end: 7450 }
 					},
 					directives: [],
-					loc: { start: 7404, end: 7422 }
+					loc: { start: 7432, end: 7450 }
 				},
 				{
 					kind: 'FieldDefinition',
-					name: { kind: 'Name', value: 'id', loc: { start: 7425, end: 7427 } },
+					name: { kind: 'Name', value: 'id', loc: { start: 7453, end: 7455 } },
 					arguments: [],
 					type: {
 						kind: 'NonNullType',
 						type: {
 							kind: 'NamedType',
-							name: { kind: 'Name', value: 'ID', loc: { start: 7429, end: 7431 } },
-							loc: { start: 7429, end: 7431 }
+							name: { kind: 'Name', value: 'ID', loc: { start: 7457, end: 7459 } },
+							loc: { start: 7457, end: 7459 }
 						},
-						loc: { start: 7429, end: 7432 }
+						loc: { start: 7457, end: 7460 }
 					},
 					directives: [],
-					loc: { start: 7425, end: 7432 }
+					loc: { start: 7453, end: 7460 }
 				}
 			],
-			loc: { start: 7373, end: 7434 }
+			loc: { start: 7401, end: 7462 }
 		}
 	],
-	loc: { start: 0, end: 7434 }
+	loc: { start: 0, end: 7462 }
 } as unknown as DocumentNode;

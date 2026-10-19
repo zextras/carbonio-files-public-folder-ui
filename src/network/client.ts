@@ -17,7 +17,7 @@ import type {
 } from '../graphql/types';
 import type { Node } from '../model/Node';
 import { convertGQLToNode } from '../model/Node';
-import type { NodeOfFindNodes } from '../types/types';
+import type { PublicNode } from '../types/types';
 import { API_ENDPOINT, FIND_NODES_LIMITS } from '../utils/constants';
 
 export type Body<TVariables extends Record<string, unknown>> = {
@@ -52,7 +52,7 @@ export const client = {
 		});
 		const findNodesResult: ExecutionResult<GQLFindPublicNodesQuery> = await response.json();
 		const newNodes = findNodesResult.data?.findPublicNodes?.nodes
-			.filter((node): node is NodeOfFindNodes => node !== null)
+			.filter((node): node is PublicNode => node !== null)
 			.map((node) => convertGQLToNode(node));
 		return {
 			newNodes: newNodes ?? [],

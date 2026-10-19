@@ -46,7 +46,7 @@ describe('handlers', () => {
 		expect(result.data?.getPublicNode?.name).toBe(node.name);
 	});
 
-	it('findNodes handler', async () => {
+	it('findPublicNodes handler', async () => {
 		server.use(
 			createFindPublicNodesHandler({ nodes: [], variables: { folder_id: '', node_link_id: '' } })
 		);

@@ -6,10 +6,9 @@
 import type { GQLFindPublicNodesQuery } from '../graphql/types';
 import type { NonNullableListItem } from '../utils/typeUtils';
 
-export type NodeOfFindNodes = NonNullableListItem<
+export type PublicNode = NonNullableListItem<
 	NonNullable<GQLFindPublicNodesQuery['findPublicNodes']>['nodes']
 >;
 
-export type PublicNode = NodeOfFindNodes;
-export type PublicFile = Extract<NodeOfFindNodes, { __typename: 'PublicFile' }>;
-export type PublicFolder = Extract<NodeOfFindNodes, { __typename: 'PublicFolder' }>;
+export type PublicFile = Extract<PublicNode, { __typename: 'PublicFile' }>;
+export type PublicFolder = Extract<PublicNode, { __typename: 'PublicFolder' }>;
