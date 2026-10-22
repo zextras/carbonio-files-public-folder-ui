@@ -4,18 +4,17 @@
  * SPDX-License-Identifier: AGPL-3.0-only
  */
 
-import type { GQLFile, GQLNode } from '../graphql/types';
-import type { NodeOfFindNodes } from '../types/types';
+import type { PublicFile, PublicNode } from '../types/types';
 
 export type Node = {
-	createdAt: GQLNode['created_at'];
-	id: GQLNode['id'];
-	name: GQLNode['name'];
-	type: GQLNode['type'];
-	updatedAt: GQLNode['updated_at'];
-	extension?: GQLFile['extension'];
-	mimeType?: GQLFile['mime_type'];
-	size?: GQLFile['size'];
+	createdAt: PublicNode['created_at'];
+	id: PublicNode['id'];
+	name: PublicNode['name'];
+	type: PublicNode['type'];
+	updatedAt: PublicNode['updated_at'];
+	extension?: PublicFile['extension'];
+	mimeType?: PublicFile['mime_type'];
+	size?: PublicFile['size'];
 } & (
 	| {
 			isDirectory: true;
@@ -27,7 +26,7 @@ export type Node = {
 	  }
 );
 
-export function convertGQLToNode(node: NodeOfFindNodes): Node {
+export function convertGQLToNode(node: PublicNode): Node {
 	const commonNode = {
 		id: node.id,
 		name: node.name,
@@ -36,7 +35,7 @@ export function convertGQLToNode(node: NodeOfFindNodes): Node {
 		updatedAt: node.updated_at
 	};
 
-	if (node.__typename === 'Folder') {
+	if (node.__typename === 'PublicFolder') {
 		return {
 			...commonNode,
 			isDirectory: true,

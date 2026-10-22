@@ -2,14 +2,14 @@
 #
 # SPDX-License-Identifier: AGPL-3.0-only
 
-query findNodes(
+query findPublicNodes(
 	$folder_id: ID!
 	$limit: Int
 	$page_token: String
 	$node_link_id: String
 	$access_code: String
 ) {
-	findNodes(
+	findPublicNodes(
 		folder_id: $folder_id
 		limit: $limit
 		page_token: $page_token
@@ -23,7 +23,7 @@ query findNodes(
 			type
 			updated_at
 			__typename
-			... on File {
+			... on PublicFile {
 				extension
 				mime_type
 				size

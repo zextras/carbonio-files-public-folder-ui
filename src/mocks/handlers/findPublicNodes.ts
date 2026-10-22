@@ -9,19 +9,22 @@ import type { GraphQLHandler } from 'msw';
 import { delay, graphql, HttpResponse } from 'msw';
 
 import { schema } from './schema';
-import type { GQLFindNodesQuery, GQLFindNodesQueryVariables } from '../../graphql/types';
-import { FindNodesDocument } from '../../graphql/types';
+import type {
+	GQLFindPublicNodesQuery,
+	GQLFindPublicNodesQueryVariables
+} from '../../graphql/types';
+import { FindPublicNodesDocument } from '../../graphql/types';
 import { resolveByTypename } from '../../test/resolvers';
 
-export function createFindNodesHandler(
+export function createFindPublicNodesHandler(
 	...args: Array<{
-		variables: GQLFindNodesQueryVariables;
-		nodes: NonNullable<GQLFindNodesQuery['findNodes']>['nodes'];
+		variables: GQLFindPublicNodesQueryVariables;
+		nodes: NonNullable<GQLFindPublicNodesQuery['findPublicNodes']>['nodes'];
 		nextPageToken?: string | null;
 		delayAmount?: Parameters<typeof delay>[0];
 	}>
 ): GraphQLHandler {
-	return graphql.query(FindNodesDocument, async ({ query, variables }) => {
+	return graphql.query(FindPublicNodesDocument, async ({ query, variables }) => {
 		const { folder_id: folderId, page_token: pageToken, node_link_id: nodeLinkId } = variables;
 
 		if (!nodeLinkId) {
@@ -41,10 +44,10 @@ export function createFindNodesHandler(
 			variableValues: variables,
 			typeResolver: resolveByTypename,
 			rootValue: {
-				findNodes: (): GQLFindNodesQuery['findNodes'] => ({
+				findPublicNodes: (): GQLFindPublicNodesQuery['findPublicNodes'] => ({
 					nodes: match?.nodes ?? [],
 					page_token: match?.nextPageToken ?? null,
-					__typename: 'NodePage'
+					__typename: 'PublicNodePage'
 				})
 			}
 		});
