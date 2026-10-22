@@ -1,3 +1,15 @@
+## [1.0.0](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.42...v1.0.0) (2026-10-22)
+
+### ⚠ BREAKING CHANGES
+
+* public operations moved to the code-first /services/files/graphql/ endpoint
+as findPublicNodes and the Public* types. It requires carbonio-files-ce 3.0.0 and
+carbonio-proxy 4.15.0.
+
+### Features
+
+* align public GraphQL client to carbonio-files-ce code-first schema ([#366](https://github.com/zextras/carbonio-files-public-folder-ui/issues/366)) ([f103652](https://github.com/zextras/carbonio-files-public-folder-ui/commit/f103652532c5f71ddefe4295543075ee04b2c7ab))
+
 ## [0.0.42](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v0.0.41...v0.0.42) (2026-10-22)
 
 ### Other changes
