@@ -1,3 +1,9 @@
+## [1.0.4](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.3...v1.0.4) (2026-11-02)
+
+### Other changes
+
+* **deps:** lock file maintenance ([#377](https://github.com/zextras/carbonio-files-public-folder-ui/issues/377)) ([f827610](https://github.com/zextras/carbonio-files-public-folder-ui/commit/f82761095ca64cef5129f8ef63dfc7333e13c38b))
+
 ## [1.0.3](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.2...v1.0.3) (2026-10-27)
 
 ### Other changes
