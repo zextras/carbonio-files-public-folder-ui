@@ -1,3 +1,9 @@
+## [1.0.9](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.8...v1.0.9) (2026-11-23)
+
+### Other changes
+
+* **deps:** update dependency @testing-library/user-event to v14.6.13 ([#386](https://github.com/zextras/carbonio-files-public-folder-ui/issues/386)) ([a45f923](https://github.com/zextras/carbonio-files-public-folder-ui/commit/a45f923ac7ae65fcd99879a15eb48d6f7eebb7e7))
+
 ## [1.0.8](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.7...v1.0.8) (2026-11-18)
 
 ### Other changes
