@@ -1,3 +1,9 @@
+## [1.0.12](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.11...v1.0.12) (2026-11-26)
+
+### Other changes
+
+* **deps-dev:** migrate to @zextras/carbonio-ui-configs 3.x ([#393](https://github.com/zextras/carbonio-files-public-folder-ui/issues/393)) ([a7e8535](https://github.com/zextras/carbonio-files-public-folder-ui/commit/a7e8535875e099c08752774a457601b81e4ee848))
+
 ## [1.0.11](https://github.com/zextras/carbonio-files-public-folder-ui/compare/v1.0.10...v1.0.11) (2026-11-26)
 
 ### Other changes
